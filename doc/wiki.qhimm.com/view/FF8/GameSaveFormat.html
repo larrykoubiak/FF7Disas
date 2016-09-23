@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>FF8/GameSaveFormat - QhimmWiki</title>
+<meta charset="UTF-8" />
+<meta name="generator" content="MediaWiki 1.20.2" />
+<link rel="shortcut icon" href="http://wiki.qhimm.com/favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="http://wiki.qhimm.com/opensearch_desc.php" title="QhimmWiki (en)" />
+<link rel="EditURI" type="application/rsd+xml" href="http://wiki.qhimm.com/api.php?action=rsd" />
+<link rel="copyright" href="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+<link rel="alternate" type="application/atom+xml" title="QhimmWiki Atom feed" href="http://wiki.qhimm.com/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="stylesheet" href="../../load.php@debug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cskins.vector&amp;only=styles&amp;skin=vector&amp;%252A.css" />
+<meta name="ResourceLoaderDynamicStyles" content="" />
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: qhimm_wiki:resourceloader:filter:minify-css:7:9f75cd7a214f5d1850ed6d0df1a4a089 */</style>
+
+<script src="../../load.php@debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector&amp;%252A"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"FF8/GameSaveFormat","wgTitle":"FF8/GameSaveFormat","wgCurRevisionId":5110,"wgArticleId":1492,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"FF8/GameSaveFormat","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,"watchlistdays":3,
+"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","watchToken":false});;},{},{});
+/* cache key: qhimm_wiki:resourceloader:filter:minify-js:7:7330ebaa3a8da3f7992caf476ddb8efd */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/skins/vector/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-FF8_GameSaveFormat skin-vector action-view vector-animateLayout">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content" class="mw-body">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading"><span dir="auto">FF8/GameSaveFormat</span></h1>
+			<!-- /firstHeading -->
+			<!-- bodyContent -->
+			<div id="bodyContent">
+								<!-- tagline -->
+				<div id="siteSub">From QhimmWiki</div>
+				<!-- /tagline -->
+								<!-- subtitle -->
+				<div id="contentSub"><span class="subpages">&lt; <a href="../FF8.html" title="FF8">FF8</a></span></div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="GameSaveFormat.html#mw-head">navigation</a>, 					<a href="GameSaveFormat.html#p-search">search</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodycontent -->
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>By myst6re.
+</p>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="GameSaveFormat.html#The_save_format"><span class="tocnumber">1</span> <span class="toctext">The save format</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="GameSaveFormat.html#Guardian_Forces"><span class="tocnumber">1.1</span> <span class="toctext">Guardian Forces</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="GameSaveFormat.html#Characters"><span class="tocnumber">1.2</span> <span class="toctext">Characters</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="GameSaveFormat.html#Worldmap"><span class="tocnumber">1.3</span> <span class="toctext">Worldmap</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="GameSaveFormat.html#Triple_Triad"><span class="tocnumber">1.4</span> <span class="toctext">Triple Triad</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="GameSaveFormat.html#Chocobo_World"><span class="tocnumber">1.5</span> <span class="toctext">Chocobo World</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table>
+<h2> <span class="mw-headline" id="The_save_format"> The save format </span></h2>
+<table border="1" cellspacing="1" cellpadding="3" align="center" style="border: 1px solid black; border-collapse: collapse;">
+<tr>
+<th style="background:rgb(204,204,204)"> Offset
+</th>
+<th style="background:rgb(204,204,204)"> Size
+</th>
+<th style="background:rgb(204,204,204)"> Data
+</th></tr>
+<tr>
+<td> 0x0000
+</td>
+<td> 2 bytes
+</td>
+<td> Checksum
+</td></tr>
+<tr>
+<td> 0x0002
+</td>
+<td> 2 bytes
+</td>
+<td> Always 0x08FF
+</td></tr>
+<tr>
+<td> 0x0004
+</td>
+<td> 2 bytes
+</td>
+<td> <b>Preview:</b> Location ID
+</td></tr>
+<tr>
+<td> 0x0006
+</td>
+<td> 2 bytes
+</td>
+<td> <b>Preview:</b> 1st character's current HP
+</td></tr>
+<tr>
+<td> 0x0008
+</td>
+<td> 2 bytes
+</td>
+<td> <b>Preview:</b> 1st character's max HP
+</td></tr>
+<tr>
+<td> 0x000A
+</td>
+<td> 2 bytes
+</td>
+<td> <b>Preview:</b> save count
+</td></tr>
+<tr>
+<td> 0x000C
+</td>
+<td> 4 bytes
+</td>
+<td> <b>Preview:</b> Amount of Gil
+</td></tr>
+<tr>
+<td> 0x0020
+</td>
+<td> 4 bytes
+</td>
+<td> <b>Preview:</b> Total number of seconds played
+</td></tr>
+<tr>
+<td> 0x0024
+</td>
+<td> 1 byte
+</td>
+<td> <b>Preview:</b> 1st character's level
+</td></tr>
+<tr>
+<td> 0x0025
+</td>
+<td> 1 byte
+</td>
+<td> <b>Preview:</b> 1st character's portrait
+</td></tr>
+<tr>
+<td> 0x0026
+</td>
+<td> 1 byte
+</td>
+<td> <b>Preview:</b> 2nd character's portrait
+</td></tr>
+<tr>
+<td> 0x0027
+</td>
+<td> 1 byte
+</td>
+<td> <b>Preview:</b> 3rd character's portrait
+</td></tr>
+<tr>
+<td> 0x0028
+</td>
+<td> 12 bytes
+</td>
+<td> <b>Preview:</b> Squall's name (0x00 terminated)
+</td></tr>
+<tr>
+<td> 0x0034
+</td>
+<td> 12 bytes
+</td>
+<td> <b>Preview:</b> Rinoa's name (0x00 terminated)
+</td></tr>
+<tr>
+<td> 0x0040
+</td>
+<td> 12 bytes
+</td>
+<td> <b>Preview:</b> Angelo's name (0x00 terminated)
+</td></tr>
+<tr>
+<td> 0x004C
+</td>
+<td> 12 bytes
+</td>
+<td> <b>Preview:</b> Boko's name (0x00 terminated)
+</td></tr>
+<tr>
+<td> 0x0058
+</td>
+<td> 4 bytes
+</td>
+<td> <b>Preview:</b> Current Disk (0 based)
+</td></tr>
+<tr>
+<td> 0x005C
+</td>
+<td> 4 bytes
+</td>
+<td> <b>Preview:</b> Current save (last saved game)
+</td></tr>
+<tr>
+<td> 0x0060
+</td>
+<td> 68 bytes
+</td>
+<td> <b>Guardian Forces:</b> Quetzalcoatl
+</td></tr>
+<tr>
+<td> 0x00A4
+</td>
+<td> 68 bytes
+</td>
+<td> <b>Guardian Forces:</b> Shiva
+</td></tr>
+<tr>
+<td> 0x00E8
+</td>
+<td> 68 bytes
+</td>
+<td> <b>Guardian Forces:</b> Ifrit
+</td></tr>
+<tr>
+<td> 0x012C
+</td>
+<td> 68 bytes
+</td>
+<td> <b>Guardian Forces:</b> Siren
+</td></tr>
+<tr>
+<td> 0x0170
+</td>
+<td> 68 bytes
+</td>
+<td> <b>Guardian Forces:</b> Brothers
+</td></tr>
+<tr>
+<td> 0x01B4
+</td>
+<td> 68 bytes
+</td>
+<td> <b>Guardian Forces:</b> Diablos
+</td></tr>
+<tr>
+<td> 0x01F8
+</td>
+<td> 68 bytes
+</td>
+<td> <b>Guardian Forces:</b> Carbuncle
+</td></tr>
+<tr>
+<td> 0x023C
+</td>
+<td> 68 bytes
+</td>
+<td> <b>Guardian Forces:</b> Leviathan
+</td></tr>
+<tr>
+<td> 0x0280
+</td>
+<td> 68 bytes
+</td>
+<td> <b>Guardian Forces:</b> Pandemonia
+</td></tr>
+<tr>
+<td> 0x02C4
+</td>
+<td> 68 bytes
+</td>
+<td> <b>Guardian Forces:</b> Cerberus
+</td></tr>
+<tr>
+<td> 0x0308
+</td>
+<td> 68 bytes
+</td>
+<td> <b>Guardian Forces:</b> Alexander
+</td></tr>
+<tr>
+<td> 0x034C
+</td>
+<td> 68 bytes
+</td>
+<td> <b>Guardian Forces:</b> Doomtrain
+</td></tr>
+<tr>
+<td> 0x0390
+</td>
+<td> 68 bytes
+</td>
+<td> <b>Guardian Forces:</b> Bahamut
+</td></tr>
+<tr>
+<td> 0x03D4
+</td>
+<td> 68 bytes
+</td>
+<td> <b>Guardian Forces:</b> Cactuar
+</td></tr>
+<tr>
+<td> 0x0418
+</td>
+<td> 68 bytes
+</td>
+<td> <b>Guardian Forces:</b> Tonberry
+</td></tr>
+<tr>
+<td> 0x045C
+</td>
+<td> 68 bytes
+</td>
+<td> <b>Guardian Forces:</b> Eden
+</td></tr>
+<tr>
+<td> 0x04A0
+</td>
+<td> 152 bytes
+</td>
+<td> <b>Characters:</b> Squall
+</td></tr>
+<tr>
+<td> 0x0538
+</td>
+<td> 152 bytes
+</td>
+<td> <b>Characters:</b> Zell
+</td></tr>
+<tr>
+<td> 0x05D0
+</td>
+<td> 152 bytes
+</td>
+<td> <b>Characters:</b> Irvine
+</td></tr>
+<tr>
+<td> 0x0668
+</td>
+<td> 152 bytes
+</td>
+<td> <b>Characters:</b> Quistis
+</td></tr>
+<tr>
+<td> 0x0700
+</td>
+<td> 152 bytes
+</td>
+<td> <b>Characters:</b> Rinoa
+</td></tr>
+<tr>
+<td> 0x0798
+</td>
+<td> 152 bytes
+</td>
+<td> <b>Characters:</b> Selphie
+</td></tr>
+<tr>
+<td> 0x0830
+</td>
+<td> 152 bytes
+</td>
+<td> <b>Characters:</b> Seifer
+</td></tr>
+<tr>
+<td> 0x08C8
+</td>
+<td> 152 bytes
+</td>
+<td> <b>Characters:</b> Edea
+</td></tr>
+<tr>
+<td> 0x0960
+</td>
+<td> 400 bytes
+</td>
+<td> Shops
+</td></tr>
+<tr>
+<td> 0x0AF0
+</td>
+<td> 20 bytes
+</td>
+<td> Configuration
+</td></tr>
+<tr>
+<td> 0x0B04
+</td>
+<td> 4 bytes
+</td>
+<td> Party (0xFF terminated)
+</td></tr>
+<tr>
+<td> 0x0B08
+</td>
+<td> 4 bytes
+</td>
+<td> Known weapons
+</td></tr>
+<tr>
+<td> 0x0B0C
+</td>
+<td> 12 bytes
+</td>
+<td> Griever name (FF8 text format)
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,204)"> 0x0B18
+</td>
+<td style="background:rgb(255,255,204)"> 2 bytes
+</td>
+<td style="background:rgb(255,255,204)"> Unknown (always 7966?)
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,204)"> 0x0B1A
+</td>
+<td style="background:rgb(255,255,204)"> 2 bytes
+</td>
+<td style="background:rgb(255,255,204)"> Unknown
+</td></tr>
+<tr>
+<td> 0x0B1C
+</td>
+<td> 4 bytes
+</td>
+<td> Amount of Gil
+</td></tr>
+<tr>
+<td> 0x0B20
+</td>
+<td> 4 bytes
+</td>
+<td> Amount of Gil (Laguna)
+</td></tr>
+<tr>
+<td> 0x0B24
+</td>
+<td> 2 bytes
+</td>
+<td> <b>Limit Break</b> Quistis
+</td></tr>
+<tr>
+<td> 0x0B26
+</td>
+<td> 2 bytes
+</td>
+<td> <b>Limit Break</b> Zell
+</td></tr>
+<tr>
+<td> 0x0B28
+</td>
+<td> 1 byte
+</td>
+<td> <b>Limit Break</b> Irvine
+</td></tr>
+<tr>
+<td> 0x0B29
+</td>
+<td> 1 byte
+</td>
+<td> <b>Limit Break</b> Selphie
+</td></tr>
+<tr>
+<td> 0x0B2A
+</td>
+<td> 1 byte
+</td>
+<td> <b>Limit Break</b> Angelo completed
+</td></tr>
+<tr>
+<td> 0x0B2B
+</td>
+<td> 1 byte
+</td>
+<td> <b>Limit Break</b> Angelo known
+</td></tr>
+<tr>
+<td> 0x0B2C
+</td>
+<td> 8 bytes
+</td>
+<td> <b>Limit Break</b> Angelo points
+</td></tr>
+<tr>
+<td> 0x0B34
+</td>
+<td> 32 bytes
+</td>
+<td> <b>Items</b> battle order
+</td></tr>
+<tr>
+<td> 0x0B54
+</td>
+<td> 396 bytes
+</td>
+<td> <b>Items</b> 198 items (Item ID and Quantity)
+</td></tr>
+<tr>
+<td> 0x0CE0
+</td>
+<td> 4 bytes
+</td>
+<td> Game time
+</td></tr>
+<tr>
+<td> 0x0CE4
+</td>
+<td> 4 bytes
+</td>
+<td> Countdown
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,204)"> 0x0CE8
+</td>
+<td style="background:rgb(255,255,204)"> 4 bytes
+</td>
+<td style="background:rgb(255,255,204)"> Unknown
+</td></tr>
+<tr>
+<td> 0x0CEC
+</td>
+<td> 4 bytes
+</td>
+<td> <b>Battle:</b> victory count
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,204)"> 0x0CF0
+</td>
+<td style="background:rgb(255,255,204)"> 2 bytes
+</td>
+<td style="background:rgb(255,255,204)"> Unknown
+</td></tr>
+<tr>
+<td> 0x0CF2
+</td>
+<td> 2 bytes
+</td>
+<td> <b>Battle:</b> battle escaped
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,204)"> 0x0CF4
+</td>
+<td style="background:rgb(255,255,204)"> 4 bytes
+</td>
+<td style="background:rgb(255,255,204)"> Unknown
+</td></tr>
+<tr>
+<td> 0x0CF8
+</td>
+<td> 4 bytes
+</td>
+<td> <b>Battle:</b> Tonberry killed count
+</td></tr>
+<tr>
+<td> 0x0CFC
+</td>
+<td> 4 bytes
+</td>
+<td> <b>Battle:</b> Tonberry Sr killed (yeah, this is a boolean)
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,204)"> 0x0D00
+</td>
+<td style="background:rgb(255,255,204)"> 4 bytes
+</td>
+<td style="background:rgb(255,255,204)"> Unknown
+</td></tr>
+<tr>
+<td> 0x0D04
+</td>
+<td> 4 bytes
+</td>
+<td> <b>Battle:</b> First "Bug" battle (R1 tip)
+</td></tr>
+<tr>
+<td> 0x0D08
+</td>
+<td> 4 bytes
+</td>
+<td> <b>Battle:</b> First "Bomb" battle (Elemental tip)
+</td></tr>
+<tr>
+<td> 0x0D0C
+</td>
+<td> 4 bytes
+</td>
+<td> <b>Battle:</b> First "T-Rex" battle (Mental tip)
+</td></tr>
+<tr>
+<td> 0x0D10
+</td>
+<td> 4 bytes
+</td>
+<td> <b>Battle:</b> First "Irvine" battle (Irvine's limit break tip)
+</td></tr>
+<tr>
+<td> 0x0D14
+</td>
+<td> 8 bytes
+</td>
+<td> <b>Battle:</b> Magic drawn once
+</td></tr>
+<tr>
+<td> 0x0D1C
+</td>
+<td> 20 bytes
+</td>
+<td> <b>Battle:</b> Ennemy scanned once
+</td></tr>
+<tr>
+<td> 0x0D30
+</td>
+<td> 1 byte
+</td>
+<td> <b>Battle:</b> Renzokuken auto
+</td></tr>
+<tr>
+<td> 0x0D31
+</td>
+<td> 1 byte
+</td>
+<td> <b>Battle:</b> Renzokuken indicator
+</td></tr>
+<tr>
+<td> 0x0D32
+</td>
+<td> 1 byte
+</td>
+<td> <b>Battle:</b> dream/Odin/Phoenix/Gilgamesh/Angelo disabled/Angel Wing enabled/???/???
+</td></tr>
+<tr>
+<td> 0x0D33
+</td>
+<td> 16 bytes
+</td>
+<td> Tutorial infos
+</td></tr>
+<tr>
+<td> 0x0D43
+</td>
+<td> 1 byte
+</td>
+<td> SeeD test level
+</td></tr>
+<tr>
+<td> 0x0D44
+</td>
+<td> 4 bytes
+</td>
+<td style="background:rgb(255,255,204)"> Unknown
+</td></tr>
+<tr>
+<td> 0x0D48
+</td>
+<td> 4 bytes
+</td>
+<td> Party (last byte always = 255)
+</td></tr>
+<tr>
+<td> 0x0D4C
+</td>
+<td> 4 bytes
+</td>
+<td style="background:rgb(255,255,204)"> Unknown
+</td></tr>
+<tr>
+<td> 0x0D50
+</td>
+<td> 2 bytes
+</td>
+<td> Module (1= field, 2= worldmap, 3= battle)
+</td></tr>
+<tr>
+<td> 0x0D52
+</td>
+<td> 2 bytes
+</td>
+<td> Current field
+</td></tr>
+<tr>
+<td> 0x0D54
+</td>
+<td> 2 bytes
+</td>
+<td> Previous field
+</td></tr>
+<tr>
+<td> 0x0D56
+</td>
+<td> 3*2 bytes (signed)
+</td>
+<td> Coord X (party1, party2, party3)
+</td></tr>
+<tr>
+<td> 0x0D5C
+</td>
+<td> 3*2 bytes (signed)
+</td>
+<td> Coord Y (party1, party2, party3)
+</td></tr>
+<tr>
+<td> 0x0D62
+</td>
+<td> 3*2 bytes
+</td>
+<td> Triangle ID (party1, party2, party3)
+</td></tr>
+<tr>
+<td> 0x0D68
+</td>
+<td> 3*1 bytes
+</td>
+<td> Direction (party1, party2, party3)
+</td></tr>
+<tr>
+<td> 0x0D6B
+</td>
+<td> 1 byte
+</td>
+<td> <i>Padding</i>
+</td></tr>
+<tr>
+<td> 0x0D6C
+</td>
+<td> 4 bytes
+</td>
+<td style="background:rgb(255,255,204)"> Unknown
+</td></tr>
+<tr>
+<td> 0x0D70
+</td>
+<td> 256 + 1024 bytes
+</td>
+<td> <a href="Variables.html" title="FF8/Variables">Field vars</a>
+</td></tr>
+<tr>
+<td> 0x1270
+</td>
+<td> 128 bytes
+</td>
+<td> Worldmap (TODO)
+</td></tr>
+<tr>
+<td> 0x12F0
+</td>
+<td> 128 bytes
+</td>
+<td> Triple Triad (TODO)
+</td></tr>
+<tr>
+<td> 0x1370
+</td>
+<td> 64 bytes
+</td>
+<td> Chocobo World (TODO)
+</td></tr></table>
+<p><br />
+</p>
+<h3> <span class="mw-headline" id="Guardian_Forces"> Guardian Forces </span></h3>
+<p>The checksum calculation starts here.
+</p><p>There are 16 G-F: Quetzalcoatl, Shiva, Ifrit, Siren, Brothers, Diablos, Carbuncle, Leviathan, Pandemonia, Cerberus, Alexander, Doomtrain, Bahamut, Cactuar, Tonberry, Eden.<br />
+For each G-F:
+</p>
+<table border="1" cellspacing="1" cellpadding="3" align="center" style="border: 1px solid black; border-collapse: collapse;">
+<tr>
+<th style="background:rgb(204,204,204)"> Offset
+</th>
+<th style="background:rgb(204,204,204)"> Size
+</th>
+<th style="background:rgb(204,204,204)"> Data
+</th></tr>
+<tr>
+<td> 0x00
+</td>
+<td> 12 bytes
+</td>
+<td> Name (0x00 terminated)
+</td></tr>
+<tr>
+<td> 0x0C
+</td>
+<td> 4 bytes
+</td>
+<td> Experience
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,204)"> 0x10
+</td>
+<td style="background:rgb(255,255,204)"> 1 byte
+</td>
+<td style="background:rgb(255,255,204)"> Unknown
+</td></tr>
+<tr>
+<td> 0x11
+</td>
+<td> 1 byte
+</td>
+<td> Exists
+</td></tr>
+<tr>
+<td> 0x12
+</td>
+<td> 2 bytes
+</td>
+<td> HP
+</td></tr>
+<tr>
+<td> 0x14
+</td>
+<td> 16 bytes
+</td>
+<td> Complete abilities (1 bit = 1 ability completed, 9 bits unused)
+</td></tr>
+<tr>
+<td> 0x24
+</td>
+<td> 24 bytes
+</td>
+<td> APs (1 byte = 1 ability of the GF, 2 bytes unused)
+</td></tr>
+<tr>
+<td> 0x3C
+</td>
+<td> 2 bytes
+</td>
+<td> Number of kills
+</td></tr>
+<tr>
+<td> 0x3E
+</td>
+<td> 2 bytes
+</td>
+<td> Number of KOs
+</td></tr>
+<tr>
+<td> 0x41
+</td>
+<td> 1 byte
+</td>
+<td> Learning ability
+</td></tr>
+<tr>
+<td> 0x42
+</td>
+<td> 3 bytes
+</td>
+<td> Forgotten abilities (1 bit = 1 ability of the GF forgotten, 2 bits unused)
+</td></tr></table>
+<h3> <span class="mw-headline" id="Characters"> Characters </span></h3>
+<p>Squall, Zell, Irvine, Quistis, Rinoa, Selphie, Seifer, Edea.
+For each character:
+</p>
+<table border="1" cellspacing="1" cellpadding="3" align="center" style="border: 1px solid black; border-collapse: collapse;">
+<tr>
+<th style="background:rgb(204,204,204)"> Offset
+</th>
+<th style="background:rgb(204,204,204)"> Size
+</th>
+<th style="background:rgb(204,204,204)"> Data
+</th></tr>
+<tr>
+<td> 0x00
+</td>
+<td> 2 bytes
+</td>
+<td> Current HPs
+</td></tr>
+<tr>
+<td> 0x02
+</td>
+<td> 2 bytes
+</td>
+<td> Max HPs
+</td></tr>
+<tr>
+<td> 0x04
+</td>
+<td> 4 bytes
+</td>
+<td> Experience
+</td></tr>
+<tr>
+<td> 0x08
+</td>
+<td> 1 byte
+</td>
+<td> Model ID
+</td></tr>
+<tr>
+<td> 0x09
+</td>
+<td> 1 byte
+</td>
+<td> Weapon ID
+</td></tr>
+<tr>
+<td> 0x0A
+</td>
+<td> 1 byte
+</td>
+<td> STR
+</td></tr>
+<tr>
+<td> 0x0B
+</td>
+<td> 1 byte
+</td>
+<td> VIT
+</td></tr>
+<tr>
+<td> 0x0C
+</td>
+<td> 1 byte
+</td>
+<td> MAG
+</td></tr>
+<tr>
+<td> 0x0D
+</td>
+<td> 1 byte
+</td>
+<td> SPR
+</td></tr>
+<tr>
+<td> 0x0E
+</td>
+<td> 1 byte
+</td>
+<td> SPD
+</td></tr>
+<tr>
+<td> 0x0F
+</td>
+<td> 1 byte
+</td>
+<td> LCK
+</td></tr>
+<tr>
+<td> 0x10
+</td>
+<td> 2*32 bytes
+</td>
+<td> Magics
+</td></tr>
+<tr>
+<td> 0x50
+</td>
+<td> 3 bytes
+</td>
+<td> Commands
+</td></tr>
+<tr>
+<td> 0x53
+</td>
+<td> 1 byte
+</td>
+<td> <i>Padding or unused command</i>
+</td></tr>
+<tr>
+<td> 0x54
+</td>
+<td> 4 bytes
+</td>
+<td> Abilities
+</td></tr>
+<tr>
+<td> 0x58
+</td>
+<td> 2 bytes
+</td>
+<td> Junctionned GFs
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,204)"> 0x5A
+</td>
+<td style="background:rgb(255,255,204)"> 1 byte
+</td>
+<td style="background:rgb(255,255,204)"> Unknown
+</td></tr>
+<tr>
+<td> 0x5B
+</td>
+<td> 1 byte
+</td>
+<td> Alternative model (Normal, SeeD, Soldier...)
+</td></tr>
+<tr>
+<td> 0x5C
+</td>
+<td> 1 byte
+</td>
+<td> Junction HP
+</td></tr>
+<tr>
+<td> 0x5D
+</td>
+<td> 1 byte
+</td>
+<td> Junction STR
+</td></tr>
+<tr>
+<td> 0x5E
+</td>
+<td> 1 byte
+</td>
+<td> Junction VIT
+</td></tr>
+<tr>
+<td> 0x5F
+</td>
+<td> 1 byte
+</td>
+<td> Junction MAG
+</td></tr>
+<tr>
+<td> 0x60
+</td>
+<td> 1 byte
+</td>
+<td> Junction SPR
+</td></tr>
+<tr>
+<td> 0x61
+</td>
+<td> 1 byte
+</td>
+<td> Junction SPD
+</td></tr>
+<tr>
+<td> 0x62
+</td>
+<td> 1 byte
+</td>
+<td> Junction EVA
+</td></tr>
+<tr>
+<td> 0x63
+</td>
+<td> 1 byte
+</td>
+<td> Junction HIT
+</td></tr>
+<tr>
+<td> 0x64
+</td>
+<td> 1 byte
+</td>
+<td> Junction LCK
+</td></tr>
+<tr>
+<td> 0x65
+</td>
+<td> 1 byte
+</td>
+<td> Junction elemental attack
+</td></tr>
+<tr>
+<td> 0x66
+</td>
+<td> 1 byte
+</td>
+<td> Junction mental attack
+</td></tr>
+<tr>
+<td> 0x67
+</td>
+<td> 4 bytes
+</td>
+<td> Junction elemental defense
+</td></tr>
+<tr>
+<td> 0x6B
+</td>
+<td> 4 bytes
+</td>
+<td> Junction mental defense
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,204)"> 0x6F
+</td>
+<td style="background:rgb(255,255,204)"> 1 byte
+</td>
+<td style="background:rgb(255,255,204)"> Unknown (padding?)
+</td></tr>
+<tr>
+<td> 0x70
+</td>
+<td> 16 * 2 bytes
+</td>
+<td> Compatibility with GFs
+</td></tr>
+<tr>
+<td> 0x90
+</td>
+<td> 2 bytes
+</td>
+<td> Number of kills
+</td></tr>
+<tr>
+<td> 0x92
+</td>
+<td> 2 bytes
+</td>
+<td> Number of KOs
+</td></tr>
+<tr>
+<td> 0x94
+</td>
+<td> 1 byte
+</td>
+<td> Exists
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,204)"> 0x95
+</td>
+<td style="background:rgb(255,255,204)"> 1 byte
+</td>
+<td style="background:rgb(255,255,204)"> Unknown
+</td></tr>
+<tr>
+<td> 0x96
+</td>
+<td> 1 byte
+</td>
+<td> Mental Status
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,204)"> 0x97
+</td>
+<td style="background:rgb(255,255,204)"> 1 byte
+</td>
+<td style="background:rgb(255,255,204)"> Unknown
+</td></tr>
+</table>
+<h3> <span class="mw-headline" id="Worldmap"> Worldmap </span></h3>
+<ol><li>TODO
+</li></ol>
+<h3> <span class="mw-headline" id="Triple_Triad"> Triple Triad </span></h3>
+<ol><li>TODO
+</li></ol>
+<h3> <span class="mw-headline" id="Chocobo_World"> Chocobo World </span></h3>
+<table border="1" cellspacing="1" cellpadding="3" align="center" style="border: 1px solid black; border-collapse: collapse;">
+<tr>
+<th style="background:rgb(204,204,204)"> Offset
+</th>
+<th style="background:rgb(204,204,204)"> Size
+</th>
+<th style="background:rgb(204,204,204)"> Data
+</th></tr>
+<tr>
+<td> 0x00
+</td>
+<td> 1 byte (bit field)
+</td>
+<td> Enabled / In world / MiniMog found / Demon King defeated / Koko kidnapped / Hurry! / Koko met / Event Wait off
+</td></tr>
+<tr>
+<td> 0x01
+</td>
+<td> 1 byte
+</td>
+<td> Level
+</td></tr>
+<tr>
+<td> 0x02
+</td>
+<td> 1 byte
+</td>
+<td> Current HP
+</td></tr>
+<tr>
+<td> 0x03
+</td>
+<td> 1 byte
+</td>
+<td> Max HP
+</td></tr>
+<tr>
+<td> 0x04
+</td>
+<td> 2 bytes
+</td>
+<td> Weapon (4 bit = 1 weapon)
+</td></tr>
+<tr>
+<td> 0x06
+</td>
+<td> 1 byte
+</td>
+<td> Rank
+</td></tr>
+<tr>
+<td> 0x07
+</td>
+<td> 1 byte
+</td>
+<td> Move
+</td></tr>
+<tr>
+<td> 0x08
+</td>
+<td> 4 bytes
+</td>
+<td> Save count
+</td></tr>
+<tr>
+<td> 0x0C
+</td>
+<td> 2 bytes
+</td>
+<td> id related
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,204)"> 0x0E
+</td>
+<td style="background:rgb(255,255,204)"> 6 bytes
+</td>
+<td style="background:rgb(255,255,204)"> Unknown
+</td></tr>
+<tr>
+<td> 0x14
+</td>
+<td> 1 byte
+</td>
+<td> Item Class A count
+</td></tr>
+<tr>
+<td> 0x15
+</td>
+<td> 1 byte
+</td>
+<td> Item Class B count
+</td></tr>
+<tr>
+<td> 0x16
+</td>
+<td> 1 byte
+</td>
+<td> Item Class C count
+</td></tr>
+<tr>
+<td> 0x17
+</td>
+<td> 1 byte
+</td>
+<td> Item Class D count
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,204)"> 0x18
+</td>
+<td style="background:rgb(255,255,204)"> 16 bytes
+</td>
+<td style="background:rgb(255,255,204)"> Unknown
+</td></tr>
+<tr>
+<td> 0x28
+</td>
+<td> 4 bytes
+</td>
+<td> Associated save ID
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,204)"> 0x2C
+</td>
+<td style="background:rgb(255,255,204)"> 1 byte
+</td>
+<td style="background:rgb(255,255,204)"> Unknown
+</td></tr>
+<tr>
+<td> 0x2D
+</td>
+<td> 1 byte
+</td>
+<td> Boko Attack (star count: 0 = ChocoFire, 1 = ChocoFlare, 2 = ChocoMeteor, 3 = ChocoBocle)
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,204)"> 0x2E
+</td>
+<td style="background:rgb(255,255,204)"> 1 byte
+</td>
+<td style="background:rgb(255,255,204)"> Unknown
+</td></tr>
+<tr>
+<td> 0x2F
+</td>
+<td> 1 byte
+</td>
+<td> Home walking
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,204)"> 0x30
+</td>
+<td style="background:rgb(255,255,204)"> 16 bytes
+</td>
+<td style="background:rgb(255,255,204)"> Unknown (unused?)
+</td></tr>
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 23/1000000
+Preprocessor generated node count: 28/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key qhimm_wiki:pcache:idhash:1492-0!*!0!!en!*!* and timestamp 20160921201722 -->
+</div>				<!-- /bodycontent -->
+								<!-- printfooter -->
+				<div class="printfooter">
+				Retrieved from "<a href="http://wiki.qhimm.com/index.php?title=FF8/GameSaveFormat&amp;oldid=5110">http://wiki.qhimm.com/index.php?title=FF8/GameSaveFormat&amp;oldid=5110</a>"				</div>
+				<!-- /printfooter -->
+												<!-- catlinks -->
+				<div id='catlinks' class='catlinks catlinks-allhidden'></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+				<!-- debughtml -->
+								<!-- /debughtml -->
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Personal tools</h5>
+	<ul>
+		<li id="pt-login"><a href="http://wiki.qhimm.com/index.php?title=Special:UserLogin&amp;returnto=FF8%2FGameSaveFormat" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>
+	</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Namespaces</h5>
+	<ul>
+					<li  id="ca-nstab-main" class="selected"><span><a href="GameSaveFormat.html"  title="View the content page [c]" accesskey="c">Page</a></span></li>
+					<li  id="ca-talk" class="new"><span><a href="http://wiki.qhimm.com/edit/Talk:FF8/GameSaveFormat?redlink=1"  title="Discussion about the content page [t]" accesskey="t">Discussion</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+	<h4>
+		</h4>
+	<h5><span>Variants</span><a href="GameSaveFormat.html#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Views</h5>
+	<ul>
+					<li id="ca-view" class="selected"><span><a href="GameSaveFormat.html" >Read</a></span></li>
+					<li id="ca-viewsource"><span><a href="http://wiki.qhimm.com/edit/FF8/GameSaveFormat"  title="This page is protected.&#13;&#10;You can view its source [e]" accesskey="e">View source</a></span></li>
+					<li id="ca-history" class="collapsible"><span><a href="http://wiki.qhimm.com/history/FF8/GameSaveFormat"  title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>Actions</span><a href="GameSaveFormat.html#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Search</label></h5>
+	<form action="http://wiki.qhimm.com/index.php" id="searchform">
+				<div>
+			<input type="search" name="search" title="Search QhimmWiki [f]" accesskey="f" id="searchInput" />			<input type="submit" name="go" value="Go" title="Go to a page with this exact name if exists" id="searchGoButton" class="searchButton" />			<input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton" />					<input type='hidden' name="title" value="Special:Search"/>
+		</div>
+	</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(../../skins/wiki.png);" href="../Main_Page.html"  title="Visit the main page"></a></div>
+				<!-- /logo -->
+				
+<!-- navigation -->
+<div class="portal" id='p-navigation'>
+	<h5>Navigation</h5>
+	<div class="body">
+		<ul>
+			<li id="n-mainpage-description"><a href="../Main_Page.html" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+			<li id="n-portal"><a href="http://wiki.qhimm.com/view/QhimmWiki:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+			<li id="n-currentevents"><a href="http://wiki.qhimm.com/view/QhimmWiki:Current_events" title="Find background information on current events">Current events</a></li>
+			<li id="n-recentchanges"><a href="../Special%253ARecentChanges.html" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+			<li id="n-randompage"><a href="../Special%253ARandom.html" title="Load a random page [x]" accesskey="x">Random page</a></li>
+			<li id="n-help"><a href="../Help%253AContents.html" title="The place to find out">Help</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- TOOLBOX -->
+<div class="portal" id='p-tb'>
+	<h5>Toolbox</h5>
+	<div class="body">
+		<ul>
+			<li id="t-whatlinkshere"><a href="../Special%253AWhatLinksHere/FF8/GameSaveFormat.html" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+			<li id="t-recentchangeslinked"><a href="../Special%253ARecentChangesLinked/FF8/GameSaveFormat.html" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+			<li id="t-specialpages"><a href="../Special%253ASpecialPages.html" title="A list of all special pages [q]" accesskey="q">Special pages</a></li>
+			<li id="t-print"><a href="http://wiki.qhimm.com/index.php?title=FF8/GameSaveFormat&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>
+			<li id="t-permalink"><a href="http://wiki.qhimm.com/index.php?title=FF8/GameSaveFormat&amp;oldid=5110" title="Permanent link to this revision of the page">Permanent link</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+
+<!-- /LANGUAGES -->
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 23 January 2016, at 09:26.</li>
+											<li id="footer-info-viewcount">This page has been accessed 3,318 times.</li>
+											<li id="footer-info-copyright">Content is available under <a class="external" href="http://creativecommons.org/licenses/by-nc-sa/2.5/">Attribution-NonCommercial-ShareAlike</a>.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="http://wiki.qhimm.com/view/QhimmWiki:Privacy_policy" title="QhimmWiki:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="http://wiki.qhimm.com/view/QhimmWiki:About" title="QhimmWiki:About">About QhimmWiki</a></li>
+											<li id="footer-places-disclaimer"><a href="../QhimmWiki%253AGeneral_disclaimer.html" title="QhimmWiki:General disclaimer">Disclaimers</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+					<li id="footer-copyrightico">
+						<a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-NonCommercial-ShareAlike" width="88" height="31" /></a>
+					</li>
+					<li id="footer-poweredbyico">
+						<a href="http://www.mediawiki.org/"><img src="../../skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31" /></a>
+					</li>
+				</ul>
+						<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		<script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../load.php@debug=false&amp;lang=en&amp;modules=skins.vector&amp;only=scripts&amp;skin=vector&amp;%252A"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest"], null, true);
+}</script>
+<script>if(window.mw){
+mw.loader.state({"site":"ready"});
+}</script>
+<!-- Served in 0.119 secs. -->
+	</body>
+</html>

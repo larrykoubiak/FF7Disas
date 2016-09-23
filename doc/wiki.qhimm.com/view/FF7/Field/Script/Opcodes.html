@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>FF7/Field/Script/Opcodes - QhimmWiki</title>
+<meta charset="UTF-8" />
+<meta name="generator" content="MediaWiki 1.20.2" />
+<link rel="shortcut icon" href="http://wiki.qhimm.com/favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="http://wiki.qhimm.com/opensearch_desc.php" title="QhimmWiki (en)" />
+<link rel="EditURI" type="application/rsd+xml" href="http://wiki.qhimm.com/api.php?action=rsd" />
+<link rel="copyright" href="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+<link rel="alternate" type="application/atom+xml" title="QhimmWiki Atom feed" href="http://wiki.qhimm.com/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="stylesheet" href="../../../../load.php@debug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cskins.vector&amp;only=styles&amp;skin=vector&amp;%252A.css" />
+<meta name="ResourceLoaderDynamicStyles" content="" />
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: qhimm_wiki:resourceloader:filter:minify-css:7:9f75cd7a214f5d1850ed6d0df1a4a089 */</style>
+
+<script src="../../../../load.php@debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector&amp;%252A"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"FF7/Field/Script/Opcodes","wgTitle":"FF7/Field/Script/Opcodes","wgCurRevisionId":3430,"wgArticleId":1063,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"FF7/Field/Script/Opcodes","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,"watchlistdays":3,
+"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","watchToken":false});;},{},{});
+/* cache key: qhimm_wiki:resourceloader:filter:minify-js:7:7330ebaa3a8da3f7992caf476ddb8efd */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/skins/vector/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-FF7_Field_Script_Opcodes skin-vector action-view vector-animateLayout">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content" class="mw-body">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading"><span dir="auto">FF7/Field/Script/Opcodes</span></h1>
+			<!-- /firstHeading -->
+			<!-- bodyContent -->
+			<div id="bodyContent">
+								<!-- tagline -->
+				<div id="siteSub">From QhimmWiki</div>
+				<!-- /tagline -->
+								<!-- subtitle -->
+				<div id="contentSub"><span class="subpages">&lt; <a href="../../../FF7.html" title="FF7">FF7</a>&lrm; | <a href="../../Field.1.html" title="FF7/Field">Field</a>&lrm; | <a href="../Script.html" title="FF7/Field/Script">Script</a></span></div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="Opcodes.html#mw-head">navigation</a>, 					<a href="Opcodes.html#p-search">search</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodycontent -->
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Opcodes.html#Arranged_by_category"><span class="tocnumber">1</span> <span class="toctext">Arranged by category</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="Opcodes.html#Script_Flow_.26_Control"><span class="tocnumber">1.1</span> <span class="toctext">Script Flow &amp; Control</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="Opcodes.html#System_.26_Module_Control"><span class="tocnumber">1.2</span> <span class="toctext">System &amp; Module Control</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Opcodes.html#Assignment_.26_Mathematics"><span class="tocnumber">1.3</span> <span class="toctext">Assignment &amp; Mathematics</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Opcodes.html#Windowing_.26_Menu"><span class="tocnumber">1.4</span> <span class="toctext">Windowing &amp; Menu</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Opcodes.html#Party_.26_Inventory"><span class="tocnumber">1.5</span> <span class="toctext">Party &amp; Inventory</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Opcodes.html#Field_Models.2C_Animation_.26_3D.2FWalkmesh"><span class="tocnumber">1.6</span> <span class="toctext">Field Models, Animation &amp; 3D/Walkmesh</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="Opcodes.html#Background_.26_Palette"><span class="tocnumber">1.7</span> <span class="toctext">Background &amp; Palette</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="Opcodes.html#Camera.2C_Audio_.26_Video"><span class="tocnumber">1.8</span> <span class="toctext">Camera, Audio &amp; Video</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="Opcodes.html#Uncategorised"><span class="tocnumber">1.9</span> <span class="toctext">Uncategorised</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-11"><a href="Opcodes.html#Arranged_by_opcode"><span class="tocnumber">2</span> <span class="toctext">Arranged by opcode</span></a></li>
+</ul>
+</td></tr></table>
+<h2> <span class="mw-headline" id="Arranged_by_category"> Arranged by category </span></h2>
+<h3> <span class="mw-headline" id="Script_Flow_.26_Control"> Script Flow &amp; Control </span></h3>
+<pre><a href="Opcodes/00_RET.html" title="FF7/Field/Script/Opcodes/00 RET">00 RET</a>
+<a href="Opcodes/01_REQ.html" title="FF7/Field/Script/Opcodes/01 REQ">01 REQ</a>
+<a href="Opcodes/02_REQSW.html" title="FF7/Field/Script/Opcodes/02 REQSW">02 REQSW</a>
+<a href="Opcodes/03_REQEW.html" title="FF7/Field/Script/Opcodes/03 REQEW">03 REQEW</a>
+<a href="Opcodes/04_PREQ.html" title="FF7/Field/Script/Opcodes/04 PREQ">04 PREQ</a>
+<a href="Opcodes/05_PRQSW.html" title="FF7/Field/Script/Opcodes/05 PRQSW">05 PRQSW</a>
+<a href="Opcodes/06_PRQEW.html" title="FF7/Field/Script/Opcodes/06 PRQEW">06 PRQEW</a>
+<a href="Opcodes/07_RETTO.html" title="FF7/Field/Script/Opcodes/07 RETTO">07 RETTO</a>
+<a href="Opcodes/10_JMPF.html" title="FF7/Field/Script/Opcodes/10 JMPF">10 JMPF</a>
+<a href="Opcodes/11_JMPFL.html" title="FF7/Field/Script/Opcodes/11 JMPFL">11 JMPFL</a>
+<a href="Opcodes/12_JMPB.html" title="FF7/Field/Script/Opcodes/12 JMPB">12 JMPB</a>
+<a href="Opcodes/13_JMPBL.html" title="FF7/Field/Script/Opcodes/13 JMPBL">13 JMPBL</a>
+<a href="Opcodes/14_IFUB.html" title="FF7/Field/Script/Opcodes/14 IFUB">14 IFUB</a>
+<a href="Opcodes/15_IFUBL.html" title="FF7/Field/Script/Opcodes/15 IFUBL">15 IFUBL</a>
+<a href="Opcodes/16_IFSW.html" title="FF7/Field/Script/Opcodes/16 IFSW">16 IFSW</a>
+<a href="Opcodes/17_IFSWL.html" title="FF7/Field/Script/Opcodes/17 IFSWL">17 IFSWL</a>
+<a href="Opcodes/18_IFUW.html" title="FF7/Field/Script/Opcodes/18 IFUW">18 IFUW</a>
+<a href="Opcodes/19_IFUWL.html" title="FF7/Field/Script/Opcodes/19 IFUWL">19 IFUWL</a>
+<a href="Opcodes/24_WAIT.html" title="FF7/Field/Script/Opcodes/24 WAIT">24 WAIT</a>
+<a href="Opcodes/30_IFKEY.html" title="FF7/Field/Script/Opcodes/30 IFKEY">30 IFKEY</a>
+<a href="Opcodes/31_IFKEYON.html" title="FF7/Field/Script/Opcodes/31 IFKEYON">31 IFKEYON</a>
+<a href="Opcodes/32_IFKEYOFF.html" title="FF7/Field/Script/Opcodes/32 IFKEYOFF">32 IFKEYOFF</a>
+<a href="Opcodes/5F_NOP.html" title="FF7/Field/Script/Opcodes/5F NOP">5F NOP</a>
+<a href="Opcodes/CB_IFPRTYQ.html" title="FF7/Field/Script/Opcodes/CB IFPRTYQ">CB IFPRTYQ</a>
+<a href="Opcodes/CC_IFMEMBQ.html" title="FF7/Field/Script/Opcodes/CC IFMEMBQ">CC IFMEMBQ</a>
+</pre>
+<h3> <span class="mw-headline" id="System_.26_Module_Control"> System &amp; Module Control </span></h3>
+<pre><a href="Opcodes/0E_DSKCG.html" title="FF7/Field/Script/Opcodes/0E DSKCG">0E DSKCG</a>
+<a href="Opcodes/0F_SPECIAL.html" title="FF7/Field/Script/Opcodes/0F SPECIAL">0F SPECIAL</a>
+<a href="Opcodes/20_MINIGAME.html" title="FF7/Field/Script/Opcodes/20 MINIGAME">20 MINIGAME</a>
+<a href="Opcodes/22_BTMD2.html" title="FF7/Field/Script/Opcodes/22 BTMD2">22 BTMD2</a>
+<a href="Opcodes/23_BTRLD.html" title="FF7/Field/Script/Opcodes/23 BTRLD">23 BTRLD</a>
+<a href="Opcodes/4B_BTLTB.html" title="FF7/Field/Script/Opcodes/4B BTLTB">4B BTLTB</a>
+<a href="Opcodes/60_MAPJUMP.html" title="FF7/Field/Script/Opcodes/60 MAPJUMP">60 MAPJUMP</a>
+<a href="Opcodes/6E_LSTMP.html" title="FF7/Field/Script/Opcodes/6E LSTMP">6E LSTMP</a>
+<a href="Opcodes/70_BATTLE.html" title="FF7/Field/Script/Opcodes/70 BATTLE">70 BATTLE</a>
+<a href="Opcodes/71_BTLON.html" title="FF7/Field/Script/Opcodes/71 BTLON">71 BTLON</a>
+<a href="Opcodes/72_BTLMD.html" title="FF7/Field/Script/Opcodes/72 BTLMD">72 BTLMD</a>
+<a href="Opcodes/D2_MPJPO.html" title="FF7/Field/Script/Opcodes/D2 MPJPO">D2 MPJPO</a>
+<a href="Opcodes/FF_GAMEOVER.html" title="FF7/Field/Script/Opcodes/FF GAMEOVER">FF GAMEOVER</a>
+</pre>
+<h3> <span class="mw-headline" id="Assignment_.26_Mathematics"> Assignment &amp; Mathematics </span></h3>
+<pre><a href="Opcodes/76_PLUS!.html" title="FF7/Field/Script/Opcodes/76 PLUS!">76 PLUS!</a>
+<a href="Opcodes/77_PLUS2!.html" title="FF7/Field/Script/Opcodes/77 PLUS2!">77 PLUS2!</a>
+<a href="Opcodes/78_MINUS!.html" title="FF7/Field/Script/Opcodes/78 MINUS!">78 MINUS!</a>
+<a href="Opcodes/79_MINUS2!.html" title="FF7/Field/Script/Opcodes/79 MINUS2!">79 MINUS2!</a>
+<a href="Opcodes/7A_INC!.html" title="FF7/Field/Script/Opcodes/7A INC!">7A INC!</a>
+<a href="Opcodes/7B_INC2!.html" title="FF7/Field/Script/Opcodes/7B INC2!">7B INC2!</a>
+<a href="Opcodes/7C_DEC!.html" title="FF7/Field/Script/Opcodes/7C DEC!">7C DEC!</a>
+<a href="Opcodes/7D_DEC2!.html" title="FF7/Field/Script/Opcodes/7D DEC2!">7D DEC2!</a>
+<a href="Opcodes/7F_RDMSD.html" title="FF7/Field/Script/Opcodes/7F RDMSD">7F RDMSD</a>
+<a href="Opcodes/80_SETBYTE.html" title="FF7/Field/Script/Opcodes/80 SETBYTE">80 SETBYTE</a>
+<a href="Opcodes/81_SETWORD.html" title="FF7/Field/Script/Opcodes/81 SETWORD">81 SETWORD</a>
+<a href="Opcodes/82_BITON.html" title="FF7/Field/Script/Opcodes/82 BITON">82 BITON</a>
+<a href="Opcodes/83_BITOFF.html" title="FF7/Field/Script/Opcodes/83 BITOFF">83 BITOFF</a>
+<a href="Opcodes/84_BITXOR.html" title="FF7/Field/Script/Opcodes/84 BITXOR">84 BITXOR</a>
+<a href="Opcodes/85_PLUS.html" title="FF7/Field/Script/Opcodes/85 PLUS">85 PLUS</a>
+<a href="Opcodes/86_PLUS2.html" title="FF7/Field/Script/Opcodes/86 PLUS2">86 PLUS2</a>
+<a href="Opcodes/87_MINUS.html" title="FF7/Field/Script/Opcodes/87 MINUS">87 MINUS</a>
+<a href="Opcodes/88_MINUS2.html" title="FF7/Field/Script/Opcodes/88 MINUS2">88 MINUS2</a>
+<a href="Opcodes/89_MUL.html" title="FF7/Field/Script/Opcodes/89 MUL">89 MUL</a>
+<a href="Opcodes/8A_MUL2.html" title="FF7/Field/Script/Opcodes/8A MUL2">8A MUL2</a>
+<a href="Opcodes/8B_DIV.html" title="FF7/Field/Script/Opcodes/8B DIV">8B DIV</a>
+<a href="Opcodes/8C_DIV2.html" title="FF7/Field/Script/Opcodes/8C DIV2">8C DIV2</a>
+<a href="Opcodes/8D_MOD.html" title="FF7/Field/Script/Opcodes/8D MOD">8D MOD</a>
+<a href="Opcodes/8E_MOD2.html" title="FF7/Field/Script/Opcodes/8E MOD2">8E MOD2</a>
+<a href="Opcodes/8F_AND.html" title="FF7/Field/Script/Opcodes/8F AND">8F AND</a>
+<a href="Opcodes/90_AND2.html" title="FF7/Field/Script/Opcodes/90 AND2">90 AND2</a>
+<a href="Opcodes/91_OR.html" title="FF7/Field/Script/Opcodes/91 OR">91 OR</a>
+<a href="Opcodes/92_OR2.html" title="FF7/Field/Script/Opcodes/92 OR2">92 OR2</a>
+<a href="Opcodes/93_XOR.html" title="FF7/Field/Script/Opcodes/93 XOR">93 XOR</a>
+<a href="Opcodes/94_XOR2.html" title="FF7/Field/Script/Opcodes/94 XOR2">94 XOR2</a>
+<a href="Opcodes/95_INC.html" title="FF7/Field/Script/Opcodes/95 INC">95 INC</a>
+<a href="Opcodes/96_INC2.html" title="FF7/Field/Script/Opcodes/96 INC2">96 INC2</a>
+<a href="Opcodes/97_DEC.html" title="FF7/Field/Script/Opcodes/97 DEC">97 DEC</a>
+<a href="Opcodes/98_DEC2.html" title="FF7/Field/Script/Opcodes/98 DEC2">98 DEC2</a>
+<a href="Opcodes/99_RANDOM.html" title="FF7/Field/Script/Opcodes/99 RANDOM">99 RANDOM</a>
+<a href="Opcodes/9A_LBYTE.html" title="FF7/Field/Script/Opcodes/9A LBYTE">9A LBYTE</a>
+<a href="Opcodes/9B_HBYTE.html" title="FF7/Field/Script/Opcodes/9B HBYTE">9B HBYTE</a>
+<a href="Opcodes/9C_2BYTE.html" title="FF7/Field/Script/Opcodes/9C 2BYTE">9C 2BYTE</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/D4_SIN?redlink=1" class="new" title="FF7/Field/Script/Opcodes/D4 SIN (page does not exist)">D4 SIN</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/D5_COS?redlink=1" class="new" title="FF7/Field/Script/Opcodes/D5 COS (page does not exist)">D5 COS</a>
+</pre>
+<h3> <span class="mw-headline" id="Windowing_.26_Menu"> Windowing &amp; Menu </span></h3>
+<pre><a href="Opcodes/21_TUTOR.html" title="FF7/Field/Script/Opcodes/21 TUTOR">21 TUTOR</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/2E_WCLS?redlink=1" class="new" title="FF7/Field/Script/Opcodes/2E WCLS (page does not exist)">2E WCLS</a>
+<a href="Opcodes/2F_WSIZW.html" title="FF7/Field/Script/Opcodes/2F WSIZW">2F WSIZW</a>
+<a href="Opcodes/36_WSPCL.html" title="FF7/Field/Script/Opcodes/36 WSPCL">36 WSPCL</a>
+<a href="Opcodes/37_WNUMB.html" title="FF7/Field/Script/Opcodes/37 WNUMB">37 WNUMB</a>
+<a href="Opcodes/38_STTIM.html" title="FF7/Field/Script/Opcodes/38 STTIM">38 STTIM</a>
+<a href="Opcodes/40_MESSAGE.html" title="FF7/Field/Script/Opcodes/40 MESSAGE">40 MESSAGE</a>
+<a href="Opcodes/41_MPARA.html" title="FF7/Field/Script/Opcodes/41 MPARA">41 MPARA</a>
+<a href="Opcodes/42_MPRA2.html" title="FF7/Field/Script/Opcodes/42 MPRA2">42 MPRA2</a>
+<a href="Opcodes/43_MPNAM.html" title="FF7/Field/Script/Opcodes/43 MPNAM">43 MPNAM</a>
+<a href="Opcodes/48_ASK.html" title="FF7/Field/Script/Opcodes/48 ASK">48 ASK</a>
+<a href="Opcodes/49_MENU.html" title="FF7/Field/Script/Opcodes/49 MENU">49 MENU</a>
+<a href="Opcodes/4A_MENU2.html" title="FF7/Field/Script/Opcodes/4A MENU2">4A MENU2</a>
+<a href="Opcodes/50_WINDOW.html" title="FF7/Field/Script/Opcodes/50 WINDOW">50 WINDOW</a>
+<a href="Opcodes/51_WMOVE.html" title="FF7/Field/Script/Opcodes/51 WMOVE">51 WMOVE</a>
+<a href="Opcodes/52_WMODE.html" title="FF7/Field/Script/Opcodes/52 WMODE">52 WMODE</a>
+<a href="Opcodes/53_WREST.html" title="FF7/Field/Script/Opcodes/53 WREST">53 WREST</a>
+<a href="Opcodes/54_WCLSE.html" title="FF7/Field/Script/Opcodes/54 WCLSE">54 WCLSE</a>
+<a href="Opcodes/55_WROW.html" title="FF7/Field/Script/Opcodes/55 WROW">55 WROW</a>
+<a href="Opcodes/56_GWCOL.html" title="FF7/Field/Script/Opcodes/56 GWCOL">56 GWCOL</a>
+<a href="Opcodes/57_SWCOL.html" title="FF7/Field/Script/Opcodes/57 SWCOL">57 SWCOL</a>
+</pre>
+<h3> <span class="mw-headline" id="Party_.26_Inventory"> Party &amp; Inventory </span></h3>
+<pre><a href="Opcodes/0A_SPTYE.html" title="FF7/Field/Script/Opcodes/0A SPTYE">0A SPTYE</a>
+<a href="Opcodes/0B_GTPYE.html" title="FF7/Field/Script/Opcodes/0B GTPYE">0B GTPYE</a>
+<a href="Opcodes/39_GOLDu.html" title="FF7/Field/Script/Opcodes/39 GOLDu">39 GOLDu</a>
+<a href="Opcodes/3A_GOLDd.html" title="FF7/Field/Script/Opcodes/3A GOLDd">3A GOLDd</a>
+<a href="Opcodes/3B_CHGLD.html" title="FF7/Field/Script/Opcodes/3B CHGLD">3B CHGLD</a>
+<a href="Opcodes/3C_HMPMAX1.html" title="FF7/Field/Script/Opcodes/3C HMPMAX1">3C HMPMAX1</a>
+<a href="Opcodes/3D_HMPMAX2.html" title="FF7/Field/Script/Opcodes/3D HMPMAX2">3D HMPMAX2</a>
+<a href="Opcodes/3E_MHMMX.html" title="FF7/Field/Script/Opcodes/3E MHMMX">3E MHMMX</a>
+<a href="Opcodes/3F_HMPMAX3.html" title="FF7/Field/Script/Opcodes/3F HMPMAX3">3F HMPMAX3</a>
+<a href="Opcodes/45_MPu.html" title="FF7/Field/Script/Opcodes/45 MPu">45 MPu</a>
+<a href="Opcodes/47_MPd.html" title="FF7/Field/Script/Opcodes/47 MPd">47 MPd</a>
+<a href="Opcodes/4D_HPu.html" title="FF7/Field/Script/Opcodes/4D HPu">4D HPu</a>
+<a href="Opcodes/4F_HPd.html" title="FF7/Field/Script/Opcodes/4F HPd">4F HPd</a>
+<a href="Opcodes/58_STITM.html" title="FF7/Field/Script/Opcodes/58 STITM">58 STITM</a>
+<a href="Opcodes/59_DLITM.html" title="FF7/Field/Script/Opcodes/59 DLITM">59 DLITM</a>
+<a href="Opcodes/5A_CKITM.html" title="FF7/Field/Script/Opcodes/5A CKITM">5A CKITM</a>
+<a href="Opcodes/5B_SMTRA.html" title="FF7/Field/Script/Opcodes/5B SMTRA">5B SMTRA</a>
+<a href="Opcodes/5C_DMTRA.html" title="FF7/Field/Script/Opcodes/5C DMTRA">5C DMTRA</a>
+<a href="Opcodes/5D_CMTRA.html" title="FF7/Field/Script/Opcodes/5D CMTRA">5D CMTRA</a>
+<a href="Opcodes/74_GETPC.html" title="FF7/Field/Script/Opcodes/74 GETPC">74 GETPC</a>
+<a href="Opcodes/C8_PRTYP.html" title="FF7/Field/Script/Opcodes/C8 PRTYP">C8 PRTYP</a>
+<a href="Opcodes/C9_PRTYM.html" title="FF7/Field/Script/Opcodes/C9 PRTYM">C9 PRTYM</a>
+<a href="Opcodes/CA_PRTYE.html" title="FF7/Field/Script/Opcodes/CA PRTYE">CA PRTYE</a>
+<a href="Opcodes/CB_IFPRTYQ.html" title="FF7/Field/Script/Opcodes/CB IFPRTYQ">CB IFPRTYQ</a>
+<a href="Opcodes/CC_IFMEMBQ.html" title="FF7/Field/Script/Opcodes/CC IFMEMBQ">CC IFMEMBQ</a>
+<a href="Opcodes/CD_MMBud.html" title="FF7/Field/Script/Opcodes/CD MMBud">CD MMBud</a>
+<a href="Opcodes/CE_MMBLK.html" title="FF7/Field/Script/Opcodes/CE MMBLK">CE MMBLK</a>
+<a href="Opcodes/CF_MMBUK.html" title="FF7/Field/Script/Opcodes/CF MMBUK">CF MMBUK</a>
+</pre>
+<h3> <span class="mw-headline" id="Field_Models.2C_Animation_.26_3D.2FWalkmesh"> Field Models, Animation &amp; 3D/Walkmesh </span></h3>
+<pre><a href="Opcodes/08_JOIN.html" title="FF7/Field/Script/Opcodes/08 JOIN">08 JOIN</a>
+<a href="Opcodes/09_SPLIT.html" title="FF7/Field/Script/Opcodes/09 SPLIT">09 SPLIT</a>
+<a href="Opcodes/26_BLINK.html" title="FF7/Field/Script/Opcodes/26 BLINK">26 BLINK</a>
+<a href="Opcodes/28_KAWAI.html" title="FF7/Field/Script/Opcodes/28 KAWAI">28 KAWAI</a>
+<a href="Opcodes/29_KAWIW.html" title="FF7/Field/Script/Opcodes/29 KAWIW">29 KAWIW</a>
+<a href="Opcodes/2A_PMOVA.html" title="FF7/Field/Script/Opcodes/2A PMOVA">2A PMOVA</a>
+<a href="Opcodes/2B_SLIP.html" title="FF7/Field/Script/Opcodes/2B SLIP">2B SLIP</a>
+<a href="Opcodes/33_UC.html" title="FF7/Field/Script/Opcodes/33 UC">33 UC</a>
+<a href="Opcodes/34_PDIRA.html" title="FF7/Field/Script/Opcodes/34 PDIRA">34 PDIRA</a>
+<a href="Opcodes/35_PTURA.html" title="FF7/Field/Script/Opcodes/35 PTURA">35 PTURA</a>
+<a href="Opcodes/6D_IDLCK.html" title="FF7/Field/Script/Opcodes/6D IDLCK">6D IDLCK</a>
+<a href="Opcodes/73_PGTDR.html" title="FF7/Field/Script/Opcodes/73 PGTDR">73 PGTDR</a>
+<a href="Opcodes/75_PXYZI.html" title="FF7/Field/Script/Opcodes/75 PXYZI">75 PXYZI</a>
+<a href="Opcodes/7E_TLKON.html" title="FF7/Field/Script/Opcodes/7E TLKON">7E TLKON</a>
+<a href="Opcodes/A0_PC.html" title="FF7/Field/Script/Opcodes/A0 PC">A0 PC</a>
+<a href="Opcodes/A1_CHAR.html" title="FF7/Field/Script/Opcodes/A1 CHAR">A1 CHAR</a>
+<a href="Opcodes/A2_DFANM.html" title="FF7/Field/Script/Opcodes/A2 DFANM">A2 DFANM</a>
+<a href="Opcodes/A3_ANIME1.html" title="FF7/Field/Script/Opcodes/A3 ANIME1">A3 ANIME1</a>
+<a href="Opcodes/A4_VISI.html" title="FF7/Field/Script/Opcodes/A4 VISI">A4 VISI</a>
+<a href="Opcodes/A5_XYZI.html" title="FF7/Field/Script/Opcodes/A5 XYZI">A5 XYZI</a>
+<a href="Opcodes/A6_XYI.html" title="FF7/Field/Script/Opcodes/A6 XYI">A6 XYI</a>
+<a href="Opcodes/A7_XYZ.html" title="FF7/Field/Script/Opcodes/A7 XYZ">A7 XYZ</a>
+<a href="Opcodes/A8_MOVE.html" title="FF7/Field/Script/Opcodes/A8 MOVE">A8 MOVE</a>
+<a href="Opcodes/A9_CMOVE.html" title="FF7/Field/Script/Opcodes/A9 CMOVE">A9 CMOVE</a>
+<a href="Opcodes/AA_MOVA.html" title="FF7/Field/Script/Opcodes/AA MOVA">AA MOVA</a>
+<a href="Opcodes/AB_TURA.html" title="FF7/Field/Script/Opcodes/AB TURA">AB TURA</a>
+<a href="Opcodes/AC_ANIMW.html" title="FF7/Field/Script/Opcodes/AC ANIMW">AC ANIMW</a>
+<a href="Opcodes/AD_FMOVE.html" title="FF7/Field/Script/Opcodes/AD FMOVE">AD FMOVE</a>
+<a href="Opcodes/AE_ANIME2.html" title="FF7/Field/Script/Opcodes/AE ANIME2">AE ANIME2</a>
+<a href="Opcodes/AF_ANIM!1.html" title="FF7/Field/Script/Opcodes/AF ANIM!1">AF ANIM!1</a>
+<a href="Opcodes/B0_CANIM1.html" title="FF7/Field/Script/Opcodes/B0 CANIM1">B0 CANIM1</a>
+<a href="Opcodes/B1_CANM!1.html" title="FF7/Field/Script/Opcodes/B1 CANM!1">B1 CANM!1</a>
+<a href="Opcodes/B2_MSPED.html" title="FF7/Field/Script/Opcodes/B2 MSPED">B2 MSPED</a>
+<a href="Opcodes/B3_DIR.html" title="FF7/Field/Script/Opcodes/B3 DIR">B3 DIR</a>
+<a href="Opcodes/B4_TURNGEN.html" title="FF7/Field/Script/Opcodes/B4 TURNGEN">B4 TURNGEN</a>
+<a href="Opcodes/B5_TURN.html" title="FF7/Field/Script/Opcodes/B5 TURN">B5 TURN</a>
+<a href="Opcodes/B6_DIRA.html" title="FF7/Field/Script/Opcodes/B6 DIRA">B6 DIRA</a>
+<a href="Opcodes/B7_GETDIR.html" title="FF7/Field/Script/Opcodes/B7 GETDIR">B7 GETDIR</a>
+<a href="Opcodes/B8_GETAXY.html" title="FF7/Field/Script/Opcodes/B8 GETAXY">B8 GETAXY</a>
+<a href="Opcodes/B9_GETAI.html" title="FF7/Field/Script/Opcodes/B9 GETAI">B9 GETAI</a>
+<a href="Opcodes/BA_ANIM!2.html" title="FF7/Field/Script/Opcodes/BA ANIM!2">BA ANIM!2</a>
+<a href="Opcodes/BB_CANIM2.html" title="FF7/Field/Script/Opcodes/BB CANIM2">BB CANIM2</a>
+<a href="Opcodes/BC_CANM!2.html" title="FF7/Field/Script/Opcodes/BC CANM!2">BC CANM!2</a>
+<a href="Opcodes/BD_ASPED.html" title="FF7/Field/Script/Opcodes/BD ASPED">BD ASPED</a>
+<a href="Opcodes/BF_CC.html" title="FF7/Field/Script/Opcodes/BF CC">BF CC</a>
+<a href="Opcodes/C0_JUMP.html" title="FF7/Field/Script/Opcodes/C0 JUMP">C0 JUMP</a>
+<a href="Opcodes/C1_AXYZI.html" title="FF7/Field/Script/Opcodes/C1 AXYZI">C1 AXYZI</a>
+<a href="Opcodes/C2_LADER.html" title="FF7/Field/Script/Opcodes/C2 LADER">C2 LADER</a>
+<a href="Opcodes/C3_OFST.html" title="FF7/Field/Script/Opcodes/C3 OFST">C3 OFST</a>
+<a href="Opcodes/C4_OFSTW.html" title="FF7/Field/Script/Opcodes/C4 OFSTW">C4 OFSTW</a>
+<a href="Opcodes/C5_TALKR.html" title="FF7/Field/Script/Opcodes/C5 TALKR">C5 TALKR</a>
+<a href="Opcodes/C6_SLIDR.html" title="FF7/Field/Script/Opcodes/C6 SLIDR">C6 SLIDR</a>
+<a href="Opcodes/C7_SOLID.html" title="FF7/Field/Script/Opcodes/C7 SOLID">C7 SOLID</a>
+<a href="Opcodes/D0_LINE.html" title="FF7/Field/Script/Opcodes/D0 LINE">D0 LINE</a>
+<a href="Opcodes/D1_LINON.html" title="FF7/Field/Script/Opcodes/D1 LINON">D1 LINON</a>
+<a href="Opcodes/D3_SLINE.html" title="FF7/Field/Script/Opcodes/D3 SLINE">D3 SLINE</a>
+<a href="Opcodes/D6_TLKR2.html" title="FF7/Field/Script/Opcodes/D6 TLKR2">D6 TLKR2</a>
+<a href="Opcodes/D7_SLDR2.html" title="FF7/Field/Script/Opcodes/D7 SLDR2">D7 SLDR2</a>
+<a href="Opcodes/DC_CCANM.html" title="FF7/Field/Script/Opcodes/DC CCANM">DC CCANM</a>
+<a href="Opcodes/DB_FCFIX.html" title="FF7/Field/Script/Opcodes/DB FCFIX">DB FCFIX</a>
+<a href="Opcodes/DD_ANIMB.html" title="FF7/Field/Script/Opcodes/DD ANIMB">DD ANIMB</a>
+<a href="Opcodes/DE_TURNW.html" title="FF7/Field/Script/Opcodes/DE TURNW">DE TURNW</a>
+</pre>
+<h3> <span class="mw-headline" id="Background_.26_Palette"> Background &amp; Palette </span></h3>
+<pre><a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/27_BGMOVIE?redlink=1" class="new" title="FF7/Field/Script/Opcodes/27 BGMOVIE (page does not exist)">27 BGMOVIE</a>
+<a href="Opcodes/2C_BGPDH.html" title="FF7/Field/Script/Opcodes/2C BGPDH">2C BGPDH</a>
+<a href="Opcodes/2D_BGSCR.html" title="FF7/Field/Script/Opcodes/2D BGSCR">2D BGSCR</a>
+<a href="Opcodes/DF_MPPAL.html" title="FF7/Field/Script/Opcodes/DF MPPAL">DF MPPAL</a>
+<a href="Opcodes/E0_BGON.html" title="FF7/Field/Script/Opcodes/E0 BGON">E0 BGON</a>
+<a href="Opcodes/E1_BGOFF.html" title="FF7/Field/Script/Opcodes/E1 BGOFF">E1 BGOFF</a>
+<a href="Opcodes/E2_BGROL.html" title="FF7/Field/Script/Opcodes/E2 BGROL">E2 BGROL</a>
+<a href="Opcodes/E3_BGROL2.html" title="FF7/Field/Script/Opcodes/E3 BGROL2">E3 BGROL2</a>
+<a href="Opcodes/E4_BGCLR.html" title="FF7/Field/Script/Opcodes/E4 BGCLR">E4 BGCLR</a>
+<a href="Opcodes/E5_STPAL.html" title="FF7/Field/Script/Opcodes/E5 STPAL">E5 STPAL</a>
+<a href="Opcodes/E6_LDPAL.html" title="FF7/Field/Script/Opcodes/E6 LDPAL">E6 LDPAL</a>
+<a href="Opcodes/E7_CPPAL.html" title="FF7/Field/Script/Opcodes/E7 CPPAL">E7 CPPAL</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/E8_RTPAL?redlink=1" class="new" title="FF7/Field/Script/Opcodes/E8 RTPAL (page does not exist)">E8 RTPAL</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/E9_ADPAL?redlink=1" class="new" title="FF7/Field/Script/Opcodes/E9 ADPAL (page does not exist)">E9 ADPAL</a>
+<a href="Opcodes/EA_MPPAL2.html" title="FF7/Field/Script/Opcodes/EA MPPAL2">EA MPPAL2</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/EB_STPLS?redlink=1" class="new" title="FF7/Field/Script/Opcodes/EB STPLS (page does not exist)">EB STPLS</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/EC_LDPLS?redlink=1" class="new" title="FF7/Field/Script/Opcodes/EC LDPLS (page does not exist)">EC LDPLS</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/ED_CPPAL2?redlink=1" class="new" title="FF7/Field/Script/Opcodes/ED CPPAL2 (page does not exist)">ED CPPAL2</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/EE_RTPAL2?redlink=1" class="new" title="FF7/Field/Script/Opcodes/EE RTPAL2 (page does not exist)">EE RTPAL2</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/EF_ADPAL2?redlink=1" class="new" title="FF7/Field/Script/Opcodes/EF ADPAL2 (page does not exist)">EF ADPAL2</a>
+</pre>
+<h3> <span class="mw-headline" id="Camera.2C_Audio_.26_Video"> Camera, Audio &amp; Video </span></h3>
+<pre><a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/25_NFADE?redlink=1" class="new" title="FF7/Field/Script/Opcodes/25 NFADE (page does not exist)">25 NFADE</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/5E_SHAKE?redlink=1" class="new" title="FF7/Field/Script/Opcodes/5E SHAKE (page does not exist)">5E SHAKE</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/61_SCRLO?redlink=1" class="new" title="FF7/Field/Script/Opcodes/61 SCRLO (page does not exist)">61 SCRLO</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/62_SCRLC?redlink=1" class="new" title="FF7/Field/Script/Opcodes/62 SCRLC (page does not exist)">62 SCRLC</a>
+<a href="Opcodes/63_SCRLA.html" title="FF7/Field/Script/Opcodes/63 SCRLA">63 SCRLA</a>
+<a href="Opcodes/64_SCR2D.html" title="FF7/Field/Script/Opcodes/64 SCR2D">64 SCR2D</a>
+<a href="Opcodes/65_SCRCC.html" title="FF7/Field/Script/Opcodes/65 SCRCC">65 SCRCC</a>
+<a href="Opcodes/66_SCR2DC.html" title="FF7/Field/Script/Opcodes/66 SCR2DC">66 SCR2DC</a>
+<a href="Opcodes/67_SCRLW.html" title="FF7/Field/Script/Opcodes/67 SCRLW">67 SCRLW</a>
+<a href="Opcodes/68_SCR2DL.html" title="FF7/Field/Script/Opcodes/68 SCR2DL">68 SCR2DL</a>
+<a href="Opcodes/6B_FADE.html" title="FF7/Field/Script/Opcodes/6B FADE">6B FADE</a>
+<a href="Opcodes/6C_FADEW.html" title="FF7/Field/Script/Opcodes/6C FADEW">6C FADEW</a>
+<a href="Opcodes/6F_SCRLP.html" title="FF7/Field/Script/Opcodes/6F SCRLP">6F SCRLP</a>
+<a href="Opcodes/DA_AKAO2.html" title="FF7/Field/Script/Opcodes/DA AKAO2">DA AKAO2</a>
+<a href="Opcodes/F0_MUSIC.html" title="FF7/Field/Script/Opcodes/F0 MUSIC">F0 MUSIC</a>
+<a href="Opcodes/F1_SOUND.html" title="FF7/Field/Script/Opcodes/F1 SOUND">F1 SOUND</a>
+<a href="Opcodes/F2_AKAO.html" title="FF7/Field/Script/Opcodes/F2 AKAO">F2 AKAO</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/F3_MUSVT?redlink=1" class="new" title="FF7/Field/Script/Opcodes/F3 MUSVT (page does not exist)">F3 MUSVT</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/F4_MUSVM?redlink=1" class="new" title="FF7/Field/Script/Opcodes/F4 MUSVM (page does not exist)">F4 MUSVM</a>
+<a href="Opcodes/F5_MULCK.html" title="FF7/Field/Script/Opcodes/F5 MULCK">F5 MULCK</a>
+<a href="Opcodes/F6_BMUSC.html" title="FF7/Field/Script/Opcodes/F6 BMUSC">F6 BMUSC</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/F7_CHMPH?redlink=1" class="new" title="FF7/Field/Script/Opcodes/F7 CHMPH (page does not exist)">F7 CHMPH</a>
+<a href="Opcodes/F8_PMVIE.html" title="FF7/Field/Script/Opcodes/F8 PMVIE">F8 PMVIE</a>
+<a href="Opcodes/F9_MOVIE.html" title="FF7/Field/Script/Opcodes/F9 MOVIE">F9 MOVIE</a>
+<a href="Opcodes/FA_MVIEF.html" title="FF7/Field/Script/Opcodes/FA MVIEF">FA MVIEF</a>
+<a href="Opcodes/FB_MVCAM.html" title="FF7/Field/Script/Opcodes/FB MVCAM">FB MVCAM</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/FC_FMUSC?redlink=1" class="new" title="FF7/Field/Script/Opcodes/FC FMUSC (page does not exist)">FC FMUSC</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/FD_CMUSC?redlink=1" class="new" title="FF7/Field/Script/Opcodes/FD CMUSC (page does not exist)">FD CMUSC</a>
+<a href="Opcodes/FE_CHMST.html" title="FF7/Field/Script/Opcodes/FE CHMST">FE CHMST</a>
+</pre>
+<h3> <span class="mw-headline" id="Uncategorised"> Uncategorised </span></h3>
+<pre><a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/69_MPDSP?redlink=1" class="new" title="FF7/Field/Script/Opcodes/69 MPDSP (page does not exist)">69 MPDSP</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/6A_VWOFT?redlink=1" class="new" title="FF7/Field/Script/Opcodes/6A VWOFT (page does not exist)">6A VWOFT</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/9D_SETX?redlink=1" class="new" title="FF7/Field/Script/Opcodes/9D SETX (page does not exist)">9D SETX</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/9E_GETX?redlink=1" class="new" title="FF7/Field/Script/Opcodes/9E GETX (page does not exist)">9E GETX</a>
+<a href="Opcodes/9F_SEARCHX.html" title="FF7/Field/Script/Opcodes/9F SEARCHX">9F SEARCHX</a>
+<a href="Opcodes/D8_PMJMP.html" title="FF7/Field/Script/Opcodes/D8 PMJMP">D8 PMJMP</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/D9_PMJMP2?redlink=1" class="new" title="FF7/Field/Script/Opcodes/D9 PMJMP2 (page does not exist)">D9 PMJMP2</a>
+</pre>
+<h2> <span class="mw-headline" id="Arranged_by_opcode"> Arranged by opcode </span></h2>
+<pre><a href="Opcodes/00_RET.html" title="FF7/Field/Script/Opcodes/00 RET">00 RET</a>
+<a href="Opcodes/01_REQ.html" title="FF7/Field/Script/Opcodes/01 REQ">01 REQ</a>
+<a href="Opcodes/02_REQSW.html" title="FF7/Field/Script/Opcodes/02 REQSW">02 REQSW</a>
+<a href="Opcodes/03_REQEW.html" title="FF7/Field/Script/Opcodes/03 REQEW">03 REQEW</a>
+<a href="Opcodes/04_PREQ.html" title="FF7/Field/Script/Opcodes/04 PREQ">04 PREQ</a>
+<a href="Opcodes/05_PRQSW.html" title="FF7/Field/Script/Opcodes/05 PRQSW">05 PRQSW</a>
+<a href="Opcodes/06_PRQEW.html" title="FF7/Field/Script/Opcodes/06 PRQEW">06 PRQEW</a>
+<a href="Opcodes/07_RETTO.html" title="FF7/Field/Script/Opcodes/07 RETTO">07 RETTO</a>
+<a href="Opcodes/08_JOIN.html" title="FF7/Field/Script/Opcodes/08 JOIN">08 JOIN</a>
+<a href="Opcodes/09_SPLIT.html" title="FF7/Field/Script/Opcodes/09 SPLIT">09 SPLIT</a>
+<a href="Opcodes/0A_SPTYE.html" title="FF7/Field/Script/Opcodes/0A SPTYE">0A SPTYE</a>
+<a href="Opcodes/0B_GTPYE.html" title="FF7/Field/Script/Opcodes/0B GTPYE">0B GTPYE</a>
+<font color="gray">0C (unused)</font>
+<font color="gray">0D (unused)</font>
+<a href="Opcodes/0E_DSKCG.html" title="FF7/Field/Script/Opcodes/0E DSKCG">0E DSKCG</a>
+<a href="Opcodes/0F_SPECIAL.html" title="FF7/Field/Script/Opcodes/0F SPECIAL">0F SPECIAL</a>
+<a href="Opcodes/10_JMPF.html" title="FF7/Field/Script/Opcodes/10 JMPF">10 JMPF</a>
+<a href="Opcodes/11_JMPFL.html" title="FF7/Field/Script/Opcodes/11 JMPFL">11 JMPFL</a>
+<a href="Opcodes/12_JMPB.html" title="FF7/Field/Script/Opcodes/12 JMPB">12 JMPB</a>
+<a href="Opcodes/13_JMPBL.html" title="FF7/Field/Script/Opcodes/13 JMPBL">13 JMPBL</a>
+<a href="Opcodes/14_IFUB.html" title="FF7/Field/Script/Opcodes/14 IFUB">14 IFUB</a>
+<a href="Opcodes/15_IFUBL.html" title="FF7/Field/Script/Opcodes/15 IFUBL">15 IFUBL</a>
+<a href="Opcodes/16_IFSW.html" title="FF7/Field/Script/Opcodes/16 IFSW">16 IFSW</a>
+<a href="Opcodes/17_IFSWL.html" title="FF7/Field/Script/Opcodes/17 IFSWL">17 IFSWL</a>
+<a href="Opcodes/18_IFUW.html" title="FF7/Field/Script/Opcodes/18 IFUW">18 IFUW</a>
+<a href="Opcodes/19_IFUWL.html" title="FF7/Field/Script/Opcodes/19 IFUWL">19 IFUWL</a>
+<font color="gray">1A (unused)</font>
+<font color="gray">1B (unused)</font>
+<font color="gray">1C (unused)</font>
+<font color="gray">1D (unused)</font>
+<font color="gray">1E (unused)</font>
+<font color="gray">1F (unused)</font>
+<a href="Opcodes/20_MINIGAME.html" title="FF7/Field/Script/Opcodes/20 MINIGAME">20 MINIGAME</a>
+<a href="Opcodes/21_TUTOR.html" title="FF7/Field/Script/Opcodes/21 TUTOR">21 TUTOR</a>
+<a href="Opcodes/22_BTMD2.html" title="FF7/Field/Script/Opcodes/22 BTMD2">22 BTMD2</a>
+<a href="Opcodes/23_BTRLD.html" title="FF7/Field/Script/Opcodes/23 BTRLD">23 BTRLD</a>
+<a href="Opcodes/24_WAIT.html" title="FF7/Field/Script/Opcodes/24 WAIT">24 WAIT</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/25_NFADE?redlink=1" class="new" title="FF7/Field/Script/Opcodes/25 NFADE (page does not exist)">25 NFADE</a>
+<a href="Opcodes/26_BLINK.html" title="FF7/Field/Script/Opcodes/26 BLINK">26 BLINK</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/27_BGMOVIE?redlink=1" class="new" title="FF7/Field/Script/Opcodes/27 BGMOVIE (page does not exist)">27 BGMOVIE</a>
+<a href="Opcodes/28_KAWAI.html" title="FF7/Field/Script/Opcodes/28 KAWAI">28 KAWAI</a>
+<a href="Opcodes/29_KAWIW.html" title="FF7/Field/Script/Opcodes/29 KAWIW">29 KAWIW</a>
+<a href="Opcodes/2A_PMOVA.html" title="FF7/Field/Script/Opcodes/2A PMOVA">2A PMOVA</a>
+<a href="Opcodes/2B_SLIP.html" title="FF7/Field/Script/Opcodes/2B SLIP">2B SLIP</a>
+<a href="Opcodes/2C_BGPDH.html" title="FF7/Field/Script/Opcodes/2C BGPDH">2C BGPDH</a>
+<a href="Opcodes/2D_BGSCR.html" title="FF7/Field/Script/Opcodes/2D BGSCR">2D BGSCR</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/2E_WCLS?redlink=1" class="new" title="FF7/Field/Script/Opcodes/2E WCLS (page does not exist)">2E WCLS</a>
+<a href="Opcodes/2F_WSIZW.html" title="FF7/Field/Script/Opcodes/2F WSIZW">2F WSIZW</a>
+<a href="Opcodes/30_IFKEY.html" title="FF7/Field/Script/Opcodes/30 IFKEY">30 IFKEY</a>
+<a href="Opcodes/31_IFKEYON.html" title="FF7/Field/Script/Opcodes/31 IFKEYON">31 IFKEYON</a>
+<a href="Opcodes/32_IFKEYOFF.html" title="FF7/Field/Script/Opcodes/32 IFKEYOFF">32 IFKEYOFF</a>
+<a href="Opcodes/33_UC.html" title="FF7/Field/Script/Opcodes/33 UC">33 UC</a>
+<a href="Opcodes/34_PDIRA.html" title="FF7/Field/Script/Opcodes/34 PDIRA">34 PDIRA</a>
+<a href="Opcodes/35_PTURA.html" title="FF7/Field/Script/Opcodes/35 PTURA">35 PTURA</a>
+<a href="Opcodes/36_WSPCL.html" title="FF7/Field/Script/Opcodes/36 WSPCL">36 WSPCL</a>
+<a href="Opcodes/37_WNUMB.html" title="FF7/Field/Script/Opcodes/37 WNUMB">37 WNUMB</a>
+<a href="Opcodes/38_STTIM.html" title="FF7/Field/Script/Opcodes/38 STTIM">38 STTIM</a>
+<a href="Opcodes/39_GOLDu.html" title="FF7/Field/Script/Opcodes/39 GOLDu">39 GOLDu</a>
+<a href="Opcodes/3A_GOLDd.html" title="FF7/Field/Script/Opcodes/3A GOLDd">3A GOLDd</a>
+<a href="Opcodes/3B_CHGLD.html" title="FF7/Field/Script/Opcodes/3B CHGLD">3B CHGLD</a>
+<a href="Opcodes/3C_HMPMAX1.html" title="FF7/Field/Script/Opcodes/3C HMPMAX1">3C HMPMAX1</a>
+<a href="Opcodes/3D_HMPMAX2.html" title="FF7/Field/Script/Opcodes/3D HMPMAX2">3D HMPMAX2</a>
+<a href="Opcodes/3E_MHMMX.html" title="FF7/Field/Script/Opcodes/3E MHMMX">3E MHMMX</a>
+<a href="Opcodes/3F_HMPMAX3.html" title="FF7/Field/Script/Opcodes/3F HMPMAX3">3F HMPMAX3</a>
+<a href="Opcodes/40_MESSAGE.html" title="FF7/Field/Script/Opcodes/40 MESSAGE">40 MESSAGE</a>
+<a href="Opcodes/41_MPARA.html" title="FF7/Field/Script/Opcodes/41 MPARA">41 MPARA</a>
+<a href="Opcodes/42_MPRA2.html" title="FF7/Field/Script/Opcodes/42 MPRA2">42 MPRA2</a>
+<a href="Opcodes/43_MPNAM.html" title="FF7/Field/Script/Opcodes/43 MPNAM">43 MPNAM</a>
+<font color="gray">44 (unused)</font>
+<a href="Opcodes/45_MPu.html" title="FF7/Field/Script/Opcodes/45 MPu">45 MPu</a>
+<font color="gray">46 (unused)</font>
+<a href="Opcodes/47_MPd.html" title="FF7/Field/Script/Opcodes/47 MPd">47 MPd</a>
+<a href="Opcodes/48_ASK.html" title="FF7/Field/Script/Opcodes/48 ASK">48 ASK</a>
+<a href="Opcodes/49_MENU.html" title="FF7/Field/Script/Opcodes/49 MENU">49 MENU</a>
+<a href="Opcodes/4A_MENU2.html" title="FF7/Field/Script/Opcodes/4A MENU2">4A MENU2</a>
+<a href="Opcodes/4B_BTLTB.html" title="FF7/Field/Script/Opcodes/4B BTLTB">4B BTLTB</a>
+<font color="gray">4C (unused)</font>
+<a href="Opcodes/4D_HPu.html" title="FF7/Field/Script/Opcodes/4D HPu">4D HPu</a>
+<font color="gray">4E (unused)</font>
+<a href="Opcodes/4F_HPd.html" title="FF7/Field/Script/Opcodes/4F HPd">4F HPd</a>
+<a href="Opcodes/50_WINDOW.html" title="FF7/Field/Script/Opcodes/50 WINDOW">50 WINDOW</a>
+<a href="Opcodes/51_WMOVE.html" title="FF7/Field/Script/Opcodes/51 WMOVE">51 WMOVE</a>
+<a href="Opcodes/52_WMODE.html" title="FF7/Field/Script/Opcodes/52 WMODE">52 WMODE</a>
+<a href="Opcodes/53_WREST.html" title="FF7/Field/Script/Opcodes/53 WREST">53 WREST</a>
+<a href="Opcodes/54_WCLSE.html" title="FF7/Field/Script/Opcodes/54 WCLSE">54 WCLSE</a>
+<a href="Opcodes/55_WROW.html" title="FF7/Field/Script/Opcodes/55 WROW">55 WROW</a>
+<a href="Opcodes/56_GWCOL.html" title="FF7/Field/Script/Opcodes/56 GWCOL">56 GWCOL</a>
+<a href="Opcodes/57_SWCOL.html" title="FF7/Field/Script/Opcodes/57 SWCOL">57 SWCOL</a>
+<a href="Opcodes/58_STITM.html" title="FF7/Field/Script/Opcodes/58 STITM">58 STITM</a>
+<a href="Opcodes/59_DLITM.html" title="FF7/Field/Script/Opcodes/59 DLITM">59 DLITM</a>
+<a href="Opcodes/5A_CKITM.html" title="FF7/Field/Script/Opcodes/5A CKITM">5A CKITM</a>
+<a href="Opcodes/5B_SMTRA.html" title="FF7/Field/Script/Opcodes/5B SMTRA">5B SMTRA</a>
+<a href="Opcodes/5C_DMTRA.html" title="FF7/Field/Script/Opcodes/5C DMTRA">5C DMTRA</a>
+<a href="Opcodes/5D_CMTRA.html" title="FF7/Field/Script/Opcodes/5D CMTRA">5D CMTRA</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/5E_SHAKE?redlink=1" class="new" title="FF7/Field/Script/Opcodes/5E SHAKE (page does not exist)">5E SHAKE</a>
+<a href="Opcodes/5F_NOP.html" title="FF7/Field/Script/Opcodes/5F NOP">5F NOP</a>
+<a href="Opcodes/60_MAPJUMP.html" title="FF7/Field/Script/Opcodes/60 MAPJUMP">60 MAPJUMP</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/61_SCRLO?redlink=1" class="new" title="FF7/Field/Script/Opcodes/61 SCRLO (page does not exist)">61 SCRLO</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/62_SCRLC?redlink=1" class="new" title="FF7/Field/Script/Opcodes/62 SCRLC (page does not exist)">62 SCRLC</a>
+<a href="Opcodes/63_SCRLA.html" title="FF7/Field/Script/Opcodes/63 SCRLA">63 SCRLA</a>
+<a href="Opcodes/64_SCR2D.html" title="FF7/Field/Script/Opcodes/64 SCR2D">64 SCR2D</a>
+<a href="Opcodes/65_SCRCC.html" title="FF7/Field/Script/Opcodes/65 SCRCC">65 SCRCC</a>
+<a href="Opcodes/66_SCR2DC.html" title="FF7/Field/Script/Opcodes/66 SCR2DC">66 SCR2DC</a>
+<a href="Opcodes/67_SCRLW.html" title="FF7/Field/Script/Opcodes/67 SCRLW">67 SCRLW</a>
+<a href="Opcodes/68_SCR2DL.html" title="FF7/Field/Script/Opcodes/68 SCR2DL">68 SCR2DL</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/69_MPDSP?redlink=1" class="new" title="FF7/Field/Script/Opcodes/69 MPDSP (page does not exist)">69 MPDSP</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/6A_VWOFT?redlink=1" class="new" title="FF7/Field/Script/Opcodes/6A VWOFT (page does not exist)">6A VWOFT</a>
+<a href="Opcodes/6B_FADE.html" title="FF7/Field/Script/Opcodes/6B FADE">6B FADE</a>
+<a href="Opcodes/6C_FADEW.html" title="FF7/Field/Script/Opcodes/6C FADEW">6C FADEW</a>
+<a href="Opcodes/6D_IDLCK.html" title="FF7/Field/Script/Opcodes/6D IDLCK">6D IDLCK</a>
+<a href="Opcodes/6E_LSTMP.html" title="FF7/Field/Script/Opcodes/6E LSTMP">6E LSTMP</a>
+<a href="Opcodes/6F_SCRLP.html" title="FF7/Field/Script/Opcodes/6F SCRLP">6F SCRLP</a>
+<a href="Opcodes/70_BATTLE.html" title="FF7/Field/Script/Opcodes/70 BATTLE">70 BATTLE</a>
+<a href="Opcodes/71_BTLON.html" title="FF7/Field/Script/Opcodes/71 BTLON">71 BTLON</a>
+<a href="Opcodes/72_BTLMD.html" title="FF7/Field/Script/Opcodes/72 BTLMD">72 BTLMD</a>
+<a href="Opcodes/73_PGTDR.html" title="FF7/Field/Script/Opcodes/73 PGTDR">73 PGTDR</a>
+<a href="Opcodes/74_GETPC.html" title="FF7/Field/Script/Opcodes/74 GETPC">74 GETPC</a>
+<a href="Opcodes/75_PXYZI.html" title="FF7/Field/Script/Opcodes/75 PXYZI">75 PXYZI</a>
+<a href="Opcodes/76_PLUS!.html" title="FF7/Field/Script/Opcodes/76 PLUS!">76 PLUS!</a>
+<a href="Opcodes/77_PLUS2!.html" title="FF7/Field/Script/Opcodes/77 PLUS2!">77 PLUS2!</a>
+<a href="Opcodes/78_MINUS!.html" title="FF7/Field/Script/Opcodes/78 MINUS!">78 MINUS!</a>
+<a href="Opcodes/79_MINUS2!.html" title="FF7/Field/Script/Opcodes/79 MINUS2!">79 MINUS2!</a>
+<a href="Opcodes/7A_INC!.html" title="FF7/Field/Script/Opcodes/7A INC!">7A INC!</a>
+<a href="Opcodes/7B_INC2!.html" title="FF7/Field/Script/Opcodes/7B INC2!">7B INC2!</a>
+<a href="Opcodes/7C_DEC!.html" title="FF7/Field/Script/Opcodes/7C DEC!">7C DEC!</a>
+<a href="Opcodes/7D_DEC2!.html" title="FF7/Field/Script/Opcodes/7D DEC2!">7D DEC2!</a>
+<a href="Opcodes/7E_TLKON.html" title="FF7/Field/Script/Opcodes/7E TLKON">7E TLKON</a>
+<a href="Opcodes/7F_RDMSD.html" title="FF7/Field/Script/Opcodes/7F RDMSD">7F RDMSD</a>
+<a href="Opcodes/80_SETBYTE.html" title="FF7/Field/Script/Opcodes/80 SETBYTE">80 SETBYTE</a>
+<a href="Opcodes/81_SETWORD.html" title="FF7/Field/Script/Opcodes/81 SETWORD">81 SETWORD</a>
+<a href="Opcodes/82_BITON.html" title="FF7/Field/Script/Opcodes/82 BITON">82 BITON</a>
+<a href="Opcodes/83_BITOFF.html" title="FF7/Field/Script/Opcodes/83 BITOFF">83 BITOFF</a>
+<a href="Opcodes/84_BITXOR.html" title="FF7/Field/Script/Opcodes/84 BITXOR">84 BITXOR</a>
+<a href="Opcodes/85_PLUS.html" title="FF7/Field/Script/Opcodes/85 PLUS">85 PLUS</a>
+<a href="Opcodes/86_PLUS2.html" title="FF7/Field/Script/Opcodes/86 PLUS2">86 PLUS2</a>
+<a href="Opcodes/87_MINUS.html" title="FF7/Field/Script/Opcodes/87 MINUS">87 MINUS</a>
+<a href="Opcodes/88_MINUS2.html" title="FF7/Field/Script/Opcodes/88 MINUS2">88 MINUS2</a>
+<a href="Opcodes/89_MUL.html" title="FF7/Field/Script/Opcodes/89 MUL">89 MUL</a>
+<a href="Opcodes/8A_MUL2.html" title="FF7/Field/Script/Opcodes/8A MUL2">8A MUL2</a>
+<a href="Opcodes/8B_DIV.html" title="FF7/Field/Script/Opcodes/8B DIV">8B DIV</a>
+<a href="Opcodes/8C_DIV2.html" title="FF7/Field/Script/Opcodes/8C DIV2">8C DIV2</a>
+<a href="Opcodes/8D_MOD.html" title="FF7/Field/Script/Opcodes/8D MOD">8D MOD</a>
+<a href="Opcodes/8E_MOD2.html" title="FF7/Field/Script/Opcodes/8E MOD2">8E MOD2</a>
+<a href="Opcodes/8F_AND.html" title="FF7/Field/Script/Opcodes/8F AND">8F AND</a>
+<a href="Opcodes/90_AND2.html" title="FF7/Field/Script/Opcodes/90 AND2">90 AND2</a>
+<a href="Opcodes/91_OR.html" title="FF7/Field/Script/Opcodes/91 OR">91 OR</a>
+<a href="Opcodes/92_OR2.html" title="FF7/Field/Script/Opcodes/92 OR2">92 OR2</a>
+<a href="Opcodes/93_XOR.html" title="FF7/Field/Script/Opcodes/93 XOR">93 XOR</a>
+<a href="Opcodes/94_XOR2.html" title="FF7/Field/Script/Opcodes/94 XOR2">94 XOR2</a>
+<a href="Opcodes/95_INC.html" title="FF7/Field/Script/Opcodes/95 INC">95 INC</a>
+<a href="Opcodes/96_INC2.html" title="FF7/Field/Script/Opcodes/96 INC2">96 INC2</a>
+<a href="Opcodes/97_DEC.html" title="FF7/Field/Script/Opcodes/97 DEC">97 DEC</a>
+<a href="Opcodes/98_DEC2.html" title="FF7/Field/Script/Opcodes/98 DEC2">98 DEC2</a>
+<a href="Opcodes/99_RANDOM.html" title="FF7/Field/Script/Opcodes/99 RANDOM">99 RANDOM</a>
+<a href="Opcodes/9A_LBYTE.html" title="FF7/Field/Script/Opcodes/9A LBYTE">9A LBYTE</a>
+<a href="Opcodes/9B_HBYTE.html" title="FF7/Field/Script/Opcodes/9B HBYTE">9B HBYTE</a>
+<a href="Opcodes/9C_2BYTE.html" title="FF7/Field/Script/Opcodes/9C 2BYTE">9C 2BYTE</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/9D_SETX?redlink=1" class="new" title="FF7/Field/Script/Opcodes/9D SETX (page does not exist)">9D SETX</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/9E_GETX?redlink=1" class="new" title="FF7/Field/Script/Opcodes/9E GETX (page does not exist)">9E GETX</a>
+<a href="Opcodes/9F_SEARCHX.html" title="FF7/Field/Script/Opcodes/9F SEARCHX">9F SEARCHX</a>
+<a href="Opcodes/A0_PC.html" title="FF7/Field/Script/Opcodes/A0 PC">A0 PC</a>
+<a href="Opcodes/A1_CHAR.html" title="FF7/Field/Script/Opcodes/A1 CHAR">A1 CHAR</a>
+<a href="Opcodes/A2_DFANM.html" title="FF7/Field/Script/Opcodes/A2 DFANM">A2 DFANM</a>
+<a href="Opcodes/A3_ANIME1.html" title="FF7/Field/Script/Opcodes/A3 ANIME1">A3 ANIME1</a>
+<a href="Opcodes/A4_VISI.html" title="FF7/Field/Script/Opcodes/A4 VISI">A4 VISI</a>
+<a href="Opcodes/A5_XYZI.html" title="FF7/Field/Script/Opcodes/A5 XYZI">A5 XYZI</a>
+<a href="Opcodes/A6_XYI.html" title="FF7/Field/Script/Opcodes/A6 XYI">A6 XYI</a>
+<a href="Opcodes/A7_XYZ.html" title="FF7/Field/Script/Opcodes/A7 XYZ">A7 XYZ</a>
+<a href="Opcodes/A8_MOVE.html" title="FF7/Field/Script/Opcodes/A8 MOVE">A8 MOVE</a>
+<a href="Opcodes/A9_CMOVE.html" title="FF7/Field/Script/Opcodes/A9 CMOVE">A9 CMOVE</a>
+<a href="Opcodes/AA_MOVA.html" title="FF7/Field/Script/Opcodes/AA MOVA">AA MOVA</a>
+<a href="Opcodes/AB_TURA.html" title="FF7/Field/Script/Opcodes/AB TURA">AB TURA</a>
+<a href="Opcodes/AC_ANIMW.html" title="FF7/Field/Script/Opcodes/AC ANIMW">AC ANIMW</a>
+<a href="Opcodes/AD_FMOVE.html" title="FF7/Field/Script/Opcodes/AD FMOVE">AD FMOVE</a>
+<a href="Opcodes/AE_ANIME2.html" title="FF7/Field/Script/Opcodes/AE ANIME2">AE ANIME2</a>
+<a href="Opcodes/AF_ANIM!1.html" title="FF7/Field/Script/Opcodes/AF ANIM!1">AF ANIM!1</a>
+<a href="Opcodes/B0_CANIM1.html" title="FF7/Field/Script/Opcodes/B0 CANIM1">B0 CANIM1</a>
+<a href="Opcodes/B1_CANM!1.html" title="FF7/Field/Script/Opcodes/B1 CANM!1">B1 CANM!1</a>
+<a href="Opcodes/B2_MSPED.html" title="FF7/Field/Script/Opcodes/B2 MSPED">B2 MSPED</a>
+<a href="Opcodes/B3_DIR.html" title="FF7/Field/Script/Opcodes/B3 DIR">B3 DIR</a>
+<a href="Opcodes/B4_TURNGEN.html" title="FF7/Field/Script/Opcodes/B4 TURNGEN">B4 TURNGEN</a>
+<a href="Opcodes/B5_TURN.html" title="FF7/Field/Script/Opcodes/B5 TURN">B5 TURN</a>
+<a href="Opcodes/B6_DIRA.html" title="FF7/Field/Script/Opcodes/B6 DIRA">B6 DIRA</a>
+<a href="Opcodes/B7_GETDIR.html" title="FF7/Field/Script/Opcodes/B7 GETDIR">B7 GETDIR</a>
+<a href="Opcodes/B8_GETAXY.html" title="FF7/Field/Script/Opcodes/B8 GETAXY">B8 GETAXY</a>
+<a href="Opcodes/B9_GETAI.html" title="FF7/Field/Script/Opcodes/B9 GETAI">B9 GETAI</a>
+<a href="Opcodes/BA_ANIM!2.html" title="FF7/Field/Script/Opcodes/BA ANIM!2">BA ANIM!2</a>
+<a href="Opcodes/BB_CANIM2.html" title="FF7/Field/Script/Opcodes/BB CANIM2">BB CANIM2</a>
+<a href="Opcodes/BC_CANM!2.html" title="FF7/Field/Script/Opcodes/BC CANM!2">BC CANM!2</a>
+<a href="Opcodes/BD_ASPED.html" title="FF7/Field/Script/Opcodes/BD ASPED">BD ASPED</a>
+<font color="gray">BE (unused)</font>
+<a href="Opcodes/BF_CC.html" title="FF7/Field/Script/Opcodes/BF CC">BF CC</a>
+<a href="Opcodes/C0_JUMP.html" title="FF7/Field/Script/Opcodes/C0 JUMP">C0 JUMP</a>
+<a href="Opcodes/C1_AXYZI.html" title="FF7/Field/Script/Opcodes/C1 AXYZI">C1 AXYZI</a>
+<a href="Opcodes/C2_LADER.html" title="FF7/Field/Script/Opcodes/C2 LADER">C2 LADER</a>
+<a href="Opcodes/C3_OFST.html" title="FF7/Field/Script/Opcodes/C3 OFST">C3 OFST</a>
+<a href="Opcodes/C4_OFSTW.html" title="FF7/Field/Script/Opcodes/C4 OFSTW">C4 OFSTW</a>
+<a href="Opcodes/C5_TALKR.html" title="FF7/Field/Script/Opcodes/C5 TALKR">C5 TALKR</a>
+<a href="Opcodes/C6_SLIDR.html" title="FF7/Field/Script/Opcodes/C6 SLIDR">C6 SLIDR</a>
+<a href="Opcodes/C7_SOLID.html" title="FF7/Field/Script/Opcodes/C7 SOLID">C7 SOLID</a>
+<a href="Opcodes/C8_PRTYP.html" title="FF7/Field/Script/Opcodes/C8 PRTYP">C8 PRTYP</a>
+<a href="Opcodes/C9_PRTYM.html" title="FF7/Field/Script/Opcodes/C9 PRTYM">C9 PRTYM</a>
+<a href="Opcodes/CA_PRTYE.html" title="FF7/Field/Script/Opcodes/CA PRTYE">CA PRTYE</a>
+<a href="Opcodes/CB_IFPRTYQ.html" title="FF7/Field/Script/Opcodes/CB IFPRTYQ">CB IFPRTYQ</a>
+<a href="Opcodes/CC_IFMEMBQ.html" title="FF7/Field/Script/Opcodes/CC IFMEMBQ">CC IFMEMBQ</a>
+<a href="Opcodes/CD_MMBud.html" title="FF7/Field/Script/Opcodes/CD MMBud">CD MMBud</a>
+<a href="Opcodes/CE_MMBLK.html" title="FF7/Field/Script/Opcodes/CE MMBLK">CE MMBLK</a>
+<a href="Opcodes/CF_MMBUK.html" title="FF7/Field/Script/Opcodes/CF MMBUK">CF MMBUK</a>
+<a href="Opcodes/D0_LINE.html" title="FF7/Field/Script/Opcodes/D0 LINE">D0 LINE</a>
+<a href="Opcodes/D1_LINON.html" title="FF7/Field/Script/Opcodes/D1 LINON">D1 LINON</a>
+<a href="Opcodes/D2_MPJPO.html" title="FF7/Field/Script/Opcodes/D2 MPJPO">D2 MPJPO</a>
+<a href="Opcodes/D3_SLINE.html" title="FF7/Field/Script/Opcodes/D3 SLINE">D3 SLINE</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/D4_SIN?redlink=1" class="new" title="FF7/Field/Script/Opcodes/D4 SIN (page does not exist)">D4 SIN</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/D5_COS?redlink=1" class="new" title="FF7/Field/Script/Opcodes/D5 COS (page does not exist)">D5 COS</a>
+<a href="Opcodes/D6_TLKR2.html" title="FF7/Field/Script/Opcodes/D6 TLKR2">D6 TLKR2</a>
+<a href="Opcodes/D7_SLDR2.html" title="FF7/Field/Script/Opcodes/D7 SLDR2">D7 SLDR2</a>
+<a href="Opcodes/D8_PMJMP.html" title="FF7/Field/Script/Opcodes/D8 PMJMP">D8 PMJMP</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/D9_PMJMP2?redlink=1" class="new" title="FF7/Field/Script/Opcodes/D9 PMJMP2 (page does not exist)">D9 PMJMP2</a>
+<a href="Opcodes/DA_AKAO2.html" title="FF7/Field/Script/Opcodes/DA AKAO2">DA AKAO2</a>
+<a href="Opcodes/DB_FCFIX.html" title="FF7/Field/Script/Opcodes/DB FCFIX">DB FCFIX</a>
+<a href="Opcodes/DC_CCANM.html" title="FF7/Field/Script/Opcodes/DC CCANM">DC CCANM</a>
+<a href="Opcodes/DD_ANIMB.html" title="FF7/Field/Script/Opcodes/DD ANIMB">DD ANIMB</a>
+<a href="Opcodes/DE_TURNW.html" title="FF7/Field/Script/Opcodes/DE TURNW">DE TURNW</a>
+<a href="Opcodes/DF_MPPAL.html" title="FF7/Field/Script/Opcodes/DF MPPAL">DF MPPAL</a>
+<a href="Opcodes/E0_BGON.html" title="FF7/Field/Script/Opcodes/E0 BGON">E0 BGON</a>
+<a href="Opcodes/E1_BGOFF.html" title="FF7/Field/Script/Opcodes/E1 BGOFF">E1 BGOFF</a>
+<a href="Opcodes/E2_BGROL.html" title="FF7/Field/Script/Opcodes/E2 BGROL">E2 BGROL</a>
+<a href="Opcodes/E3_BGROL2.html" title="FF7/Field/Script/Opcodes/E3 BGROL2">E3 BGROL2</a>
+<a href="Opcodes/E4_BGCLR.html" title="FF7/Field/Script/Opcodes/E4 BGCLR">E4 BGCLR</a>
+<a href="Opcodes/E5_STPAL.html" title="FF7/Field/Script/Opcodes/E5 STPAL">E5 STPAL</a>
+<a href="Opcodes/E6_LDPAL.html" title="FF7/Field/Script/Opcodes/E6 LDPAL">E6 LDPAL</a>
+<a href="Opcodes/E7_CPPAL.html" title="FF7/Field/Script/Opcodes/E7 CPPAL">E7 CPPAL</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/E8_RTPAL?redlink=1" class="new" title="FF7/Field/Script/Opcodes/E8 RTPAL (page does not exist)">E8 RTPAL</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/E9_ADPAL?redlink=1" class="new" title="FF7/Field/Script/Opcodes/E9 ADPAL (page does not exist)">E9 ADPAL</a>
+<a href="Opcodes/EA_MPPAL2.html" title="FF7/Field/Script/Opcodes/EA MPPAL2">EA MPPAL2</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/EB_STPLS?redlink=1" class="new" title="FF7/Field/Script/Opcodes/EB STPLS (page does not exist)">EB STPLS</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/EC_LDPLS?redlink=1" class="new" title="FF7/Field/Script/Opcodes/EC LDPLS (page does not exist)">EC LDPLS</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/ED_CPPAL2?redlink=1" class="new" title="FF7/Field/Script/Opcodes/ED CPPAL2 (page does not exist)">ED CPPAL2</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/EE_RTPAL2?redlink=1" class="new" title="FF7/Field/Script/Opcodes/EE RTPAL2 (page does not exist)">EE RTPAL2</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/EF_ADPAL2?redlink=1" class="new" title="FF7/Field/Script/Opcodes/EF ADPAL2 (page does not exist)">EF ADPAL2</a>
+<a href="Opcodes/F0_MUSIC.html" title="FF7/Field/Script/Opcodes/F0 MUSIC">F0 MUSIC</a>
+<a href="Opcodes/F1_SOUND.html" title="FF7/Field/Script/Opcodes/F1 SOUND">F1 SOUND</a>
+<a href="Opcodes/F2_AKAO.html" title="FF7/Field/Script/Opcodes/F2 AKAO">F2 AKAO</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/F3_MUSVT?redlink=1" class="new" title="FF7/Field/Script/Opcodes/F3 MUSVT (page does not exist)">F3 MUSVT</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/F4_MUSVM?redlink=1" class="new" title="FF7/Field/Script/Opcodes/F4 MUSVM (page does not exist)">F4 MUSVM</a>
+<a href="Opcodes/F5_MULCK.html" title="FF7/Field/Script/Opcodes/F5 MULCK">F5 MULCK</a>
+<a href="Opcodes/F6_BMUSC.html" title="FF7/Field/Script/Opcodes/F6 BMUSC">F6 BMUSC</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/F7_CHMPH?redlink=1" class="new" title="FF7/Field/Script/Opcodes/F7 CHMPH (page does not exist)">F7 CHMPH</a>
+<a href="Opcodes/F8_PMVIE.html" title="FF7/Field/Script/Opcodes/F8 PMVIE">F8 PMVIE</a>
+<a href="Opcodes/F9_MOVIE.html" title="FF7/Field/Script/Opcodes/F9 MOVIE">F9 MOVIE</a>
+<a href="Opcodes/FA_MVIEF.html" title="FF7/Field/Script/Opcodes/FA MVIEF">FA MVIEF</a>
+<a href="Opcodes/FB_MVCAM.html" title="FF7/Field/Script/Opcodes/FB MVCAM">FB MVCAM</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/FC_FMUSC?redlink=1" class="new" title="FF7/Field/Script/Opcodes/FC FMUSC (page does not exist)">FC FMUSC</a>
+<a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/FD_CMUSC?redlink=1" class="new" title="FF7/Field/Script/Opcodes/FD CMUSC (page does not exist)">FD CMUSC</a>
+<a href="Opcodes/FE_CHMST.html" title="FF7/Field/Script/Opcodes/FE CHMST">FE CHMST</a>
+<a href="Opcodes/FF_GAMEOVER.html" title="FF7/Field/Script/Opcodes/FF GAMEOVER">FF GAMEOVER</a>
+</pre>
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 55/1000000
+Preprocessor generated node count: 74/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key qhimm_wiki:pcache:idhash:1063-0!*!0!!en!*!* and timestamp 20160922115514 -->
+</div>				<!-- /bodycontent -->
+								<!-- printfooter -->
+				<div class="printfooter">
+				Retrieved from "<a href="http://wiki.qhimm.com/index.php?title=FF7/Field/Script/Opcodes&amp;oldid=3430">http://wiki.qhimm.com/index.php?title=FF7/Field/Script/Opcodes&amp;oldid=3430</a>"				</div>
+				<!-- /printfooter -->
+												<!-- catlinks -->
+				<div id='catlinks' class='catlinks catlinks-allhidden'></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+				<!-- debughtml -->
+								<!-- /debughtml -->
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Personal tools</h5>
+	<ul>
+		<li id="pt-login"><a href="http://wiki.qhimm.com/index.php?title=Special:UserLogin&amp;returnto=FF7%2FField%2FScript%2FOpcodes" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>
+	</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Namespaces</h5>
+	<ul>
+					<li  id="ca-nstab-main" class="selected"><span><a href="Opcodes.html"  title="View the content page [c]" accesskey="c">Page</a></span></li>
+					<li  id="ca-talk" class="new"><span><a href="http://wiki.qhimm.com/edit/Talk:FF7/Field/Script/Opcodes?redlink=1"  title="Discussion about the content page [t]" accesskey="t">Discussion</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+	<h4>
+		</h4>
+	<h5><span>Variants</span><a href="Opcodes.html#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Views</h5>
+	<ul>
+					<li id="ca-view" class="selected"><span><a href="Opcodes.html" >Read</a></span></li>
+					<li id="ca-viewsource"><span><a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes"  title="This page is protected.&#13;&#10;You can view its source [e]" accesskey="e">View source</a></span></li>
+					<li id="ca-history" class="collapsible"><span><a href="http://wiki.qhimm.com/history/FF7/Field/Script/Opcodes"  title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>Actions</span><a href="Opcodes.html#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Search</label></h5>
+	<form action="http://wiki.qhimm.com/index.php" id="searchform">
+				<div>
+			<input type="search" name="search" title="Search QhimmWiki [f]" accesskey="f" id="searchInput" />			<input type="submit" name="go" value="Go" title="Go to a page with this exact name if exists" id="searchGoButton" class="searchButton" />			<input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton" />					<input type='hidden' name="title" value="Special:Search"/>
+		</div>
+	</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(../../../../skins/wiki.png);" href="../../../Main_Page.html"  title="Visit the main page"></a></div>
+				<!-- /logo -->
+				
+<!-- navigation -->
+<div class="portal" id='p-navigation'>
+	<h5>Navigation</h5>
+	<div class="body">
+		<ul>
+			<li id="n-mainpage-description"><a href="../../../Main_Page.html" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+			<li id="n-portal"><a href="http://wiki.qhimm.com/view/QhimmWiki:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+			<li id="n-currentevents"><a href="http://wiki.qhimm.com/view/QhimmWiki:Current_events" title="Find background information on current events">Current events</a></li>
+			<li id="n-recentchanges"><a href="../../../Special%253ARecentChanges.html" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+			<li id="n-randompage"><a href="../../../Special%253ARandom.html" title="Load a random page [x]" accesskey="x">Random page</a></li>
+			<li id="n-help"><a href="../../../Help%253AContents.html" title="The place to find out">Help</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- TOOLBOX -->
+<div class="portal" id='p-tb'>
+	<h5>Toolbox</h5>
+	<div class="body">
+		<ul>
+			<li id="t-whatlinkshere"><a href="../../../Special%253AWhatLinksHere/FF7/Field/Script/Opcodes.html" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+			<li id="t-recentchangeslinked"><a href="../../../Special%253ARecentChangesLinked/FF7/Field/Script/Opcodes.html" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+			<li id="t-specialpages"><a href="../../../Special%253ASpecialPages.html" title="A list of all special pages [q]" accesskey="q">Special pages</a></li>
+			<li id="t-print"><a href="http://wiki.qhimm.com/index.php?title=FF7/Field/Script/Opcodes&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>
+			<li id="t-permalink"><a href="http://wiki.qhimm.com/index.php?title=FF7/Field/Script/Opcodes&amp;oldid=3430" title="Permanent link to this revision of the page">Permanent link</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+
+<!-- /LANGUAGES -->
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 21 January 2008, at 11:29.</li>
+											<li id="footer-info-viewcount">This page has been accessed 50,186 times.</li>
+											<li id="footer-info-copyright">Content is available under <a class="external" href="http://creativecommons.org/licenses/by-nc-sa/2.5/">Attribution-NonCommercial-ShareAlike</a>.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="http://wiki.qhimm.com/view/QhimmWiki:Privacy_policy" title="QhimmWiki:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="http://wiki.qhimm.com/view/QhimmWiki:About" title="QhimmWiki:About">About QhimmWiki</a></li>
+											<li id="footer-places-disclaimer"><a href="../../../QhimmWiki%253AGeneral_disclaimer.html" title="QhimmWiki:General disclaimer">Disclaimers</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+					<li id="footer-copyrightico">
+						<a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-NonCommercial-ShareAlike" width="88" height="31" /></a>
+					</li>
+					<li id="footer-poweredbyico">
+						<a href="http://www.mediawiki.org/"><img src="../../../../skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31" /></a>
+					</li>
+				</ul>
+						<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		<script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../../load.php@debug=false&amp;lang=en&amp;modules=skins.vector&amp;only=scripts&amp;skin=vector&amp;%252A"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest"], null, true);
+}</script>
+<script>if(window.mw){
+mw.loader.state({"site":"ready"});
+}</script>
+<!-- Served in 0.132 secs. -->
+	</body>
+</html>

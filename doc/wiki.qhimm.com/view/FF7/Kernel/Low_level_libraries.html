@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>FF7/Kernel/Low level libraries - QhimmWiki</title>
+<meta charset="UTF-8" />
+<meta name="generator" content="MediaWiki 1.20.2" />
+<link rel="shortcut icon" href="http://wiki.qhimm.com/favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="http://wiki.qhimm.com/opensearch_desc.php" title="QhimmWiki (en)" />
+<link rel="EditURI" type="application/rsd+xml" href="http://wiki.qhimm.com/api.php?action=rsd" />
+<link rel="copyright" href="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+<link rel="alternate" type="application/atom+xml" title="QhimmWiki Atom feed" href="http://wiki.qhimm.com/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="stylesheet" href="../../../load.php@debug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cskins.vector&amp;only=styles&amp;skin=vector&amp;%252A.css" />
+<meta name="ResourceLoaderDynamicStyles" content="" />
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: qhimm_wiki:resourceloader:filter:minify-css:7:9f75cd7a214f5d1850ed6d0df1a4a089 */</style>
+
+<script src="../../../load.php@debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector&amp;%252A"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"FF7/Kernel/Low_level_libraries","wgTitle":"FF7/Kernel/Low level libraries","wgCurRevisionId":3431,"wgArticleId":774,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"FF7/Kernel/Low_level_libraries","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,"watchlistdays":3,
+"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","watchToken":false});;},{},{});
+/* cache key: qhimm_wiki:resourceloader:filter:minify-js:7:7330ebaa3a8da3f7992caf476ddb8efd */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/skins/vector/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-FF7_Kernel_Low_level_libraries skin-vector action-view vector-animateLayout">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content" class="mw-body">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading"><span dir="auto">FF7/Kernel/Low level libraries</span></h1>
+			<!-- /firstHeading -->
+			<!-- bodyContent -->
+			<div id="bodyContent">
+								<!-- tagline -->
+				<div id="siteSub">From QhimmWiki</div>
+				<!-- /tagline -->
+								<!-- subtitle -->
+				<div id="contentSub"><span class="subpages">&lt; <a href="../../FF7.html" title="FF7">FF7</a>&lrm; | <a href="../Kernel.html" title="FF7/Kernel">Kernel</a></span></div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="Low_level_libraries.html#mw-head">navigation</a>, 					<a href="Low_level_libraries.html#p-search">search</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodycontent -->
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Low_level_libraries.html#PC_to_PSX_comparison"><span class="tocnumber">1</span> <span class="toctext">PC to PSX comparison</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Low_level_libraries.html#Data_Archives"><span class="tocnumber">2</span> <span class="toctext">Data Archives</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="Low_level_libraries.html#BIN_archive_data_format"><span class="tocnumber">2.1</span> <span class="toctext">BIN archive data format</span></a>
+<ul>
+<li class="toclevel-3 tocsection-4"><a href="Low_level_libraries.html#BIN_Type_Archives"><span class="tocnumber">2.1.1</span> <span class="toctext">BIN Type Archives</span></a></li>
+<li class="toclevel-3 tocsection-5"><a href="Low_level_libraries.html#BIN-GZIP_Type_Archives"><span class="tocnumber">2.1.2</span> <span class="toctext">BIN-GZIP Type Archives</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-6"><a href="Low_level_libraries.html#LZS_Archives"><span class="tocnumber">2.2</span> <span class="toctext">LZS Archives</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="Low_level_libraries.html#LGP_Archives"><span class="tocnumber">2.3</span> <span class="toctext">LGP Archives</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="Low_level_libraries.html#Textures"><span class="tocnumber">3</span> <span class="toctext">Textures</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="Low_level_libraries.html#TIM_texture_data_format_for_PSX"><span class="tocnumber">3.1</span> <span class="toctext">TIM texture data format for PSX</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="Low_level_libraries.html#TEX_texture_data_format_for_the_PC"><span class="tocnumber">3.2</span> <span class="toctext">TEX texture data format for the PC</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-11"><a href="Low_level_libraries.html#File_formats_for_3D_models"><span class="tocnumber">4</span> <span class="toctext">File formats for 3D models</span></a>
+<ul>
+<li class="toclevel-2 tocsection-12"><a href="Low_level_libraries.html#Model_formats_for_PSX"><span class="tocnumber">4.1</span> <span class="toctext">Model formats for PSX</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="Low_level_libraries.html#Model_Formats_for_PC"><span class="tocnumber">4.2</span> <span class="toctext">Model Formats for PC</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table>
+<h2> <span class="mw-headline" id="PC_to_PSX_comparison"> PC to PSX comparison </span></h2>
+<p>The files and data formats used in the PSX version of FF7 and it's PC port are conceptually the same thing, and accomplish the same tasks. That being said, they both have wildly different formats, both of which were derived from a third original format that is also somewhat different to the first two.
+</p><p>The original PSX FF7 was created in part using Sony's Psy-Q development library. This library uses common formats that are "native" to the PSX. Often, a toolkit was used to convert common development-based formats, such as a TGA bitmap or a palleted GIF file, to something a little more suited to Psy-Q, which would be a <a href="../../PSX/TIM_format.html" title="PSX/TIM format">TIM file</a>.
+</p><p>During the porting process to the PC, some of the original artwork (and artists for that matter) were no longer available. This resulted in the port team having to use the Psy-Q versions of many files, which were ill suited for the PC architecture. In our example, the <a href="../../PSX/TIM_format.html" title="PSX/TIM format">TIM file</a> was converted to a TEX file, which would be manipulated in the PC's video memory a little more efficiently. Sometimes the original artwork was available, such as the pictures of the characters within the menu, or the original MIDI files. Most often times it was not.
+</p><p>To make things a little more confusing, both systems also archive their data files in different ways, making the extraction and rendering of each file a bit of a bear. For the most part the data within each file is the same thing, just a little switched around. Here, we will cover the more generic files first, and then common files used in each module.
+</p><p><br />
+</p>
+<h2> <span class="mw-headline" id="Data_Archives"> Data Archives </span></h2>
+<p>To save space, quicken access time, and to obfuscate the file structure a little, most of the data files are stored in some kind of archive format. The archives remove such useful items as subdirectories and logical data placement. There is no real "native" format these are based on.
+</p>
+<h3> <span class="mw-headline" id="BIN_archive_data_format"> BIN archive data format </span></h3>
+<p>The BIN format comes as two different types. They both have the same extension, so one must open the file to see which format is which. They are best described as BIN Types and BIN-GZIP types.
+</p>
+<h4> <span class="mw-headline" id="BIN_Type_Archives"> BIN Type Archives </span></h4>
+<p>These are uncompressed archives. The header is 4 bytes long and gives the length of the file without the header and then the data beyond that.
+</p><p><br />
+</p>
+<h4> <span class="mw-headline" id="BIN-GZIP_Type_Archives"> BIN-GZIP Type Archives </span></h4>
+<p>Unless otherwise noted, these have a 6 byte header. After this are many gziped sections concatenated together.
+</p>
+<table border="0" cellpadding="3" cellspacing="1" style="background: rgb(0,0,0)" align="center">
+<tr>
+<th style="background:rgb(204,204,204); width:50px;" align="center"> Offset
+</th>
+<th style="background:rgb(204,204,204); width:50px;"> Length
+</th>
+<th style="background:rgb(204,204,204); width:250px;"> Description
+</th></tr>
+<tr>
+<td style="background:rgb(255,255,255);" align="center"> 0x0000
+</td>
+<td style="background:rgb(255,255,255);"> 2 bytes
+</td>
+<td style="background:rgb(255,255,255);"> Length of gzipped section 1
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,255)" align="center"> 0x0002
+</td>
+<td style="background:rgb(255,255,255);"> 2 bytes
+</td>
+<td style="background:rgb(255,255,255);"> Length of ungzipped section 1
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,255);" align="center"> 0x0004
+</td>
+<td style="background:rgb(255,255,255);"> 2 bytes
+</td>
+<td style="background:rgb(255,255,255);"> File type*
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,255);" align="center"> 0x0006
+</td>
+<td style="background:rgb(255,255,255);"> Varies
+</td>
+<td style="background:rgb(255,255,255);"> [0x1F8B080000000000...] - Gzip header 1 and data
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,255);" align="center"> Varies
+</td>
+<td style="background:rgb(255,255,255);"> 2 bytes
+</td>
+<td style="background:rgb(255,255,255);"> Length of gzipped section 2
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,255);" align="center"> Varies
+</td>
+<td style="background:rgb(255,255,255);"> 2 bytes
+</td>
+<td style="background:rgb(255,255,255);"> Length of ungzipped section 2
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,255);" align="center"> Varies
+</td>
+<td style="background:rgb(255,255,255);"> 2 bytes
+</td>
+<td style="background:rgb(255,255,255);"> File type*
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,255);" align="center"> Varies
+</td>
+<td style="background:rgb(255,255,255);"> Varies
+</td>
+<td style="background:rgb(255,255,255);"> [0x1F8B080000000000...] - Gzip header 2 and data
+</td></tr>
+<tr>
+<td style="background:rgb(255,255,255);" colspan="3" align="center"> ...
+</td></tr></table>
+<p><br />
+<i>*</i> This particular value might be ignored by the whatever method is decompressing these archive types. Within archives it declares that the compressed file is a particular type. These values seem to be unique to the particular archive that is being opened and is not consistent between archives.&lt;p /&gt;
+Example 1: Within the <a href="Kernel.bin.html" title="FF7/Kernel/Kernel.bin">KERNEL.BIN</a> the first nine files are all different data sets so are numbered sequentially 0-8. All remaining files are text types and get labeled as type 9.<br />
+Example 2: Within the WINDOW.BIN file there are three files. The first two are type "0" and are textures. The third file is type "1" and not a texture.
+</p>
+<h3> <span class="mw-headline" id="LZS_Archives"> LZS Archives </span></h3>
+<p>The <a href="../LZS_format.html" title="FF7/LZS format">LZS format</a> is used throughout the PSX version of Final Fantasy 7, often ending with the .lzs extension. LZS itself stands for Lempel-Ziv-Shannon-Fano, Statistical plus Arithmetic. It was originally developed by <a rel="nofollow" class="external text" href="http://oku.edu.mie-u.ac.jp/~okumura/index-e.html">Professor Haruhiko Okumura</a> based on the work of <a rel="nofollow" class="external text" href="http://www.hpl.hp.com/about/bios/abraham_lempel.html">Abraham Lempel</a> and <a rel="nofollow" class="external text" href="http://www.marconifoundation.org/pages/dynamic/fellows/fellow_details.php?roster_id=23">Jacob Ziv</a>.
+</p><p><br />
+</p>
+<h3> <span class="mw-headline" id="LGP_Archives"> LGP Archives </span></h3>
+<p>The LGP file format is only used for the PC port of Final Fantasy 7. These are large "volume" type archives that hold most of the game's data. These archives can hold thousands of files. Unlike the BIN or LZS type files, this archive does reference the data within it by filename. Its file format is explained <a href="../LGP_format.html" title="FF7/LGP format">here</a>.
+</p>
+<h2> <span class="mw-headline" id="Textures"> Textures </span></h2>
+<p>A texture is just a picture that is placed into video memory. It is later manipulated by the engine and displayed on the screen. The native format of a texture was the Psy-Q <a href="../../PSX/TIM_format.html" title="PSX/TIM format">TIM</a> (Texture Image Map). This is used as the native format for the PSX version as well, with a few caveats explained below. The file can hold multiple color look up tables. This was one of the reasons why a video card on the PC that could do palleted data at high color depths was needed.
+</p>
+<h3> <span class="mw-headline" id="TIM_texture_data_format_for_PSX"> TIM texture data format for PSX </span></h3>
+<p>The <a href="../../PSX/TIM_format.html" title="PSX/TIM format">TIM files</a> are found both on raw format and also within several archives, including <a href="Low_level_libraries.html#BIN_archive_data_format" title="FF7/Kernel/Low level libraries">BIN</a>, <a href="Low_level_libraries.html#LZS_Archives" title="FF7/Kernel/Low level libraries">LZS</a>, or even MNU. The format proper has the ability to contain 24 bit bitmaps, but is not used in FF7. The format was created because the PSX does not have direct access to it's VRAM, and must go through the <a href="http://wiki.qhimm.com/edit/PSX/GPU?redlink=1" class="new" title="PSX/GPU (page does not exist)">GPU</a> for any graphic access. <a href="../../PSX/TIM_format.html" title="PSX/TIM format">A TIM file</a> is a clean way to load a texture and color look up table into VRAM.
+</p>
+<h3> <span class="mw-headline" id="TEX_texture_data_format_for_the_PC"> TEX texture data format for the PC </span></h3>
+<p>TEX files are texture files for the PC. The format for these files are located <a href="../TEX_format.html" title="FF7/TEX format">here</a>.
+</p><p><br />
+</p>
+<h2> <span class="mw-headline" id="File_formats_for_3D_models"> File formats for 3D models </span></h2>
+<p>During the development process, 3D models contain a good deal of information needed by the artist every time they save or load the model. When the model is finished, it is often exported and broken up into smaller files with many unneeded attributes stripped from them. When the models for FF7 were created, they were exported into Psy-Q's 3D library formats. These include <a href="../../PSX/RSD.html" title="PSX/RSD">resource data (.RSD)</a>, polygon data (.PLY), polygon groups (.GRP), materials (.MAT), <a href="../../PSX/TIM_file.html" title="PSX/TIM file" class="mw-redirect">textures (.TIM)</a>, <a href="../../PSX/HRC.html" title="PSX/HRC">skeletal hierarchy (.HRC)</a>, and animation (.ANM).
+</p><p>The models are handled differently between modules. The models in the "battle" modules have a different animation system than the field models. When the models were converted to the PC version, they were taken from the Psy-Q formats to a more PC-friendly one. Some are even the original, uncompiled, Psy-Q files. 
+</p>
+<h3> <span class="mw-headline" id="Model_formats_for_PSX">  Model formats for PSX </span></h3>
+<p>The Playstation models are stored in the following directories, \ENEMY1 \ENEMY2 \ENEMY3 \ENEMY4 \ENEMY5 \ENEMY6 (battle models), \FIELD (field models and field character models), \MAGIC (Summon magic), and \STAGE1 \STAGE2 (battle scenes).  Battle model names for special characters and party characters are stored in \ENEMY6, all models of this type end in an .LZS extension.  The same goes with summon magic used they are stored with there animations etc. in \MAGIC with a .LZS extension.  The only exception to this extension is the FIELD models, which use the extensions BSX and BCX for scene models and character models respectively. The <a href="../Playstation_Battle_Model_Format.html" title="FF7/Playstation Battle Model Format" class="mw-redirect">Playstation battle model format</a>, is different than the <a href="../Field/BSX.html" title="FF7/Field/BSX">Playstation field model format</a>, also the <a href="http://wiki.qhimm.com/edit/FF7/Playstation_battle_scene_format?redlink=1" class="new" title="FF7/Playstation battle scene format (page does not exist)">FF7/Playstation battle scene format</a>, is similiar but not identical to the <a href="../Playstation_Battle_Model_Format.html" title="FF7/Playstation Battle Model Format" class="mw-redirect">Playstation battle model format</a>. The <a href="http://wiki.qhimm.com/edit/FF7/Playstation_magic_model?redlink=1" class="new" title="FF7/Playstation magic model (page does not exist)">Playstation magic model</a> format is a work in progress.
+</p>
+<h3> <span class="mw-headline" id="Model_Formats_for_PC"> Model Formats for PC </span></h3>
+<p>The PC models are stored in the LGP files in the /DATA directory. The names for the models were obfuscated a little. The data can be found in the <a href="../../PSX/HRC.html" title="PSX/HRC">Hierarchy files (.HRC)</a>, <a href="../../PSX/RSD.html" title="PSX/RSD">Resource data files (.RSD)</a>, and <a href="../P.html" title="FF7/P">Polygon files (.P)</a>.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 53/1000000
+Preprocessor generated node count: 62/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key qhimm_wiki:pcache:idhash:774-0!*!0!!en!*!* and timestamp 20160921132629 -->
+</div>				<!-- /bodycontent -->
+								<!-- printfooter -->
+				<div class="printfooter">
+				Retrieved from "<a href="http://wiki.qhimm.com/index.php?title=FF7/Kernel/Low_level_libraries&amp;oldid=3431">http://wiki.qhimm.com/index.php?title=FF7/Kernel/Low_level_libraries&amp;oldid=3431</a>"				</div>
+				<!-- /printfooter -->
+												<!-- catlinks -->
+				<div id='catlinks' class='catlinks catlinks-allhidden'></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+				<!-- debughtml -->
+								<!-- /debughtml -->
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Personal tools</h5>
+	<ul>
+		<li id="pt-login"><a href="http://wiki.qhimm.com/index.php?title=Special:UserLogin&amp;returnto=FF7%2FKernel%2FLow+level+libraries" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>
+	</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Namespaces</h5>
+	<ul>
+					<li  id="ca-nstab-main" class="selected"><span><a href="Low_level_libraries.html"  title="View the content page [c]" accesskey="c">Page</a></span></li>
+					<li  id="ca-talk"><span><a href="../../Talk%253AFF7/Kernel/Low_level_libraries.html"  title="Discussion about the content page [t]" accesskey="t">Discussion</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+	<h4>
+		</h4>
+	<h5><span>Variants</span><a href="Low_level_libraries.html#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Views</h5>
+	<ul>
+					<li id="ca-view" class="selected"><span><a href="Low_level_libraries.html" >Read</a></span></li>
+					<li id="ca-viewsource"><span><a href="http://wiki.qhimm.com/edit/FF7/Kernel/Low_level_libraries"  title="This page is protected.&#13;&#10;You can view its source [e]" accesskey="e">View source</a></span></li>
+					<li id="ca-history" class="collapsible"><span><a href="http://wiki.qhimm.com/history/FF7/Kernel/Low_level_libraries"  title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>Actions</span><a href="Low_level_libraries.html#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Search</label></h5>
+	<form action="http://wiki.qhimm.com/index.php" id="searchform">
+				<div>
+			<input type="search" name="search" title="Search QhimmWiki [f]" accesskey="f" id="searchInput" />			<input type="submit" name="go" value="Go" title="Go to a page with this exact name if exists" id="searchGoButton" class="searchButton" />			<input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton" />					<input type='hidden' name="title" value="Special:Search"/>
+		</div>
+	</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(../../../skins/wiki.png);" href="../../Main_Page.html"  title="Visit the main page"></a></div>
+				<!-- /logo -->
+				
+<!-- navigation -->
+<div class="portal" id='p-navigation'>
+	<h5>Navigation</h5>
+	<div class="body">
+		<ul>
+			<li id="n-mainpage-description"><a href="../../Main_Page.html" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+			<li id="n-portal"><a href="http://wiki.qhimm.com/view/QhimmWiki:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+			<li id="n-currentevents"><a href="http://wiki.qhimm.com/view/QhimmWiki:Current_events" title="Find background information on current events">Current events</a></li>
+			<li id="n-recentchanges"><a href="../../Special%253ARecentChanges.html" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+			<li id="n-randompage"><a href="../../Special%253ARandom.html" title="Load a random page [x]" accesskey="x">Random page</a></li>
+			<li id="n-help"><a href="../../Help%253AContents.html" title="The place to find out">Help</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- TOOLBOX -->
+<div class="portal" id='p-tb'>
+	<h5>Toolbox</h5>
+	<div class="body">
+		<ul>
+			<li id="t-whatlinkshere"><a href="../../Special%253AWhatLinksHere/FF7/Kernel/Low_level_libraries.html" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+			<li id="t-recentchangeslinked"><a href="../../Special%253ARecentChangesLinked/FF7/Kernel/Low_level_libraries.html" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+			<li id="t-specialpages"><a href="../../Special%253ASpecialPages.html" title="A list of all special pages [q]" accesskey="q">Special pages</a></li>
+			<li id="t-print"><a href="http://wiki.qhimm.com/index.php?title=FF7/Kernel/Low_level_libraries&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>
+			<li id="t-permalink"><a href="http://wiki.qhimm.com/index.php?title=FF7/Kernel/Low_level_libraries&amp;oldid=3431" title="Permanent link to this revision of the page">Permanent link</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+
+<!-- /LANGUAGES -->
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 6 August 2010, at 15:02.</li>
+											<li id="footer-info-viewcount">This page has been accessed 39,879 times.</li>
+											<li id="footer-info-copyright">Content is available under <a class="external" href="http://creativecommons.org/licenses/by-nc-sa/2.5/">Attribution-NonCommercial-ShareAlike</a>.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="http://wiki.qhimm.com/view/QhimmWiki:Privacy_policy" title="QhimmWiki:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="http://wiki.qhimm.com/view/QhimmWiki:About" title="QhimmWiki:About">About QhimmWiki</a></li>
+											<li id="footer-places-disclaimer"><a href="../../QhimmWiki%253AGeneral_disclaimer.html" title="QhimmWiki:General disclaimer">Disclaimers</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+					<li id="footer-copyrightico">
+						<a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-NonCommercial-ShareAlike" width="88" height="31" /></a>
+					</li>
+					<li id="footer-poweredbyico">
+						<a href="http://www.mediawiki.org/"><img src="../../../skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31" /></a>
+					</li>
+				</ul>
+						<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		<script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../load.php@debug=false&amp;lang=en&amp;modules=skins.vector&amp;only=scripts&amp;skin=vector&amp;%252A"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest"], null, true);
+}</script>
+<script>if(window.mw){
+mw.loader.state({"site":"ready"});
+}</script>
+<!-- Served in 0.120 secs. -->
+	</body>
+</html>

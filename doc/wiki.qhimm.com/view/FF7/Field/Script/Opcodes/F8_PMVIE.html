@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>FF7/Field/Script/Opcodes/F8 PMVIE - QhimmWiki</title>
+<meta charset="UTF-8" />
+<meta name="generator" content="MediaWiki 1.20.2" />
+<link rel="shortcut icon" href="http://wiki.qhimm.com/favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="http://wiki.qhimm.com/opensearch_desc.php" title="QhimmWiki (en)" />
+<link rel="EditURI" type="application/rsd+xml" href="http://wiki.qhimm.com/api.php?action=rsd" />
+<link rel="copyright" href="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+<link rel="alternate" type="application/atom+xml" title="QhimmWiki Atom feed" href="http://wiki.qhimm.com/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="stylesheet" href="../../../../../load.php@debug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cskins.vector&amp;only=styles&amp;skin=vector&amp;%252A.css" />
+<meta name="ResourceLoaderDynamicStyles" content="" />
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: qhimm_wiki:resourceloader:filter:minify-css:7:9f75cd7a214f5d1850ed6d0df1a4a089 */</style>
+
+<script src="../../../../../load.php@debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector&amp;%252A"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"FF7/Field/Script/Opcodes/F8_PMVIE","wgTitle":"FF7/Field/Script/Opcodes/F8 PMVIE","wgCurRevisionId":4860,"wgArticleId":1284,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"FF7/Field/Script/Opcodes/F8_PMVIE","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,"watchlistdays":3,
+"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","watchToken":false});;},{},{});
+/* cache key: qhimm_wiki:resourceloader:filter:minify-js:7:7330ebaa3a8da3f7992caf476ddb8efd */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/skins/vector/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-FF7_Field_Script_Opcodes_F8_PMVIE skin-vector action-view vector-animateLayout">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content" class="mw-body">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading"><span dir="auto">FF7/Field/Script/Opcodes/F8 PMVIE</span></h1>
+			<!-- /firstHeading -->
+			<!-- bodyContent -->
+			<div id="bodyContent">
+								<!-- tagline -->
+				<div id="siteSub">From QhimmWiki</div>
+				<!-- /tagline -->
+								<!-- subtitle -->
+				<div id="contentSub"><span class="subpages">&lt; <a href="../../../../FF7.html" title="FF7">FF7</a>&lrm; | <a href="../../../Field.1.html" title="FF7/Field">Field</a>&lrm; | <a href="../../Script.html" title="FF7/Field/Script">Script</a>&lrm; | <a href="../Opcodes.html" title="FF7/Field/Script/Opcodes">Opcodes</a></span></div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="F8_PMVIE.html#mw-head">navigation</a>, 					<a href="F8_PMVIE.html#p-search">search</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodycontent -->
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><ul><li> Opcode: <b>0xF8</b>
+</li><li> Short name: <b>PMVIE</b>
+</li><li> Long name: Set Movie
+</li></ul>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="F8_PMVIE.html#Memory_layout"><span class="tocnumber">1</span> <span class="toctext">Memory layout</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="F8_PMVIE.html#Arguments"><span class="tocnumber">2</span> <span class="toctext">Arguments</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="F8_PMVIE.html#Description"><span class="tocnumber">3</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="F8_PMVIE.html#FF7_Movie_ID_List"><span class="tocnumber">4</span> <span class="toctext">FF7 Movie ID List</span></a></li>
+</ul>
+</td></tr></table>
+<h4> <span class="mw-headline" id="Memory_layout"> Memory layout </span></h4>
+<table border="1" cellspacing="1" cellpadding="3" style="border: 1px solid black; border-collapse: collapse;">
+<tr>
+<th width="40"> 0xF8
+</th>
+<th width="40"> <i>M</i>
+</th></tr></table>
+<h4> <span class="mw-headline" id="Arguments"> Arguments </span></h4>
+<ul><li> <b>const UByte</b> <i>M</i>: Movie ID to set.
+</li></ul>
+<h4> <span class="mw-headline" id="Description"> Description </span></h4>
+<p>Sets the movie file that will be played at a future point in the script by <a href="F9_MOVIE.html" title="FF7/Field/Script/Opcodes/F9 MOVIE">MOVIE</a>.
+</p>
+<h4> <span class="mw-headline" id="FF7_Movie_ID_List"> FF7 Movie ID List </span></h4>
+<table border="1" cellspacing="1" cellpadding="3" style="border: 1px solid black; border-collapse: collapse;">
+<tr>
+<th style="background:rgb(204,204,204)" width="40"> ID
+</th>
+<th style="background:rgb(204,204,204)" width="120"> Movie File
+</th>
+<th style="background:rgb(204,204,204)" width="350"> Brief Description
+</th></tr>
+<tr>
+<td align="center"> 0
+</td>
+<td> fship2.avi
+</td>
+<td> Clouds rolling
+</td></tr>
+<tr>
+<td align="center"> 1
+</td>
+<td>
+</td>
+<td>
+</td></tr>
+<tr>
+<td align="center"> 2
+</td>
+<td> d_ropego.avi
+</td>
+<td> Ropeway Up to Gold Saucer
+</td></tr>
+<tr>
+<td align="center"> 3
+</td>
+<td> d_ropein.avi
+</td>
+<td> Ropeway Down to Gold Saucer
+</td></tr>
+<tr>
+<td align="center"> 4
+</td>
+<td> u_ropein.avi
+</td>
+<td> Arriving at Gold Saucer
+</td></tr>
+<tr>
+<td align="center"> 5
+</td>
+<td> u_ropego.avi
+</td>
+<td> Leaving Gold Saucer
+</td></tr>
+<tr>
+<td align="center"> 6
+</td>
+<td> gold2.avi
+</td>
+<td> Gold Saucer ride; ends with moon
+</td></tr>
+<tr>
+<td align="center"> 7
+</td>
+<td> gold3.avi
+</td>
+<td> Chocobo Races go past; view from carriage
+</td></tr>
+<tr>
+<td align="center"> 8
+</td>
+<td> gold4.avi
+</td>
+<td> Gold Saucer flythrough; ends with gold statue
+</td></tr>
+<tr>
+<td align="center"> 9
+</td>
+<td> gold6.avi
+</td>
+<td> Balloons released past the carriage
+</td></tr>
+<tr>
+<td align="center"> A
+</td>
+<td> gold5.avi
+</td>
+<td> Haunted house from the carriage
+</td></tr>
+<tr>
+<td align="center"> B
+</td>
+<td> boogup.avi
+</td>
+<td> Up to Bugenhagen's machine
+</td></tr>
+<tr>
+<td align="center"> C
+</td>
+<td> boogdown.avi
+</td>
+<td> Down from Bugenhagen's machine
+</td></tr>
+<tr>
+<td align="center"> D
+</td>
+<td> junair_u.avi
+</td>
+<td> Up on Junon Airstrip mechanism
+</td></tr>
+<tr>
+<td align="center"> E
+</td>
+<td> junair_d.avi
+</td>
+<td> Down on Junon Airstrip mechanism
+</td></tr>
+<tr>
+<td align="center"> F
+</td>
+<td> junelein.avi
+</td>
+<td> Junon elevator up (top level)
+</td></tr>
+<tr>
+<td align="center"> 10
+</td>
+<td> junelego.avi
+</td>
+<td> Junon elevator down (top level)
+</td></tr>
+<tr>
+<td align="center"> 11
+</td>
+<td> junin_in.avi
+</td>
+<td> Junon elevator down (bottom level)
+</td></tr>
+<tr>
+<td align="center"> 12
+</td>
+<td> junin_go.avi
+</td>
+<td> Junon elevator up (bottom level)
+</td></tr>
+<tr>
+<td align="center"> 13
+</td>
+<td> moriya.avi
+</td>
+<td> Unknown
+</td></tr>
+<tr>
+<td align="center"> 14
+</td>
+<td> mkup.avi
+</td>
+<td> Cloud looks up to the first Mako reactor
+</td></tr>
+<tr>
+<td align="center"> 15
+</td>
+<td> northmk.avi
+</td>
+<td> North Mako reactor explodes
+</td></tr>
+<tr>
+<td align="center"> 16
+</td>
+<td> mk8.avi
+</td>
+<td> Jessie's bomb explodes to escape
+</td></tr>
+<tr>
+<td align="center"> 17
+</td>
+<td> ontrain.avi
+</td>
+<td> Cloud jumps on train
+</td></tr>
+<tr>
+<td align="center"> 18
+</td>
+<td> mainplr.avi
+</td>
+<td> Train circles the pillar
+</td></tr>
+<tr>
+<td align="center"> 19
+</td>
+<td> smk.avi
+</td>
+<td> South Reactor platform explodes after boss defeat
+</td></tr>
+<tr>
+<td align="center"> 1A
+</td>
+<td> southmk.avi
+</td>
+<td> Cloud falls from platform
+</td></tr>
+<tr>
+<td align="center"> 1B
+</td>
+<td> plrexp.avi
+</td>
+<td> Sector 7 pillar bomb explodes
+</td></tr>
+<tr>
+<td align="center"> 1C
+</td>
+<td> fallpl.avi
+</td>
+<td> Party escapes as pillar crumbles
+</td></tr>
+<tr>
+<td align="center"> 1D
+</td>
+<td> monitor.avi
+</td>
+<td> Snoozing guard at Shinra HQ; elevator door opens
+</td></tr>
+<tr>
+<td align="center"> 1E
+</td>
+<td> bike.avi
+</td>
+<td> Cloud's bike and party escape on truck
+</td></tr>
+<tr>
+<td align="center"> 1F
+</td>
+<td> mtnvl.avi
+</td>
+<td> Nibelheim mountain, reactor, and rope bridge pan
+</td></tr>
+<tr>
+<td align="center"> 20
+</td>
+<td> mtnvl2.avi
+</td>
+<td> Pan to Nibelheim reactor
+</td></tr>
+<tr>
+<td align="center"> 21
+</td>
+<td> brgnvl.avi
+</td>
+<td> Nibelheim ropebridge snaps
+</td></tr>
+<tr>
+<td align="center"> 22
+</td>
+<td> nvlmk.avi
+</td>
+<td> Pod in Nibelheim reactor explodes, releasing monster
+</td></tr>
+<tr>
+<td align="center"> 23
+</td>
+<td> nivlsfs.avi
+</td>
+<td> Nibelheim fire; Sephiroth looks up &amp; moves through flames
+</td></tr>
+<tr>
+<td align="center"> 24
+</td>
+<td> jenova_e.avi
+</td>
+<td> Sephiroth talks to Jenova and pulls off the statue
+</td></tr>
+<tr>
+<td align="center"> 25
+</td>
+<td> junon.avi
+</td>
+<td> Junon to Mako Cannon pan
+</td></tr>
+<tr>
+<td align="center"> 26
+</td>
+<td> hiwind0.avi
+</td>
+<td> Cloud climbs up to Junon airfield; Highwind
+</td></tr>
+<tr>
+<td align="center"> 27
+</td>
+<td> mtcrl.avi
+</td>
+<td> Falling down scaffolding (Corel route)
+</td></tr>
+<tr>
+<td align="center"> 28
+</td>
+<td> gold1.avi
+</td>
+<td> Skyway to Gold Saucer (first visit)
+</td></tr>
+<tr>
+<td align="center"> 29
+</td>
+<td> biskdead.avi
+</td>
+<td> Dyne &amp; Barret in the past; Barret loses grip
+</td></tr>
+<tr>
+<td align="center"> 2A
+</td>
+<td> boogdemo.avi
+</td>
+<td> Bugenhagen's demo; shooting star &amp; black hole
+</td></tr>
+<tr>
+<td align="center"> 2B
+</td>
+<td> boogstar.avi
+</td>
+<td> Bugenhagen's demo; Earth &amp; the Lifestream
+</td></tr>
+<tr>
+<td align="center"> 2C
+</td>
+<td> setogake.avi
+</td>
+<td> Stone Seto and the moon
+</td></tr>
+<tr>
+<td align="center"> 2D
+</td>
+<td> rcktfail.avi
+</td>
+<td> Rocket takes off, then stalls and tilts
+</td></tr>
+<tr>
+<td align="center"> 2E
+</td>
+<td> jairofly.avi
+</td>
+<td> Tiny Bronco take-off and shooting
+</td></tr>
+<tr>
+<td align="center"> 2F
+</td>
+<td> jairofal.avi
+</td>
+<td> Tiny Bronco crashes
+</td></tr>
+<tr>
+<td align="center"> 2F
+</td>
+<td> gold7.avi
+</td>
+<td>
+</td></tr>
+<tr>
+<td align="center"> 2F
+</td>
+<td> gold7_2.avi
+</td>
+<td>
+</td></tr>
+<tr>
+<td align="center"> 2F
+</td>
+<td> earithdd.avi
+</td>
+<td> Aeris death
+</td></tr>
+<tr>
+<td align="center"> 2F
+</td>
+<td> funeral.avi
+</td>
+<td> Aeris funeral
+</td></tr>
+<tr>
+<td align="center"> 2F
+</td>
+<td> car_1209.avi
+</td>
+<td>
+</td></tr>
+<tr>
+<td align="center"> 2F
+</td>
+<td> opening.avi
+</td>
+<td> Opening
+</td></tr>
+</table>
+
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 15/1000000
+Preprocessor generated node count: 20/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key qhimm_wiki:pcache:idhash:1284-0!*!0!!en!*!* and timestamp 20160922123755 -->
+</div>				<!-- /bodycontent -->
+								<!-- printfooter -->
+				<div class="printfooter">
+				Retrieved from "<a href="http://wiki.qhimm.com/index.php?title=FF7/Field/Script/Opcodes/F8_PMVIE&amp;oldid=4860">http://wiki.qhimm.com/index.php?title=FF7/Field/Script/Opcodes/F8_PMVIE&amp;oldid=4860</a>"				</div>
+				<!-- /printfooter -->
+												<!-- catlinks -->
+				<div id='catlinks' class='catlinks catlinks-allhidden'></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+				<!-- debughtml -->
+								<!-- /debughtml -->
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Personal tools</h5>
+	<ul>
+		<li id="pt-login"><a href="http://wiki.qhimm.com/index.php?title=Special:UserLogin&amp;returnto=FF7%2FField%2FScript%2FOpcodes%2FF8+PMVIE" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>
+	</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Namespaces</h5>
+	<ul>
+					<li  id="ca-nstab-main" class="selected"><span><a href="F8_PMVIE.html"  title="View the content page [c]" accesskey="c">Page</a></span></li>
+					<li  id="ca-talk" class="new"><span><a href="http://wiki.qhimm.com/edit/Talk:FF7/Field/Script/Opcodes/F8_PMVIE?redlink=1"  title="Discussion about the content page [t]" accesskey="t">Discussion</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+	<h4>
+		</h4>
+	<h5><span>Variants</span><a href="F8_PMVIE.html#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Views</h5>
+	<ul>
+					<li id="ca-view" class="selected"><span><a href="F8_PMVIE.html" >Read</a></span></li>
+					<li id="ca-viewsource"><span><a href="http://wiki.qhimm.com/edit/FF7/Field/Script/Opcodes/F8_PMVIE"  title="This page is protected.&#13;&#10;You can view its source [e]" accesskey="e">View source</a></span></li>
+					<li id="ca-history" class="collapsible"><span><a href="http://wiki.qhimm.com/history/FF7/Field/Script/Opcodes/F8_PMVIE"  title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>Actions</span><a href="F8_PMVIE.html#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Search</label></h5>
+	<form action="http://wiki.qhimm.com/index.php" id="searchform">
+				<div>
+			<input type="search" name="search" title="Search QhimmWiki [f]" accesskey="f" id="searchInput" />			<input type="submit" name="go" value="Go" title="Go to a page with this exact name if exists" id="searchGoButton" class="searchButton" />			<input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton" />					<input type='hidden' name="title" value="Special:Search"/>
+		</div>
+	</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(../../../../../skins/wiki.png);" href="../../../../Main_Page.html"  title="Visit the main page"></a></div>
+				<!-- /logo -->
+				
+<!-- navigation -->
+<div class="portal" id='p-navigation'>
+	<h5>Navigation</h5>
+	<div class="body">
+		<ul>
+			<li id="n-mainpage-description"><a href="../../../../Main_Page.html" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+			<li id="n-portal"><a href="http://wiki.qhimm.com/view/QhimmWiki:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+			<li id="n-currentevents"><a href="http://wiki.qhimm.com/view/QhimmWiki:Current_events" title="Find background information on current events">Current events</a></li>
+			<li id="n-recentchanges"><a href="../../../../Special%253ARecentChanges.html" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+			<li id="n-randompage"><a href="../../../../Special%253ARandom.html" title="Load a random page [x]" accesskey="x">Random page</a></li>
+			<li id="n-help"><a href="../../../../Help%253AContents.html" title="The place to find out">Help</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- TOOLBOX -->
+<div class="portal" id='p-tb'>
+	<h5>Toolbox</h5>
+	<div class="body">
+		<ul>
+			<li id="t-whatlinkshere"><a href="../../../../Special%253AWhatLinksHere/FF7/Field/Script/Opcodes/F8_PMVIE.html" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+			<li id="t-recentchangeslinked"><a href="../../../../Special%253ARecentChangesLinked/FF7/Field/Script/Opcodes/F8_PMVIE.html" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+			<li id="t-specialpages"><a href="../../../../Special%253ASpecialPages.html" title="A list of all special pages [q]" accesskey="q">Special pages</a></li>
+			<li id="t-print"><a href="http://wiki.qhimm.com/index.php?title=FF7/Field/Script/Opcodes/F8_PMVIE&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>
+			<li id="t-permalink"><a href="http://wiki.qhimm.com/index.php?title=FF7/Field/Script/Opcodes/F8_PMVIE&amp;oldid=4860" title="Permanent link to this revision of the page">Permanent link</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+
+<!-- /LANGUAGES -->
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 1 February 2015, at 17:36.</li>
+											<li id="footer-info-viewcount">This page has been accessed 3,453 times.</li>
+											<li id="footer-info-copyright">Content is available under <a class="external" href="http://creativecommons.org/licenses/by-nc-sa/2.5/">Attribution-NonCommercial-ShareAlike</a>.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="http://wiki.qhimm.com/view/QhimmWiki:Privacy_policy" title="QhimmWiki:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="http://wiki.qhimm.com/view/QhimmWiki:About" title="QhimmWiki:About">About QhimmWiki</a></li>
+											<li id="footer-places-disclaimer"><a href="../../../../QhimmWiki%253AGeneral_disclaimer.html" title="QhimmWiki:General disclaimer">Disclaimers</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+					<li id="footer-copyrightico">
+						<a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-NonCommercial-ShareAlike" width="88" height="31" /></a>
+					</li>
+					<li id="footer-poweredbyico">
+						<a href="http://www.mediawiki.org/"><img src="../../../../../skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31" /></a>
+					</li>
+				</ul>
+						<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		<script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../../../load.php@debug=false&amp;lang=en&amp;modules=skins.vector&amp;only=scripts&amp;skin=vector&amp;%252A"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest"], null, true);
+}</script>
+<script>if(window.mw){
+mw.loader.state({"site":"ready"});
+}</script>
+<!-- Served in 0.113 secs. -->
+	</body>
+</html>

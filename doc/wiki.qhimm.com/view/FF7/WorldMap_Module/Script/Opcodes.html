@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>FF7/WorldMap Module/Script/Opcodes - QhimmWiki</title>
+<meta charset="UTF-8" />
+<meta name="generator" content="MediaWiki 1.20.2" />
+<link rel="shortcut icon" href="http://wiki.qhimm.com/favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="http://wiki.qhimm.com/opensearch_desc.php" title="QhimmWiki (en)" />
+<link rel="EditURI" type="application/rsd+xml" href="http://wiki.qhimm.com/api.php?action=rsd" />
+<link rel="copyright" href="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+<link rel="alternate" type="application/atom+xml" title="QhimmWiki Atom feed" href="http://wiki.qhimm.com/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="stylesheet" href="../../../../load.php@debug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cskins.vector&amp;only=styles&amp;skin=vector&amp;%252A.css" />
+<meta name="ResourceLoaderDynamicStyles" content="" />
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: qhimm_wiki:resourceloader:filter:minify-css:7:9f75cd7a214f5d1850ed6d0df1a4a089 */</style>
+
+<script src="../../../../load.php@debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector&amp;%252A"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"FF7/WorldMap_Module/Script/Opcodes","wgTitle":"FF7/WorldMap Module/Script/Opcodes","wgCurRevisionId":4810,"wgArticleId":1673,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"FF7/WorldMap_Module/Script/Opcodes","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,"watchlistdays":3,
+"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","watchToken":false});;},{},{});
+/* cache key: qhimm_wiki:resourceloader:filter:minify-js:7:7330ebaa3a8da3f7992caf476ddb8efd */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/skins/vector/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-FF7_WorldMap_Module_Script_Opcodes skin-vector action-view vector-animateLayout">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content" class="mw-body">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading"><span dir="auto">FF7/WorldMap Module/Script/Opcodes</span></h1>
+			<!-- /firstHeading -->
+			<!-- bodyContent -->
+			<div id="bodyContent">
+								<!-- tagline -->
+				<div id="siteSub">From QhimmWiki</div>
+				<!-- /tagline -->
+								<!-- subtitle -->
+				<div id="contentSub"><span class="subpages">&lt; <a href="../../../FF7.html" title="FF7">FF7</a>&lrm; | <a href="../../WorldMap_Module.html" title="FF7/WorldMap Module">WorldMap Module</a>&lrm; | <a href="../Script.html" title="FF7/WorldMap Module/Script">Script</a></span></div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="Opcodes.html#mw-head">navigation</a>, 					<a href="Opcodes.html#p-search">search</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodycontent -->
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Opcodes.html#Stack_Operations:_Arithmetic"><span class="tocnumber">1</span> <span class="toctext">Stack Operations: Arithmetic</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Opcodes.html#Stack_Operations:_Data_Sources"><span class="tocnumber">2</span> <span class="toctext">Stack Operations: Data Sources</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Opcodes.html#Flow_Control"><span class="tocnumber">3</span> <span class="toctext">Flow Control</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Opcodes.html#System_Operations"><span class="tocnumber">4</span> <span class="toctext">System Operations</span></a></li>
+</ul>
+</td></tr></table>
+<h2> <span class="mw-headline" id="Stack_Operations:_Arithmetic"> Stack Operations: Arithmetic </span></h2>
+<pre><a href="Opcodes/015.html" title="FF7/WorldMap Module/Script/Opcodes/015">015 push neg</a>
+<a href="Opcodes/017.html" title="FF7/WorldMap Module/Script/Opcodes/017">017 push logicnot</a>
+<a href="Opcodes/018.html" title="FF7/WorldMap Module/Script/Opcodes/018">018 push distance from active entity to point</a>
+<a href="Opcodes/019.html" title="FF7/WorldMap Module/Script/Opcodes/019">019 push distance from active entity to entity by model id</a>
+<a href="Opcodes/01b.html" title="FF7/WorldMap Module/Script/Opcodes/01b">01b push unknown</a>
+<a href="Opcodes/030.html" title="FF7/WorldMap Module/Script/Opcodes/030">030 push mul</a>
+<a href="Opcodes/040.html" title="FF7/WorldMap Module/Script/Opcodes/040">040 push add</a>
+<a href="Opcodes/041.html" title="FF7/WorldMap Module/Script/Opcodes/041">041 push sub</a>
+<a href="Opcodes/050.html" title="FF7/WorldMap Module/Script/Opcodes/050">050 push shl</a>
+<a href="Opcodes/051.html" title="FF7/WorldMap Module/Script/Opcodes/051">051 push shr</a>
+<a href="Opcodes/060.html" title="FF7/WorldMap Module/Script/Opcodes/060">060 push less</a>
+<a href="Opcodes/061.html" title="FF7/WorldMap Module/Script/Opcodes/061">061 push greater</a>
+<a href="Opcodes/062.html" title="FF7/WorldMap Module/Script/Opcodes/062">062 push lessequal</a>
+<a href="Opcodes/063.html" title="FF7/WorldMap Module/Script/Opcodes/063">063 push greaterequal</a>
+<a href="Opcodes/070.html" title="FF7/WorldMap Module/Script/Opcodes/070">070 push equal</a>
+<a href="Opcodes/080.html" title="FF7/WorldMap Module/Script/Opcodes/080">080 push and</a>
+<a href="Opcodes/0a0.html" title="FF7/WorldMap Module/Script/Opcodes/0a0">0a0 push or</a>
+<a href="Opcodes/0b0.html" title="FF7/WorldMap Module/Script/Opcodes/0b0">0b0 push logicand</a>
+<a href="Opcodes/0c0.html" title="FF7/WorldMap Module/Script/Opcodes/0c0">0c0 push logicor</a>
+<a href="Opcodes/0e0.html" title="FF7/WorldMap Module/Script/Opcodes/0e0">0e0 write bank</a>
+</pre>
+<h2> <span class="mw-headline" id="Stack_Operations:_Data_Sources"> Stack Operations: Data Sources </span></h2>
+<pre><a href="Opcodes/100.html" title="FF7/WorldMap Module/Script/Opcodes/100">100 reset stack</a>
+<a href="Opcodes/110.html" title="FF7/WorldMap Module/Script/Opcodes/110">110 push constant</a>
+<a href="Opcodes/114.html" title="FF7/WorldMap Module/Script/Opcodes/114">114 push bit from bank0</a>
+<a href="../../../Special%253ARandom.html" title="FF7/WorldMap Module/Script/Opcodes/117">117 push special</a>
+<a href="Opcodes/118.html" title="FF7/WorldMap Module/Script/Opcodes/118">118 push byte from bank0</a>
+<a href="Opcodes/119.html" title="FF7/WorldMap Module/Script/Opcodes/119">119 push byte from bank1</a>
+<a href="../../../Special%253ARandom.html" title="FF7/WorldMap Module/Script/Opcodes/117">11b push special</a>
+<a href="Opcodes/11c.html" title="FF7/WorldMap Module/Script/Opcodes/11c">11c push word from bank0</a>
+<a href="Opcodes/11d.html" title="FF7/WorldMap Module/Script/Opcodes/11d">11d push word from bank1</a>
+<a href="../../../Special%253ARandom.html" title="FF7/WorldMap Module/Script/Opcodes/117">11f push special</a>
+</pre>
+<h2> <span class="mw-headline" id="Flow_Control"> Flow Control </span></h2>
+<pre><a href="Opcodes/200.html" title="FF7/WorldMap Module/Script/Opcodes/200">200 jump</a>
+<a href="Opcodes/201.html" title="FF7/WorldMap Module/Script/Opcodes/201">201 jump if false</a>
+<a href="Opcodes/203.html" title="FF7/WorldMap Module/Script/Opcodes/203">203 return</a>
+<a href="Opcodes/204.html" title="FF7/WorldMap Module/Script/Opcodes/204">204 run function</a>
+</pre>
+<h2> <span class="mw-headline" id="System_Operations"> System Operations </span></h2>
+<pre><a href="Opcodes/300.html" title="FF7/WorldMap Module/Script/Opcodes/300">300 load model</a>
+<a href="Opcodes/302.html" title="FF7/WorldMap Module/Script/Opcodes/302">302 set player entity</a>
+<a href="Opcodes/303.html" title="FF7/WorldMap Module/Script/Opcodes/303">303 set active entity movespeed</a>
+<a href="Opcodes/304.html" title="FF7/WorldMap Module/Script/Opcodes/304">304 set active entity direction &amp; facing</a>
+<a href="Opcodes/305.html" title="FF7/WorldMap Module/Script/Opcodes/305">305 set wait frames</a>
+<a href="Opcodes/306.html" title="FF7/WorldMap Module/Script/Opcodes/306">306 wait?</a>
+<a href="Opcodes/307.html" title="FF7/WorldMap Module/Script/Opcodes/307">307 set control lock</a>
+<a href="Opcodes/308.html" title="FF7/WorldMap Module/Script/Opcodes/308">308 set active entity mesh coordinates</a>
+<a href="Opcodes/309.html" title="FF7/WorldMap Module/Script/Opcodes/309">309 set active entity coordinates in mesh</a>
+<a href="Opcodes/30a.html" title="FF7/WorldMap Module/Script/Opcodes/30a">30a unknown</a>
+<a href="Opcodes/30b.html" title="FF7/WorldMap Module/Script/Opcodes/30b">30b set active entity y offset</a>
+<a href="Opcodes/30c.html" title="FF7/WorldMap Module/Script/Opcodes/30c">30c enter vehicle?</a>
+<a href="Opcodes/30d.html" title="FF7/WorldMap Module/Script/Opcodes/30d">30d unknown</a>
+<a href="Opcodes/30e.html" title="FF7/WorldMap Module/Script/Opcodes/30e">30e active entity play animation</a>
+<a href="Opcodes/310.html" title="FF7/WorldMap Module/Script/Opcodes/310">310 set active point</a>
+<a href="Opcodes/311.html" title="FF7/WorldMap Module/Script/Opcodes/311">311 set point mesh coordinates</a>
+<a href="Opcodes/312.html" title="FF7/WorldMap Module/Script/Opcodes/312">312 set point coordinates in mesh</a>
+<a href="Opcodes/313.html" title="FF7/WorldMap Module/Script/Opcodes/313">313 set point terrain BGR</a>
+<a href="Opcodes/314.html" title="FF7/WorldMap Module/Script/Opcodes/314">314 set point dropoff parameters</a>
+<a href="Opcodes/315.html" title="FF7/WorldMap Module/Script/Opcodes/315">315 set point sky BGR</a>
+<a href="Opcodes/316.html" title="FF7/WorldMap Module/Script/Opcodes/316">316 set point BGR3?</a>
+<a href="Opcodes/317.html" title="FF7/WorldMap Module/Script/Opcodes/317">317 trigger battle</a>
+<a href="Opcodes/318.html" title="FF7/WorldMap Module/Script/Opcodes/318">318 enter field scene</a>
+<a href="Opcodes/319.html" title="FF7/WorldMap Module/Script/Opcodes/319">319 unknown</a>
+<a href="Opcodes/31b.html" title="FF7/WorldMap Module/Script/Opcodes/31b">31b noop</a>
+<a href="Opcodes/31c.html" title="FF7/WorldMap Module/Script/Opcodes/31c">31c unknown</a>
+<a href="Opcodes/31d.html" title="FF7/WorldMap Module/Script/Opcodes/31d">31d play sound effect</a>
+<a href="Opcodes/31f.html" title="FF7/WorldMap Module/Script/Opcodes/31f">31f unknown</a>
+<a href="Opcodes/320.html" title="FF7/WorldMap Module/Script/Opcodes/320">320 unknown</a>
+<a href="Opcodes/321.html" title="FF7/WorldMap Module/Script/Opcodes/321">321 unknown</a>
+<a href="Opcodes/324.html" title="FF7/WorldMap Module/Script/Opcodes/324">324 set window dimensions</a>
+<a href="Opcodes/325.html" title="FF7/WorldMap Module/Script/Opcodes/325">325 set window message</a>
+<a href="Opcodes/326.html" title="FF7/WorldMap Module/Script/Opcodes/326">326 set window prompt</a>
+<a href="Opcodes/327.html" title="FF7/WorldMap Module/Script/Opcodes/327">327 wait for prompt acknowledge?</a>
+<a href="Opcodes/328.html" title="FF7/WorldMap Module/Script/Opcodes/328">328 set active entity direction</a>
+<a href="Opcodes/329.html" title="FF7/WorldMap Module/Script/Opcodes/329">329 unknown</a>
+<a href="Opcodes/32a.html" title="FF7/WorldMap Module/Script/Opcodes/32a">32a unknown</a>
+<a href="Opcodes/32b.html" title="FF7/WorldMap Module/Script/Opcodes/32b">32b set battle lock</a>
+<a href="Opcodes/32c.html" title="FF7/WorldMap Module/Script/Opcodes/32c">32c set window parameters</a>
+<a href="Opcodes/32d.html" title="FF7/WorldMap Module/Script/Opcodes/32d">32d wait for window ready</a>
+<a href="Opcodes/32e.html" title="FF7/WorldMap Module/Script/Opcodes/32e">32e wait for message acknowledge</a>
+<a href="Opcodes/32f.html" title="FF7/WorldMap Module/Script/Opcodes/32f">32f unknown</a>
+<a href="Opcodes/330.html" title="FF7/WorldMap Module/Script/Opcodes/330">330 set active entity</a>
+<a href="Opcodes/331.html" title="FF7/WorldMap Module/Script/Opcodes/331">331 unknown</a>
+<a href="Opcodes/332.html" title="FF7/WorldMap Module/Script/Opcodes/332">332 unknown</a>
+<a href="Opcodes/333.html" title="FF7/WorldMap Module/Script/Opcodes/333">333 unknown</a>
+<a href="Opcodes/334.html" title="FF7/WorldMap Module/Script/Opcodes/334">334 unknown</a>
+<a href="Opcodes/336.html" title="FF7/WorldMap Module/Script/Opcodes/336">336 set active entity movespeed (honor walkmesh)</a>
+<a href="Opcodes/339.html" title="FF7/WorldMap Module/Script/Opcodes/339">339 unknown</a>
+<a href="Opcodes/33a.html" title="FF7/WorldMap Module/Script/Opcodes/33a">33a unknown</a>
+<a href="Opcodes/33b.html" title="FF7/WorldMap Module/Script/Opcodes/33b">33b fade out?</a>
+<a href="Opcodes/33c.html" title="FF7/WorldMap Module/Script/Opcodes/33c">33c set field entry point?</a>
+<a href="Opcodes/33d.html" title="FF7/WorldMap Module/Script/Opcodes/33d">33d set field entry point2?</a>
+<a href="Opcodes/33e.html" title="FF7/WorldMap Module/Script/Opcodes/33e">33e unknown</a>
+<a href="Opcodes/347.html" title="FF7/WorldMap Module/Script/Opcodes/347">347 move active entity to entity by model id?</a>
+<a href="Opcodes/348.html" title="FF7/WorldMap Module/Script/Opcodes/348">348 fade in?</a>
+<a href="Opcodes/349.html" title="FF7/WorldMap Module/Script/Opcodes/349">349 set world progress</a>
+<a href="Opcodes/34a.html" title="FF7/WorldMap Module/Script/Opcodes/34a">34a unknown</a>
+<a href="Opcodes/34b.html" title="FF7/WorldMap Module/Script/Opcodes/34b">34b set chocobo type</a>
+<a href="Opcodes/34c.html" title="FF7/WorldMap Module/Script/Opcodes/34c">34c set submarine color</a>
+<a href="Opcodes/34d.html" title="FF7/WorldMap Module/Script/Opcodes/34d">34d unknown</a>
+<a href="Opcodes/34e.html" title="FF7/WorldMap Module/Script/Opcodes/34e">34e unknown</a>
+<a href="Opcodes/34f.html" title="FF7/WorldMap Module/Script/Opcodes/34f">34f set active entity y position</a>
+<a href="Opcodes/350.html" title="FF7/WorldMap Module/Script/Opcodes/350">350 set meteor texture on/off</a>
+<a href="Opcodes/351.html" title="FF7/WorldMap Module/Script/Opcodes/351">351 set music volume</a>
+<a href="Opcodes/352.html" title="FF7/WorldMap Module/Script/Opcodes/352">352 shake camera on/off</a>
+<a href="Opcodes/353.html" title="FF7/WorldMap Module/Script/Opcodes/353">353 unknown</a>
+<a href="Opcodes/354.html" title="FF7/WorldMap Module/Script/Opcodes/354">354 unknown</a>
+<a href="Opcodes/355.html" title="FF7/WorldMap Module/Script/Opcodes/355">355 unknown</a>
+</pre>
+<!-- 
+NewPP limit report
+Preprocessor visited node count: 15/1000000
+Preprocessor generated node count: 20/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key qhimm_wiki:pcache:idhash:1673-0!*!0!!en!*!* and timestamp 20160922114135 -->
+</div>				<!-- /bodycontent -->
+								<!-- printfooter -->
+				<div class="printfooter">
+				Retrieved from "<a href="http://wiki.qhimm.com/index.php?title=FF7/WorldMap_Module/Script/Opcodes&amp;oldid=4810">http://wiki.qhimm.com/index.php?title=FF7/WorldMap_Module/Script/Opcodes&amp;oldid=4810</a>"				</div>
+				<!-- /printfooter -->
+												<!-- catlinks -->
+				<div id='catlinks' class='catlinks catlinks-allhidden'></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+				<!-- debughtml -->
+								<!-- /debughtml -->
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Personal tools</h5>
+	<ul>
+		<li id="pt-login"><a href="http://wiki.qhimm.com/index.php?title=Special:UserLogin&amp;returnto=FF7%2FWorldMap+Module%2FScript%2FOpcodes" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>
+	</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Namespaces</h5>
+	<ul>
+					<li  id="ca-nstab-main" class="selected"><span><a href="Opcodes.html"  title="View the content page [c]" accesskey="c">Page</a></span></li>
+					<li  id="ca-talk" class="new"><span><a href="http://wiki.qhimm.com/edit/Talk:FF7/WorldMap_Module/Script/Opcodes?redlink=1"  title="Discussion about the content page [t]" accesskey="t">Discussion</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+	<h4>
+		</h4>
+	<h5><span>Variants</span><a href="Opcodes.html#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Views</h5>
+	<ul>
+					<li id="ca-view" class="selected"><span><a href="Opcodes.html" >Read</a></span></li>
+					<li id="ca-viewsource"><span><a href="http://wiki.qhimm.com/edit/FF7/WorldMap_Module/Script/Opcodes"  title="This page is protected.&#13;&#10;You can view its source [e]" accesskey="e">View source</a></span></li>
+					<li id="ca-history" class="collapsible"><span><a href="http://wiki.qhimm.com/history/FF7/WorldMap_Module/Script/Opcodes"  title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>Actions</span><a href="Opcodes.html#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Search</label></h5>
+	<form action="http://wiki.qhimm.com/index.php" id="searchform">
+				<div>
+			<input type="search" name="search" title="Search QhimmWiki [f]" accesskey="f" id="searchInput" />			<input type="submit" name="go" value="Go" title="Go to a page with this exact name if exists" id="searchGoButton" class="searchButton" />			<input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton" />					<input type='hidden' name="title" value="Special:Search"/>
+		</div>
+	</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(../../../../skins/wiki.png);" href="../../../Main_Page.html"  title="Visit the main page"></a></div>
+				<!-- /logo -->
+				
+<!-- navigation -->
+<div class="portal" id='p-navigation'>
+	<h5>Navigation</h5>
+	<div class="body">
+		<ul>
+			<li id="n-mainpage-description"><a href="../../../Main_Page.html" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+			<li id="n-portal"><a href="http://wiki.qhimm.com/view/QhimmWiki:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+			<li id="n-currentevents"><a href="http://wiki.qhimm.com/view/QhimmWiki:Current_events" title="Find background information on current events">Current events</a></li>
+			<li id="n-recentchanges"><a href="../../../Special%253ARecentChanges.html" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+			<li id="n-randompage"><a href="../../../Special%253ARandom.html" title="Load a random page [x]" accesskey="x">Random page</a></li>
+			<li id="n-help"><a href="../../../Help%253AContents.html" title="The place to find out">Help</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- TOOLBOX -->
+<div class="portal" id='p-tb'>
+	<h5>Toolbox</h5>
+	<div class="body">
+		<ul>
+			<li id="t-whatlinkshere"><a href="../../../Special%253AWhatLinksHere/FF7/WorldMap_Module/Script/Opcodes.1.html" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+			<li id="t-recentchangeslinked"><a href="../../../Special%253ARecentChangesLinked/FF7/WorldMap_Module/Script/Opcodes.1.html" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+			<li id="t-specialpages"><a href="../../../Special%253ASpecialPages.html" title="A list of all special pages [q]" accesskey="q">Special pages</a></li>
+			<li id="t-print"><a href="http://wiki.qhimm.com/index.php?title=FF7/WorldMap_Module/Script/Opcodes&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>
+			<li id="t-permalink"><a href="http://wiki.qhimm.com/index.php?title=FF7/WorldMap_Module/Script/Opcodes&amp;oldid=4810" title="Permanent link to this revision of the page">Permanent link</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+
+<!-- /LANGUAGES -->
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 8 August 2014, at 18:14.</li>
+											<li id="footer-info-viewcount">This page has been accessed 4,794 times.</li>
+											<li id="footer-info-copyright">Content is available under <a class="external" href="http://creativecommons.org/licenses/by-nc-sa/2.5/">Attribution-NonCommercial-ShareAlike</a>.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="http://wiki.qhimm.com/view/QhimmWiki:Privacy_policy" title="QhimmWiki:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="http://wiki.qhimm.com/view/QhimmWiki:About" title="QhimmWiki:About">About QhimmWiki</a></li>
+											<li id="footer-places-disclaimer"><a href="../../../QhimmWiki%253AGeneral_disclaimer.html" title="QhimmWiki:General disclaimer">Disclaimers</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+					<li id="footer-copyrightico">
+						<a href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-NonCommercial-ShareAlike" width="88" height="31" /></a>
+					</li>
+					<li id="footer-poweredbyico">
+						<a href="http://www.mediawiki.org/"><img src="../../../../skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31" /></a>
+					</li>
+				</ul>
+						<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		<script>if(window.mw){
+mw.loader.state({"site":"loading","user":"missing","user.groups":"ready"});
+}</script>
+<script src="../../../../load.php@debug=false&amp;lang=en&amp;modules=skins.vector&amp;only=scripts&amp;skin=vector&amp;%252A"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.user","mediawiki.page.ready","mediawiki.searchSuggest"], null, true);
+}</script>
+<script>if(window.mw){
+mw.loader.state({"site":"ready"});
+}</script>
+<!-- Served in 0.117 secs. -->
+	</body>
+</html>
