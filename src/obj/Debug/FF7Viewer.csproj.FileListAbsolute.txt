@@ -17,3 +17,13 @@ C:\UserTemp\DMA\disas\FF7Viewer\obj\Debug\FF7Viewer.csproj.GenerateResource.Cach
 C:\UserTemp\DMA\disas\FF7Viewer\obj\Debug\FF7Viewer.exe
 C:\UserTemp\DMA\disas\FF7Viewer\obj\Debug\FF7Viewer.pdb
 C:\UserTemp\DMA\disas\FF7Viewer\bin\FieldScriptOpcodes.xml
+C:\UserTemp\DMA\disas\FF7Disas\src\bin\FieldScriptOpcodes.xml
+C:\UserTemp\DMA\disas\FF7Disas\src\bin\FF7Viewer.exe.config
+C:\UserTemp\DMA\disas\FF7Disas\src\bin\FF7Viewer.exe
+C:\UserTemp\DMA\disas\FF7Disas\src\bin\FF7Viewer.pdb
+C:\UserTemp\DMA\disas\FF7Disas\src\obj\Debug\FF7Viewer.csprojResolveAssemblyReference.cache
+C:\UserTemp\DMA\disas\FF7Disas\src\obj\Debug\FF7Viewer.frmMain.resources
+C:\UserTemp\DMA\disas\FF7Disas\src\obj\Debug\FF7Viewer.Properties.Resources.resources
+C:\UserTemp\DMA\disas\FF7Disas\src\obj\Debug\FF7Viewer.csproj.GenerateResource.Cache
+C:\UserTemp\DMA\disas\FF7Disas\src\obj\Debug\FF7Viewer.exe
+C:\UserTemp\DMA\disas\FF7Disas\src\obj\Debug\FF7Viewer.pdb

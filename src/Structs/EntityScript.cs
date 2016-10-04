@@ -7,20 +7,20 @@ namespace FF7Viewer
 {
     class EntityScript
     {
-        private List<Opcode> opcodes ;
+		//Constructor
         public EntityScript()
         {
-            opcodes = new List<Opcode>();
+            Opcodes = new List<Opcode>();
         }
-        public List<Opcode> Opcodes
-        {
-            get { return opcodes; }
-            set { opcodes = value; }
-        }
+        
+        //Auto Properties
+        public List<Opcode> Opcodes { get; set;}
+        
+        //Methods
         public override string ToString()
         {
             string str = "";
-            foreach (Opcode op in opcodes)
+            foreach (Opcode op in Opcodes)
             {
                 str += op.ToString() + "\r\n";
             }

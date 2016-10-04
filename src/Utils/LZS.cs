@@ -8,10 +8,10 @@ namespace FF7Viewer
     public static class LZS
     {
         //variables
-        private static int size = 4096;
+        private const int size = 4096;
         private static int start;
         private static int count;
-        private static byte[] elems = new byte[4096];
+        private static readonly byte[] elems = new byte[4096];
         //properties
         private static bool IsEmpty
         {
@@ -74,7 +74,7 @@ namespace FF7Viewer
             byte literal;
             byte[] offsetsize;
             UInt16 offset;
-            byte size;
+            byte length;
             int mask;
             MemoryStream stream;
             BinaryReader reader;
@@ -111,14 +111,14 @@ namespace FF7Viewer
                         else
                         { //offset
                             offsetsize = reader.ReadBytes(2);
-                            size = (byte)((offsetsize[1] & 0x0F)+3);
+                            length = (byte)((offsetsize[1] & 0x0F)+3);
                             offset = (UInt16)(offsetsize[0] + ((offsetsize[1] & 0xF0) << 4));
-                            ReadCb(offset, size, ref bytebuff);
-                            for (int j = 0; j < size; j++)
+                            ReadCb(offset, length, ref bytebuff);
+                            for (int j = 0; j < length; j++)
                             {
                                 WriteCb(bytebuff[j]);
                             }
-                            writer.Write(bytebuff, 0, size);
+                            writer.Write(bytebuff, 0, length);
                         }
                     }
                 }

@@ -126,7 +126,8 @@ namespace FF7Viewer
                     script.Scripts[i, j] = sc;
                 }
             }
-            //dialogs
+            
+            //read dialogs
             reader.BaseStream.Seek((UInt32)script.StringOffset + offset, SeekOrigin.Begin);
             script.NbDialogs = reader.ReadUInt16();
             for (i = 0; i < script.NbDialogs; i++)
@@ -151,6 +152,18 @@ namespace FF7Viewer
                 dialog = reader.ReadBytes(size);
                 script.Dialogs[i] = FF7Text.DecodeBytes(dialog, size);
                 dialog = null;
+            }
+            
+            //read akao
+            for (i = 0; i < script.NbAkaoOffsets; i++)
+            {
+            	AKAOFrame frm = new AKAOFrame();
+            	reader.BaseStream.Seek((UInt32)script.AkaoOffsets + offset, SeekOrigin.Begin);
+            	frm.Magic = Encoding.Default.GetString(reader.ReadBytes(8));
+            	frm.Id = reader.ReadUInt16();
+            	frm.Length = reader.ReadUInt16();
+            	frm.Unknown = reader.ReadBytes(8);
+            	script.Akaos[i] = frm;
             }
             return script;
         }

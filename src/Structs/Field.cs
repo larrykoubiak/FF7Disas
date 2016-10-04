@@ -19,24 +19,13 @@ namespace FF7Viewer
             Encounter,
             Model
         }
-        //variables
-        private UInt32[] offsets;
-        private Script script;
-        //constructor
+        //Constructor
         public Field()
         {
-            offsets = new UInt32[7];
+            Offsets = new UInt32[7];
         }
-        //properties
-        public UInt32[] Offsets
-        {
-            get { return offsets; }
-            set { offsets = value; }
-        }
-        public Script Script
-        {
-            get { return script; }
-            set { script = value; }
-        }
+        //Auto properties
+        public UInt32[] Offsets {get; set; }
+        public Script Script {get; set; }
     }
 }

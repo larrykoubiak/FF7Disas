@@ -8,16 +8,21 @@
  */
 using System;
 
-namespace FF7Viewer.Structs
+namespace FF7Viewer
 {
 	/// <summary>
 	/// Description of AKAOFrame.
 	/// </summary>
 	public class AKAOFrame
 	{
+		public string Magic {get; set;} //AKAO
+		public UInt16 Id {get; set;}
+		public UInt16 Length {get; set;}
+		public byte[] Unknown {get; set;}
+		
 		public AKAOFrame()
 		{
-			
+			Unknown = new byte[4];
 		}
 	}
 }

@@ -8,7 +8,7 @@ namespace FF7Viewer
     public static class FF7Text
     {
         //variables
-        private static string[] ff_chars = new string[]
+        private readonly static string[] ff_chars = new string[]
         {
             " "," !","\"","#","$"," %","&","'","(",")","*","+",",","-",".","/",
             "0","1","2","3","4","5","6","7","8","9"," :"," ;","<","=",">"," ?",
