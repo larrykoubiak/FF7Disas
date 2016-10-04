@@ -1,7 +1,0 @@
-/home/larry/FF7Disas/src/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
-/home/larry/FF7Disas/src/obj/Debug/FF7Viewer.frmMain.resources
-/home/larry/FF7Disas/src/obj/Debug/FF7Viewer.Properties.Resources.resources
-/home/larry/FF7Disas/src/obj/Debug/FF7Viewer.exe
-/home/larry/FF7Disas/src/bin/FieldScriptOpcodes.xml
-/home/larry/FF7Disas/src/bin/FF7Viewer.exe.config
-/home/larry/FF7Disas/src/bin/FF7Viewer.exe
