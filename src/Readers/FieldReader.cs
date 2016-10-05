@@ -158,8 +158,8 @@ namespace FF7Viewer
             for (i = 0; i < script.NbAkaoOffsets; i++)
             {
             	AKAOFrame frm = new AKAOFrame();
-            	reader.BaseStream.Seek((UInt32)script.AkaoOffsets + offset, SeekOrigin.Begin);
-            	frm.Magic = Encoding.Default.GetString(reader.ReadBytes(8));
+            	reader.BaseStream.Seek((UInt32)script.AkaoOffsets[i] + offset, SeekOrigin.Begin);
+            	frm.Magic = Encoding.Default.GetString(reader.ReadBytes(4));
             	frm.Id = reader.ReadUInt16();
             	frm.Length = reader.ReadUInt16();
             	frm.Unknown = reader.ReadBytes(8);

@@ -113,12 +113,11 @@
         	// 
         	// openFileDialog1
         	// 
-        	this.openFileDialog1.FileName = "openFileDialog1";
         	this.openFileDialog1.Filter = "DAT Files|*.dat|MIM Files|*.mim|BSX Files|*.bsx";
         	// 
         	// txtName
         	// 
-        	this.txtName.Location = new System.Drawing.Point(53, 39);
+        	this.txtName.Location = new System.Drawing.Point(53, 37);
         	this.txtName.Name = "txtName";
         	this.txtName.Size = new System.Drawing.Size(119, 20);
         	this.txtName.TabIndex = 1;
@@ -126,7 +125,7 @@
         	// label1
         	// 
         	this.label1.AutoSize = true;
-        	this.label1.Location = new System.Drawing.Point(12, 42);
+        	this.label1.Location = new System.Drawing.Point(12, 40);
         	this.label1.Name = "label1";
         	this.label1.Size = new System.Drawing.Size(35, 13);
         	this.label1.TabIndex = 2;
@@ -134,7 +133,7 @@
         	// 
         	// txtCreator
         	// 
-        	this.txtCreator.Location = new System.Drawing.Point(230, 39);
+        	this.txtCreator.Location = new System.Drawing.Point(230, 37);
         	this.txtCreator.Name = "txtCreator";
         	this.txtCreator.Size = new System.Drawing.Size(131, 20);
         	this.txtCreator.TabIndex = 3;
@@ -142,7 +141,7 @@
         	// label2
         	// 
         	this.label2.AutoSize = true;
-        	this.label2.Location = new System.Drawing.Point(183, 42);
+        	this.label2.Location = new System.Drawing.Point(183, 40);
         	this.label2.Name = "label2";
         	this.label2.Size = new System.Drawing.Size(41, 13);
         	this.label2.TabIndex = 4;
@@ -168,14 +167,14 @@
         	// txtDialogId
         	// 
         	this.txtDialogId.Enabled = false;
-        	this.txtDialogId.Location = new System.Drawing.Point(238, 69);
+        	this.txtDialogId.Location = new System.Drawing.Point(238, 67);
         	this.txtDialogId.Name = "txtDialogId";
         	this.txtDialogId.Size = new System.Drawing.Size(38, 20);
         	this.txtDialogId.TabIndex = 7;
         	// 
         	// btnPrevDialog
         	// 
-        	this.btnPrevDialog.Location = new System.Drawing.Point(325, 67);
+        	this.btnPrevDialog.Location = new System.Drawing.Point(325, 65);
         	this.btnPrevDialog.Name = "btnPrevDialog";
         	this.btnPrevDialog.Size = new System.Drawing.Size(14, 23);
         	this.btnPrevDialog.TabIndex = 8;
@@ -185,7 +184,7 @@
         	// 
         	// btnNextDialog
         	// 
-        	this.btnNextDialog.Location = new System.Drawing.Point(345, 67);
+        	this.btnNextDialog.Location = new System.Drawing.Point(345, 65);
         	this.btnNextDialog.Name = "btnNextDialog";
         	this.btnNextDialog.Size = new System.Drawing.Size(16, 23);
         	this.btnNextDialog.TabIndex = 9;
@@ -196,7 +195,7 @@
         	// label3
         	// 
         	this.label3.AutoSize = true;
-        	this.label3.Location = new System.Drawing.Point(12, 72);
+        	this.label3.Location = new System.Drawing.Point(12, 70);
         	this.label3.Name = "label3";
         	this.label3.Size = new System.Drawing.Size(41, 13);
         	this.label3.TabIndex = 10;
@@ -205,7 +204,7 @@
         	// label4
         	// 
         	this.label4.AutoSize = true;
-        	this.label4.Location = new System.Drawing.Point(190, 72);
+        	this.label4.Location = new System.Drawing.Point(190, 70);
         	this.label4.Name = "label4";
         	this.label4.Size = new System.Drawing.Size(42, 13);
         	this.label4.TabIndex = 11;
@@ -214,7 +213,7 @@
         	// lblNbDialogs
         	// 
         	this.lblNbDialogs.AutoSize = true;
-        	this.lblNbDialogs.Location = new System.Drawing.Point(282, 72);
+        	this.lblNbDialogs.Location = new System.Drawing.Point(282, 70);
         	this.lblNbDialogs.Name = "lblNbDialogs";
         	this.lblNbDialogs.Size = new System.Drawing.Size(12, 13);
         	this.lblNbDialogs.TabIndex = 12;
@@ -285,7 +284,7 @@
         	// lblNbAKAO
         	// 
         	this.lblNbAKAO.AutoSize = true;
-        	this.lblNbAKAO.Location = new System.Drawing.Point(693, 72);
+        	this.lblNbAKAO.Location = new System.Drawing.Point(693, 70);
         	this.lblNbAKAO.Name = "lblNbAKAO";
         	this.lblNbAKAO.Size = new System.Drawing.Size(12, 13);
         	this.lblNbAKAO.TabIndex = 25;
@@ -294,7 +293,7 @@
         	// label7
         	// 
         	this.label7.AutoSize = true;
-        	this.label7.Location = new System.Drawing.Point(572, 72);
+        	this.label7.Location = new System.Drawing.Point(572, 70);
         	this.label7.Name = "label7";
         	this.label7.Size = new System.Drawing.Size(71, 13);
         	this.label7.TabIndex = 24;
@@ -302,26 +301,28 @@
         	// 
         	// btnNextAKAO
         	// 
-        	this.btnNextAKAO.Location = new System.Drawing.Point(756, 67);
+        	this.btnNextAKAO.Location = new System.Drawing.Point(756, 65);
         	this.btnNextAKAO.Name = "btnNextAKAO";
         	this.btnNextAKAO.Size = new System.Drawing.Size(16, 23);
         	this.btnNextAKAO.TabIndex = 23;
         	this.btnNextAKAO.Text = ">";
         	this.btnNextAKAO.UseVisualStyleBackColor = true;
+        	this.btnNextAKAO.Click += new System.EventHandler(this.BtnNextAKAOClick);
         	// 
         	// btnPrevAKAO
         	// 
-        	this.btnPrevAKAO.Location = new System.Drawing.Point(736, 67);
+        	this.btnPrevAKAO.Location = new System.Drawing.Point(736, 65);
         	this.btnPrevAKAO.Name = "btnPrevAKAO";
         	this.btnPrevAKAO.Size = new System.Drawing.Size(14, 23);
         	this.btnPrevAKAO.TabIndex = 22;
         	this.btnPrevAKAO.Text = "<";
         	this.btnPrevAKAO.UseVisualStyleBackColor = true;
+        	this.btnPrevAKAO.Click += new System.EventHandler(this.BtnPrevAKAOClick);
         	// 
         	// txtAKAOId
         	// 
         	this.txtAKAOId.Enabled = false;
-        	this.txtAKAOId.Location = new System.Drawing.Point(649, 69);
+        	this.txtAKAOId.Location = new System.Drawing.Point(649, 67);
         	this.txtAKAOId.Name = "txtAKAOId";
         	this.txtAKAOId.Size = new System.Drawing.Size(38, 20);
         	this.txtAKAOId.TabIndex = 21;

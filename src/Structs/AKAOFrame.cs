@@ -24,5 +24,9 @@ namespace FF7Viewer
 		{
 			Unknown = new byte[4];
 		}
+        public override string ToString()
+        {
+        	return String.Format("Magic: {0}\nId: {1}\nLength: {2}\nUnknown: {3}",Magic,Id,Length,BitConverter.ToString(Unknown));
+        }
 	}
 }

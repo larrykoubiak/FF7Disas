@@ -184,7 +184,7 @@ namespace FF7Viewer
         	}
         	if (this.AkaoId < field.Script.NbAkaoOffsets && this.AkaoId >= 0)
         	{
-        		//TODO : print AKAO code
+        		this.txtAKAOFrames.Text = field.Script.Akaos[this.AkaoId].ToString();
         		this.txtAKAOId.Text = (this.AkaoId + 1).ToString("00");
         	}        	
         }
@@ -199,6 +199,16 @@ namespace FF7Viewer
 				fstream.Close();
 				stream.Close();
 			}
+		}
+		void BtnPrevAKAOClick(object sender, EventArgs e)
+		{
+			this.AkaoId -=1;
+			RefreshAKAO();
+		}
+		void BtnNextAKAOClick(object sender, EventArgs e)
+		{
+			this.AkaoId +=1;
+			RefreshAKAO();
 		}
     #endregion
     }
