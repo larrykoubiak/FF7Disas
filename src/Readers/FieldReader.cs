@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.IO;
@@ -92,31 +93,48 @@ namespace FF7Viewer
                             while (count < (byte)op.Operands.Length)
                             {
                                 Operand oper = op.Operands[count];
-                                double size = (double)oper.Size;
-                                int nb = (int)Math.Ceiling(size / 8);
-                                oper.Value = new byte[nb];
-                                buff = reader.ReadBytes(nb);
-                                if (size < 8)
+                                if(oper.Size < 8)
                                 {
-                                    byte towrite = 8;
-                                    while (towrite > 0 || count < (byte)op.Operands.Length)
-                                    {
-                                        int mask = 0;
-                                        //create mask
-                                        for (byte m = 0; m < size; m++)
-                                        {
-                                            mask = mask | ((byte)128 >> m);
-                                            mask = mask >> (8 - towrite);
-                                        }
-                                        byte val = (byte)((buff[0] & mask) >> (towrite - (byte)size));
-                                        oper.Value[0] = val;
-                                        towrite -= (byte)size;
-                                        count++;
-                                    }
-                                }
+                                	//prepare BitVector sections
+                                	int len = 0;
+                                	int secidx = 0;
+                                	List<BitVector32.Section> sections = new List<BitVector32.Section>();
+                                	while(oper.Size < 8 && len <=32)
+                                	{
+                                		BitVector32.Section sec;
+                                		if(secidx == 0) {
+                                			sec = BitVector32.CreateSection((short)((1 << oper.Size)-1));
+                                		} else {
+                                			sec = BitVector32.CreateSection((short)((1 << oper.Size)-1),sections[secidx-1]);
+                                		}
+                                		sections.Add(sec);
+                                		len += oper.Size;
+                                		secidx++;
+                                		if((count+secidx)>=op.Operands.Length)
+                                			break;
+                                		else
+                                			oper = op.Operands[count+secidx];
+                                	}
+                                	//assign values from byte array
+                                	buff = reader.ReadBytes((int)(len/8));
+                                	int valuetoparse = 0;
+                                	for(int k=0;k<buff.Length;k++)
+                                	{
+                                		valuetoparse += (buff[k] << (k*8));
+                                	}
+                                	BitVector32 bv = new BitVector32(valuetoparse);
+                                	for(int idx=0;idx<secidx;idx++)
+                                	{
+                                		oper = op.Operands[count];
+                                		oper.Value = new byte[1];
+                                		oper.Value[0] = (byte)bv[sections[idx]];
+                                		count++;
+                                	}                                	
+                                }                                
                                 else
                                 {
-                                    oper.Value = buff;
+                                	buff = reader.ReadBytes((int)oper.Size/8);
+                                	oper.Value = buff;
                                     count++;
                                 }
                             }

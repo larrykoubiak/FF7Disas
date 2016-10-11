@@ -32,16 +32,16 @@ namespace FF7Viewer
         public override string ToString()
         {
             string str = "";
-            str += LongName;
+            str += LongName + " [" + Name + "] ";
             if (Operands != null)
             {
-            	str += " (";
+            	//str += " (";
                 for (int i = 0; i < Operands.Length; i++)
                 {
-                	str += "[" + Operands[i].ToString() + "],";
+                	str += Operands[i].ToString() + ", ";
                 }
-                str = str.Substring(0,str.Length-1);
-            	str += ")";
+                str = str.Substring(0,str.Length-2);
+            	//str += ")";
             }
             return str;
         }
