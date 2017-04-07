@@ -16,6 +16,7 @@ namespace FF7Viewer
             //parse file
             field.Offsets = ReadOffsets();
             field.Script = ReadScript(field.Offsets[(int)Field.Offset.Script], field.Offsets[(int)Field.Offset.Walkmesh]);
+            field.Walkmesh = ReadWalkMesh(field.Offsets[(int)Field.Offset.Walkmesh], field.Offsets[(int)Field.Offset.Tilemap]);
             //cleanup
             reader.Close();
             return field;
@@ -184,6 +185,30 @@ namespace FF7Viewer
             	script.Akaos[i] = frm;
             }
             return script;
+        }
+        private Walkmesh ReadWalkMesh(UInt32 offset, UInt32 nextoffset) {
+            Walkmesh walkmesh;
+            int i,j;
+            UInt32 nb;
+            Int16 x,y,z,res;
+            //go to first offset
+            reader.BaseStream.Seek(offset, SeekOrigin.Begin);
+            nb = reader.ReadUInt32();
+            walkmesh = new Walkmesh(nb);
+            for(i = 0;i < nb;i++)
+            {
+            	Sector sector = new Sector();
+            	for(j=0;j<3;j++) {
+	            	x = reader.ReadInt16();
+	            	y = reader.ReadInt16();
+	            	z = reader.ReadInt16();
+	            	res = reader.ReadInt16();
+	            	Vertex_3S vertex = new Vertex_3S(x,y,z);
+	            	sector.Vertices[j] = vertex;
+            	}
+            	walkmesh.Sectors[i] = sector;
+            }
+            return walkmesh;
         }
     }
 }

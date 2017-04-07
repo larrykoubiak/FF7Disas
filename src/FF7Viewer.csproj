@@ -69,6 +69,7 @@
     <Compile Include="Structs\EntityScript.cs" />
     <Compile Include="Structs\Opcode.cs" />
     <Compile Include="Structs\Operand.cs" />
+    <Compile Include="Structs\Walkmesh.cs" />
     <Compile Include="Utils\Endian.cs" />
     <Compile Include="Structs\Field.cs" />
     <Compile Include="Readers\FieldReader.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Geometry.cs" />
     <Compile Include="Utils\LZS.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

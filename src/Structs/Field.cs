@@ -9,7 +9,7 @@ namespace FF7Viewer
 {
     class Field
     {
-        public enum Offset
+    	public enum Offset
         {
             Script,
             Walkmesh,
@@ -19,13 +19,15 @@ namespace FF7Viewer
             Encounter,
             Model
         }
-        //Constructor
+       //Auto properties
+        public UInt32[] Offsets {get; set; }
+        public Script Script {get; set; }
+        public Walkmesh Walkmesh {get; set;}
+    	//Constructor
         public Field()
         {
             Offsets = new UInt32[7];
         }
-        //Auto properties
-        public UInt32[] Offsets {get; set; }
-        public Script Script {get; set; }
+ 
     }
 }

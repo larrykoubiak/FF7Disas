@@ -95,6 +95,7 @@ namespace FF7Viewer
                 this.txtDescription.Text = "";
                 RefreshDialog();
                 RefreshAKAO();
+                RefreshWalkmesh();
                 if (field.Script.NbEntities > 0)
                 {
                     this.lstEntities.SelectedItem = this.lstEntities.Items[0];
@@ -187,6 +188,22 @@ namespace FF7Viewer
         		this.txtAKAOFrames.Text = field.Script.Akaos[this.AkaoId].ToString();
         		this.txtAKAOId.Text = (this.AkaoId + 1).ToString("00");
         	}        	
+        }
+        private void RefreshWalkmesh()
+        {
+        	dgvWalkMesh.Rows.Clear();
+        	for(int i=0; i <field.Walkmesh.NoS;i++)
+        	{
+        		string[] items = new string[10];
+        		items[0] = i.ToString();
+        		for(int j=0; j < 3;j++)
+        		{
+        			items[(3*j)+1] = field.Walkmesh.Sectors[i].Vertices[j].X.ToString();
+        			items[(3*j)+2] = field.Walkmesh.Sectors[i].Vertices[j].Y.ToString();      			
+        			items[(3*j)+3] = field.Walkmesh.Sectors[i].Vertices[j].Z.ToString();
+        		}
+        		dgvWalkMesh.Rows.Add(items);
+        	}
         }
 		void UnLZSToolStripMenuItemClick(object sender, EventArgs e)
 		{
