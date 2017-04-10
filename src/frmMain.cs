@@ -36,42 +36,84 @@ namespace FF7Viewer
         {
             OpenDatFile();
         }
-
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        private void UnLZSToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			if(openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+			{
+				MemoryStream stream;
+				FileStream fstream = new FileStream("unLZS_" + openFileDialog1.SafeFileName, FileMode.Create);
+				stream = LZS.unLZS(openFileDialog1.FileName);
+				stream.WriteTo(fstream);
+				fstream.Close();
+				stream.Close();
+			}
+		}
         private void btnPrevDialog_Click(object sender, EventArgs e)
         {
             this.DialogId -= 1;
             RefreshDialog();
         }
-
         private void btnNextDialog_Click(object sender, EventArgs e)
         {
             this.DialogId += 1;
             RefreshDialog();
         }
-
         private void lstEntities_SelectedIndexChanged(object sender, EventArgs e)
         {
             EntityId = this.lstEntities.SelectedIndex;
             ScriptId = 0;
             RefreshScript();
-        }
-        
+        }      
         private void btnPrevScript_Click(object sender, EventArgs e)
         {
             this.ScriptId -= 1;
             RefreshScript();
         }
-
         private void btnNextScript_Click(object sender, EventArgs e)
         {
             this.ScriptId += 1;
             RefreshScript();
         }
+		void BtnPrevAKAOClick(object sender, EventArgs e)
+		{
+			this.AkaoId -=1;
+			RefreshAKAO();
+		}
+		void BtnNextAKAOClick(object sender, EventArgs e)
+		{
+			this.AkaoId +=1;
+			RefreshAKAO();
+		}
+		void GlControl1Load(object sender, EventArgs e)
+		{
+			loaded = true;
+			GL.ClearColor(Color.CornflowerBlue);
+			SetupViewport();
+		}
+		void GlControl1Resize(object sender, EventArgs e)
+		{
+			if(!loaded)
+				return;
+		}
+		void GlControl1Paint(object sender, PaintEventArgs e)
+		{
+			if(!loaded)
+				return;
+			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+			GL.MatrixMode(MatrixMode.Modelview);
+			GL.LoadIdentity();
+			GL.Color3(Color.Yellow);
+			GL.Begin(PrimitiveType.Triangles);
+			GL.Vertex2(10,20);
+			GL.Vertex2(100,20);
+			GL.Vertex2(100,50);
+			GL.End();
+			glControl1.SwapBuffers();
+		}
     #endregion
     #region Methods
         private void OpenDatFile()
@@ -208,46 +250,17 @@ namespace FF7Viewer
         		idx = dgvWalkMesh.Rows.Add(items);
         		dgvWalkMesh.Rows[idx].HeaderCell.Value = i.ToString();
         	}
+        	glControl1.Invalidate();
         }
-		void UnLZSToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			if(openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-			{
-				MemoryStream stream;
-				FileStream fstream = new FileStream("unLZS_" + openFileDialog1.SafeFileName, FileMode.Create);
-				stream = LZS.unLZS(openFileDialog1.FileName);
-				stream.WriteTo(fstream);
-				fstream.Close();
-				stream.Close();
-			}
-		}
-		void BtnPrevAKAOClick(object sender, EventArgs e)
-		{
-			this.AkaoId -=1;
-			RefreshAKAO();
-		}
-		void BtnNextAKAOClick(object sender, EventArgs e)
-		{
-			this.AkaoId +=1;
-			RefreshAKAO();
-		}
-		void GlControl1Load(object sender, EventArgs e)
-		{
-			loaded = true;
-			GL.ClearColor(Color.CornflowerBlue);
-		}
-		void GlControl1Resize(object sender, EventArgs e)
-		{
-			if(!loaded)
-				return;
-		}
-		void GlControl1Paint(object sender, PaintEventArgs e)
-		{
-			if(!loaded)
-				return;
-			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-			glControl1.SwapBuffers();
-		}
-    #endregion
+	    private void SetupViewport()
+	    {
+	      int w = glControl1.Width;
+	      int h = glControl1.Height;
+	      GL.MatrixMode(MatrixMode.Projection);
+	      GL.LoadIdentity();
+	      GL.Ortho(0, w, 0, h, -1, 1); // Bottom-left corner pixel has coordinate (0, 0)
+	      GL.Viewport(0, 0, w, h); // Use all of the glControl painting area
+	    }
+        #endregion
     }
 }

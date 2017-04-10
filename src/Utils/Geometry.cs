@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using OpenTK;
 
 namespace FF7Viewer
 {
@@ -33,6 +34,17 @@ namespace FF7Viewer
 			Z = z;
 			Res = z;
 		}
+		public Vector3 Vector3
+		{
+			get { return new Vector3((float)X,(float)Y,(float)Z);}
+			set 
+			{
+				X = (Int16)value.X;
+				Y = (Int16)value.Y;
+				Z = (Int16)value.Z;
+				Res = (Int16)value.Z;
+			}
+		}
 	}
 	public class Sector
 	{
@@ -51,6 +63,5 @@ namespace FF7Viewer
 		{
 			Vertices = vertices;
 		}
-			
 	}
 }
