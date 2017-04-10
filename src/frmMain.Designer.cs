@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+        	System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+        	System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+        	System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
         	this.menuStrip1 = new System.Windows.Forms.MenuStrip();
         	this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,8 +65,8 @@
         	this.label1 = new System.Windows.Forms.Label();
         	this.txtName = new System.Windows.Forms.TextBox();
         	this.tpWalkmesh = new System.Windows.Forms.TabPage();
+        	this.scWalkMesh = new System.Windows.Forms.SplitContainer();
         	this.dgvWalkMesh = new System.Windows.Forms.DataGridView();
-        	this.idx = new System.Windows.Forms.DataGridViewTextBoxColumn();
         	this.v0x = new System.Windows.Forms.DataGridViewTextBoxColumn();
         	this.v0y = new System.Windows.Forms.DataGridViewTextBoxColumn();
         	this.v0z = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,11 +76,18 @@
         	this.v2x = new System.Windows.Forms.DataGridViewTextBoxColumn();
         	this.v2y = new System.Windows.Forms.DataGridViewTextBoxColumn();
         	this.v2z = new System.Windows.Forms.DataGridViewTextBoxColumn();
+        	this.pnlTK = new System.Windows.Forms.Panel();
+        	this.glControl1 = new OpenTK.GLControl();
         	this.menuStrip1.SuspendLayout();
         	this.tabControl1.SuspendLayout();
         	this.tpScript.SuspendLayout();
         	this.tpWalkmesh.SuspendLayout();
+        	((System.ComponentModel.ISupportInitialize)(this.scWalkMesh)).BeginInit();
+        	this.scWalkMesh.Panel1.SuspendLayout();
+        	this.scWalkMesh.Panel2.SuspendLayout();
+        	this.scWalkMesh.SuspendLayout();
         	((System.ComponentModel.ISupportInitialize)(this.dgvWalkMesh)).BeginInit();
+        	this.pnlTK.SuspendLayout();
         	this.SuspendLayout();
         	// 
         	// menuStrip1
@@ -204,6 +214,7 @@
         	this.btnNextAKAO.TabIndex = 47;
         	this.btnNextAKAO.Text = ">";
         	this.btnNextAKAO.UseVisualStyleBackColor = true;
+        	this.btnNextAKAO.Click += new System.EventHandler(this.BtnNextAKAOClick);
         	// 
         	// btnPrevAKAO
         	// 
@@ -213,6 +224,7 @@
         	this.btnPrevAKAO.TabIndex = 46;
         	this.btnPrevAKAO.Text = "<";
         	this.btnPrevAKAO.UseVisualStyleBackColor = true;
+        	this.btnPrevAKAO.Click += new System.EventHandler(this.BtnPrevAKAOClick);
         	// 
         	// txtAKAOId
         	// 
@@ -256,6 +268,7 @@
         	this.btnNextScript.TabIndex = 41;
         	this.btnNextScript.Text = ">";
         	this.btnNextScript.UseVisualStyleBackColor = true;
+        	this.btnNextScript.Click += new System.EventHandler(this.btnNextScript_Click);
         	// 
         	// btnPrevScript
         	// 
@@ -265,6 +278,7 @@
         	this.btnPrevScript.TabIndex = 40;
         	this.btnPrevScript.Text = "<";
         	this.btnPrevScript.UseVisualStyleBackColor = true;
+        	this.btnPrevScript.Click += new System.EventHandler(this.btnPrevScript_Click);
         	// 
         	// txtScriptId
         	// 
@@ -317,6 +331,7 @@
         	this.btnNextDialog.TabIndex = 34;
         	this.btnNextDialog.Text = ">";
         	this.btnNextDialog.UseVisualStyleBackColor = true;
+        	this.btnNextDialog.Click += new System.EventHandler(this.btnNextDialog_Click);
         	// 
         	// btnPrevDialog
         	// 
@@ -326,6 +341,7 @@
         	this.btnPrevDialog.TabIndex = 33;
         	this.btnPrevDialog.Text = "<";
         	this.btnPrevDialog.UseVisualStyleBackColor = true;
+        	this.btnPrevDialog.Click += new System.EventHandler(this.btnPrevDialog_Click);
         	// 
         	// txtDialogId
         	// 
@@ -350,6 +366,7 @@
         	this.lstEntities.Name = "lstEntities";
         	this.lstEntities.Size = new System.Drawing.Size(160, 368);
         	this.lstEntities.TabIndex = 30;
+        	this.lstEntities.SelectedIndexChanged += new System.EventHandler(this.lstEntities_SelectedIndexChanged);
         	// 
         	// label2
         	// 
@@ -385,7 +402,7 @@
         	// 
         	// tpWalkmesh
         	// 
-        	this.tpWalkmesh.Controls.Add(this.dgvWalkMesh);
+        	this.tpWalkmesh.Controls.Add(this.scWalkMesh);
         	this.tpWalkmesh.Location = new System.Drawing.Point(4, 22);
         	this.tpWalkmesh.Name = "tpWalkmesh";
         	this.tpWalkmesh.Padding = new System.Windows.Forms.Padding(3);
@@ -394,11 +411,35 @@
         	this.tpWalkmesh.Text = "Walkmesh";
         	this.tpWalkmesh.UseVisualStyleBackColor = true;
         	// 
+        	// scWalkMesh
+        	// 
+        	this.scWalkMesh.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.scWalkMesh.Location = new System.Drawing.Point(3, 3);
+        	this.scWalkMesh.Name = "scWalkMesh";
+        	// 
+        	// scWalkMesh.Panel1
+        	// 
+        	this.scWalkMesh.Panel1.Controls.Add(this.dgvWalkMesh);
+        	// 
+        	// scWalkMesh.Panel2
+        	// 
+        	this.scWalkMesh.Panel2.Controls.Add(this.pnlTK);
+        	this.scWalkMesh.Size = new System.Drawing.Size(956, 439);
+        	this.scWalkMesh.SplitterDistance = 509;
+        	this.scWalkMesh.TabIndex = 1;
+        	// 
         	// dgvWalkMesh
         	// 
+        	dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+        	dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+        	dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        	dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+        	dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+        	dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+        	dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+        	this.dgvWalkMesh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
         	this.dgvWalkMesh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
         	this.dgvWalkMesh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-			this.idx,
 			this.v0x,
 			this.v0y,
 			this.v0z,
@@ -409,60 +450,99 @@
 			this.v2y,
 			this.v2z});
         	this.dgvWalkMesh.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.dgvWalkMesh.Location = new System.Drawing.Point(3, 3);
+        	this.dgvWalkMesh.Location = new System.Drawing.Point(0, 0);
         	this.dgvWalkMesh.Name = "dgvWalkMesh";
-        	this.dgvWalkMesh.Size = new System.Drawing.Size(956, 439);
-        	this.dgvWalkMesh.TabIndex = 0;
-        	// 
-        	// idx
-        	// 
-        	this.idx.HeaderText = "Index";
-        	this.idx.Name = "idx";
+        	dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+        	dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDark;
+        	dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        	dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+        	dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+        	dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+        	dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+        	this.dgvWalkMesh.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+        	this.dgvWalkMesh.RowHeadersWidth = 55;
+        	dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+        	this.dgvWalkMesh.RowsDefaultCellStyle = dataGridViewCellStyle3;
+        	this.dgvWalkMesh.Size = new System.Drawing.Size(509, 439);
+        	this.dgvWalkMesh.TabIndex = 1;
         	// 
         	// v0x
         	// 
         	this.v0x.HeaderText = "v0x";
         	this.v0x.Name = "v0x";
+        	this.v0x.Width = 50;
         	// 
         	// v0y
         	// 
         	this.v0y.HeaderText = "v0x";
         	this.v0y.Name = "v0y";
+        	this.v0y.Width = 50;
         	// 
         	// v0z
         	// 
+        	this.v0z.DividerWidth = 2;
         	this.v0z.HeaderText = "v0z";
         	this.v0z.Name = "v0z";
+        	this.v0z.Width = 50;
         	// 
         	// v1x
         	// 
         	this.v1x.HeaderText = "v1x";
         	this.v1x.Name = "v1x";
+        	this.v1x.Width = 50;
         	// 
         	// v1y
         	// 
         	this.v1y.HeaderText = "v1y";
         	this.v1y.Name = "v1y";
+        	this.v1y.Width = 50;
         	// 
         	// v1z
         	// 
+        	this.v1z.DividerWidth = 2;
         	this.v1z.HeaderText = "v1z";
         	this.v1z.Name = "v1z";
+        	this.v1z.Width = 50;
         	// 
         	// v2x
         	// 
         	this.v2x.HeaderText = "v2x";
         	this.v2x.Name = "v2x";
+        	this.v2x.Width = 50;
         	// 
         	// v2y
         	// 
         	this.v2y.HeaderText = "v2y";
         	this.v2y.Name = "v2y";
+        	this.v2y.Width = 50;
         	// 
         	// v2z
         	// 
         	this.v2z.HeaderText = "v2z";
         	this.v2z.Name = "v2z";
+        	this.v2z.Width = 50;
+        	// 
+        	// pnlTK
+        	// 
+        	this.pnlTK.Controls.Add(this.glControl1);
+        	this.pnlTK.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.pnlTK.Location = new System.Drawing.Point(0, 0);
+        	this.pnlTK.Name = "pnlTK";
+        	this.pnlTK.Size = new System.Drawing.Size(443, 439);
+        	this.pnlTK.TabIndex = 0;
+        	// 
+        	// glControl1
+        	// 
+        	this.glControl1.BackColor = System.Drawing.Color.Black;
+        	this.glControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.glControl1.Location = new System.Drawing.Point(0, 0);
+        	this.glControl1.Name = "glControl1";
+        	this.glControl1.Size = new System.Drawing.Size(443, 439);
+        	this.glControl1.TabIndex = 0;
+        	this.glControl1.VSync = false;
+        	this.glControl1.Load += new System.EventHandler(this.GlControl1Load);
+        	this.glControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.GlControl1Paint);
+        	this.glControl1.Resize += new System.EventHandler(this.GlControl1Resize);
         	// 
         	// frmMain
         	// 
@@ -480,7 +560,12 @@
         	this.tpScript.ResumeLayout(false);
         	this.tpScript.PerformLayout();
         	this.tpWalkmesh.ResumeLayout(false);
+        	this.scWalkMesh.Panel1.ResumeLayout(false);
+        	this.scWalkMesh.Panel2.ResumeLayout(false);
+        	((System.ComponentModel.ISupportInitialize)(this.scWalkMesh)).EndInit();
+        	this.scWalkMesh.ResumeLayout(false);
         	((System.ComponentModel.ISupportInitialize)(this.dgvWalkMesh)).EndInit();
+        	this.pnlTK.ResumeLayout(false);
         	this.ResumeLayout(false);
         	this.PerformLayout();
 
@@ -532,7 +617,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn v2x;
         private System.Windows.Forms.DataGridViewTextBoxColumn v2y;
         private System.Windows.Forms.DataGridViewTextBoxColumn v2z;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idx;
+        private System.Windows.Forms.SplitContainer scWalkMesh;
+        private System.Windows.Forms.Panel pnlTK;
+        private OpenTK.GLControl glControl1;
     }
 }
 

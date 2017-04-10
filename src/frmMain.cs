@@ -8,13 +8,16 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml.Serialization;
+using OpenTK;
+using OpenTK.Graphics;
+using OpenTK.Graphics.OpenGL;
 
 namespace FF7Viewer
 {
     public partial class frmMain : Form
     {
     #region Fields + Constructor
-
+    	bool loaded;
         Field field;
         int DialogId;
         int ScriptId;
@@ -191,18 +194,19 @@ namespace FF7Viewer
         }
         private void RefreshWalkmesh()
         {
+        	int idx = 0;
         	dgvWalkMesh.Rows.Clear();
         	for(int i=0; i <field.Walkmesh.NoS;i++)
         	{
-        		string[] items = new string[10];
-        		items[0] = i.ToString();
+        		string[] items = new string[9];
         		for(int j=0; j < 3;j++)
         		{
-        			items[(3*j)+1] = field.Walkmesh.Sectors[i].Vertices[j].X.ToString();
-        			items[(3*j)+2] = field.Walkmesh.Sectors[i].Vertices[j].Y.ToString();      			
-        			items[(3*j)+3] = field.Walkmesh.Sectors[i].Vertices[j].Z.ToString();
+        			items[(3*j)+0] = field.Walkmesh.Sectors[i].Vertices[j].X.ToString();
+        			items[(3*j)+1] = field.Walkmesh.Sectors[i].Vertices[j].Y.ToString();      			
+        			items[(3*j)+2] = field.Walkmesh.Sectors[i].Vertices[j].Z.ToString();
         		}
-        		dgvWalkMesh.Rows.Add(items);
+        		idx = dgvWalkMesh.Rows.Add(items);
+        		dgvWalkMesh.Rows[idx].HeaderCell.Value = i.ToString();
         	}
         }
 		void UnLZSToolStripMenuItemClick(object sender, EventArgs e)
@@ -226,6 +230,23 @@ namespace FF7Viewer
 		{
 			this.AkaoId +=1;
 			RefreshAKAO();
+		}
+		void GlControl1Load(object sender, EventArgs e)
+		{
+			loaded = true;
+			GL.ClearColor(Color.CornflowerBlue);
+		}
+		void GlControl1Resize(object sender, EventArgs e)
+		{
+			if(!loaded)
+				return;
+		}
+		void GlControl1Paint(object sender, PaintEventArgs e)
+		{
+			if(!loaded)
+				return;
+			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+			glControl1.SwapBuffers();
 		}
     #endregion
     }
