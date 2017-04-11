@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.IO;
+using OpenTK;
 namespace FF7Viewer
 {
     class FieldReader
@@ -203,7 +204,7 @@ namespace FF7Viewer
 	            	y = reader.ReadInt16();
 	            	z = reader.ReadInt16();
 	            	res = reader.ReadInt16();
-	            	Vertex_3S vertex = new Vertex_3S(x,y,z);
+	            	Vector3 vertex = new Vector3((float)x,(float)y,(float)z);
 	            	sector.Vertices[j] = vertex;
             	}
             	walkmesh.Sectors[i] = sector;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+        	this.components = new System.ComponentModel.Container();
         	System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
         	System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
         	System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -67,6 +68,9 @@
         	this.tpWalkmesh = new System.Windows.Forms.TabPage();
         	this.scWalkMesh = new System.Windows.Forms.SplitContainer();
         	this.dgvWalkMesh = new System.Windows.Forms.DataGridView();
+        	this.pnlTK = new System.Windows.Forms.Panel();
+        	this.glControl1 = new OpenTK.GLControl();
+        	this.timer1 = new System.Windows.Forms.Timer(this.components);
         	this.v0x = new System.Windows.Forms.DataGridViewTextBoxColumn();
         	this.v0y = new System.Windows.Forms.DataGridViewTextBoxColumn();
         	this.v0z = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,8 +80,6 @@
         	this.v2x = new System.Windows.Forms.DataGridViewTextBoxColumn();
         	this.v2y = new System.Windows.Forms.DataGridViewTextBoxColumn();
         	this.v2z = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        	this.pnlTK = new System.Windows.Forms.Panel();
-        	this.glControl1 = new OpenTK.GLControl();
         	this.menuStrip1.SuspendLayout();
         	this.tabControl1.SuspendLayout();
         	this.tpScript.SuspendLayout();
@@ -97,7 +99,7 @@
 			this.lZSToolStripMenuItem});
         	this.menuStrip1.Location = new System.Drawing.Point(0, 0);
         	this.menuStrip1.Name = "menuStrip1";
-        	this.menuStrip1.Size = new System.Drawing.Size(970, 24);
+        	this.menuStrip1.Size = new System.Drawing.Size(960, 24);
         	this.menuStrip1.TabIndex = 0;
         	this.menuStrip1.Text = "menuStrip1";
         	// 
@@ -151,7 +153,7 @@
         	this.tabControl1.Location = new System.Drawing.Point(0, 24);
         	this.tabControl1.Name = "tabControl1";
         	this.tabControl1.SelectedIndex = 0;
-        	this.tabControl1.Size = new System.Drawing.Size(970, 471);
+        	this.tabControl1.Size = new System.Drawing.Size(960, 471);
         	this.tabControl1.TabIndex = 1;
         	// 
         	// tpScript
@@ -183,7 +185,7 @@
         	this.tpScript.Location = new System.Drawing.Point(4, 22);
         	this.tpScript.Name = "tpScript";
         	this.tpScript.Padding = new System.Windows.Forms.Padding(3);
-        	this.tpScript.Size = new System.Drawing.Size(962, 445);
+        	this.tpScript.Size = new System.Drawing.Size(952, 445);
         	this.tpScript.TabIndex = 0;
         	this.tpScript.Text = "Scripts";
         	this.tpScript.UseVisualStyleBackColor = true;
@@ -406,7 +408,7 @@
         	this.tpWalkmesh.Location = new System.Drawing.Point(4, 22);
         	this.tpWalkmesh.Name = "tpWalkmesh";
         	this.tpWalkmesh.Padding = new System.Windows.Forms.Padding(3);
-        	this.tpWalkmesh.Size = new System.Drawing.Size(962, 445);
+        	this.tpWalkmesh.Size = new System.Drawing.Size(952, 445);
         	this.tpWalkmesh.TabIndex = 1;
         	this.tpWalkmesh.Text = "Walkmesh";
         	this.tpWalkmesh.UseVisualStyleBackColor = true;
@@ -424,8 +426,8 @@
         	// scWalkMesh.Panel2
         	// 
         	this.scWalkMesh.Panel2.Controls.Add(this.pnlTK);
-        	this.scWalkMesh.Size = new System.Drawing.Size(956, 439);
-        	this.scWalkMesh.SplitterDistance = 509;
+        	this.scWalkMesh.Size = new System.Drawing.Size(946, 439);
+        	this.scWalkMesh.SplitterDistance = 503;
         	this.scWalkMesh.TabIndex = 1;
         	// 
         	// dgvWalkMesh
@@ -463,8 +465,35 @@
         	this.dgvWalkMesh.RowHeadersWidth = 55;
         	dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
         	this.dgvWalkMesh.RowsDefaultCellStyle = dataGridViewCellStyle3;
-        	this.dgvWalkMesh.Size = new System.Drawing.Size(509, 439);
+        	this.dgvWalkMesh.Size = new System.Drawing.Size(503, 439);
         	this.dgvWalkMesh.TabIndex = 1;
+        	// 
+        	// pnlTK
+        	// 
+        	this.pnlTK.Controls.Add(this.glControl1);
+        	this.pnlTK.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.pnlTK.Location = new System.Drawing.Point(0, 0);
+        	this.pnlTK.Name = "pnlTK";
+        	this.pnlTK.Size = new System.Drawing.Size(439, 439);
+        	this.pnlTK.TabIndex = 0;
+        	// 
+        	// glControl1
+        	// 
+        	this.glControl1.BackColor = System.Drawing.Color.Black;
+        	this.glControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.glControl1.Location = new System.Drawing.Point(0, 0);
+        	this.glControl1.Name = "glControl1";
+        	this.glControl1.Size = new System.Drawing.Size(439, 439);
+        	this.glControl1.TabIndex = 0;
+        	this.glControl1.VSync = true;
+        	this.glControl1.Load += new System.EventHandler(this.GlControl1Load);
+        	this.glControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.GlControl1Paint);
+        	this.glControl1.Resize += new System.EventHandler(this.GlControl1Resize);
+        	// 
+        	// timer1
+        	// 
+        	this.timer1.Interval = 20;
+        	this.timer1.Tick += new System.EventHandler(this.Timer1Tick);
         	// 
         	// v0x
         	// 
@@ -474,7 +503,7 @@
         	// 
         	// v0y
         	// 
-        	this.v0y.HeaderText = "v0x";
+        	this.v0y.HeaderText = "v0y";
         	this.v0y.Name = "v0y";
         	this.v0y.Width = 50;
         	// 
@@ -522,33 +551,11 @@
         	this.v2z.Name = "v2z";
         	this.v2z.Width = 50;
         	// 
-        	// pnlTK
-        	// 
-        	this.pnlTK.Controls.Add(this.glControl1);
-        	this.pnlTK.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.pnlTK.Location = new System.Drawing.Point(0, 0);
-        	this.pnlTK.Name = "pnlTK";
-        	this.pnlTK.Size = new System.Drawing.Size(443, 439);
-        	this.pnlTK.TabIndex = 0;
-        	// 
-        	// glControl1
-        	// 
-        	this.glControl1.BackColor = System.Drawing.Color.Black;
-        	this.glControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.glControl1.Location = new System.Drawing.Point(0, 0);
-        	this.glControl1.Name = "glControl1";
-        	this.glControl1.Size = new System.Drawing.Size(443, 439);
-        	this.glControl1.TabIndex = 0;
-        	this.glControl1.VSync = false;
-        	this.glControl1.Load += new System.EventHandler(this.GlControl1Load);
-        	this.glControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.GlControl1Paint);
-        	this.glControl1.Resize += new System.EventHandler(this.GlControl1Resize);
-        	// 
         	// frmMain
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
         	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        	this.ClientSize = new System.Drawing.Size(970, 495);
+        	this.ClientSize = new System.Drawing.Size(960, 495);
         	this.Controls.Add(this.tabControl1);
         	this.Controls.Add(this.menuStrip1);
         	this.MainMenuStrip = this.menuStrip1;
@@ -620,6 +627,7 @@
         private System.Windows.Forms.SplitContainer scWalkMesh;
         private System.Windows.Forms.Panel pnlTK;
         private OpenTK.GLControl glControl1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
