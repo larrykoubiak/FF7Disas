@@ -37,7 +37,7 @@ namespace FF7Viewer
         int vbo_mview;
         Vector3[] vertdata;
         Vector3[] coldata;
-        Matrix4[] mviewdata;
+		List<Volume> objects = new List<Volume>();
         int[] indicedata;
         float time = 0.0f;
         //Constructor
@@ -188,6 +188,8 @@ namespace FF7Viewer
         }
 	    private void InitProgram()
 	    {
+			objects.Add(new Cube());
+            objects.Add(new Cube());            
 	    	pgmId = GL.CreateProgram();
 	    	LoadShader(@"Shaders\vs.glsl",ShaderType.VertexShader,pgmId, out vsId);
 	    	LoadShader(@"Shaders\fs.glsl",ShaderType.FragmentShader,pgmId, out fsId);
@@ -220,20 +222,47 @@ namespace FF7Viewer
 	    {
 	    	if(!loaded)
 	    		return;
-	    	time += 0.2f;
+            List<Vector3> verts = new List<Vector3>();
+            List<int> inds = new List<int>();
+            List<Vector3> colors = new List<Vector3>();
+            int vertcount = 0;
+            foreach (Volume v in objects)
+            {
+                verts.AddRange(v.GetVerts().ToList());
+                inds.AddRange(v.GetIndices(vertcount).ToList());
+                colors.AddRange(v.GetColorData().ToList());
+                vertcount += v.VertCount;
+            }
+            vertdata = verts.ToArray();
+            indicedata = inds.ToArray();
+            coldata = colors.ToArray();
+
 	    	GL.BindBuffer(BufferTarget.ArrayBuffer, vbo_position);
 	    	GL.BufferData<Vector3>(BufferTarget.ArrayBuffer,(IntPtr)(vertdata.Length * Vector3.SizeInBytes),vertdata,BufferUsageHint.StaticDraw);
 	    	GL.VertexAttribPointer(attribute_vpos,3,VertexAttribPointerType.Float,false,0,0);
+	    	
 	    	GL.BindBuffer(BufferTarget.ArrayBuffer, vbo_color);
 	    	GL.BufferData<Vector3>(BufferTarget.ArrayBuffer,(IntPtr)(coldata.Length * Vector3.SizeInBytes),coldata,BufferUsageHint.StaticDraw);
 	    	GL.VertexAttribPointer(attribute_vcol,3,VertexAttribPointerType.Float,true,0,0);
+
 	    	GL.BindBuffer(BufferTarget.ElementArrayBuffer, ibo_elements);
 	    	GL.BufferData(BufferTarget.ElementArrayBuffer,(IntPtr)(indicedata.Length * sizeof(int)),indicedata,BufferUsageHint.StaticDraw);
-	    	mviewdata[0] = Matrix4.CreateRotationY(0.02f * time)
-	    		* Matrix4.CreateRotationX(0.015f * time)
-	    		* Matrix4.CreateTranslation(0.0f, 0.0f, -3.0f)
-	    		* Matrix4.CreatePerspectiveFieldOfView(1.3f, (float)glControl1.Width / (float)glControl1.Height, 1.0f,40.0f);
-	    	GL.UniformMatrix4(uniform_mview,false,ref mviewdata[0]);
+	    	
+	    	time += 0.2f;
+			objects[0].Position = new Vector3(0.3f, -0.5f + (float) Math.Sin(time/4), -3.0f);
+            objects[0].Rotation = new Vector3(0.55f * time, 0.25f * time, 0);
+            objects[0].Scale = new Vector3(0.1f, 0.1f, 0.1f);
+ 
+            objects[1].Position = new Vector3(-1f, 0.5f + (float)Math.Cos(time/4), -2.0f);
+            objects[1].Rotation = new Vector3(-0.25f * time, -0.35f * time, 0);
+            objects[1].Scale = new Vector3(0.25f, 0.25f, 0.25f);
+            
+	    	foreach (Volume v in objects)
+            {
+                v.CalculateModelMatrix();
+                v.ViewProjectionMatrix = Matrix4.CreatePerspectiveFieldOfView(1.3f, ClientSize.Width / (float)ClientSize.Height, 1.0f, 40.0f);
+                v.ModelViewProjectionMatrix = v.ModelMatrix * v.ViewProjectionMatrix;
+            }
 	    	GL.UseProgram(pgmId);
 	    	GL.BindBuffer(BufferTarget.ArrayBuffer,0);
 	    } 
@@ -298,42 +327,6 @@ namespace FF7Viewer
 		private void GlControl1Load(object sender, EventArgs e)
 		{
 			InitProgram();
-			//vertdata = new Vector3[] { new Vector3(-0.8f, -0.8f, 0f), new Vector3( 0.8f, -0.8f, 0f), new Vector3(0f, 1f, 0f)};
-			vertdata = new Vector3[] {
-				new Vector3(-0.8f, -0.8f, -0.8f),
-				new Vector3(0.8f, -0.8f, -0.8f),
-				new Vector3(0.8f, 0.8f, -0.8f),
-				new Vector3(-0.8f, 0.8f, -0.8f),
-				new Vector3(-0.8f, -0.8f, 0.8f),
-				new Vector3(0.8f, -0.8f, 0.8f),
-				new Vector3(0.8f, 0.8f, 0.8f),
-				new Vector3(-0.8f, 0.8f, 0.8f)
-			};
-			indicedata = new int[] {
-				0,7,3,
-				0,4,7,
-				1,2,6,
-				6,5,1,
-				0,2,1,
-				0,3,2,
-				4,5,6,
-				6,7,4,
-				2,3,6,
-				6,3,7,
-				0,1,5,
-				0,5,4
-			};
-			coldata = new Vector3[] { 
-				new Vector3(1f, 0f, 0f),
-				new Vector3(0f,0f,1f),
-				new Vector3(0f,1f,0f),
-				new Vector3(1f,0f,0f),
-				new Vector3(0f,0f,1f),
-				new Vector3(0f,1f,0f),
-				new Vector3(1f,0f,0f),
-				new Vector3(0f,0f,1f)
-			};
-			mviewdata = new Matrix4[] { Matrix4.Identity };
 			loaded = true;
 			timer1.Enabled = true;
 			timer1.Start();
@@ -355,6 +348,13 @@ namespace FF7Viewer
 			GL.Enable(EnableCap.DepthTest);
 			GL.EnableVertexAttribArray(attribute_vpos);
 			GL.EnableVertexAttribArray(attribute_vcol);
+			int indiceat = 0;
+			foreach(Volume v in objects)
+			{
+				GL.UniformMatrix4(uniform_mview,false,ref v.ModelViewProjectionMatrix);
+				GL.DrawElements(PrimitiveType.Triangles, v.IndiceCount, DrawElementsType.UnsignedInt, indiceat * sizeof(uint));
+				indiceat += v.IndiceCount;
+			}
 			GL.DrawElements(PrimitiveType.Triangles,indicedata.Length,DrawElementsType.UnsignedInt,0);
 			GL.DisableVertexAttribArray(attribute_vpos);
 			GL.DisableVertexAttribArray(attribute_vcol);
