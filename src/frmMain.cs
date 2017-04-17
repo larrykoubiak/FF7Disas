@@ -188,8 +188,22 @@ namespace FF7Viewer
         }
 	    private void InitProgram()
 	    {
-			objects.Add(new Cube());
-            objects.Add(new Cube());            
+			Random rand = new Random();
+			for(int i = 0;i< 4; i++)
+			{
+				Sierpinski s = new Sierpinski(i);
+				s.Position = new Vector3(
+					(float)rand.Next(-2,2),
+					(float)rand.Next(-2,2),
+					(float)rand.Next(-8,-1));
+				s.Rotation = new Vector3(
+					(float)rand.Next(0,6),
+					(float)rand.Next(0,6),
+					(float)rand.Next(0,6));
+				s.Scale = Vector3.One * ((float)rand.NextDouble() + 0.2f);
+				objects.Add(s);
+
+			}
 	    	pgmId = GL.CreateProgram();
 	    	LoadShader(@"Shaders\vs.glsl",ShaderType.VertexShader,pgmId, out vsId);
 	    	LoadShader(@"Shaders\fs.glsl",ShaderType.FragmentShader,pgmId, out fsId);
@@ -247,19 +261,13 @@ namespace FF7Viewer
 
 	    	GL.BindBuffer(BufferTarget.ElementArrayBuffer, ibo_elements);
 	    	GL.BufferData(BufferTarget.ElementArrayBuffer,(IntPtr)(indicedata.Length * sizeof(int)),indicedata,BufferUsageHint.StaticDraw);
-	    	
-	    	time += 0.2f;
-			objects[0].Position = new Vector3(0.3f, -0.5f + (float) Math.Sin(time/4), -3.0f);
-            objects[0].Rotation = new Vector3(0.55f * time, 0.25f * time, 0);
-            objects[0].Scale = new Vector3(0.1f, 0.1f, 0.1f);
- 
-            objects[1].Position = new Vector3(-1f, 0.5f + (float)Math.Cos(time/4), -2.0f);
-            objects[1].Rotation = new Vector3(-0.25f * time, -0.35f * time, 0);
-            objects[1].Scale = new Vector3(0.25f, 0.25f, 0.25f);
-            
+
+	    	time += 0.2f;   	
 	    	foreach (Volume v in objects)
             {
-                v.CalculateModelMatrix();
+//	    		v.Position = new Vector3(v.Position.X+(float)Math.Cos(time/2)/8, v.Position.Y+(float)Math.Sin(time/2)/8, v.Position.Z);
+            	v.Rotation = new Vector3(0.55f * time, 0.25f * time, 0);
+	    		v.CalculateModelMatrix();
                 v.ViewProjectionMatrix = Matrix4.CreatePerspectiveFieldOfView(1.3f, ClientSize.Width / (float)ClientSize.Height, 1.0f, 40.0f);
                 v.ModelViewProjectionMatrix = v.ModelMatrix * v.ViewProjectionMatrix;
             }
