@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Xml.Serialization;
 using OpenTK;
+using OpenTK.Input;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 
@@ -38,8 +39,14 @@ namespace FF7Viewer
         Vector3[] vertdata;
         Vector3[] coldata;
 		List<Volume> objects = new List<Volume>();
+		Camera cam = new Camera();
         int[] indicedata;
         float time = 0.0f;
+        Vector2 lastMousePos = new Vector2();
+        KeyboardState prevkstate;
+        MouseState prevmstate;
+        bool CaptureControls = false;
+        bool InControl = false;
         //Constructor
         public frmMain()
         {
@@ -189,19 +196,19 @@ namespace FF7Viewer
 	    private void InitProgram()
 	    {
 			Random rand = new Random();
-			for(int i = 0;i< 4; i++)
+			for(int i = 0;i< 100; i++)
 			{
-				Sierpinski s = new Sierpinski(i);
-				s.Position = new Vector3(
-					(float)rand.Next(-2,2),
-					(float)rand.Next(-2,2),
-					(float)rand.Next(-8,-1));
-				s.Rotation = new Vector3(
+				ColorCube c = new ColorCube(new Vector3((float)rand.NextDouble(),(float)rand.NextDouble(),(float)rand.NextDouble()));
+				c.Position = new Vector3(
+					(float)rand.Next(-4,4),
+					(float)rand.Next(-4,4),
+					(float)rand.Next(-16,-1));
+				c.Rotation = new Vector3(
 					(float)rand.Next(0,6),
 					(float)rand.Next(0,6),
 					(float)rand.Next(0,6));
-				s.Scale = Vector3.One * ((float)rand.NextDouble() + 0.2f);
-				objects.Add(s);
+				c.Scale = Vector3.One * ((float)rand.NextDouble() + 0.2f);
+				objects.Add(c);
 
 			}
 	    	pgmId = GL.CreateProgram();
@@ -268,12 +275,69 @@ namespace FF7Viewer
 //	    		v.Position = new Vector3(v.Position.X+(float)Math.Cos(time/2)/8, v.Position.Y+(float)Math.Sin(time/2)/8, v.Position.Z);
             	v.Rotation = new Vector3(0.55f * time, 0.25f * time, 0);
 	    		v.CalculateModelMatrix();
-                v.ViewProjectionMatrix = Matrix4.CreatePerspectiveFieldOfView(1.3f, ClientSize.Width / (float)ClientSize.Height, 1.0f, 40.0f);
+	    		v.ViewProjectionMatrix = cam.GetViewMatrix() * Matrix4.CreatePerspectiveFieldOfView(1.3f, ClientSize.Width / (float)ClientSize.Height, 1.0f, 40.0f);
                 v.ModelViewProjectionMatrix = v.ModelMatrix * v.ViewProjectionMatrix;
             }
 	    	GL.UseProgram(pgmId);
 	    	GL.BindBuffer(BufferTarget.ArrayBuffer,0);
+	    	KeyboardState kstate = Keyboard.GetState();
+	    	MouseState mstate = Mouse.GetState();
+	    	Point p = glControl1.PointToScreen(Point.Empty);
+			if(kstate.IsKeyDown(Key.Space) && !prevkstate.IsKeyDown(Key.Space))
+			{
+				CaptureControls = !CaptureControls;
+				if(CaptureControls)
+				{
+					Cursor.Hide();
+					resetCursor();						
+				}
+				else
+				{
+					Cursor.Show();						
+				}
+			}
+	    	if(CaptureControls)
+	    	{
+	    		//Mouse
+	    		Vector2 delta = new Vector2(prevmstate.X,prevmstate.Y) - new Vector2(mstate.X, mstate.Y);
+	    		cam.AddRotation(delta.X,delta.Y);
+	    		resetCursor();
+				//Keyboard
+
+				if(kstate.IsKeyDown(Key.W))
+				{
+					cam.Move(0f,0.1f, 0f);
+				}
+				else if(kstate.IsKeyDown(Key.S))
+				{
+					cam.Move(0f,-0.1f,0f);
+				}
+				if(kstate.IsKeyDown(Key.A))
+				{
+					cam.Move(-0.1f,0f,0f);
+				}
+				else if(kstate.IsKeyDown(Key.D))
+				{
+					cam.Move(0.1f,0f,0f);
+				}
+				if(kstate.IsKeyDown(Key.Q))
+				{
+					cam.Move(0f,0f,0.1f);
+				}
+				else if(kstate.IsKeyDown(Key.E))
+				{
+					cam.Move(0f,0f,-0.1f);
+				}
+	    	}
+	    	prevkstate = kstate;
+	    	prevmstate = mstate;
 	    } 
+	    private void resetCursor()
+	    {
+	    	OpenTK.Input.Mouse.SetPosition(glControl1.PointToScreen(Point.Empty).X + (glControl1.Bounds.Width / 2),
+	    	                               glControl1.PointToScreen(Point.Empty).Y + (glControl1.Bounds.Height / 2));
+	    	lastMousePos = new Vector2(OpenTK.Input.Mouse.GetState().X, OpenTK.Input.Mouse.GetState().Y);
+	    }
 	#endregion
     #region Events
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -346,6 +410,7 @@ namespace FF7Viewer
 		{
 			if(!loaded)
 				return;
+			glControl1.Invalidate();			
 		}
 		private void GlControl1Paint(object sender, PaintEventArgs e)
 		{
@@ -374,6 +439,7 @@ namespace FF7Viewer
 			UpdateFrame();
 			glControl1.Invalidate();
 		}
+
 	#endregion
 
     }

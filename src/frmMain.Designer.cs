@@ -42,35 +42,32 @@
         	this.tabControl1 = new System.Windows.Forms.TabControl();
         	this.tpScript = new System.Windows.Forms.TabPage();
         	this.lblNbAKAO = new System.Windows.Forms.Label();
-        	this.label7 = new System.Windows.Forms.Label();
+        	this.lblAKAOBlocks = new System.Windows.Forms.Label();
         	this.btnNextAKAO = new System.Windows.Forms.Button();
         	this.btnPrevAKAO = new System.Windows.Forms.Button();
         	this.txtAKAOId = new System.Windows.Forms.TextBox();
         	this.txtAKAOFrames = new System.Windows.Forms.RichTextBox();
         	this.lblNbScripts = new System.Windows.Forms.Label();
-        	this.label6 = new System.Windows.Forms.Label();
+        	this.lblScripts = new System.Windows.Forms.Label();
         	this.btnNextScript = new System.Windows.Forms.Button();
         	this.btnPrevScript = new System.Windows.Forms.Button();
         	this.txtScriptId = new System.Windows.Forms.TextBox();
         	this.txtDescription = new System.Windows.Forms.TextBox();
         	this.lblNbDialogs = new System.Windows.Forms.Label();
-        	this.label4 = new System.Windows.Forms.Label();
-        	this.label3 = new System.Windows.Forms.Label();
+        	this.lblDialogs = new System.Windows.Forms.Label();
+        	this.lblEntities = new System.Windows.Forms.Label();
         	this.btnNextDialog = new System.Windows.Forms.Button();
         	this.btnPrevDialog = new System.Windows.Forms.Button();
         	this.txtDialogId = new System.Windows.Forms.TextBox();
         	this.txtDialog = new System.Windows.Forms.RichTextBox();
         	this.lstEntities = new System.Windows.Forms.ListBox();
-        	this.label2 = new System.Windows.Forms.Label();
+        	this.lblCreator = new System.Windows.Forms.Label();
         	this.txtCreator = new System.Windows.Forms.TextBox();
-        	this.label1 = new System.Windows.Forms.Label();
+        	this.lblScriptName = new System.Windows.Forms.Label();
         	this.txtName = new System.Windows.Forms.TextBox();
         	this.tpWalkmesh = new System.Windows.Forms.TabPage();
         	this.scWalkMesh = new System.Windows.Forms.SplitContainer();
         	this.dgvWalkMesh = new System.Windows.Forms.DataGridView();
-        	this.pnlTK = new System.Windows.Forms.Panel();
-        	this.glControl1 = new OpenTK.GLControl();
-        	this.timer1 = new System.Windows.Forms.Timer(this.components);
         	this.v0x = new System.Windows.Forms.DataGridViewTextBoxColumn();
         	this.v0y = new System.Windows.Forms.DataGridViewTextBoxColumn();
         	this.v0z = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,6 +77,9 @@
         	this.v2x = new System.Windows.Forms.DataGridViewTextBoxColumn();
         	this.v2y = new System.Windows.Forms.DataGridViewTextBoxColumn();
         	this.v2z = new System.Windows.Forms.DataGridViewTextBoxColumn();
+        	this.pnlTK = new System.Windows.Forms.Panel();
+        	this.glControl1 = new OpenTK.GLControl();
+        	this.timer1 = new System.Windows.Forms.Timer(this.components);
         	this.menuStrip1.SuspendLayout();
         	this.tabControl1.SuspendLayout();
         	this.tpScript.SuspendLayout();
@@ -159,28 +159,28 @@
         	// tpScript
         	// 
         	this.tpScript.Controls.Add(this.lblNbAKAO);
-        	this.tpScript.Controls.Add(this.label7);
+        	this.tpScript.Controls.Add(this.lblAKAOBlocks);
         	this.tpScript.Controls.Add(this.btnNextAKAO);
         	this.tpScript.Controls.Add(this.btnPrevAKAO);
         	this.tpScript.Controls.Add(this.txtAKAOId);
         	this.tpScript.Controls.Add(this.txtAKAOFrames);
         	this.tpScript.Controls.Add(this.lblNbScripts);
-        	this.tpScript.Controls.Add(this.label6);
+        	this.tpScript.Controls.Add(this.lblScripts);
         	this.tpScript.Controls.Add(this.btnNextScript);
         	this.tpScript.Controls.Add(this.btnPrevScript);
         	this.tpScript.Controls.Add(this.txtScriptId);
         	this.tpScript.Controls.Add(this.txtDescription);
         	this.tpScript.Controls.Add(this.lblNbDialogs);
-        	this.tpScript.Controls.Add(this.label4);
-        	this.tpScript.Controls.Add(this.label3);
+        	this.tpScript.Controls.Add(this.lblDialogs);
+        	this.tpScript.Controls.Add(this.lblEntities);
         	this.tpScript.Controls.Add(this.btnNextDialog);
         	this.tpScript.Controls.Add(this.btnPrevDialog);
         	this.tpScript.Controls.Add(this.txtDialogId);
         	this.tpScript.Controls.Add(this.txtDialog);
         	this.tpScript.Controls.Add(this.lstEntities);
-        	this.tpScript.Controls.Add(this.label2);
+        	this.tpScript.Controls.Add(this.lblCreator);
         	this.tpScript.Controls.Add(this.txtCreator);
-        	this.tpScript.Controls.Add(this.label1);
+        	this.tpScript.Controls.Add(this.lblScriptName);
         	this.tpScript.Controls.Add(this.txtName);
         	this.tpScript.Location = new System.Drawing.Point(4, 22);
         	this.tpScript.Name = "tpScript";
@@ -199,14 +199,14 @@
         	this.lblNbAKAO.TabIndex = 49;
         	this.lblNbAKAO.Text = "/";
         	// 
-        	// label7
+        	// lblAKAOBlocks
         	// 
-        	this.label7.AutoSize = true;
-        	this.label7.Location = new System.Drawing.Point(573, 46);
-        	this.label7.Name = "label7";
-        	this.label7.Size = new System.Drawing.Size(71, 13);
-        	this.label7.TabIndex = 48;
-        	this.label7.Text = "AKAO Blocks";
+        	this.lblAKAOBlocks.AutoSize = true;
+        	this.lblAKAOBlocks.Location = new System.Drawing.Point(573, 46);
+        	this.lblAKAOBlocks.Name = "lblAKAOBlocks";
+        	this.lblAKAOBlocks.Size = new System.Drawing.Size(71, 13);
+        	this.lblAKAOBlocks.TabIndex = 48;
+        	this.lblAKAOBlocks.Text = "AKAO Blocks";
         	// 
         	// btnNextAKAO
         	// 
@@ -253,14 +253,14 @@
         	this.lblNbScripts.TabIndex = 43;
         	this.lblNbScripts.Text = "/32";
         	// 
-        	// label6
+        	// lblScripts
         	// 
-        	this.label6.AutoSize = true;
-        	this.label6.Location = new System.Drawing.Point(191, 250);
-        	this.label6.Name = "label6";
-        	this.label6.Size = new System.Drawing.Size(39, 13);
-        	this.label6.TabIndex = 42;
-        	this.label6.Text = "Scripts";
+        	this.lblScripts.AutoSize = true;
+        	this.lblScripts.Location = new System.Drawing.Point(191, 250);
+        	this.lblScripts.Name = "lblScripts";
+        	this.lblScripts.Size = new System.Drawing.Size(39, 13);
+        	this.lblScripts.TabIndex = 42;
+        	this.lblScripts.Text = "Scripts";
         	// 
         	// btnNextScript
         	// 
@@ -307,23 +307,23 @@
         	this.lblNbDialogs.TabIndex = 37;
         	this.lblNbDialogs.Text = "/";
         	// 
-        	// label4
+        	// lblDialogs
         	// 
-        	this.label4.AutoSize = true;
-        	this.label4.Location = new System.Drawing.Point(191, 46);
-        	this.label4.Name = "label4";
-        	this.label4.Size = new System.Drawing.Size(42, 13);
-        	this.label4.TabIndex = 36;
-        	this.label4.Text = "Dialogs";
+        	this.lblDialogs.AutoSize = true;
+        	this.lblDialogs.Location = new System.Drawing.Point(191, 46);
+        	this.lblDialogs.Name = "lblDialogs";
+        	this.lblDialogs.Size = new System.Drawing.Size(42, 13);
+        	this.lblDialogs.TabIndex = 36;
+        	this.lblDialogs.Text = "Dialogs";
         	// 
-        	// label3
+        	// lblEntities
         	// 
-        	this.label3.AutoSize = true;
-        	this.label3.Location = new System.Drawing.Point(13, 46);
-        	this.label3.Name = "label3";
-        	this.label3.Size = new System.Drawing.Size(41, 13);
-        	this.label3.TabIndex = 35;
-        	this.label3.Text = "Entities";
+        	this.lblEntities.AutoSize = true;
+        	this.lblEntities.Location = new System.Drawing.Point(13, 46);
+        	this.lblEntities.Name = "lblEntities";
+        	this.lblEntities.Size = new System.Drawing.Size(41, 13);
+        	this.lblEntities.TabIndex = 35;
+        	this.lblEntities.Text = "Entities";
         	// 
         	// btnNextDialog
         	// 
@@ -370,14 +370,14 @@
         	this.lstEntities.TabIndex = 30;
         	this.lstEntities.SelectedIndexChanged += new System.EventHandler(this.lstEntities_SelectedIndexChanged);
         	// 
-        	// label2
+        	// lblCreator
         	// 
-        	this.label2.AutoSize = true;
-        	this.label2.Location = new System.Drawing.Point(184, 16);
-        	this.label2.Name = "label2";
-        	this.label2.Size = new System.Drawing.Size(41, 13);
-        	this.label2.TabIndex = 29;
-        	this.label2.Text = "Creator";
+        	this.lblCreator.AutoSize = true;
+        	this.lblCreator.Location = new System.Drawing.Point(184, 16);
+        	this.lblCreator.Name = "lblCreator";
+        	this.lblCreator.Size = new System.Drawing.Size(41, 13);
+        	this.lblCreator.TabIndex = 29;
+        	this.lblCreator.Text = "Creator";
         	// 
         	// txtCreator
         	// 
@@ -386,14 +386,14 @@
         	this.txtCreator.Size = new System.Drawing.Size(131, 20);
         	this.txtCreator.TabIndex = 28;
         	// 
-        	// label1
+        	// lblScriptName
         	// 
-        	this.label1.AutoSize = true;
-        	this.label1.Location = new System.Drawing.Point(13, 16);
-        	this.label1.Name = "label1";
-        	this.label1.Size = new System.Drawing.Size(35, 13);
-        	this.label1.TabIndex = 27;
-        	this.label1.Text = "Name";
+        	this.lblScriptName.AutoSize = true;
+        	this.lblScriptName.Location = new System.Drawing.Point(13, 16);
+        	this.lblScriptName.Name = "lblScriptName";
+        	this.lblScriptName.Size = new System.Drawing.Size(35, 13);
+        	this.lblScriptName.TabIndex = 27;
+        	this.lblScriptName.Text = "Name";
         	// 
         	// txtName
         	// 
@@ -468,33 +468,6 @@
         	this.dgvWalkMesh.Size = new System.Drawing.Size(503, 439);
         	this.dgvWalkMesh.TabIndex = 1;
         	// 
-        	// pnlTK
-        	// 
-        	this.pnlTK.Controls.Add(this.glControl1);
-        	this.pnlTK.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.pnlTK.Location = new System.Drawing.Point(0, 0);
-        	this.pnlTK.Name = "pnlTK";
-        	this.pnlTK.Size = new System.Drawing.Size(439, 439);
-        	this.pnlTK.TabIndex = 0;
-        	// 
-        	// glControl1
-        	// 
-        	this.glControl1.BackColor = System.Drawing.Color.Black;
-        	this.glControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.glControl1.Location = new System.Drawing.Point(0, 0);
-        	this.glControl1.Name = "glControl1";
-        	this.glControl1.Size = new System.Drawing.Size(439, 439);
-        	this.glControl1.TabIndex = 0;
-        	this.glControl1.VSync = true;
-        	this.glControl1.Load += new System.EventHandler(this.GlControl1Load);
-        	this.glControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.GlControl1Paint);
-        	this.glControl1.Resize += new System.EventHandler(this.GlControl1Resize);
-        	// 
-        	// timer1
-        	// 
-        	this.timer1.Interval = 20;
-        	this.timer1.Tick += new System.EventHandler(this.Timer1Tick);
-        	// 
         	// v0x
         	// 
         	this.v0x.HeaderText = "v0x";
@@ -551,6 +524,33 @@
         	this.v2z.Name = "v2z";
         	this.v2z.Width = 50;
         	// 
+        	// pnlTK
+        	// 
+        	this.pnlTK.Controls.Add(this.glControl1);
+        	this.pnlTK.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.pnlTK.Location = new System.Drawing.Point(0, 0);
+        	this.pnlTK.Name = "pnlTK";
+        	this.pnlTK.Size = new System.Drawing.Size(439, 439);
+        	this.pnlTK.TabIndex = 0;
+        	// 
+        	// glControl1
+        	// 
+        	this.glControl1.BackColor = System.Drawing.Color.Black;
+        	this.glControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.glControl1.Location = new System.Drawing.Point(0, 0);
+        	this.glControl1.Name = "glControl1";
+        	this.glControl1.Size = new System.Drawing.Size(439, 439);
+        	this.glControl1.TabIndex = 0;
+        	this.glControl1.VSync = true;
+        	this.glControl1.Load += new System.EventHandler(this.GlControl1Load);
+        	this.glControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.GlControl1Paint);
+        	this.glControl1.Resize += new System.EventHandler(this.GlControl1Resize);
+        	// 
+        	// timer1
+        	// 
+        	this.timer1.Interval = 20;
+        	this.timer1.Tick += new System.EventHandler(this.Timer1Tick);
+        	// 
         	// frmMain
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -558,6 +558,7 @@
         	this.ClientSize = new System.Drawing.Size(960, 495);
         	this.Controls.Add(this.tabControl1);
         	this.Controls.Add(this.menuStrip1);
+        	this.KeyPreview = true;
         	this.MainMenuStrip = this.menuStrip1;
         	this.Name = "frmMain";
         	this.Text = "FF7 Viewer";
@@ -586,20 +587,20 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblScriptName;
         private System.Windows.Forms.TextBox txtCreator;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCreator;
         private System.Windows.Forms.ListBox lstEntities;
         private System.Windows.Forms.RichTextBox txtDialog;
         private System.Windows.Forms.TextBox txtDialogId;
         private System.Windows.Forms.Button btnPrevDialog;
         private System.Windows.Forms.Button btnNextDialog;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblEntities;
+        private System.Windows.Forms.Label lblDialogs;
         private System.Windows.Forms.Label lblNbDialogs;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label lblNbScripts;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblScripts;
         private System.Windows.Forms.Button btnNextScript;
         private System.Windows.Forms.Button btnPrevScript;
         private System.Windows.Forms.TextBox txtScriptId;
@@ -607,7 +608,7 @@
         private System.Windows.Forms.ToolStripMenuItem unLZSToolStripMenuItem;
         private System.Windows.Forms.Label lblNbAKAO;
         private System.Windows.Forms.RichTextBox txtAKAOFrames;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblAKAOBlocks;
         private System.Windows.Forms.Button btnNextAKAO;
         private System.Windows.Forms.Button btnPrevAKAO;
         private System.Windows.Forms.TextBox txtAKAOId;
