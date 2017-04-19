@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-        	this.components = new System.ComponentModel.Container();
         	System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
         	System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
         	System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -78,8 +77,6 @@
         	this.v2y = new System.Windows.Forms.DataGridViewTextBoxColumn();
         	this.v2z = new System.Windows.Forms.DataGridViewTextBoxColumn();
         	this.pnlTK = new System.Windows.Forms.Panel();
-        	this.glControl1 = new OpenTK.GLControl();
-        	this.timer1 = new System.Windows.Forms.Timer(this.components);
         	this.menuStrip1.SuspendLayout();
         	this.tabControl1.SuspendLayout();
         	this.tpScript.SuspendLayout();
@@ -89,7 +86,6 @@
         	this.scWalkMesh.Panel2.SuspendLayout();
         	this.scWalkMesh.SuspendLayout();
         	((System.ComponentModel.ISupportInitialize)(this.dgvWalkMesh)).BeginInit();
-        	this.pnlTK.SuspendLayout();
         	this.SuspendLayout();
         	// 
         	// menuStrip1
@@ -526,30 +522,11 @@
         	// 
         	// pnlTK
         	// 
-        	this.pnlTK.Controls.Add(this.glControl1);
         	this.pnlTK.Dock = System.Windows.Forms.DockStyle.Fill;
         	this.pnlTK.Location = new System.Drawing.Point(0, 0);
         	this.pnlTK.Name = "pnlTK";
         	this.pnlTK.Size = new System.Drawing.Size(439, 439);
         	this.pnlTK.TabIndex = 0;
-        	// 
-        	// glControl1
-        	// 
-        	this.glControl1.BackColor = System.Drawing.Color.Black;
-        	this.glControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.glControl1.Location = new System.Drawing.Point(0, 0);
-        	this.glControl1.Name = "glControl1";
-        	this.glControl1.Size = new System.Drawing.Size(439, 439);
-        	this.glControl1.TabIndex = 0;
-        	this.glControl1.VSync = true;
-        	this.glControl1.Load += new System.EventHandler(this.GlControl1Load);
-        	this.glControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.GlControl1Paint);
-        	this.glControl1.Resize += new System.EventHandler(this.GlControl1Resize);
-        	// 
-        	// timer1
-        	// 
-        	this.timer1.Interval = 20;
-        	this.timer1.Tick += new System.EventHandler(this.Timer1Tick);
         	// 
         	// frmMain
         	// 
@@ -573,7 +550,6 @@
         	((System.ComponentModel.ISupportInitialize)(this.scWalkMesh)).EndInit();
         	this.scWalkMesh.ResumeLayout(false);
         	((System.ComponentModel.ISupportInitialize)(this.dgvWalkMesh)).EndInit();
-        	this.pnlTK.ResumeLayout(false);
         	this.ResumeLayout(false);
         	this.PerformLayout();
 
@@ -627,8 +603,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn v2z;
         private System.Windows.Forms.SplitContainer scWalkMesh;
         private System.Windows.Forms.Panel pnlTK;
-        private OpenTK.GLControl glControl1;
-        private System.Windows.Forms.Timer timer1;
     }
 }
 

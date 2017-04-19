@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using OpenTK;
+using TKView;
 namespace FF7Viewer
 {
     class FieldReader

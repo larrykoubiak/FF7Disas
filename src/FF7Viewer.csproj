@@ -90,7 +90,6 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\Geometry.cs" />
     <Compile Include="Utils\LZS.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,6 +133,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Shaders" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TKView\TKView.csproj">
+      <Project>{d53f719c-2d2a-4c5a-911b-220f8f5c57e2}</Project>
+      <Name>TKView</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

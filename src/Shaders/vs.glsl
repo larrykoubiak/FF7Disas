@@ -9,6 +9,6 @@ void
 main()
 {
     gl_Position = modelview * vec4(vPosition, 1.0);
- 
+ 	
     color = vec4( vColor, 1.0);
 }

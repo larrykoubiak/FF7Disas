@@ -8,10 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml.Serialization;
+using TKView;
 using OpenTK;
-using OpenTK.Input;
-using OpenTK.Graphics;
-using OpenTK.Graphics.OpenGL;
 
 namespace FF7Viewer
 {
@@ -24,36 +22,19 @@ namespace FF7Viewer
         int ScriptId;
         int EntityId;
         int AkaoId;
-        //OpenTK variables
-    	bool loaded;
-        int pgmId;
-        int vsId;
-        int fsId;
-        int attribute_vcol;
-        int attribute_vpos;
-        int uniform_mview;
-        int vbo_position;
-        int vbo_color;
-        int ibo_elements;
-        int vbo_mview;
-        Vector3[] vertdata;
-        Vector3[] coldata;
-		List<Volume> objects = new List<Volume>();
-		Camera cam = new Camera();
-        int[] indicedata;
-        float time = 0.0f;
-        Vector2 lastMousePos = new Vector2();
-        KeyboardState prevkstate;
-        MouseState prevmstate;
-        bool CaptureControls = false;
-        bool InControl = false;
+        TKView.TKView tv;
+        Random rand;
         //Constructor
         public frmMain()
         {
             InitializeComponent();
             DialogId = 0;
             ScriptId = 0;
-            AkaoId = 0;
+            AkaoId = 0;	
+            rand = new Random();
+            tv = new TKView.TKView();
+            tv.Dock = DockStyle.Fill;
+            pnlTK.Controls.Add(tv);
         }
     #endregion
     #region Methods
@@ -179,165 +160,25 @@ namespace FF7Viewer
         {
         	int idx = 0;
         	dgvWalkMesh.Rows.Clear();
+        	tv.objects.Clear();
         	for(int i=0; i <field.Walkmesh.NoS;i++)
         	{
+        		Sector s = field.Walkmesh.Sectors[i];
         		string[] items = new string[9];
         		for(int j=0; j < 3;j++)
         		{
-        			items[(3*j)+0] = field.Walkmesh.Sectors[i].Vertices[j].X.ToString();
-        			items[(3*j)+1] = field.Walkmesh.Sectors[i].Vertices[j].Y.ToString();      			
-        			items[(3*j)+2] = field.Walkmesh.Sectors[i].Vertices[j].Z.ToString();
+        			items[(3*j)+0] = s.Vertices[j].X.ToString();
+        			items[(3*j)+1] = s.Vertices[j].Y.ToString();      			
+        			items[(3*j)+2] = s.Vertices[j].Z.ToString();
+        			s.Vertices[j].Z *= -1;
+        			s.Vertices[j] *= 0.001f;
         		}
-        		idx = dgvWalkMesh.Rows.Add(items);
+        		idx = dgvWalkMesh.Rows.Add(items);        		
         		dgvWalkMesh.Rows[idx].HeaderCell.Value = i.ToString();
+        		s.Position = Vector3.One;
+        		tv.objects.Add(s);
         	}
-        	glControl1.Invalidate();
         }
-	    private void InitProgram()
-	    {
-			Random rand = new Random();
-			for(int i = 0;i< 100; i++)
-			{
-				ColorCube c = new ColorCube(new Vector3((float)rand.NextDouble(),(float)rand.NextDouble(),(float)rand.NextDouble()));
-				c.Position = new Vector3(
-					(float)rand.Next(-4,4),
-					(float)rand.Next(-4,4),
-					(float)rand.Next(-16,-1));
-				c.Rotation = new Vector3(
-					(float)rand.Next(0,6),
-					(float)rand.Next(0,6),
-					(float)rand.Next(0,6));
-				c.Scale = Vector3.One * ((float)rand.NextDouble() + 0.2f);
-				objects.Add(c);
-
-			}
-	    	pgmId = GL.CreateProgram();
-	    	LoadShader(@"Shaders\vs.glsl",ShaderType.VertexShader,pgmId, out vsId);
-	    	LoadShader(@"Shaders\fs.glsl",ShaderType.FragmentShader,pgmId, out fsId);
-	    	GL.LinkProgram(pgmId);
-	    	Console.WriteLine(GL.GetProgramInfoLog(pgmId));
-	    	attribute_vpos = GL.GetAttribLocation(pgmId, "vPosition");
-	    	attribute_vcol = GL.GetAttribLocation(pgmId, "vColor");
-	    	uniform_mview = GL.GetUniformLocation(pgmId, "modelview");
-			if (attribute_vpos == -1 || attribute_vcol == -1 || uniform_mview == -1)
-            {
-                Console.WriteLine("Error binding attributes");
-            }
-			GL.GenBuffers(1, out vbo_position);
-			GL.GenBuffers(1, out vbo_color);
-			GL.GenBuffers(1, out vbo_mview);
-			GL.GenBuffers(1, out ibo_elements);
-	    }
-	    private void LoadShader(String filename, ShaderType type, int program, out int address)
-	    {
-	    	address = GL.CreateShader(type);
-	    	using(StreamReader sr = new StreamReader(filename))
-	    	{
-	    		GL.ShaderSource(address, sr.ReadToEnd());
-	    	}
-	    	GL.CompileShader(address);
-	    	GL.AttachShader(program,address);
-	    	Console.WriteLine(GL.GetShaderInfoLog(address));
-	    }
-	    private void UpdateFrame()
-	    {
-	    	if(!loaded)
-	    		return;
-            List<Vector3> verts = new List<Vector3>();
-            List<int> inds = new List<int>();
-            List<Vector3> colors = new List<Vector3>();
-            int vertcount = 0;
-            foreach (Volume v in objects)
-            {
-                verts.AddRange(v.GetVerts().ToList());
-                inds.AddRange(v.GetIndices(vertcount).ToList());
-                colors.AddRange(v.GetColorData().ToList());
-                vertcount += v.VertCount;
-            }
-            vertdata = verts.ToArray();
-            indicedata = inds.ToArray();
-            coldata = colors.ToArray();
-
-	    	GL.BindBuffer(BufferTarget.ArrayBuffer, vbo_position);
-	    	GL.BufferData<Vector3>(BufferTarget.ArrayBuffer,(IntPtr)(vertdata.Length * Vector3.SizeInBytes),vertdata,BufferUsageHint.StaticDraw);
-	    	GL.VertexAttribPointer(attribute_vpos,3,VertexAttribPointerType.Float,false,0,0);
-	    	
-	    	GL.BindBuffer(BufferTarget.ArrayBuffer, vbo_color);
-	    	GL.BufferData<Vector3>(BufferTarget.ArrayBuffer,(IntPtr)(coldata.Length * Vector3.SizeInBytes),coldata,BufferUsageHint.StaticDraw);
-	    	GL.VertexAttribPointer(attribute_vcol,3,VertexAttribPointerType.Float,true,0,0);
-
-	    	GL.BindBuffer(BufferTarget.ElementArrayBuffer, ibo_elements);
-	    	GL.BufferData(BufferTarget.ElementArrayBuffer,(IntPtr)(indicedata.Length * sizeof(int)),indicedata,BufferUsageHint.StaticDraw);
-
-	    	time += 0.2f;   	
-	    	foreach (Volume v in objects)
-            {
-//	    		v.Position = new Vector3(v.Position.X+(float)Math.Cos(time/2)/8, v.Position.Y+(float)Math.Sin(time/2)/8, v.Position.Z);
-            	v.Rotation = new Vector3(0.55f * time, 0.25f * time, 0);
-	    		v.CalculateModelMatrix();
-	    		v.ViewProjectionMatrix = cam.GetViewMatrix() * Matrix4.CreatePerspectiveFieldOfView(1.3f, ClientSize.Width / (float)ClientSize.Height, 1.0f, 40.0f);
-                v.ModelViewProjectionMatrix = v.ModelMatrix * v.ViewProjectionMatrix;
-            }
-	    	GL.UseProgram(pgmId);
-	    	GL.BindBuffer(BufferTarget.ArrayBuffer,0);
-	    	KeyboardState kstate = Keyboard.GetState();
-	    	MouseState mstate = Mouse.GetState();
-	    	Point p = glControl1.PointToScreen(Point.Empty);
-			if(kstate.IsKeyDown(Key.Space) && !prevkstate.IsKeyDown(Key.Space))
-			{
-				CaptureControls = !CaptureControls;
-				if(CaptureControls)
-				{
-					Cursor.Hide();
-					resetCursor();						
-				}
-				else
-				{
-					Cursor.Show();						
-				}
-			}
-	    	if(CaptureControls)
-	    	{
-	    		//Mouse
-	    		Vector2 delta = new Vector2(prevmstate.X,prevmstate.Y) - new Vector2(mstate.X, mstate.Y);
-	    		cam.AddRotation(delta.X,delta.Y);
-	    		resetCursor();
-				//Keyboard
-
-				if(kstate.IsKeyDown(Key.W))
-				{
-					cam.Move(0f,0.1f, 0f);
-				}
-				else if(kstate.IsKeyDown(Key.S))
-				{
-					cam.Move(0f,-0.1f,0f);
-				}
-				if(kstate.IsKeyDown(Key.A))
-				{
-					cam.Move(-0.1f,0f,0f);
-				}
-				else if(kstate.IsKeyDown(Key.D))
-				{
-					cam.Move(0.1f,0f,0f);
-				}
-				if(kstate.IsKeyDown(Key.Q))
-				{
-					cam.Move(0f,0f,0.1f);
-				}
-				else if(kstate.IsKeyDown(Key.E))
-				{
-					cam.Move(0f,0f,-0.1f);
-				}
-	    	}
-	    	prevkstate = kstate;
-	    	prevmstate = mstate;
-	    } 
-	    private void resetCursor()
-	    {
-	    	OpenTK.Input.Mouse.SetPosition(glControl1.PointToScreen(Point.Empty).X + (glControl1.Bounds.Width / 2),
-	    	                               glControl1.PointToScreen(Point.Empty).Y + (glControl1.Bounds.Height / 2));
-	    	lastMousePos = new Vector2(OpenTK.Input.Mouse.GetState().X, OpenTK.Input.Mouse.GetState().Y);
-	    }
 	#endregion
     #region Events
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -395,49 +236,6 @@ namespace FF7Viewer
 		{
 			this.AkaoId +=1;
 			RefreshAKAO();
-		}
-		private void GlControl1Load(object sender, EventArgs e)
-		{
-			InitProgram();
-			loaded = true;
-			timer1.Enabled = true;
-			timer1.Start();
-			UpdateFrame();
-			GL.ClearColor(Color.CornflowerBlue);
-			GL.PointSize(5f);
-		}
-		private void GlControl1Resize(object sender, EventArgs e)
-		{
-			if(!loaded)
-				return;
-			glControl1.Invalidate();			
-		}
-		private void GlControl1Paint(object sender, PaintEventArgs e)
-		{
-			if(!loaded)
-				return;
-			GL.Viewport(0,0,glControl1.Width,glControl1.Height);
-			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-			GL.Enable(EnableCap.DepthTest);
-			GL.EnableVertexAttribArray(attribute_vpos);
-			GL.EnableVertexAttribArray(attribute_vcol);
-			int indiceat = 0;
-			foreach(Volume v in objects)
-			{
-				GL.UniformMatrix4(uniform_mview,false,ref v.ModelViewProjectionMatrix);
-				GL.DrawElements(PrimitiveType.Triangles, v.IndiceCount, DrawElementsType.UnsignedInt, indiceat * sizeof(uint));
-				indiceat += v.IndiceCount;
-			}
-			GL.DrawElements(PrimitiveType.Triangles,indicedata.Length,DrawElementsType.UnsignedInt,0);
-			GL.DisableVertexAttribArray(attribute_vpos);
-			GL.DisableVertexAttribArray(attribute_vcol);
-			GL.Flush();
-			glControl1.SwapBuffers();
-		}
-		private void Timer1Tick(object sender, EventArgs e)
-		{
-			UpdateFrame();
-			glControl1.Invalidate();
 		}
 
 	#endregion
