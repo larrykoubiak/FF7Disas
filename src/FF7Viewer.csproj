@@ -76,10 +76,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Readers\MIMReader.cs" />
     <Compile Include="Structs\AKAOFrame.cs" />
     <Compile Include="Structs\EntityScript.cs" />
     <Compile Include="Structs\Opcode.cs" />
     <Compile Include="Structs\Operand.cs" />
+    <Compile Include="Structs\MIM.cs" />
     <Compile Include="Structs\Walkmesh.cs" />
     <Compile Include="Utils\Endian.cs" />
     <Compile Include="Structs\Field.cs" />

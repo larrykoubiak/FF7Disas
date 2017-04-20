@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -18,6 +19,8 @@ namespace FF7Viewer
     #region Fields + Constructor
     	//Data fields
         Field field;
+        MIM mim;
+        Bitmap tilemap;
         int DialogId;
         int ScriptId;
         int EntityId;
@@ -40,16 +43,20 @@ namespace FF7Viewer
     #region Methods
         private void OpenDatFile()
         {
-            MemoryStream stream;
-            FieldReader reader;
+            MemoryStream fieldStream;
+            FieldReader fieldReader;
+            MemoryStream mimStream;
+            MIMReader mimReader;
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 DialogId = 0;
                 EntityId = 0;
                 ScriptId = 0;
-                stream = LZS.unLZS(openFileDialog1.FileName);
-                reader = new FieldReader();
-                field = reader.ReadFieldFile(stream);
+                string fieldFilename = openFileDialog1.FileName;
+                string mimFileName = Path.Combine(Path.GetDirectoryName(fieldFilename),Path.GetFileNameWithoutExtension(fieldFilename) + ".MIM");
+                fieldStream = LZS.unLZS(fieldFilename);
+                fieldReader = new FieldReader();
+                field = fieldReader.ReadFieldFile(fieldStream);
                 this.txtName.Text = field.Script.Name;
                 this.txtCreator.Text = field.Script.Creator;
                 this.lblNbDialogs.Text = "/" + field.Script.NbDialogs.ToString();
@@ -73,6 +80,14 @@ namespace FF7Viewer
                     btnPrevScript.Enabled = false;
                     btnNextScript.Enabled = false;
                 }
+                if(File.Exists(mimFileName))
+                {
+	                mimStream = LZS.unLZS(mimFileName);
+	                mimReader = new MIMReader();
+	                mim = mimReader.ReadMIMFile(mimStream);
+	                RefreshTileMap();
+                }
+
             }
         }
         private void RefreshDialog()
@@ -179,7 +194,24 @@ namespace FF7Viewer
         		tv.objects.Add(s);
         	}
         }
-	#endregion
+        private void RefreshTileMap()
+        {
+        	tilemap = new Bitmap(1024,512,PixelFormat.Format32bppArgb);
+        	Graphics gBmp = Graphics.FromImage(tilemap);
+        	gBmp.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+        	gBmp.FillRectangle(Brushes.Black,0,0,1024,512);
+        	for(int i=0;i<mim.Clut.Height;i++)
+        	{
+        		for(int j=0;j<mim.Clut[i].Entries.Length;j++)
+        		{
+        			Color color = mim.Clut[i].Entries[j].Color;
+        			Brush brush = new SolidBrush(color);
+        			gBmp.FillRectangle(brush,mim.Clut.X+j,mim.Clut.Y+i,1,1);
+        		}
+        	}
+        	pbTileMap.Invalidate();
+        }
+        #endregion
     #region Events
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -189,6 +221,13 @@ namespace FF7Viewer
         {
             this.Close();
         }
+		void SaveTilemapToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			if(saveFileDialog1.ShowDialog()==DialogResult.OK)
+			{
+				tilemap.Save(saveFileDialog1.FileName);
+			}
+		}        
         private void UnLZSToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			if(openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -237,6 +276,18 @@ namespace FF7Viewer
 			this.AkaoId +=1;
 			RefreshAKAO();
 		}
+		void PbTileMapPaint(object sender, PaintEventArgs e)
+		{
+        	if(mim !=null)
+        	{
+        		e.Graphics.DrawImage(tilemap,0,0); 		
+        	}
+		}
+		void PbTileMapResize(object sender, EventArgs e)
+		{
+			pbTileMap.Invalidate();
+		}
+
 
 	#endregion
 

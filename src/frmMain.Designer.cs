@@ -35,6 +35,7 @@
         	this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        	this.saveTilemapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.lZSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.unLZSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -77,6 +78,9 @@
         	this.v2y = new System.Windows.Forms.DataGridViewTextBoxColumn();
         	this.v2z = new System.Windows.Forms.DataGridViewTextBoxColumn();
         	this.pnlTK = new System.Windows.Forms.Panel();
+        	this.tpTileMap = new System.Windows.Forms.TabPage();
+        	this.pbTileMap = new System.Windows.Forms.PictureBox();
+        	this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
         	this.menuStrip1.SuspendLayout();
         	this.tabControl1.SuspendLayout();
         	this.tpScript.SuspendLayout();
@@ -86,6 +90,8 @@
         	this.scWalkMesh.Panel2.SuspendLayout();
         	this.scWalkMesh.SuspendLayout();
         	((System.ComponentModel.ISupportInitialize)(this.dgvWalkMesh)).BeginInit();
+        	this.tpTileMap.SuspendLayout();
+        	((System.ComponentModel.ISupportInitialize)(this.pbTileMap)).BeginInit();
         	this.SuspendLayout();
         	// 
         	// menuStrip1
@@ -103,7 +109,8 @@
         	// 
         	this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
 			this.openToolStripMenuItem,
-			this.exitToolStripMenuItem});
+			this.exitToolStripMenuItem,
+			this.saveTilemapToolStripMenuItem});
         	this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
         	this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
         	this.fileToolStripMenuItem.Text = "&File";
@@ -111,16 +118,23 @@
         	// openToolStripMenuItem
         	// 
         	this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-        	this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+        	this.openToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
         	this.openToolStripMenuItem.Text = "&Open";
         	this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
         	// 
         	// exitToolStripMenuItem
         	// 
         	this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-        	this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+        	this.exitToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
         	this.exitToolStripMenuItem.Text = "&Exit";
         	this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+        	// 
+        	// saveTilemapToolStripMenuItem
+        	// 
+        	this.saveTilemapToolStripMenuItem.Name = "saveTilemapToolStripMenuItem";
+        	this.saveTilemapToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+        	this.saveTilemapToolStripMenuItem.Text = "&Save Tilemap";
+        	this.saveTilemapToolStripMenuItem.Click += new System.EventHandler(this.SaveTilemapToolStripMenuItemClick);
         	// 
         	// lZSToolStripMenuItem
         	// 
@@ -145,9 +159,12 @@
         	// 
         	this.tabControl1.Controls.Add(this.tpScript);
         	this.tabControl1.Controls.Add(this.tpWalkmesh);
+        	this.tabControl1.Controls.Add(this.tpTileMap);
         	this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.tabControl1.ItemSize = new System.Drawing.Size(50, 18);
         	this.tabControl1.Location = new System.Drawing.Point(0, 24);
         	this.tabControl1.Name = "tabControl1";
+        	this.tabControl1.Padding = new System.Drawing.Point(10, 3);
         	this.tabControl1.SelectedIndex = 0;
         	this.tabControl1.Size = new System.Drawing.Size(960, 471);
         	this.tabControl1.TabIndex = 1;
@@ -528,6 +545,32 @@
         	this.pnlTK.Size = new System.Drawing.Size(439, 439);
         	this.pnlTK.TabIndex = 0;
         	// 
+        	// tpTileMap
+        	// 
+        	this.tpTileMap.Controls.Add(this.pbTileMap);
+        	this.tpTileMap.Location = new System.Drawing.Point(4, 22);
+        	this.tpTileMap.Name = "tpTileMap";
+        	this.tpTileMap.Padding = new System.Windows.Forms.Padding(3);
+        	this.tpTileMap.Size = new System.Drawing.Size(952, 445);
+        	this.tpTileMap.TabIndex = 2;
+        	this.tpTileMap.Text = "TileMap";
+        	this.tpTileMap.UseVisualStyleBackColor = true;
+        	// 
+        	// pbTileMap
+        	// 
+        	this.pbTileMap.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.pbTileMap.Location = new System.Drawing.Point(3, 3);
+        	this.pbTileMap.Name = "pbTileMap";
+        	this.pbTileMap.Size = new System.Drawing.Size(946, 439);
+        	this.pbTileMap.TabIndex = 0;
+        	this.pbTileMap.TabStop = false;
+        	this.pbTileMap.Paint += new System.Windows.Forms.PaintEventHandler(this.PbTileMapPaint);
+        	this.pbTileMap.Resize += new System.EventHandler(this.PbTileMapResize);
+        	// 
+        	// saveFileDialog1
+        	// 
+        	this.saveFileDialog1.Filter = "PNG Images|*.png";
+        	// 
         	// frmMain
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -550,6 +593,8 @@
         	((System.ComponentModel.ISupportInitialize)(this.scWalkMesh)).EndInit();
         	this.scWalkMesh.ResumeLayout(false);
         	((System.ComponentModel.ISupportInitialize)(this.dgvWalkMesh)).EndInit();
+        	this.tpTileMap.ResumeLayout(false);
+        	((System.ComponentModel.ISupportInitialize)(this.pbTileMap)).EndInit();
         	this.ResumeLayout(false);
         	this.PerformLayout();
 
@@ -603,6 +648,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn v2z;
         private System.Windows.Forms.SplitContainer scWalkMesh;
         private System.Windows.Forms.Panel pnlTK;
+        private System.Windows.Forms.TabPage tpTileMap;
+        private System.Windows.Forms.PictureBox pbTileMap;
+        private System.Windows.Forms.ToolStripMenuItem saveTilemapToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 
