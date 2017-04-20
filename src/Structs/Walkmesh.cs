@@ -36,7 +36,8 @@ namespace FF7Viewer
 		public UInt32 NoS
 		{
 			get {return nos;}
-			set {
+			set 
+			{
 				nos = value;
 				Array.Resize(ref sectors,(int)nos);
 			}

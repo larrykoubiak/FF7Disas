@@ -8,6 +8,7 @@
  */
 using System;
 using System.IO;
+using System.Collections.Generic;
 
 namespace FF7Viewer
 {
@@ -22,6 +23,7 @@ namespace FF7Viewer
 			MIM mim = new MIM();
 			reader = new BinaryReader(stream);
 			mim.Clut = ReadCLUT();
+			mim.Textures = ReadTextures();
 			reader.Close();
 			return mim;
 		}
@@ -44,6 +46,26 @@ namespace FF7Viewer
 				clut[i] = palette;
 			}
 			return clut;
+		}
+		public List<Texture> ReadTextures()
+		{
+			List<Texture> lst = new List<Texture>();
+			while(reader.BaseStream.Position < (reader.BaseStream.Length-12))
+			{
+				long start = reader.BaseStream.Position;				
+				Texture t = new Texture();
+				t.Length = reader.ReadUInt32();
+				t.X = reader.ReadUInt16();
+				t.Y = reader.ReadUInt16();
+				t.Width = reader.ReadUInt16();
+				t.Height = reader.ReadUInt16();
+				for(int i=0;i<(t.Width*t.Height);i++)
+				{
+					t.Pixels[i] = reader.ReadUInt16();
+				}
+				lst.Add(t);
+			}
+			return lst;
 		}
 	}
 }

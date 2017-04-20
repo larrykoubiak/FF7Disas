@@ -562,6 +562,7 @@
         	this.pbTileMap.Location = new System.Drawing.Point(3, 3);
         	this.pbTileMap.Name = "pbTileMap";
         	this.pbTileMap.Size = new System.Drawing.Size(946, 439);
+        	this.pbTileMap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
         	this.pbTileMap.TabIndex = 0;
         	this.pbTileMap.TabStop = false;
         	this.pbTileMap.Paint += new System.Windows.Forms.PaintEventHandler(this.PbTileMapPaint);

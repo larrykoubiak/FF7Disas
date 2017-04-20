@@ -135,16 +135,21 @@ namespace FF7Viewer
 	}
 	public class Texture
 	{
-		UInt16[] pixels;
 		private UInt32 m_length;
+		public UInt16[] Pixels {get;set;}
 		public UInt16 X {get;set;}
 		public UInt16 Y {get;set;}
 		public UInt16 Width {get;set;}
 		public UInt16 Height {get;set;}
+		public Texture()
+		{
+			m_length = 0;
+			Pixels = new UInt16[0];
+		}
 		public Texture(UInt32 length,UInt16 x, UInt16 y, UInt16 width, UInt16 height)
 		{
 			m_length = length;
-			pixels = new UInt16[m_length-12];
+			Pixels = new UInt16[(m_length-12)/2];
 			X = x;
 			Y = y;
 			Width = width;
@@ -156,7 +161,10 @@ namespace FF7Viewer
 			set 
 			{
 				m_length = value;
-				pixels = new UInt16[m_length-12];
+				if(m_length>0)
+				{
+					Pixels = new UInt16[(m_length-12)/2];					
+				}
 			}
 		}		
 	}

@@ -196,19 +196,35 @@ namespace FF7Viewer
         }
         private void RefreshTileMap()
         {
+        	Brush brush;
+        	Color color;
         	tilemap = new Bitmap(1024,512,PixelFormat.Format32bppArgb);
         	Graphics gBmp = Graphics.FromImage(tilemap);
         	gBmp.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
         	gBmp.FillRectangle(Brushes.Black,0,0,1024,512);
+        	gBmp.Dispose();
+        	//draw CLUT
         	for(int i=0;i<mim.Clut.Height;i++)
         	{
         		for(int j=0;j<mim.Clut[i].Entries.Length;j++)
         		{
-        			Color color = mim.Clut[i].Entries[j].Color;
-        			Brush brush = new SolidBrush(color);
-        			gBmp.FillRectangle(brush,mim.Clut.X+j,mim.Clut.Y+i,1,1);
+        			color = mim.Clut[i].Entries[j].Color;
+        			tilemap.SetPixel(mim.Clut.X+j,mim.Clut.Y+i,color);
         		}
         	}
+        	//draw textures
+        	foreach(Texture t in mim.Textures)
+        	{
+        		for(int y =0;y<t.Height;y++)
+        		{
+        			for(int x=0;x<t.Width;x++)
+        			{
+        				color = mim.Clut[1].Entries[t.Pixels[(y*t.Width) + x] & 0xFF].Color;
+        				tilemap.SetPixel(t.X + x,t.Y + y,color);
+        			}
+        		}
+        	}
+        	pbTileMap.Image = tilemap;
         	pbTileMap.Invalidate();
         }
         #endregion
@@ -278,10 +294,12 @@ namespace FF7Viewer
 		}
 		void PbTileMapPaint(object sender, PaintEventArgs e)
 		{
-        	if(mim !=null)
+/*        	if(mim !=null)
         	{
-        		e.Graphics.DrawImage(tilemap,0,0); 		
-        	}
+        		pbTileMap.Image = tilemap;
+        		e.Graphics.DrawImage(tilemap,0,0);
+        		pbTileMap.SizeMode = PictureBoxSizeMode.Zoom;
+        	}*/
 		}
 		void PbTileMapResize(object sender, EventArgs e)
 		{
