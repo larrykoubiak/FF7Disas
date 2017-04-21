@@ -19,6 +19,7 @@ namespace FF7Viewer
             field.Offsets = ReadOffsets();
             field.Script = ReadScript(field.Offsets[(int)Field.Offset.Script], field.Offsets[(int)Field.Offset.Walkmesh]);
             field.Walkmesh = ReadWalkMesh(field.Offsets[(int)Field.Offset.Walkmesh], field.Offsets[(int)Field.Offset.Tilemap]);
+            field.TileMap = ReadTileMap(field.Offsets[(int)Field.Offset.Tilemap],field.Offsets[(int)Field.Offset.Camera_Matrix]);
             //cleanup
             reader.Close();
             return field;
@@ -210,7 +211,59 @@ namespace FF7Viewer
             	}
             	walkmesh.Sectors[i] = sector;
             }
+            for(i=0;i<nb;i++)
+            {
+            	Access access = new Access();
+            	access.Access1 = reader.ReadUInt16();
+            	access.Access2 = reader.ReadUInt16();
+            	access.Access3 = reader.ReadUInt16();
+            	walkmesh.AccessPool[i] = access;
+            }
             return walkmesh;
+        }
+        private TileMap ReadTileMap(UInt32 offset, UInt32 nextoffset)
+        {
+        	TileMap map = new TileMap();
+        	int i,j;
+        	reader.BaseStream.Seek(offset, SeekOrigin.Begin);
+        	for(i=0;i<4;i++)
+        	{
+        		map.Offsets[i] = reader.ReadUInt32();
+        	}
+        	//read TileLayer
+        	UInt16 type,pos,count;
+        	while(reader.BaseStream.Position < offset + map.Offsets[0])
+        	{
+
+        		type = reader.ReadUInt16();
+        		pos = reader.ReadUInt16();
+        		count = reader.ReadUInt16();
+        		TileLayer layer = new TileLayer(type,pos,count);
+        		map.TileLayers.Add(layer);
+        	}
+        	reader.BaseStream.Position = offset + map.Offsets[0];
+    		Int16 destx, desty;
+    		byte pgsrcx, pgsrcy;
+    		UInt16 clut;
+        	while(reader.BaseStream.Position < offset + map.Offsets[1])
+        	{
+        		destx = reader.ReadInt16();
+        		desty = reader.ReadInt16();
+        		pgsrcx = reader.ReadByte();
+        		pgsrcy = reader.ReadByte();
+        		clut = reader.ReadUInt16();
+        		BackgroundTile tile = new BackgroundTile(destx,desty,pgsrcx,pgsrcy,clut);
+        		map.BackgroundTiles.Add(tile);
+        	}
+        	reader.BaseStream.Position = offset + map.Offsets[1];
+        	UInt16 textinfo;
+        	while(reader.BaseStream.Position < offset + map.Offsets[2])
+        	{
+        		textinfo = reader.ReadUInt16();
+        		TexturePageInfo ti = new TexturePageInfo(textinfo);
+        		map.TexturePageInfos.Add(ti);
+        	}
+        	return map;
         }
     }
 }

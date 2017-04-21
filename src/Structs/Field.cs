@@ -23,6 +23,7 @@ namespace FF7Viewer
         public UInt32[] Offsets {get; set; }
         public Script Script {get; set; }
         public Walkmesh Walkmesh {get; set;}
+        public TileMap TileMap {get; set;}
     	//Constructor
         public Field()
         {

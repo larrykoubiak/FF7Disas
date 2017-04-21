@@ -33,7 +33,7 @@ namespace TKView
         int vbo_mview;
         Vector3[] vertdata;
         Vector3[] coldata;
-		Camera cam = new Camera();
+		public Camera Camera = new Camera();
         int[] indicedata;
         float time = 0.0f;
         Vector2 lastMousePos = new Vector2();
@@ -56,16 +56,19 @@ namespace TKView
 	    	if(LicenseManager.UsageMode == LicenseUsageMode.Runtime)
 	    	{
 		    	pgmId = GL.CreateProgram();
-		    	LoadShader(@"Shaders\vs.glsl",ShaderType.VertexShader,pgmId, out vsId);
-		    	LoadShader(@"Shaders\fs.glsl",ShaderType.FragmentShader,pgmId, out fsId);
-		    	GL.LinkProgram(pgmId);
-		    	attribute_vpos = GL.GetAttribLocation(pgmId, "vPosition");
-		    	attribute_vcol = GL.GetAttribLocation(pgmId, "vColor");
-		    	uniform_mview = GL.GetUniformLocation(pgmId, "modelview");
-				if (attribute_vpos == -1 || attribute_vcol == -1 || uniform_mview == -1)
-	            {
-					MessageBox.Show("Error binding attributes","",MessageBoxButtons.OK,MessageBoxIcon.Error);
-	            }
+		    	if(File.Exists(@"Shaders\vs.glsl") && File.Exists(@"Shaders\vs.glsl"))
+		    	{
+			    	LoadShader(@"Shaders\vs.glsl",ShaderType.VertexShader,pgmId, out vsId);
+			    	LoadShader(@"Shaders\fs.glsl",ShaderType.FragmentShader,pgmId, out fsId);
+			    	GL.LinkProgram(pgmId);
+			    	attribute_vpos = GL.GetAttribLocation(pgmId, "vPosition");
+			    	attribute_vcol = GL.GetAttribLocation(pgmId, "vColor");
+			    	uniform_mview = GL.GetUniformLocation(pgmId, "modelview");
+					if (attribute_vpos == -1 || attribute_vcol == -1 || uniform_mview == -1)
+		            {
+						MessageBox.Show("Error binding attributes","",MessageBoxButtons.OK,MessageBoxIcon.Error);
+		            }		    		
+		    	}
 				GL.GenBuffers(1, out vbo_position);
 				GL.GenBuffers(1, out vbo_color);
 				GL.GenBuffers(1, out vbo_mview);
@@ -117,14 +120,8 @@ namespace TKView
 		    	time += 0.2f;   	
 		    	foreach (Volume v in objects)
 	            {
-		    		
-/*		    		v.Position = new Vector3(v.Position.X+(float)Math.Cos(time/2)/8, v.Position.Y+(float)Math.Sin(time/2)/8, v.Position.Z);
-		    		if(v.GetType()!=typeof(Sector))
-		    		{
-		            	v.Rotation = new Vector3(0.55f * time, 0.25f * time, 0);	    			
-		    		}*/
 		    		v.CalculateModelMatrix();
-		    		v.ViewProjectionMatrix = cam.GetViewMatrix() * Matrix4.CreatePerspectiveFieldOfView(1.3f, ClientSize.Width / (float)ClientSize.Height, 1.0f, 40.0f);
+		    		v.ViewProjectionMatrix = Camera.GetViewMatrix() * Matrix4.CreatePerspectiveFieldOfView(1.3f, ClientSize.Width / (float)ClientSize.Height, 1.0f, 100.0f);
 	                v.ModelViewProjectionMatrix = v.ModelMatrix * v.ViewProjectionMatrix;
 	            }
 		    	GL.UseProgram(pgmId);
@@ -149,37 +146,43 @@ namespace TKView
 		    	{
 		    		//Mouse
 		    		Vector2 delta = new Vector2(prevmstate.X,prevmstate.Y) - new Vector2(mstate.X, mstate.Y);
-		    		cam.AddRotation(delta.X,delta.Y);
+		    		Camera.AddRotation(delta.X,delta.Y);
 		    		resetCursor();
 					//Keyboard
 	
 					if(kstate.IsKeyDown(Key.W))
 					{
-						cam.Move(0f,0.1f, 0f);
+						Camera.Move(0f,0.1f, 0f);
 					}
 					else if(kstate.IsKeyDown(Key.S))
 					{
-						cam.Move(0f,-0.1f,0f);
+						Camera.Move(0f,-0.1f,0f);
 					}
 					if(kstate.IsKeyDown(Key.A))
 					{
-						cam.Move(-0.1f,0f,0f);
+						Camera.Move(-0.1f,0f,0f);
 					}
 					else if(kstate.IsKeyDown(Key.D))
 					{
-						cam.Move(0.1f,0f,0f);
+						Camera.Move(0.1f,0f,0f);
 					}
 					if(kstate.IsKeyDown(Key.Q))
 					{
-						cam.Move(0f,0f,0.1f);
+						Camera.Move(0f,0f,0.1f);
 					}
 					else if(kstate.IsKeyDown(Key.E))
 					{
-						cam.Move(0f,0f,-0.1f);
+						Camera.Move(0f,0f,-0.1f);
 					}
 		    	}
 		    	prevkstate = kstate;
 		    	prevmstate = mstate;
+		    	txtXPos.Text = Camera.Position.X.ToString();
+		    	txtYPos.Text = Camera.Position.Y.ToString();
+		    	txtZPos.Text = Camera.Position.Z.ToString();
+		    	txtXOri.Text = Camera.Orientation.X.ToString();
+		    	txtYOri.Text = Camera.Orientation.Y.ToString();
+		    	txtZOri.Text = Camera.Orientation.Z.ToString();
 	    	}
 
 	    } 

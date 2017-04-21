@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-        	System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-        	System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-        	System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
         	this.menuStrip1 = new System.Windows.Forms.MenuStrip();
         	this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,32 +63,24 @@
         	this.lblScriptName = new System.Windows.Forms.Label();
         	this.txtName = new System.Windows.Forms.TextBox();
         	this.tpWalkmesh = new System.Windows.Forms.TabPage();
-        	this.scWalkMesh = new System.Windows.Forms.SplitContainer();
-        	this.dgvWalkMesh = new System.Windows.Forms.DataGridView();
-        	this.v0x = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        	this.v0y = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        	this.v0z = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        	this.v1x = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        	this.v1y = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        	this.v1z = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        	this.v2x = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        	this.v2y = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        	this.v2z = new System.Windows.Forms.DataGridViewTextBoxColumn();
-        	this.pnlTK = new System.Windows.Forms.Panel();
         	this.tpTileMap = new System.Windows.Forms.TabPage();
+        	this.tlpTileMap = new System.Windows.Forms.TableLayoutPanel();
         	this.pbTileMap = new System.Windows.Forms.PictureBox();
+        	this.panel1 = new System.Windows.Forms.Panel();
+        	this.btnNextPalette = new System.Windows.Forms.Button();
+        	this.btnPrevPalette = new System.Windows.Forms.Button();
+        	this.txtPaletteId = new System.Windows.Forms.TextBox();
+        	this.label1 = new System.Windows.Forms.Label();
         	this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+        	this.pnlTK = new System.Windows.Forms.Panel();
         	this.menuStrip1.SuspendLayout();
         	this.tabControl1.SuspendLayout();
         	this.tpScript.SuspendLayout();
         	this.tpWalkmesh.SuspendLayout();
-        	((System.ComponentModel.ISupportInitialize)(this.scWalkMesh)).BeginInit();
-        	this.scWalkMesh.Panel1.SuspendLayout();
-        	this.scWalkMesh.Panel2.SuspendLayout();
-        	this.scWalkMesh.SuspendLayout();
-        	((System.ComponentModel.ISupportInitialize)(this.dgvWalkMesh)).BeginInit();
         	this.tpTileMap.SuspendLayout();
+        	this.tlpTileMap.SuspendLayout();
         	((System.ComponentModel.ISupportInitialize)(this.pbTileMap)).BeginInit();
+        	this.panel1.SuspendLayout();
         	this.SuspendLayout();
         	// 
         	// menuStrip1
@@ -417,7 +406,7 @@
         	// 
         	// tpWalkmesh
         	// 
-        	this.tpWalkmesh.Controls.Add(this.scWalkMesh);
+        	this.tpWalkmesh.Controls.Add(this.pnlTK);
         	this.tpWalkmesh.Location = new System.Drawing.Point(4, 22);
         	this.tpWalkmesh.Name = "tpWalkmesh";
         	this.tpWalkmesh.Padding = new System.Windows.Forms.Padding(3);
@@ -426,128 +415,9 @@
         	this.tpWalkmesh.Text = "Walkmesh";
         	this.tpWalkmesh.UseVisualStyleBackColor = true;
         	// 
-        	// scWalkMesh
-        	// 
-        	this.scWalkMesh.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.scWalkMesh.Location = new System.Drawing.Point(3, 3);
-        	this.scWalkMesh.Name = "scWalkMesh";
-        	// 
-        	// scWalkMesh.Panel1
-        	// 
-        	this.scWalkMesh.Panel1.Controls.Add(this.dgvWalkMesh);
-        	// 
-        	// scWalkMesh.Panel2
-        	// 
-        	this.scWalkMesh.Panel2.Controls.Add(this.pnlTK);
-        	this.scWalkMesh.Size = new System.Drawing.Size(946, 439);
-        	this.scWalkMesh.SplitterDistance = 503;
-        	this.scWalkMesh.TabIndex = 1;
-        	// 
-        	// dgvWalkMesh
-        	// 
-        	dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-        	dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-        	dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-        	dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-        	dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-        	dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-        	this.dgvWalkMesh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-        	this.dgvWalkMesh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        	this.dgvWalkMesh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-			this.v0x,
-			this.v0y,
-			this.v0z,
-			this.v1x,
-			this.v1y,
-			this.v1z,
-			this.v2x,
-			this.v2y,
-			this.v2z});
-        	this.dgvWalkMesh.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.dgvWalkMesh.Location = new System.Drawing.Point(0, 0);
-        	this.dgvWalkMesh.Name = "dgvWalkMesh";
-        	dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-        	dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDark;
-        	dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-        	dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-        	dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-        	dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-        	this.dgvWalkMesh.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-        	this.dgvWalkMesh.RowHeadersWidth = 55;
-        	dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-        	this.dgvWalkMesh.RowsDefaultCellStyle = dataGridViewCellStyle3;
-        	this.dgvWalkMesh.Size = new System.Drawing.Size(503, 439);
-        	this.dgvWalkMesh.TabIndex = 1;
-        	// 
-        	// v0x
-        	// 
-        	this.v0x.HeaderText = "v0x";
-        	this.v0x.Name = "v0x";
-        	this.v0x.Width = 50;
-        	// 
-        	// v0y
-        	// 
-        	this.v0y.HeaderText = "v0y";
-        	this.v0y.Name = "v0y";
-        	this.v0y.Width = 50;
-        	// 
-        	// v0z
-        	// 
-        	this.v0z.DividerWidth = 2;
-        	this.v0z.HeaderText = "v0z";
-        	this.v0z.Name = "v0z";
-        	this.v0z.Width = 50;
-        	// 
-        	// v1x
-        	// 
-        	this.v1x.HeaderText = "v1x";
-        	this.v1x.Name = "v1x";
-        	this.v1x.Width = 50;
-        	// 
-        	// v1y
-        	// 
-        	this.v1y.HeaderText = "v1y";
-        	this.v1y.Name = "v1y";
-        	this.v1y.Width = 50;
-        	// 
-        	// v1z
-        	// 
-        	this.v1z.DividerWidth = 2;
-        	this.v1z.HeaderText = "v1z";
-        	this.v1z.Name = "v1z";
-        	this.v1z.Width = 50;
-        	// 
-        	// v2x
-        	// 
-        	this.v2x.HeaderText = "v2x";
-        	this.v2x.Name = "v2x";
-        	this.v2x.Width = 50;
-        	// 
-        	// v2y
-        	// 
-        	this.v2y.HeaderText = "v2y";
-        	this.v2y.Name = "v2y";
-        	this.v2y.Width = 50;
-        	// 
-        	// v2z
-        	// 
-        	this.v2z.HeaderText = "v2z";
-        	this.v2z.Name = "v2z";
-        	this.v2z.Width = 50;
-        	// 
-        	// pnlTK
-        	// 
-        	this.pnlTK.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.pnlTK.Location = new System.Drawing.Point(0, 0);
-        	this.pnlTK.Name = "pnlTK";
-        	this.pnlTK.Size = new System.Drawing.Size(439, 439);
-        	this.pnlTK.TabIndex = 0;
-        	// 
         	// tpTileMap
         	// 
-        	this.tpTileMap.Controls.Add(this.pbTileMap);
+        	this.tpTileMap.Controls.Add(this.tlpTileMap);
         	this.tpTileMap.Location = new System.Drawing.Point(4, 22);
         	this.tpTileMap.Name = "tpTileMap";
         	this.tpTileMap.Padding = new System.Windows.Forms.Padding(3);
@@ -556,21 +426,90 @@
         	this.tpTileMap.Text = "TileMap";
         	this.tpTileMap.UseVisualStyleBackColor = true;
         	// 
+        	// tlpTileMap
+        	// 
+        	this.tlpTileMap.ColumnCount = 1;
+        	this.tlpTileMap.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+        	this.tlpTileMap.Controls.Add(this.pbTileMap, 0, 1);
+        	this.tlpTileMap.Controls.Add(this.panel1, 0, 0);
+        	this.tlpTileMap.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.tlpTileMap.Location = new System.Drawing.Point(3, 3);
+        	this.tlpTileMap.Name = "tlpTileMap";
+        	this.tlpTileMap.RowCount = 2;
+        	this.tlpTileMap.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+        	this.tlpTileMap.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+        	this.tlpTileMap.Size = new System.Drawing.Size(946, 439);
+        	this.tlpTileMap.TabIndex = 0;
+        	// 
         	// pbTileMap
         	// 
         	this.pbTileMap.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.pbTileMap.Location = new System.Drawing.Point(3, 3);
+        	this.pbTileMap.Location = new System.Drawing.Point(3, 33);
         	this.pbTileMap.Name = "pbTileMap";
-        	this.pbTileMap.Size = new System.Drawing.Size(946, 439);
+        	this.pbTileMap.Size = new System.Drawing.Size(940, 403);
         	this.pbTileMap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-        	this.pbTileMap.TabIndex = 0;
+        	this.pbTileMap.TabIndex = 1;
         	this.pbTileMap.TabStop = false;
-        	this.pbTileMap.Paint += new System.Windows.Forms.PaintEventHandler(this.PbTileMapPaint);
-        	this.pbTileMap.Resize += new System.EventHandler(this.PbTileMapResize);
+        	// 
+        	// panel1
+        	// 
+        	this.panel1.Controls.Add(this.btnNextPalette);
+        	this.panel1.Controls.Add(this.btnPrevPalette);
+        	this.panel1.Controls.Add(this.txtPaletteId);
+        	this.panel1.Controls.Add(this.label1);
+        	this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.panel1.Location = new System.Drawing.Point(3, 3);
+        	this.panel1.Name = "panel1";
+        	this.panel1.Size = new System.Drawing.Size(940, 24);
+        	this.panel1.TabIndex = 2;
+        	// 
+        	// btnNextPalette
+        	// 
+        	this.btnNextPalette.Location = new System.Drawing.Point(119, 0);
+        	this.btnNextPalette.Name = "btnNextPalette";
+        	this.btnNextPalette.Size = new System.Drawing.Size(16, 23);
+        	this.btnNextPalette.TabIndex = 36;
+        	this.btnNextPalette.Text = ">";
+        	this.btnNextPalette.UseVisualStyleBackColor = true;
+        	this.btnNextPalette.Click += new System.EventHandler(this.BtnNextPaletteClick);
+        	// 
+        	// btnPrevPalette
+        	// 
+        	this.btnPrevPalette.Location = new System.Drawing.Point(99, 0);
+        	this.btnPrevPalette.Name = "btnPrevPalette";
+        	this.btnPrevPalette.Size = new System.Drawing.Size(14, 23);
+        	this.btnPrevPalette.TabIndex = 35;
+        	this.btnPrevPalette.Text = "<";
+        	this.btnPrevPalette.UseVisualStyleBackColor = true;
+        	this.btnPrevPalette.Click += new System.EventHandler(this.BtnPrevPaletteClick);
+        	// 
+        	// txtPaletteId
+        	// 
+        	this.txtPaletteId.Enabled = false;
+        	this.txtPaletteId.Location = new System.Drawing.Point(57, 0);
+        	this.txtPaletteId.Name = "txtPaletteId";
+        	this.txtPaletteId.Size = new System.Drawing.Size(36, 20);
+        	this.txtPaletteId.TabIndex = 1;
+        	// 
+        	// label1
+        	// 
+        	this.label1.Location = new System.Drawing.Point(3, 4);
+        	this.label1.Name = "label1";
+        	this.label1.Size = new System.Drawing.Size(48, 20);
+        	this.label1.TabIndex = 0;
+        	this.label1.Text = "Palette:";
         	// 
         	// saveFileDialog1
         	// 
         	this.saveFileDialog1.Filter = "PNG Images|*.png";
+        	// 
+        	// pnlTK
+        	// 
+        	this.pnlTK.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.pnlTK.Location = new System.Drawing.Point(3, 3);
+        	this.pnlTK.Name = "pnlTK";
+        	this.pnlTK.Size = new System.Drawing.Size(946, 439);
+        	this.pnlTK.TabIndex = 1;
         	// 
         	// frmMain
         	// 
@@ -589,13 +528,11 @@
         	this.tpScript.ResumeLayout(false);
         	this.tpScript.PerformLayout();
         	this.tpWalkmesh.ResumeLayout(false);
-        	this.scWalkMesh.Panel1.ResumeLayout(false);
-        	this.scWalkMesh.Panel2.ResumeLayout(false);
-        	((System.ComponentModel.ISupportInitialize)(this.scWalkMesh)).EndInit();
-        	this.scWalkMesh.ResumeLayout(false);
-        	((System.ComponentModel.ISupportInitialize)(this.dgvWalkMesh)).EndInit();
         	this.tpTileMap.ResumeLayout(false);
+        	this.tlpTileMap.ResumeLayout(false);
         	((System.ComponentModel.ISupportInitialize)(this.pbTileMap)).EndInit();
+        	this.panel1.ResumeLayout(false);
+        	this.panel1.PerformLayout();
         	this.ResumeLayout(false);
         	this.PerformLayout();
 
@@ -637,22 +574,17 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tpScript;
         private System.Windows.Forms.TabPage tpWalkmesh;
-        private System.Windows.Forms.DataGridView dgvWalkMesh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn v0x;
-        private System.Windows.Forms.DataGridViewTextBoxColumn v0y;
-        private System.Windows.Forms.DataGridViewTextBoxColumn v0z;
-        private System.Windows.Forms.DataGridViewTextBoxColumn v1x;
-        private System.Windows.Forms.DataGridViewTextBoxColumn v1y;
-        private System.Windows.Forms.DataGridViewTextBoxColumn v1z;
-        private System.Windows.Forms.DataGridViewTextBoxColumn v2x;
-        private System.Windows.Forms.DataGridViewTextBoxColumn v2y;
-        private System.Windows.Forms.DataGridViewTextBoxColumn v2z;
-        private System.Windows.Forms.SplitContainer scWalkMesh;
         private System.Windows.Forms.Panel pnlTK;
         private System.Windows.Forms.TabPage tpTileMap;
         private System.Windows.Forms.PictureBox pbTileMap;
         private System.Windows.Forms.ToolStripMenuItem saveTilemapToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.TableLayoutPanel tlpTileMap;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtPaletteId;
+        private System.Windows.Forms.Button btnNextPalette;
+        private System.Windows.Forms.Button btnPrevPalette;
     }
 }
 

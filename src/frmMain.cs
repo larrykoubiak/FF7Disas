@@ -25,6 +25,7 @@ namespace FF7Viewer
         int ScriptId;
         int EntityId;
         int AkaoId;
+        int PaletteId;
         TKView.TKView tv;
         Random rand;
         //Constructor
@@ -33,7 +34,8 @@ namespace FF7Viewer
             InitializeComponent();
             DialogId = 0;
             ScriptId = 0;
-            AkaoId = 0;	
+            AkaoId = 0;
+            PaletteId = 0;
             rand = new Random();
             tv = new TKView.TKView();
             tv.Dock = DockStyle.Fill;
@@ -52,6 +54,8 @@ namespace FF7Viewer
                 DialogId = 0;
                 EntityId = 0;
                 ScriptId = 0;
+                AkaoId = 0;
+                PaletteId = 0;
                 string fieldFilename = openFileDialog1.FileName;
                 string mimFileName = Path.Combine(Path.GetDirectoryName(fieldFilename),Path.GetFileNameWithoutExtension(fieldFilename) + ".MIM");
                 fieldStream = LZS.unLZS(fieldFilename);
@@ -173,24 +177,17 @@ namespace FF7Viewer
         }
         private void RefreshWalkmesh()
         {
-        	int idx = 0;
-        	dgvWalkMesh.Rows.Clear();
         	tv.objects.Clear();
+        	tv.Camera.Position = Vector3.Zero;
         	for(int i=0; i <field.Walkmesh.NoS;i++)
         	{
         		Sector s = field.Walkmesh.Sectors[i];
-        		string[] items = new string[9];
         		for(int j=0; j < 3;j++)
         		{
-        			items[(3*j)+0] = s.Vertices[j].X.ToString();
-        			items[(3*j)+1] = s.Vertices[j].Y.ToString();      			
-        			items[(3*j)+2] = s.Vertices[j].Z.ToString();
         			s.Vertices[j].Z *= -1;
-        			s.Vertices[j] *= 0.001f;
+        			s.Vertices[j] *= 0.01f;
         		}
-        		idx = dgvWalkMesh.Rows.Add(items);        		
-        		dgvWalkMesh.Rows[idx].HeaderCell.Value = i.ToString();
-        		s.Position = Vector3.One;
+        		s.Position = Vector3.Zero;
         		tv.objects.Add(s);
         	}
         }
@@ -198,11 +195,14 @@ namespace FF7Viewer
         {
         	Brush brush;
         	Color color;
-        	tilemap = new Bitmap(1024,512,PixelFormat.Format32bppArgb);
+        	tilemap = new Bitmap(1664,512,PixelFormat.Format32bppArgb);
         	Graphics gBmp = Graphics.FromImage(tilemap);
         	gBmp.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-        	gBmp.FillRectangle(Brushes.Black,0,0,1024,512);
+        	gBmp.FillRectangle(Brushes.Black,0,0,1664,512);
         	gBmp.Dispose();
+        	PaletteId = Math.Max(0,PaletteId);
+        	PaletteId = Math.Min(mim.Clut.Palettes.Length-1,PaletteId);
+        	txtPaletteId.Text = PaletteId.ToString("00");
         	//draw CLUT
         	for(int i=0;i<mim.Clut.Height;i++)
         	{
@@ -219,8 +219,11 @@ namespace FF7Viewer
         		{
         			for(int x=0;x<t.Width;x++)
         			{
-        				color = mim.Clut[1].Entries[t.Pixels[(y*t.Width) + x] & 0xFF].Color;
-        				tilemap.SetPixel(t.X + x,t.Y + y,color);
+        				int pixelidx = (y*t.Width) + x;
+        				color = mim.Clut[PaletteId].Entries[t.Pixels[pixelidx] & 0xFF].Color;
+        				tilemap.SetPixel(t.X + (x*2),t.Y + y,color);
+        				color = mim.Clut[PaletteId].Entries[t.Pixels[pixelidx] >> 8].Color;
+        				tilemap.SetPixel(t.X + (x*2) + 1,t.Y + y,color);
         			}
         		}
         	}
@@ -304,6 +307,16 @@ namespace FF7Viewer
 		void PbTileMapResize(object sender, EventArgs e)
 		{
 			pbTileMap.Invalidate();
+		}
+		void BtnPrevPaletteClick(object sender, EventArgs e)
+		{
+			this.PaletteId -=1;
+			RefreshTileMap();
+		}
+		void BtnNextPaletteClick(object sender, EventArgs e)
+		{
+			this.PaletteId +=1;
+			RefreshTileMap();
 		}
 
 
