@@ -193,7 +193,6 @@ namespace FF7Viewer
         }
         private void RefreshTileMap()
         {
-        	Brush brush;
         	Color color;
         	tilemap = new Bitmap(1664,512,PixelFormat.Format32bppArgb);
         	Graphics gBmp = Graphics.FromImage(tilemap);

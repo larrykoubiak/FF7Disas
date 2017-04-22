@@ -90,6 +90,18 @@ namespace FF7Viewer
 			set {vector[depth] = (int)(value);}
 		}
 	}
+	public class SpriteLayerInfo
+	{
+		public Int16 DestinationX {get;set;}
+		public Int16 DestinationY {get;set;}
+		public byte TexPageSourceX {get;set;}
+		public byte TexPageSourceY {get;set;}
+		public UInt16 TileClutData {get;set;}
+		public TexturePageInfo SpriteTP_Blend {get;set;}
+		public UInt16 Group {get;set;}
+		public byte Parameter {get;set;}
+		public byte State {get;set;}
+	}
 	/// <summary>
 	/// Description of TileMap.
 	/// </summary>

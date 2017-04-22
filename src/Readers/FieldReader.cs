@@ -224,7 +224,7 @@ namespace FF7Viewer
         private TileMap ReadTileMap(UInt32 offset, UInt32 nextoffset)
         {
         	TileMap map = new TileMap();
-        	int i,j;
+        	int i;
         	reader.BaseStream.Seek(offset, SeekOrigin.Begin);
         	for(i=0;i<4;i++)
         	{
