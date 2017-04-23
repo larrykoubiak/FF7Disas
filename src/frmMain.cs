@@ -20,6 +20,7 @@ namespace FF7Viewer
     	//Data fields
         Field field;
         MIM mim;
+        Bitmap mimtexture;
         Bitmap tilemap;
         int DialogId;
         int ScriptId;
@@ -89,6 +90,7 @@ namespace FF7Viewer
 	                mimStream = LZS.unLZS(mimFileName);
 	                mimReader = new MIMReader();
 	                mim = mimReader.ReadMIMFile(mimStream);
+	                RefreshMIMTexture();
 	                RefreshTileMap();
                 }
 
@@ -191,11 +193,11 @@ namespace FF7Viewer
         		tv.objects.Add(s);
         	}
         }
-        private void RefreshTileMap()
+        private void RefreshMIMTexture()
         {
         	Color color;
-        	tilemap = new Bitmap(1664,512,PixelFormat.Format32bppArgb);
-        	Graphics gBmp = Graphics.FromImage(tilemap);
+        	mimtexture = new Bitmap(1664,512,PixelFormat.Format32bppArgb);
+        	Graphics gBmp = Graphics.FromImage(mimtexture);
         	gBmp.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
         	gBmp.FillRectangle(Brushes.Black,0,0,1664,512);
         	gBmp.Dispose();
@@ -208,7 +210,7 @@ namespace FF7Viewer
         		for(int j=0;j<mim.Clut[i].Entries.Length;j++)
         		{
         			color = mim.Clut[i].Entries[j].Color;
-        			tilemap.SetPixel(mim.Clut.X+j,mim.Clut.Y+i,color);
+        			mimtexture.SetPixel(mim.Clut.X+j,mim.Clut.Y+i,color);
         		}
         	}
         	//draw textures
@@ -220,9 +222,36 @@ namespace FF7Viewer
         			{
         				int pixelidx = (y*t.Width) + x;
         				color = mim.Clut[PaletteId].Entries[t.Pixels[pixelidx] & 0xFF].Color;
-        				tilemap.SetPixel(t.X + (x*2),t.Y + y,color);
+        				mimtexture.SetPixel(t.X + (x*2),t.Y + y,color);
         				color = mim.Clut[PaletteId].Entries[t.Pixels[pixelidx] >> 8].Color;
-        				tilemap.SetPixel(t.X + (x*2) + 1,t.Y + y,color);
+        				mimtexture.SetPixel(t.X + (x*2) + 1,t.Y + y,color);
+        			}
+        		}
+        	}
+        	pbMIMTexture.Image = mimtexture;
+        	pbMIMTexture.Invalidate();
+        }
+        private void RefreshTileMap()
+        {
+        	Color color;
+        	Texture t = mim.Textures[0];
+        	tilemap = new Bitmap(640,512,PixelFormat.Format32bppArgb);
+        	Graphics gBmp = Graphics.FromImage(tilemap);
+        	gBmp.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+        	gBmp.FillRectangle(Brushes.Black,0,0,640,1024);
+        	gBmp.Dispose();
+        	foreach(TileInfo ti in field.TileMap.BackgroundTiles)
+        	{
+        		PaletteId = ti.ClutNumber;
+        		for(int offsety=0;offsety<16;offsety++)
+        		{
+        			for(int offsetx=0;offsetx<16;offsetx+=2)
+        			{
+        				int pixelidx = ((ti.TexPageSourceY+offsety)*(t.Width)) + (ti.TexPageSourceX + offsetx);
+        				color = mim.Clut[PaletteId].Entries[t.Pixels[pixelidx] & 0xFF].Color;
+        				tilemap.SetPixel(ti.DestinationX + 320 + offsetx,ti.DestinationY + 256 + offsety,color);
+        				color = mim.Clut[PaletteId].Entries[t.Pixels[pixelidx] >> 8].Color;
+        				tilemap.SetPixel(ti.DestinationX + 320 + offsetx + 1,ti.DestinationY + 256 + offsety,color);
         			}
         		}
         	}
@@ -294,18 +323,10 @@ namespace FF7Viewer
 			this.AkaoId +=1;
 			RefreshAKAO();
 		}
-		void PbTileMapPaint(object sender, PaintEventArgs e)
+		
+		void PbMIMTextureResize(object sender, EventArgs e)
 		{
-/*        	if(mim !=null)
-        	{
-        		pbTileMap.Image = tilemap;
-        		e.Graphics.DrawImage(tilemap,0,0);
-        		pbTileMap.SizeMode = PictureBoxSizeMode.Zoom;
-        	}*/
-		}
-		void PbTileMapResize(object sender, EventArgs e)
-		{
-			pbTileMap.Invalidate();
+			pbMIMTexture.Invalidate();
 		}
 		void BtnPrevPaletteClick(object sender, EventArgs e)
 		{

@@ -63,24 +63,28 @@
         	this.lblScriptName = new System.Windows.Forms.Label();
         	this.txtName = new System.Windows.Forms.TextBox();
         	this.tpWalkmesh = new System.Windows.Forms.TabPage();
-        	this.tpTileMap = new System.Windows.Forms.TabPage();
+        	this.pnlTK = new System.Windows.Forms.Panel();
+        	this.tpMIMTexture = new System.Windows.Forms.TabPage();
         	this.tlpTileMap = new System.Windows.Forms.TableLayoutPanel();
-        	this.pbTileMap = new System.Windows.Forms.PictureBox();
+        	this.pbMIMTexture = new System.Windows.Forms.PictureBox();
         	this.panel1 = new System.Windows.Forms.Panel();
         	this.btnNextPalette = new System.Windows.Forms.Button();
         	this.btnPrevPalette = new System.Windows.Forms.Button();
         	this.txtPaletteId = new System.Windows.Forms.TextBox();
         	this.label1 = new System.Windows.Forms.Label();
+        	this.tpTileMap = new System.Windows.Forms.TabPage();
         	this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-        	this.pnlTK = new System.Windows.Forms.Panel();
+        	this.pbTileMap = new System.Windows.Forms.PictureBox();
         	this.menuStrip1.SuspendLayout();
         	this.tabControl1.SuspendLayout();
         	this.tpScript.SuspendLayout();
         	this.tpWalkmesh.SuspendLayout();
-        	this.tpTileMap.SuspendLayout();
+        	this.tpMIMTexture.SuspendLayout();
         	this.tlpTileMap.SuspendLayout();
-        	((System.ComponentModel.ISupportInitialize)(this.pbTileMap)).BeginInit();
+        	((System.ComponentModel.ISupportInitialize)(this.pbMIMTexture)).BeginInit();
         	this.panel1.SuspendLayout();
+        	this.tpTileMap.SuspendLayout();
+        	((System.ComponentModel.ISupportInitialize)(this.pbTileMap)).BeginInit();
         	this.SuspendLayout();
         	// 
         	// menuStrip1
@@ -148,6 +152,7 @@
         	// 
         	this.tabControl1.Controls.Add(this.tpScript);
         	this.tabControl1.Controls.Add(this.tpWalkmesh);
+        	this.tabControl1.Controls.Add(this.tpMIMTexture);
         	this.tabControl1.Controls.Add(this.tpTileMap);
         	this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
         	this.tabControl1.ItemSize = new System.Drawing.Size(50, 18);
@@ -415,22 +420,30 @@
         	this.tpWalkmesh.Text = "Walkmesh";
         	this.tpWalkmesh.UseVisualStyleBackColor = true;
         	// 
-        	// tpTileMap
+        	// pnlTK
         	// 
-        	this.tpTileMap.Controls.Add(this.tlpTileMap);
-        	this.tpTileMap.Location = new System.Drawing.Point(4, 22);
-        	this.tpTileMap.Name = "tpTileMap";
-        	this.tpTileMap.Padding = new System.Windows.Forms.Padding(3);
-        	this.tpTileMap.Size = new System.Drawing.Size(952, 445);
-        	this.tpTileMap.TabIndex = 2;
-        	this.tpTileMap.Text = "TileMap";
-        	this.tpTileMap.UseVisualStyleBackColor = true;
+        	this.pnlTK.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.pnlTK.Location = new System.Drawing.Point(3, 3);
+        	this.pnlTK.Name = "pnlTK";
+        	this.pnlTK.Size = new System.Drawing.Size(946, 439);
+        	this.pnlTK.TabIndex = 1;
+        	// 
+        	// tpMIMTexture
+        	// 
+        	this.tpMIMTexture.Controls.Add(this.tlpTileMap);
+        	this.tpMIMTexture.Location = new System.Drawing.Point(4, 22);
+        	this.tpMIMTexture.Name = "tpMIMTexture";
+        	this.tpMIMTexture.Padding = new System.Windows.Forms.Padding(3);
+        	this.tpMIMTexture.Size = new System.Drawing.Size(952, 445);
+        	this.tpMIMTexture.TabIndex = 2;
+        	this.tpMIMTexture.Text = "MIM Texture";
+        	this.tpMIMTexture.UseVisualStyleBackColor = true;
         	// 
         	// tlpTileMap
         	// 
         	this.tlpTileMap.ColumnCount = 1;
         	this.tlpTileMap.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-        	this.tlpTileMap.Controls.Add(this.pbTileMap, 0, 1);
+        	this.tlpTileMap.Controls.Add(this.pbMIMTexture, 0, 1);
         	this.tlpTileMap.Controls.Add(this.panel1, 0, 0);
         	this.tlpTileMap.Dock = System.Windows.Forms.DockStyle.Fill;
         	this.tlpTileMap.Location = new System.Drawing.Point(3, 3);
@@ -441,15 +454,16 @@
         	this.tlpTileMap.Size = new System.Drawing.Size(946, 439);
         	this.tlpTileMap.TabIndex = 0;
         	// 
-        	// pbTileMap
+        	// pbMIMTexture
         	// 
-        	this.pbTileMap.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.pbTileMap.Location = new System.Drawing.Point(3, 33);
-        	this.pbTileMap.Name = "pbTileMap";
-        	this.pbTileMap.Size = new System.Drawing.Size(940, 403);
-        	this.pbTileMap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-        	this.pbTileMap.TabIndex = 1;
-        	this.pbTileMap.TabStop = false;
+        	this.pbMIMTexture.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.pbMIMTexture.Location = new System.Drawing.Point(3, 33);
+        	this.pbMIMTexture.Name = "pbMIMTexture";
+        	this.pbMIMTexture.Size = new System.Drawing.Size(940, 403);
+        	this.pbMIMTexture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+        	this.pbMIMTexture.TabIndex = 1;
+        	this.pbMIMTexture.TabStop = false;
+        	this.pbMIMTexture.Resize += new System.EventHandler(this.PbMIMTextureResize);
         	// 
         	// panel1
         	// 
@@ -499,17 +513,30 @@
         	this.label1.TabIndex = 0;
         	this.label1.Text = "Palette:";
         	// 
+        	// tpTileMap
+        	// 
+        	this.tpTileMap.Controls.Add(this.pbTileMap);
+        	this.tpTileMap.Location = new System.Drawing.Point(4, 22);
+        	this.tpTileMap.Name = "tpTileMap";
+        	this.tpTileMap.Padding = new System.Windows.Forms.Padding(3);
+        	this.tpTileMap.Size = new System.Drawing.Size(952, 445);
+        	this.tpTileMap.TabIndex = 3;
+        	this.tpTileMap.Text = "TileMap";
+        	this.tpTileMap.UseVisualStyleBackColor = true;
+        	// 
         	// saveFileDialog1
         	// 
         	this.saveFileDialog1.Filter = "PNG Images|*.png";
         	// 
-        	// pnlTK
+        	// pbTileMap
         	// 
-        	this.pnlTK.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.pnlTK.Location = new System.Drawing.Point(3, 3);
-        	this.pnlTK.Name = "pnlTK";
-        	this.pnlTK.Size = new System.Drawing.Size(946, 439);
-        	this.pnlTK.TabIndex = 1;
+        	this.pbTileMap.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.pbTileMap.Location = new System.Drawing.Point(3, 3);
+        	this.pbTileMap.Name = "pbTileMap";
+        	this.pbTileMap.Size = new System.Drawing.Size(946, 439);
+        	this.pbTileMap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+        	this.pbTileMap.TabIndex = 0;
+        	this.pbTileMap.TabStop = false;
         	// 
         	// frmMain
         	// 
@@ -528,11 +555,13 @@
         	this.tpScript.ResumeLayout(false);
         	this.tpScript.PerformLayout();
         	this.tpWalkmesh.ResumeLayout(false);
-        	this.tpTileMap.ResumeLayout(false);
+        	this.tpMIMTexture.ResumeLayout(false);
         	this.tlpTileMap.ResumeLayout(false);
-        	((System.ComponentModel.ISupportInitialize)(this.pbTileMap)).EndInit();
+        	((System.ComponentModel.ISupportInitialize)(this.pbMIMTexture)).EndInit();
         	this.panel1.ResumeLayout(false);
         	this.panel1.PerformLayout();
+        	this.tpTileMap.ResumeLayout(false);
+        	((System.ComponentModel.ISupportInitialize)(this.pbTileMap)).EndInit();
         	this.ResumeLayout(false);
         	this.PerformLayout();
 
@@ -575,8 +604,8 @@
         private System.Windows.Forms.TabPage tpScript;
         private System.Windows.Forms.TabPage tpWalkmesh;
         private System.Windows.Forms.Panel pnlTK;
-        private System.Windows.Forms.TabPage tpTileMap;
-        private System.Windows.Forms.PictureBox pbTileMap;
+        private System.Windows.Forms.TabPage tpMIMTexture;
+        private System.Windows.Forms.PictureBox pbMIMTexture;
         private System.Windows.Forms.ToolStripMenuItem saveTilemapToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.TableLayoutPanel tlpTileMap;
@@ -585,6 +614,8 @@
         private System.Windows.Forms.TextBox txtPaletteId;
         private System.Windows.Forms.Button btnNextPalette;
         private System.Windows.Forms.Button btnPrevPalette;
+        private System.Windows.Forms.TabPage tpTileMap;
+        private System.Windows.Forms.PictureBox pbTileMap;
     }
 }
 

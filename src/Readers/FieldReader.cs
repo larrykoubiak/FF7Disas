@@ -223,28 +223,33 @@ namespace FF7Viewer
         }
         private TileMap ReadTileMap(UInt32 offset, UInt32 nextoffset)
         {
-        	TileMap map = new TileMap();
+        	UInt16 type,pos,count;        	
+    		Int16 destx, desty;
+    		byte pgsrcx, pgsrcy;
+    		UInt16 clut;
+        	UInt16 textinfo;
+        	UInt16 group;
+        	byte parameter;
+        	byte state;
+    		TileMap map = new TileMap();
         	int i;
         	reader.BaseStream.Seek(offset, SeekOrigin.Begin);
         	for(i=0;i<4;i++)
         	{
         		map.Offsets[i] = reader.ReadUInt32();
         	}
-        	//read TileLayer
-        	UInt16 type,pos,count;
+        	//read LayerInfos
         	while(reader.BaseStream.Position < offset + map.Offsets[0])
         	{
 
         		type = reader.ReadUInt16();
         		pos = reader.ReadUInt16();
         		count = reader.ReadUInt16();
-        		TileLayer layer = new TileLayer(type,pos,count);
+        		LayerInfo layer = new LayerInfo(type,pos,count);
         		map.TileLayers.Add(layer);
         	}
+        	//read TileInfos
         	reader.BaseStream.Position = offset + map.Offsets[0];
-    		Int16 destx, desty;
-    		byte pgsrcx, pgsrcy;
-    		UInt16 clut;
         	while(reader.BaseStream.Position < offset + map.Offsets[1])
         	{
         		destx = reader.ReadInt16();
@@ -252,16 +257,34 @@ namespace FF7Viewer
         		pgsrcx = reader.ReadByte();
         		pgsrcy = reader.ReadByte();
         		clut = reader.ReadUInt16();
-        		BackgroundTile tile = new BackgroundTile(destx,desty,pgsrcx,pgsrcy,clut);
+        		TileInfo tile = new TileInfo(destx,desty,pgsrcx,pgsrcy,clut);
         		map.BackgroundTiles.Add(tile);
         	}
+        	//read TextureInfos
         	reader.BaseStream.Position = offset + map.Offsets[1];
-        	UInt16 textinfo;
         	while(reader.BaseStream.Position < offset + map.Offsets[2])
         	{
         		textinfo = reader.ReadUInt16();
         		TexturePageInfo ti = new TexturePageInfo(textinfo);
         		map.TexturePageInfos.Add(ti);
+        	}
+        	//read SpriteInfos
+        	reader.BaseStream.Position = offset + map.Offsets[2];
+        	while(reader.BaseStream.Position < offset + map.Offsets[3])
+        	{
+        		destx = reader.ReadInt16();
+        		desty = reader.ReadInt16();
+        		pgsrcx = reader.ReadByte();
+        		pgsrcy = reader.ReadByte();
+        		clut = reader.ReadUInt16();
+        		TileInfo ti = new TileInfo(destx,desty,pgsrcx,pgsrcy,clut);
+        		textinfo = reader.ReadUInt16();
+        		TexturePageInfo tpi = new TexturePageInfo(textinfo);
+        		group = reader.ReadUInt16();
+        		parameter = reader.ReadByte();
+        		state = reader.ReadByte();
+        		SpriteInfo si = new SpriteInfo(ti,tpi,group,parameter,state);
+        		map.SpriteInfos.Add(si);
         	}
         	return map;
         }
