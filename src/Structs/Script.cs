@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FF7Viewer
 {
-    class Script
+    public class Script
     {
     	//variables
         private byte nEntities;

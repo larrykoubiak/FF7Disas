@@ -33,6 +33,8 @@
         	this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.saveTilemapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        	this.saveFieldToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        	this.saveMIMTextureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.lZSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.unLZSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -73,8 +75,8 @@
         	this.txtPaletteId = new System.Windows.Forms.TextBox();
         	this.label1 = new System.Windows.Forms.Label();
         	this.tpTileMap = new System.Windows.Forms.TabPage();
-        	this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
         	this.pbTileMap = new System.Windows.Forms.PictureBox();
+        	this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
         	this.menuStrip1.SuspendLayout();
         	this.tabControl1.SuspendLayout();
         	this.tpScript.SuspendLayout();
@@ -103,6 +105,8 @@
         	this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
 			this.openToolStripMenuItem,
 			this.exitToolStripMenuItem,
+			this.saveFieldToolStripMenuItem,
+			this.saveMIMTextureToolStripMenuItem,
 			this.saveTilemapToolStripMenuItem});
         	this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
         	this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -111,23 +115,37 @@
         	// openToolStripMenuItem
         	// 
         	this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-        	this.openToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+        	this.openToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
         	this.openToolStripMenuItem.Text = "&Open";
         	this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
         	// 
         	// exitToolStripMenuItem
         	// 
         	this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-        	this.exitToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+        	this.exitToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
         	this.exitToolStripMenuItem.Text = "&Exit";
         	this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
         	// 
         	// saveTilemapToolStripMenuItem
         	// 
         	this.saveTilemapToolStripMenuItem.Name = "saveTilemapToolStripMenuItem";
-        	this.saveTilemapToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-        	this.saveTilemapToolStripMenuItem.Text = "&Save Tilemap";
+        	this.saveTilemapToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+        	this.saveTilemapToolStripMenuItem.Text = "Save &Tilemap";
         	this.saveTilemapToolStripMenuItem.Click += new System.EventHandler(this.SaveTilemapToolStripMenuItemClick);
+        	// 
+        	// saveFieldToolStripMenuItem
+        	// 
+        	this.saveFieldToolStripMenuItem.Name = "saveFieldToolStripMenuItem";
+        	this.saveFieldToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+        	this.saveFieldToolStripMenuItem.Text = "Save &Field";
+        	this.saveFieldToolStripMenuItem.Click += new System.EventHandler(this.SaveFieldToolStripMenuItemClick);
+        	// 
+        	// saveMIMTextureToolStripMenuItem
+        	// 
+        	this.saveMIMTextureToolStripMenuItem.Name = "saveMIMTextureToolStripMenuItem";
+        	this.saveMIMTextureToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+        	this.saveMIMTextureToolStripMenuItem.Text = "Save &MIM Texture";
+        	this.saveMIMTextureToolStripMenuItem.Click += new System.EventHandler(this.SaveMIMTextureToolStripMenuItemClick);
         	// 
         	// lZSToolStripMenuItem
         	// 
@@ -524,10 +542,6 @@
         	this.tpTileMap.Text = "TileMap";
         	this.tpTileMap.UseVisualStyleBackColor = true;
         	// 
-        	// saveFileDialog1
-        	// 
-        	this.saveFileDialog1.Filter = "PNG Images|*.png";
-        	// 
         	// pbTileMap
         	// 
         	this.pbTileMap.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -616,6 +630,8 @@
         private System.Windows.Forms.Button btnPrevPalette;
         private System.Windows.Forms.TabPage tpTileMap;
         private System.Windows.Forms.PictureBox pbTileMap;
+        private System.Windows.Forms.ToolStripMenuItem saveFieldToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveMIMTextureToolStripMenuItem;
     }
 }
 

@@ -18,7 +18,7 @@ namespace FF7Viewer
     {
     #region Fields + Constructor
     	//Data fields
-        Field field;
+        public Field field;
         MIM mim;
         Bitmap mimtexture;
         Bitmap tilemap;
@@ -240,18 +240,25 @@ namespace FF7Viewer
         	gBmp.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
         	gBmp.FillRectangle(Brushes.Black,0,0,640,1024);
         	gBmp.Dispose();
-        	foreach(TileInfo ti in field.TileMap.BackgroundTiles)
+        	foreach(Layer l in field.TileMap.Layers)
         	{
-        		PaletteId = ti.ClutNumber;
-        		for(int offsety=0;offsety<16;offsety++)
+        		TexturePageInfo tpi = field.TileMap.TexturePageInfos[l.TexturePageId];
+        		foreach(LayerInfo li in l.LayerInfos)
         		{
-        			for(int offsetx=0;offsetx<16;offsetx+=2)
-        			{
-        				int pixelidx = ((ti.TexPageSourceY+offsety)*(t.Width)) + (ti.TexPageSourceX + offsetx);
-        				color = mim.Clut[PaletteId].Entries[t.Pixels[pixelidx] & 0xFF].Color;
-        				tilemap.SetPixel(ti.DestinationX + 320 + offsetx,ti.DestinationY + 256 + offsety,color);
-        				color = mim.Clut[PaletteId].Entries[t.Pixels[pixelidx] >> 8].Color;
-        				tilemap.SetPixel(ti.DestinationX + 320 + offsetx + 1,ti.DestinationY + 256 + offsety,color);
+        			foreach(TileInfo ti in li.Tiles)
+        			{        				
+		        		PaletteId = ti.ClutNumber;
+		        		for(int offsety=0;offsety<16;offsety++)
+		        		{
+		        			for(int offsetx=0;offsetx<16;offsetx+=2)
+		        			{
+		        				int pixelidx = ((ti.TexPageSourceY+offsety)*(t.Width)) + ((tpi.PageX-6)*64) + ((ti.TexPageSourceX + offsetx)/2);
+		        				color = mim.Clut[PaletteId].Entries[t.Pixels[pixelidx] & 0xFF].Color;
+		        				tilemap.SetPixel(ti.DestinationX + 320 + offsetx,ti.DestinationY + 256 + offsety,color);
+		        				color = mim.Clut[PaletteId].Entries[t.Pixels[pixelidx] >> 8].Color;
+		        				tilemap.SetPixel(ti.DestinationX + 320 + offsetx + 1,ti.DestinationY + 256 + offsety,color);
+		        			}
+		        		}        				
         			}
         		}
         	}
@@ -268,13 +275,61 @@ namespace FF7Viewer
         {
             this.Close();
         }
-		void SaveTilemapToolStripMenuItemClick(object sender, EventArgs e)
+
+        void SaveFieldToolStripMenuItemClick(object sender, EventArgs e)
 		{
+			saveFileDialog1.Filter = "XML Files|*.xml";
+			if(saveFileDialog1.ShowDialog()==DialogResult.OK)
+			{
+				XmlSerializer serial = new XmlSerializer(typeof(TileMap));
+				FileStream stream = new FileStream(saveFileDialog1.FileName,FileMode.Create);
+				serial.Serialize(stream,this.field.TileMap);
+				stream.Close();
+			}			
+		}
+		void SaveMIMTextureToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			string filename;
+			Color color;
+			saveFileDialog1.Filter = "PNG Images|*.png";
+			if(saveFileDialog1.ShowDialog()==DialogResult.OK)
+			{
+				for(int i=0;i<mim.Clut.Palettes.Length;i++)
+				{
+		        	mimtexture = new Bitmap(1664,512,PixelFormat.Format32bppArgb);
+		        	Graphics gBmp = Graphics.FromImage(mimtexture);
+		        	gBmp.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+		        	gBmp.FillRectangle(Brushes.Black,0,0,1664,512);
+		        	gBmp.Dispose();
+					foreach(Texture t in mim.Textures)
+		        	{
+		        		for(int y =0;y<t.Height;y++)
+		        		{
+		        			for(int x=0;x<t.Width;x++)
+		        			{
+		        				int pixelidx = (y*t.Width) + x;
+		        				color = mim.Clut[i].Entries[t.Pixels[pixelidx] & 0xFF].Color;
+		        				mimtexture.SetPixel(t.X + (x*2),t.Y + y,color);
+		        				color = mim.Clut[i].Entries[t.Pixels[pixelidx] >> 8].Color;
+		        				mimtexture.SetPixel(t.X + (x*2) + 1,t.Y + y,color);
+		        			}
+		        		}
+		        	}
+					filename = Path.Combine(Path.GetDirectoryName(saveFileDialog1.FileName),Path.GetFileNameWithoutExtension(saveFileDialog1.FileName) + i.ToString("00") + ".png");
+					mimtexture.Save(filename);			
+				}
+			}
+			RefreshMIMTexture();
+		}
+
+        void SaveTilemapToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			saveFileDialog1.Filter = "PNG Images|*.png";
 			if(saveFileDialog1.ShowDialog()==DialogResult.OK)
 			{
 				tilemap.Save(saveFileDialog1.FileName);
 			}
-		}        
+		}
         private void UnLZSToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			if(openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -331,13 +386,14 @@ namespace FF7Viewer
 		void BtnPrevPaletteClick(object sender, EventArgs e)
 		{
 			this.PaletteId -=1;
-			RefreshTileMap();
+			RefreshMIMTexture();
 		}
 		void BtnNextPaletteClick(object sender, EventArgs e)
 		{
 			this.PaletteId +=1;
-			RefreshTileMap();
+			RefreshMIMTexture();
 		}
+
 
 
 	#endregion

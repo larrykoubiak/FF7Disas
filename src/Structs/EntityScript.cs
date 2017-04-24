@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FF7Viewer
 {
-    class EntityScript
+    public class EntityScript
     {
 		//Constructor
         public EntityScript()

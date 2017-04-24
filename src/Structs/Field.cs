@@ -7,7 +7,7 @@ using System.IO;
 
 namespace FF7Viewer
 {
-    class Field
+    public class Field
     {
     	public enum Offset
         {

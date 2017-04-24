@@ -239,26 +239,49 @@ namespace FF7Viewer
         		map.Offsets[i] = reader.ReadUInt32();
         	}
         	//read LayerInfos
+        	Layer layer = new Layer();
         	while(reader.BaseStream.Position < offset + map.Offsets[0])
         	{
-
         		type = reader.ReadUInt16();
-        		pos = reader.ReadUInt16();
-        		count = reader.ReadUInt16();
-        		LayerInfo layer = new LayerInfo(type,pos,count);
-        		map.TileLayers.Add(layer);
+        		if(type==0x7FFE) 
+        		{
+        			//End of layer
+	        		pos = reader.ReadUInt16();
+	        		count = reader.ReadUInt16();
+	        		layer.TexturePageId = pos;
+	        		map.Layers.Add(layer);
+	        		layer = new Layer();
+        		}
+        		else if(type==0x7FFF)
+        		{
+        			//end of layer infos
+        			break;
+        		}
+        		else
+        		{
+	        		pos = reader.ReadUInt16();
+	        		count = reader.ReadUInt16();
+	        		LayerInfo li = new LayerInfo(type,pos,count);
+	        		layer.LayerInfos.Add(li);
+        		}
         	}
         	//read TileInfos
         	reader.BaseStream.Position = offset + map.Offsets[0];
-        	while(reader.BaseStream.Position < offset + map.Offsets[1])
+        	foreach(Layer l in map.Layers)
         	{
-        		destx = reader.ReadInt16();
-        		desty = reader.ReadInt16();
-        		pgsrcx = reader.ReadByte();
-        		pgsrcy = reader.ReadByte();
-        		clut = reader.ReadUInt16();
-        		TileInfo tile = new TileInfo(destx,desty,pgsrcx,pgsrcy,clut);
-        		map.BackgroundTiles.Add(tile);
+        		foreach(LayerInfo li in l.LayerInfos)
+        		{
+        			for(int tilenum=0;tilenum<li.TileCount;tilenum++)
+        			{
+		        		destx = reader.ReadInt16();
+		        		desty = reader.ReadInt16();
+		        		pgsrcx = reader.ReadByte();
+		        		pgsrcy = reader.ReadByte();
+		        		clut = reader.ReadUInt16();
+		        		TileInfo tile = new TileInfo(destx,desty,pgsrcx,pgsrcy,clut);
+		        		li.Tiles.Add(tile);
+        			}
+        		}
         	}
         	//read TextureInfos
         	reader.BaseStream.Position = offset + map.Offsets[1];
