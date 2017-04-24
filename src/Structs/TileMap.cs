@@ -147,12 +147,16 @@ namespace FF7Viewer
 	/// </summary>
 	public class TileMap
 	{
+		public UInt16 Width;
+		public UInt16 Height;
 		public UInt32[] Offsets {get;set;}
 		public List<Layer> Layers {get;set;}
 		public List<TexturePageInfo> TexturePageInfos {get;set;}
 		public List<SpriteInfo> SpriteInfos {get;set;}
 		public TileMap()
 		{
+			Width = 0;
+			Height = 0;
 			Offsets = new UInt32[4];
 			Layers = new List<Layer>();
 			TexturePageInfos = new List<TexturePageInfo>();

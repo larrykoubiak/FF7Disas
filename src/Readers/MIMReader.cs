@@ -49,6 +49,7 @@ namespace FF7Viewer
 		}
 		public List<Texture> ReadTextures()
 		{
+			UInt16 value;
 			List<Texture> lst = new List<Texture>();
 			while(reader.BaseStream.Position < (reader.BaseStream.Length-12))
 			{
@@ -61,7 +62,8 @@ namespace FF7Viewer
 				t.Height = reader.ReadUInt16();
 				for(int i=0;i<(t.Width*t.Height);i++)
 				{
-					t.Pixels[i] = reader.ReadUInt16();
+					value = reader.ReadUInt16();
+					t.Pixels[i] = value;
 				}
 				lst.Add(t);
 			}

@@ -233,6 +233,8 @@ namespace FF7Viewer
         	byte state;
     		TileMap map = new TileMap();
         	int i;
+        	Int16 mindestx = 0,mindesty = 0;
+        	Int16 maxdestx = 0,maxdesty = 0;
         	reader.BaseStream.Seek(offset, SeekOrigin.Begin);
         	for(i=0;i<4;i++)
         	{
@@ -275,6 +277,10 @@ namespace FF7Viewer
         			{
 		        		destx = reader.ReadInt16();
 		        		desty = reader.ReadInt16();
+		        		mindestx = Math.Min(mindestx,destx);
+		        		mindesty = Math.Min(mindesty,desty);
+		        		maxdestx = Math.Max(maxdestx,destx);
+		        		maxdesty = Math.Max(maxdesty,desty);		        		
 		        		pgsrcx = reader.ReadByte();
 		        		pgsrcy = reader.ReadByte();
 		        		clut = reader.ReadUInt16();
@@ -297,6 +303,10 @@ namespace FF7Viewer
         	{
         		destx = reader.ReadInt16();
         		desty = reader.ReadInt16();
+        		mindestx = Math.Min(mindestx,destx);
+        		mindesty = Math.Min(mindesty,desty);
+        		maxdestx = Math.Max(maxdestx,destx);
+        		maxdesty = Math.Max(maxdesty,desty);
         		pgsrcx = reader.ReadByte();
         		pgsrcy = reader.ReadByte();
         		clut = reader.ReadUInt16();
@@ -309,6 +319,9 @@ namespace FF7Viewer
         		SpriteInfo si = new SpriteInfo(ti,tpi,group,parameter,state);
         		map.SpriteInfos.Add(si);
         	}
+        	map.Width = (UInt16)((maxdestx - mindestx)+16);
+        	map.Height = (UInt16)((maxdesty - mindesty)+16);
+
         	return map;
         }
     }

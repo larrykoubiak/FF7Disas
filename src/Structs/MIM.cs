@@ -163,17 +163,16 @@ namespace FF7Viewer
 				m_length = value;
 				if(m_length>0)
 				{
-					Pixels = new UInt16[(m_length-12)/2];					
+					Pixels = new UInt16[(m_length-12)/2];
 				}
 			}
-		}		
+		}
 	}
 	
 	public class MIM
 	{
 		public CLUT Clut {get;set;}
 		public List<Texture> Textures;
-		
 		public MIM()
 		{
 			Clut = new CLUT();
