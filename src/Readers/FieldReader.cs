@@ -223,6 +223,7 @@ namespace FF7Viewer
         }
         private TileMap ReadTileMap(UInt32 offset, UInt32 nextoffset)
         {
+        	LayerType LayerIndex=0;
         	UInt16 type,pos,count;        	
     		Int16 destx, desty;
     		byte pgsrcx, pgsrcy;
@@ -233,15 +234,16 @@ namespace FF7Viewer
         	byte state;
     		TileMap map = new TileMap();
         	int i;
-        	Int16 mindestx = 0,mindesty = 0;
-        	Int16 maxdestx = 0,maxdesty = 0;
         	reader.BaseStream.Seek(offset, SeekOrigin.Begin);
+        	Int16 maxx = 0;
+        	Int16 maxy = 0;
         	for(i=0;i<4;i++)
         	{
         		map.Offsets[i] = reader.ReadUInt32();
         	}
         	//read LayerInfos
-        	Layer layer = new Layer();
+        	Layer layer = new Layer(LayerIndex);
+        	LayerPage layerpage = new LayerPage();
         	while(reader.BaseStream.Position < offset + map.Offsets[0])
         	{
         		type = reader.ReadUInt16();
@@ -250,37 +252,38 @@ namespace FF7Viewer
         			//End of layer
 	        		pos = reader.ReadUInt16();
 	        		count = reader.ReadUInt16();
-	        		layer.TexturePageId = pos;
-	        		map.Layers.Add(layer);
-	        		layer = new Layer();
+	        		layerpage.TexturePageId = pos;
+	        		layer.LayerPages.Add(layerpage);
+	        		layerpage = new LayerPage();
         		}
         		else if(type==0x7FFF)
         		{
-        			//end of layer infos
-        			break;
+        			map.Layers.Add(layer);
+        			LayerIndex++;
+        			layer = new Layer(LayerIndex);
         		}
         		else
         		{
 	        		pos = reader.ReadUInt16();
 	        		count = reader.ReadUInt16();
 	        		LayerInfo li = new LayerInfo(type,pos,count);
-	        		layer.LayerInfos.Add(li);
+	        		layerpage.LayerInfos.Add(li);
         		}
         	}
         	//read TileInfos
         	reader.BaseStream.Position = offset + map.Offsets[0];
-        	foreach(Layer l in map.Layers)
+        	foreach(LayerPage lp in map.Layers[0].LayerPages)
         	{
-        		foreach(LayerInfo li in l.LayerInfos)
+        		foreach(LayerInfo li in lp.LayerInfos)
         		{
         			for(int tilenum=0;tilenum<li.TileCount;tilenum++)
         			{
 		        		destx = reader.ReadInt16();
 		        		desty = reader.ReadInt16();
-		        		mindestx = Math.Min(mindestx,destx);
-		        		mindesty = Math.Min(mindesty,desty);
-		        		maxdestx = Math.Max(maxdestx,destx);
-		        		maxdesty = Math.Max(maxdesty,desty);		        		
+		        		map.OriginX = Math.Min(map.OriginX,destx);
+		        		map.OriginY = Math.Min(map.OriginY,desty);
+		        		maxx = Math.Max(maxx,destx);
+		        		maxy = Math.Max(maxy,desty);
 		        		pgsrcx = reader.ReadByte();
 		        		pgsrcy = reader.ReadByte();
 		        		clut = reader.ReadUInt16();
@@ -303,26 +306,27 @@ namespace FF7Viewer
         	{
         		destx = reader.ReadInt16();
         		desty = reader.ReadInt16();
-        		mindestx = Math.Min(mindestx,destx);
-        		mindesty = Math.Min(mindesty,desty);
-        		maxdestx = Math.Max(maxdestx,destx);
-        		maxdesty = Math.Max(maxdesty,desty);
+        		map.OriginX = Math.Min(map.OriginX,destx);
+        		map.OriginY = Math.Min(map.OriginY,desty);
+	    		maxx = Math.Max(maxx,destx);
+	    		maxy = Math.Max(maxy,desty);
         		pgsrcx = reader.ReadByte();
         		pgsrcy = reader.ReadByte();
         		clut = reader.ReadUInt16();
-        		TileInfo ti = new TileInfo(destx,desty,pgsrcx,pgsrcy,clut);
         		textinfo = reader.ReadUInt16();
         		TexturePageInfo tpi = new TexturePageInfo(textinfo);
         		group = reader.ReadUInt16();
         		parameter = reader.ReadByte();
         		state = reader.ReadByte();
-        		SpriteInfo si = new SpriteInfo(ti,tpi,group,parameter,state);
-        		map.SpriteInfos.Add(si);
+        		SpriteTileInfo si = new SpriteTileInfo(destx,desty,pgsrcx,pgsrcy,clut,tpi,group,parameter,state);
+        		map.SpriteTileInfos.Add(si);
         	}
-        	map.Width = (UInt16)((maxdestx - mindestx)+32);
-        	map.Height = (UInt16)((maxdesty - mindesty)+32);
-
+	    	//read ExtraInfos
+	    	
+        	map.Width = (UInt16)(Math.Abs(maxx-map.OriginX) + 16);
+        	map.Height = (UInt16)(Math.Abs(maxy-map.OriginY) + 16);
         	return map;
         }
+
     }
 }

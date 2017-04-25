@@ -18,19 +18,19 @@ namespace TKView
 		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.SplitContainer splitContainer1;
 		private System.Windows.Forms.TextBox txtZPos;
-		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Label lblPositionZ;
 		private System.Windows.Forms.TextBox txtYPos;
-		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label lblPositionY;
 		private System.Windows.Forms.TextBox txtXPos;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label lblPositionX;
+		private System.Windows.Forms.Label lblCameraPosition;
 		private System.Windows.Forms.TextBox txtZOri;
-		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Label lblOrientationZ;
 		private System.Windows.Forms.TextBox txtYOri;
-		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.Label lblOrientationY;
 		private System.Windows.Forms.TextBox txtXOri;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.Label lblOrientationX;
+		private System.Windows.Forms.Label lblCameraOrientation;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -57,19 +57,19 @@ namespace TKView
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.txtZOri = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
+			this.lblOrientationZ = new System.Windows.Forms.Label();
 			this.txtYOri = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
+			this.lblOrientationY = new System.Windows.Forms.Label();
 			this.txtXOri = new System.Windows.Forms.TextBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.label8 = new System.Windows.Forms.Label();
+			this.lblOrientationX = new System.Windows.Forms.Label();
+			this.lblCameraOrientation = new System.Windows.Forms.Label();
 			this.txtZPos = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
+			this.lblPositionZ = new System.Windows.Forms.Label();
 			this.txtYPos = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
+			this.lblPositionY = new System.Windows.Forms.Label();
 			this.txtXPos = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
+			this.lblPositionX = new System.Windows.Forms.Label();
+			this.lblCameraPosition = new System.Windows.Forms.Label();
 			this.glControl1 = new OpenTK.GLControl();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -91,19 +91,19 @@ namespace TKView
 			// splitContainer1.Panel1
 			// 
 			this.splitContainer1.Panel1.Controls.Add(this.txtZOri);
-			this.splitContainer1.Panel1.Controls.Add(this.label5);
+			this.splitContainer1.Panel1.Controls.Add(this.lblOrientationZ);
 			this.splitContainer1.Panel1.Controls.Add(this.txtYOri);
-			this.splitContainer1.Panel1.Controls.Add(this.label6);
+			this.splitContainer1.Panel1.Controls.Add(this.lblOrientationY);
 			this.splitContainer1.Panel1.Controls.Add(this.txtXOri);
-			this.splitContainer1.Panel1.Controls.Add(this.label7);
-			this.splitContainer1.Panel1.Controls.Add(this.label8);
+			this.splitContainer1.Panel1.Controls.Add(this.lblOrientationX);
+			this.splitContainer1.Panel1.Controls.Add(this.lblCameraOrientation);
 			this.splitContainer1.Panel1.Controls.Add(this.txtZPos);
-			this.splitContainer1.Panel1.Controls.Add(this.label4);
+			this.splitContainer1.Panel1.Controls.Add(this.lblPositionZ);
 			this.splitContainer1.Panel1.Controls.Add(this.txtYPos);
-			this.splitContainer1.Panel1.Controls.Add(this.label3);
+			this.splitContainer1.Panel1.Controls.Add(this.lblPositionY);
 			this.splitContainer1.Panel1.Controls.Add(this.txtXPos);
-			this.splitContainer1.Panel1.Controls.Add(this.label2);
-			this.splitContainer1.Panel1.Controls.Add(this.label1);
+			this.splitContainer1.Panel1.Controls.Add(this.lblPositionX);
+			this.splitContainer1.Panel1.Controls.Add(this.lblCameraPosition);
 			// 
 			// splitContainer1.Panel2
 			// 
@@ -120,14 +120,14 @@ namespace TKView
 			this.txtZOri.Size = new System.Drawing.Size(62, 20);
 			this.txtZOri.TabIndex = 13;
 			// 
-			// label5
+			// lblOrientationZ
 			// 
-			this.label5.Location = new System.Drawing.Point(4, 175);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(55, 18);
-			this.label5.TabIndex = 12;
-			this.label5.Text = "Z";
-			this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			this.lblOrientationZ.Location = new System.Drawing.Point(4, 175);
+			this.lblOrientationZ.Name = "lblOrientationZ";
+			this.lblOrientationZ.Size = new System.Drawing.Size(55, 18);
+			this.lblOrientationZ.TabIndex = 12;
+			this.lblOrientationZ.Text = "Z";
+			this.lblOrientationZ.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
 			// txtYOri
 			// 
@@ -137,14 +137,14 @@ namespace TKView
 			this.txtYOri.Size = new System.Drawing.Size(62, 20);
 			this.txtYOri.TabIndex = 11;
 			// 
-			// label6
+			// lblOrientationY
 			// 
-			this.label6.Location = new System.Drawing.Point(4, 149);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(55, 18);
-			this.label6.TabIndex = 10;
-			this.label6.Text = "Y";
-			this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			this.lblOrientationY.Location = new System.Drawing.Point(4, 149);
+			this.lblOrientationY.Name = "lblOrientationY";
+			this.lblOrientationY.Size = new System.Drawing.Size(55, 18);
+			this.lblOrientationY.TabIndex = 10;
+			this.lblOrientationY.Text = "Y";
+			this.lblOrientationY.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
 			// txtXOri
 			// 
@@ -154,23 +154,23 @@ namespace TKView
 			this.txtXOri.Size = new System.Drawing.Size(62, 20);
 			this.txtXOri.TabIndex = 9;
 			// 
-			// label7
+			// lblOrientationX
 			// 
-			this.label7.Location = new System.Drawing.Point(4, 123);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(55, 18);
-			this.label7.TabIndex = 8;
-			this.label7.Text = "X";
-			this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			this.lblOrientationX.Location = new System.Drawing.Point(4, 123);
+			this.lblOrientationX.Name = "lblOrientationX";
+			this.lblOrientationX.Size = new System.Drawing.Size(55, 18);
+			this.lblOrientationX.TabIndex = 8;
+			this.lblOrientationX.Text = "X";
+			this.lblOrientationX.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
-			// label8
+			// lblCameraOrientation
 			// 
-			this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label8.Location = new System.Drawing.Point(3, 101);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(124, 18);
-			this.label8.TabIndex = 7;
-			this.label8.Text = "Camera Orientation";
+			this.lblCameraOrientation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblCameraOrientation.Location = new System.Drawing.Point(3, 101);
+			this.lblCameraOrientation.Name = "lblCameraOrientation";
+			this.lblCameraOrientation.Size = new System.Drawing.Size(124, 18);
+			this.lblCameraOrientation.TabIndex = 7;
+			this.lblCameraOrientation.Text = "Camera Orientation";
 			// 
 			// txtZPos
 			// 
@@ -180,14 +180,14 @@ namespace TKView
 			this.txtZPos.Size = new System.Drawing.Size(62, 20);
 			this.txtZPos.TabIndex = 6;
 			// 
-			// label4
+			// lblPositionZ
 			// 
-			this.label4.Location = new System.Drawing.Point(4, 74);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(55, 18);
-			this.label4.TabIndex = 5;
-			this.label4.Text = "Z";
-			this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			this.lblPositionZ.Location = new System.Drawing.Point(4, 74);
+			this.lblPositionZ.Name = "lblPositionZ";
+			this.lblPositionZ.Size = new System.Drawing.Size(55, 18);
+			this.lblPositionZ.TabIndex = 5;
+			this.lblPositionZ.Text = "Z";
+			this.lblPositionZ.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
 			// txtYPos
 			// 
@@ -197,14 +197,14 @@ namespace TKView
 			this.txtYPos.Size = new System.Drawing.Size(62, 20);
 			this.txtYPos.TabIndex = 4;
 			// 
-			// label3
+			// lblPositionY
 			// 
-			this.label3.Location = new System.Drawing.Point(4, 48);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(55, 18);
-			this.label3.TabIndex = 3;
-			this.label3.Text = "Y";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			this.lblPositionY.Location = new System.Drawing.Point(4, 48);
+			this.lblPositionY.Name = "lblPositionY";
+			this.lblPositionY.Size = new System.Drawing.Size(55, 18);
+			this.lblPositionY.TabIndex = 3;
+			this.lblPositionY.Text = "Y";
+			this.lblPositionY.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
 			// txtXPos
 			// 
@@ -214,23 +214,23 @@ namespace TKView
 			this.txtXPos.Size = new System.Drawing.Size(62, 20);
 			this.txtXPos.TabIndex = 2;
 			// 
-			// label2
+			// lblPositionX
 			// 
-			this.label2.Location = new System.Drawing.Point(4, 22);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(55, 18);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "X";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			this.lblPositionX.Location = new System.Drawing.Point(4, 22);
+			this.lblPositionX.Name = "lblPositionX";
+			this.lblPositionX.Size = new System.Drawing.Size(55, 18);
+			this.lblPositionX.TabIndex = 1;
+			this.lblPositionX.Text = "X";
+			this.lblPositionX.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
-			// label1
+			// lblCameraPosition
 			// 
-			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(3, 0);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(124, 18);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Camera Position";
+			this.lblCameraPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblCameraPosition.Location = new System.Drawing.Point(3, 0);
+			this.lblCameraPosition.Name = "lblCameraPosition";
+			this.lblCameraPosition.Size = new System.Drawing.Size(124, 18);
+			this.lblCameraPosition.TabIndex = 0;
+			this.lblCameraPosition.Text = "Camera Position";
 			// 
 			// glControl1
 			// 

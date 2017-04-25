@@ -129,7 +129,7 @@ namespace TKView
 		    	KeyboardState kstate = Keyboard.GetState();
 		    	MouseState mstate = Mouse.GetState();
 		    	Point p = glControl1.PointToScreen(Point.Empty);
-				if(kstate.IsKeyDown(Key.Space) && !prevkstate.IsKeyDown(Key.Space))
+				if(kstate.IsKeyDown(Key.F12) && !prevkstate.IsKeyDown(Key.F12))
 				{
 					CaptureControls = !CaptureControls;
 					if(CaptureControls)

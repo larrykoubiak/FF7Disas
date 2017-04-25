@@ -12,16 +12,37 @@ using System.Collections.Specialized;
 
 namespace FF7Viewer
 {
+	public enum LayerType
+	{
+		Background,
+		Sprite,
+		Extra,
+		Unknown
+	}
 	public class Layer
+	{
+		public LayerType LayerType {get;set;}
+		public List<LayerPage> LayerPages {get;set;}
+		public Layer()
+		{
+			LayerType = LayerType.Background;
+			LayerPages = new List<LayerPage>();
+		}
+		public Layer(LayerType type)
+		{
+			LayerType = type;
+			LayerPages = new List<LayerPage>();
+		}
+	}
+	public class LayerPage
 	{
 		public UInt16 TexturePageId;
 		public List<LayerInfo> LayerInfos {get;set;}
-		public Layer()
+		public LayerPage()
 		{
 			TexturePageId = 0;
 			LayerInfos = new List<LayerInfo>();
 		}
-		
 	}
 	public class LayerInfo
 	{
@@ -118,24 +139,22 @@ namespace FF7Viewer
 			set {vector[depth] = (int)(value);}
 		}
 	}
-	public class SpriteInfo
+	public class SpriteTileInfo : TileInfo
 	{
-		public TileInfo SpriteTI {get;set;}
 		public TexturePageInfo SpriteTP_Blend {get;set;}
 		public UInt16 Group {get;set;}
 		public byte Parameter {get;set;}
 		public byte State {get;set;}
-		public SpriteInfo()
+		public SpriteTileInfo() : base()
 		{
-			SpriteTI = new TileInfo();
 			SpriteTP_Blend = new TexturePageInfo();
 			Group = 0;
 			Parameter = 0;
 			State = 0;
 		}
-		public SpriteInfo(TileInfo ti, TexturePageInfo tpi, UInt16 group, byte param, byte state)
+		public SpriteTileInfo(Int16 destx,Int16 desty,byte pgsrcx,byte pgsrcy,UInt16 clut,TexturePageInfo tpi, UInt16 group, byte param, byte state) :
+			base(destx,desty,pgsrcx,pgsrcy,clut)
 		{
-			SpriteTI = ti;
 			SpriteTP_Blend = tpi;
 			Group = group;
 			Parameter = param;
@@ -147,20 +166,22 @@ namespace FF7Viewer
 	/// </summary>
 	public class TileMap
 	{
-		public UInt16 Width;
-		public UInt16 Height;
+		public Int16 OriginX {get;set;}
+		public Int16 OriginY {get;set;}
+		public UInt16 Width {get;set;}
+		public UInt16 Height {get;set;}
 		public UInt32[] Offsets {get;set;}
 		public List<Layer> Layers {get;set;}
 		public List<TexturePageInfo> TexturePageInfos {get;set;}
-		public List<SpriteInfo> SpriteInfos {get;set;}
+		public List<SpriteTileInfo> SpriteTileInfos {get;set;}
 		public TileMap()
 		{
-			Width = 0;
-			Height = 0;
+			OriginX = 0;
+			OriginY = 0;
 			Offsets = new UInt32[4];
 			Layers = new List<Layer>();
 			TexturePageInfos = new List<TexturePageInfo>();
-			SpriteInfos = new List<SpriteInfo>();
-		}		
+			SpriteTileInfos = new List<SpriteTileInfo>();
+		}
 	}
 }

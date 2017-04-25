@@ -32,9 +32,10 @@
         	this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        	this.saveTilemapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.saveFieldToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.saveMIMTextureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        	this.saveTilemapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        	this.saveCLUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.lZSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.unLZSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -65,28 +66,37 @@
         	this.lblScriptName = new System.Windows.Forms.Label();
         	this.txtName = new System.Windows.Forms.TextBox();
         	this.tpWalkmesh = new System.Windows.Forms.TabPage();
+        	this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
         	this.pnlTK = new System.Windows.Forms.Panel();
+        	this.label1 = new System.Windows.Forms.Label();
         	this.tpMIMTexture = new System.Windows.Forms.TabPage();
-        	this.tlpTileMap = new System.Windows.Forms.TableLayoutPanel();
+        	this.tlpMIMTexture = new System.Windows.Forms.TableLayoutPanel();
         	this.pbMIMTexture = new System.Windows.Forms.PictureBox();
-        	this.panel1 = new System.Windows.Forms.Panel();
+        	this.pnlPaletteControls = new System.Windows.Forms.Panel();
         	this.btnNextPalette = new System.Windows.Forms.Button();
         	this.btnPrevPalette = new System.Windows.Forms.Button();
         	this.txtPaletteId = new System.Windows.Forms.TextBox();
-        	this.label1 = new System.Windows.Forms.Label();
+        	this.lbPalette = new System.Windows.Forms.Label();
         	this.tpTileMap = new System.Windows.Forms.TabPage();
+        	this.tlpTileMap = new System.Windows.Forms.TableLayoutPanel();
         	this.pbTileMap = new System.Windows.Forms.PictureBox();
+        	this.pnlTileMapControls = new System.Windows.Forms.Panel();
+        	this.chkSprites = new System.Windows.Forms.CheckBox();
+        	this.chkBackground = new System.Windows.Forms.CheckBox();
         	this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
         	this.menuStrip1.SuspendLayout();
         	this.tabControl1.SuspendLayout();
         	this.tpScript.SuspendLayout();
         	this.tpWalkmesh.SuspendLayout();
+        	this.tableLayoutPanel1.SuspendLayout();
         	this.tpMIMTexture.SuspendLayout();
-        	this.tlpTileMap.SuspendLayout();
+        	this.tlpMIMTexture.SuspendLayout();
         	((System.ComponentModel.ISupportInitialize)(this.pbMIMTexture)).BeginInit();
-        	this.panel1.SuspendLayout();
+        	this.pnlPaletteControls.SuspendLayout();
         	this.tpTileMap.SuspendLayout();
+        	this.tlpTileMap.SuspendLayout();
         	((System.ComponentModel.ISupportInitialize)(this.pbTileMap)).BeginInit();
+        	this.pnlTileMapControls.SuspendLayout();
         	this.SuspendLayout();
         	// 
         	// menuStrip1
@@ -107,7 +117,8 @@
 			this.exitToolStripMenuItem,
 			this.saveFieldToolStripMenuItem,
 			this.saveMIMTextureToolStripMenuItem,
-			this.saveTilemapToolStripMenuItem});
+			this.saveTilemapToolStripMenuItem,
+			this.saveCLUTToolStripMenuItem});
         	this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
         	this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
         	this.fileToolStripMenuItem.Text = "&File";
@@ -126,13 +137,6 @@
         	this.exitToolStripMenuItem.Text = "&Exit";
         	this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
         	// 
-        	// saveTilemapToolStripMenuItem
-        	// 
-        	this.saveTilemapToolStripMenuItem.Name = "saveTilemapToolStripMenuItem";
-        	this.saveTilemapToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-        	this.saveTilemapToolStripMenuItem.Text = "Save &Tilemap";
-        	this.saveTilemapToolStripMenuItem.Click += new System.EventHandler(this.SaveTilemapToolStripMenuItemClick);
-        	// 
         	// saveFieldToolStripMenuItem
         	// 
         	this.saveFieldToolStripMenuItem.Name = "saveFieldToolStripMenuItem";
@@ -146,6 +150,20 @@
         	this.saveMIMTextureToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
         	this.saveMIMTextureToolStripMenuItem.Text = "Save &MIM Texture";
         	this.saveMIMTextureToolStripMenuItem.Click += new System.EventHandler(this.SaveMIMTextureToolStripMenuItemClick);
+        	// 
+        	// saveTilemapToolStripMenuItem
+        	// 
+        	this.saveTilemapToolStripMenuItem.Name = "saveTilemapToolStripMenuItem";
+        	this.saveTilemapToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+        	this.saveTilemapToolStripMenuItem.Text = "Save &Tilemap";
+        	this.saveTilemapToolStripMenuItem.Click += new System.EventHandler(this.SaveTilemapToolStripMenuItemClick);
+        	// 
+        	// saveCLUTToolStripMenuItem
+        	// 
+        	this.saveCLUTToolStripMenuItem.Name = "saveCLUTToolStripMenuItem";
+        	this.saveCLUTToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+        	this.saveCLUTToolStripMenuItem.Text = "Save CLUT";
+        	this.saveCLUTToolStripMenuItem.Click += new System.EventHandler(this.SaveCLUTToolStripMenuItemClick);
         	// 
         	// lZSToolStripMenuItem
         	// 
@@ -429,7 +447,7 @@
         	// 
         	// tpWalkmesh
         	// 
-        	this.tpWalkmesh.Controls.Add(this.pnlTK);
+        	this.tpWalkmesh.Controls.Add(this.tableLayoutPanel1);
         	this.tpWalkmesh.Location = new System.Drawing.Point(4, 22);
         	this.tpWalkmesh.Name = "tpWalkmesh";
         	this.tpWalkmesh.Padding = new System.Windows.Forms.Padding(3);
@@ -438,17 +456,43 @@
         	this.tpWalkmesh.Text = "Walkmesh";
         	this.tpWalkmesh.UseVisualStyleBackColor = true;
         	// 
+        	// tableLayoutPanel1
+        	// 
+        	this.tableLayoutPanel1.ColumnCount = 1;
+        	this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+        	this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+        	this.tableLayoutPanel1.Controls.Add(this.pnlTK, 0, 1);
+        	this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+        	this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+        	this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+        	this.tableLayoutPanel1.RowCount = 2;
+        	this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+        	this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+        	this.tableLayoutPanel1.Size = new System.Drawing.Size(946, 439);
+        	this.tableLayoutPanel1.TabIndex = 0;
+        	// 
         	// pnlTK
         	// 
         	this.pnlTK.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.pnlTK.Location = new System.Drawing.Point(3, 3);
+        	this.pnlTK.Location = new System.Drawing.Point(3, 33);
         	this.pnlTK.Name = "pnlTK";
-        	this.pnlTK.Size = new System.Drawing.Size(946, 439);
-        	this.pnlTK.TabIndex = 1;
+        	this.pnlTK.Size = new System.Drawing.Size(940, 403);
+        	this.pnlTK.TabIndex = 2;
+        	// 
+        	// label1
+        	// 
+        	this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.label1.Location = new System.Drawing.Point(3, 0);
+        	this.label1.Name = "label1";
+        	this.label1.Size = new System.Drawing.Size(940, 30);
+        	this.label1.TabIndex = 3;
+        	this.label1.Text = "Press F12 to capture controls (W/S to move along the Z axis, A/D to move along th" +
+	"e X axis, and Q/E to move along the Y axis)";
         	// 
         	// tpMIMTexture
         	// 
-        	this.tpMIMTexture.Controls.Add(this.tlpTileMap);
+        	this.tpMIMTexture.Controls.Add(this.tlpMIMTexture);
         	this.tpMIMTexture.Location = new System.Drawing.Point(4, 22);
         	this.tpMIMTexture.Name = "tpMIMTexture";
         	this.tpMIMTexture.Padding = new System.Windows.Forms.Padding(3);
@@ -457,20 +501,20 @@
         	this.tpMIMTexture.Text = "MIM Texture";
         	this.tpMIMTexture.UseVisualStyleBackColor = true;
         	// 
-        	// tlpTileMap
+        	// tlpMIMTexture
         	// 
-        	this.tlpTileMap.ColumnCount = 1;
-        	this.tlpTileMap.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-        	this.tlpTileMap.Controls.Add(this.pbMIMTexture, 0, 1);
-        	this.tlpTileMap.Controls.Add(this.panel1, 0, 0);
-        	this.tlpTileMap.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.tlpTileMap.Location = new System.Drawing.Point(3, 3);
-        	this.tlpTileMap.Name = "tlpTileMap";
-        	this.tlpTileMap.RowCount = 2;
-        	this.tlpTileMap.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-        	this.tlpTileMap.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-        	this.tlpTileMap.Size = new System.Drawing.Size(946, 439);
-        	this.tlpTileMap.TabIndex = 0;
+        	this.tlpMIMTexture.ColumnCount = 1;
+        	this.tlpMIMTexture.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+        	this.tlpMIMTexture.Controls.Add(this.pbMIMTexture, 0, 1);
+        	this.tlpMIMTexture.Controls.Add(this.pnlPaletteControls, 0, 0);
+        	this.tlpMIMTexture.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.tlpMIMTexture.Location = new System.Drawing.Point(3, 3);
+        	this.tlpMIMTexture.Name = "tlpMIMTexture";
+        	this.tlpMIMTexture.RowCount = 2;
+        	this.tlpMIMTexture.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+        	this.tlpMIMTexture.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+        	this.tlpMIMTexture.Size = new System.Drawing.Size(946, 439);
+        	this.tlpMIMTexture.TabIndex = 0;
         	// 
         	// pbMIMTexture
         	// 
@@ -483,17 +527,17 @@
         	this.pbMIMTexture.TabStop = false;
         	this.pbMIMTexture.Resize += new System.EventHandler(this.PbMIMTextureResize);
         	// 
-        	// panel1
+        	// pnlPaletteControls
         	// 
-        	this.panel1.Controls.Add(this.btnNextPalette);
-        	this.panel1.Controls.Add(this.btnPrevPalette);
-        	this.panel1.Controls.Add(this.txtPaletteId);
-        	this.panel1.Controls.Add(this.label1);
-        	this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.panel1.Location = new System.Drawing.Point(3, 3);
-        	this.panel1.Name = "panel1";
-        	this.panel1.Size = new System.Drawing.Size(940, 24);
-        	this.panel1.TabIndex = 2;
+        	this.pnlPaletteControls.Controls.Add(this.btnNextPalette);
+        	this.pnlPaletteControls.Controls.Add(this.btnPrevPalette);
+        	this.pnlPaletteControls.Controls.Add(this.txtPaletteId);
+        	this.pnlPaletteControls.Controls.Add(this.lbPalette);
+        	this.pnlPaletteControls.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.pnlPaletteControls.Location = new System.Drawing.Point(3, 3);
+        	this.pnlPaletteControls.Name = "pnlPaletteControls";
+        	this.pnlPaletteControls.Size = new System.Drawing.Size(940, 24);
+        	this.pnlPaletteControls.TabIndex = 2;
         	// 
         	// btnNextPalette
         	// 
@@ -523,17 +567,17 @@
         	this.txtPaletteId.Size = new System.Drawing.Size(36, 20);
         	this.txtPaletteId.TabIndex = 1;
         	// 
-        	// label1
+        	// lbPalette
         	// 
-        	this.label1.Location = new System.Drawing.Point(3, 4);
-        	this.label1.Name = "label1";
-        	this.label1.Size = new System.Drawing.Size(48, 20);
-        	this.label1.TabIndex = 0;
-        	this.label1.Text = "Palette:";
+        	this.lbPalette.Location = new System.Drawing.Point(3, 4);
+        	this.lbPalette.Name = "lbPalette";
+        	this.lbPalette.Size = new System.Drawing.Size(48, 20);
+        	this.lbPalette.TabIndex = 0;
+        	this.lbPalette.Text = "Palette:";
         	// 
         	// tpTileMap
         	// 
-        	this.tpTileMap.Controls.Add(this.pbTileMap);
+        	this.tpTileMap.Controls.Add(this.tlpTileMap);
         	this.tpTileMap.Location = new System.Drawing.Point(4, 22);
         	this.tpTileMap.Name = "tpTileMap";
         	this.tpTileMap.Padding = new System.Windows.Forms.Padding(3);
@@ -542,15 +586,65 @@
         	this.tpTileMap.Text = "TileMap";
         	this.tpTileMap.UseVisualStyleBackColor = true;
         	// 
+        	// tlpTileMap
+        	// 
+        	this.tlpTileMap.ColumnCount = 1;
+        	this.tlpTileMap.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+        	this.tlpTileMap.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+        	this.tlpTileMap.Controls.Add(this.pbTileMap, 0, 1);
+        	this.tlpTileMap.Controls.Add(this.pnlTileMapControls, 0, 0);
+        	this.tlpTileMap.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.tlpTileMap.Location = new System.Drawing.Point(3, 3);
+        	this.tlpTileMap.Name = "tlpTileMap";
+        	this.tlpTileMap.RowCount = 2;
+        	this.tlpTileMap.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+        	this.tlpTileMap.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+        	this.tlpTileMap.Size = new System.Drawing.Size(946, 439);
+        	this.tlpTileMap.TabIndex = 1;
+        	// 
         	// pbTileMap
         	// 
         	this.pbTileMap.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.pbTileMap.Location = new System.Drawing.Point(3, 3);
+        	this.pbTileMap.Location = new System.Drawing.Point(3, 33);
         	this.pbTileMap.Name = "pbTileMap";
-        	this.pbTileMap.Size = new System.Drawing.Size(946, 439);
+        	this.pbTileMap.Size = new System.Drawing.Size(940, 403);
         	this.pbTileMap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-        	this.pbTileMap.TabIndex = 0;
+        	this.pbTileMap.TabIndex = 1;
         	this.pbTileMap.TabStop = false;
+        	// 
+        	// pnlTileMapControls
+        	// 
+        	this.pnlTileMapControls.Controls.Add(this.chkSprites);
+        	this.pnlTileMapControls.Controls.Add(this.chkBackground);
+        	this.pnlTileMapControls.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.pnlTileMapControls.Location = new System.Drawing.Point(3, 3);
+        	this.pnlTileMapControls.Name = "pnlTileMapControls";
+        	this.pnlTileMapControls.Size = new System.Drawing.Size(940, 24);
+        	this.pnlTileMapControls.TabIndex = 2;
+        	// 
+        	// chkSprites
+        	// 
+        	this.chkSprites.Checked = true;
+        	this.chkSprites.CheckState = System.Windows.Forms.CheckState.Checked;
+        	this.chkSprites.Location = new System.Drawing.Point(113, 0);
+        	this.chkSprites.Name = "chkSprites";
+        	this.chkSprites.Size = new System.Drawing.Size(104, 24);
+        	this.chkSprites.TabIndex = 1;
+        	this.chkSprites.Text = "Sprites";
+        	this.chkSprites.UseVisualStyleBackColor = true;
+        	this.chkSprites.CheckedChanged += new System.EventHandler(this.ChkSpritesCheckedChanged);
+        	// 
+        	// chkBackground
+        	// 
+        	this.chkBackground.Checked = true;
+        	this.chkBackground.CheckState = System.Windows.Forms.CheckState.Checked;
+        	this.chkBackground.Location = new System.Drawing.Point(3, 0);
+        	this.chkBackground.Name = "chkBackground";
+        	this.chkBackground.Size = new System.Drawing.Size(104, 24);
+        	this.chkBackground.TabIndex = 0;
+        	this.chkBackground.Text = "Background";
+        	this.chkBackground.UseVisualStyleBackColor = true;
+        	this.chkBackground.CheckedChanged += new System.EventHandler(this.ChkBackgroundCheckedChanged);
         	// 
         	// frmMain
         	// 
@@ -569,13 +663,16 @@
         	this.tpScript.ResumeLayout(false);
         	this.tpScript.PerformLayout();
         	this.tpWalkmesh.ResumeLayout(false);
+        	this.tableLayoutPanel1.ResumeLayout(false);
         	this.tpMIMTexture.ResumeLayout(false);
-        	this.tlpTileMap.ResumeLayout(false);
+        	this.tlpMIMTexture.ResumeLayout(false);
         	((System.ComponentModel.ISupportInitialize)(this.pbMIMTexture)).EndInit();
-        	this.panel1.ResumeLayout(false);
-        	this.panel1.PerformLayout();
+        	this.pnlPaletteControls.ResumeLayout(false);
+        	this.pnlPaletteControls.PerformLayout();
         	this.tpTileMap.ResumeLayout(false);
+        	this.tlpTileMap.ResumeLayout(false);
         	((System.ComponentModel.ISupportInitialize)(this.pbTileMap)).EndInit();
+        	this.pnlTileMapControls.ResumeLayout(false);
         	this.ResumeLayout(false);
         	this.PerformLayout();
 
@@ -622,9 +719,9 @@
         private System.Windows.Forms.PictureBox pbMIMTexture;
         private System.Windows.Forms.ToolStripMenuItem saveTilemapToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.TableLayoutPanel tlpTileMap;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TableLayoutPanel tlpMIMTexture;
+        private System.Windows.Forms.Panel pnlPaletteControls;
+        private System.Windows.Forms.Label lbPalette;
         private System.Windows.Forms.TextBox txtPaletteId;
         private System.Windows.Forms.Button btnNextPalette;
         private System.Windows.Forms.Button btnPrevPalette;
@@ -632,6 +729,13 @@
         private System.Windows.Forms.PictureBox pbTileMap;
         private System.Windows.Forms.ToolStripMenuItem saveFieldToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveMIMTextureToolStripMenuItem;
+        private System.Windows.Forms.TableLayoutPanel tlpTileMap;
+        private System.Windows.Forms.Panel pnlTileMapControls;
+        private System.Windows.Forms.CheckBox chkBackground;
+        private System.Windows.Forms.CheckBox chkSprites;
+        private System.Windows.Forms.ToolStripMenuItem saveCLUTToolStripMenuItem;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label label1;
     }
 }
 

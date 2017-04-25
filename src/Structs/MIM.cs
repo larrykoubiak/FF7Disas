@@ -24,13 +24,17 @@ namespace FF7Viewer
 		private BitVector32.Section green;
 		private BitVector32.Section blue;
 		private BitVector32.Section stp;
-		public PaletteEntry(UInt16 color)
+		public PaletteEntry()
 		{
-			vector = new BitVector32(color);
+			vector = new BitVector32(0);
 			red = BitVector32.CreateSection(31);
 			green = BitVector32.CreateSection(31,red);
 			blue = BitVector32.CreateSection(31,green);
-			stp = BitVector32.CreateSection(1,blue);			
+			stp = BitVector32.CreateSection(1,blue);						
+		}
+		public PaletteEntry(UInt16 color) : this()
+		{
+			vector = new BitVector32(color);
 		}
 		public UInt16 Value
 		{
@@ -55,7 +59,7 @@ namespace FF7Viewer
 		}
 		public bool STP
 		{
-			get {return Convert.ToBoolean(vector[stp]);}
+			get {return vector[stp]==1;}
 			set {vector[stp] = value ? 1 : 0;}
 		}
 		public Color Color

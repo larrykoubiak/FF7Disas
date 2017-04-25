@@ -239,99 +239,107 @@ namespace FF7Viewer
         	gBmp.FillRectangle(Brushes.Black,0,0,field.TileMap.Width,field.TileMap.Height);
         	gBmp.Dispose();
         	Color transparentcolor = Color.FromArgb(255,0,0,0);
-        	int centerx = field.TileMap.Width/2;
-        	int centery = field.TileMap.Height/2;
-        	foreach(Layer l in field.TileMap.Layers)
+        	bool transparent;
+        	if(chkBackground.Checked)
         	{
-        		TexturePageInfo tpi = field.TileMap.TexturePageInfos[l.TexturePageId];
-        		foreach(LayerInfo li in l.LayerInfos)
-        		{
-        			foreach(TileInfo ti in li.Tiles)
-        			{        				
-		        		PaletteId = ti.ClutNumber;
-		        		for(int offsety=0;offsety<16;offsety++)
-		        		{
-		        			for(int offsetx=0;offsetx<16;offsetx+=2)
-		        			{
-		        				Texture t = mim.Textures[tpi.PageY];
-		        				int sourcey = ti.TexPageSourceY+offsety;
-		        				int sourcex = (ti.TexPageSourceX+offsetx) / 2 + ((tpi.PageX*64)-t.X);
-		        				int destx = ti.DestinationX + centerx + offsetx;
-		        				int desty = ti.DestinationY + centery + offsety;
-		        				int pixelidx = (sourcey*t.Width) + sourcex;
-		        				int pixel1 = t.Pixels[pixelidx] & 0xFF;
-		        				int pixel2 = t.Pixels[pixelidx] >> 8;
-		        				Color color1 = mim.Clut[PaletteId].Entries[pixel1].Color;
-		        				Color color2 = mim.Clut[PaletteId].Entries[pixel2].Color;
-		        				if(!(color1.Equals(transparentcolor))&&!(mim.Clut[PaletteId].Entries[pixel2].STP))
-		        					tilemap.SetPixel(destx,desty,color1);
-		        				if(!(color2.Equals(transparentcolor))&&!(mim.Clut[PaletteId].Entries[pixel2].STP))
-		        					tilemap.SetPixel(destx + 1,desty,color2);
-		        			}
-		        		}        				
-        			}
-        		}
+        		foreach(LayerPage l in field.TileMap.Layers[0].LayerPages)
+	        	{
+	        		TexturePageInfo tpi = field.TileMap.TexturePageInfos[l.TexturePageId];
+	        		foreach(LayerInfo li in l.LayerInfos)
+	        		{
+	        			foreach(TileInfo ti in li.Tiles)
+	        			{        				
+			        		PaletteId = ti.ClutNumber;
+			        		for(int offsety=0;offsety<16;offsety++)
+			        		{
+			        			for(int offsetx=0;offsetx<16;offsetx+=2)
+			        			{
+			        				Texture t = mim.Textures[tpi.PageY];
+			        				int sourcey = ti.TexPageSourceY+offsety;
+			        				int sourcex = (ti.TexPageSourceX+offsetx) / 2 + ((tpi.PageX*64)-t.X);
+			        				int destx = ti.DestinationX - field.TileMap.OriginX + offsetx;
+			        				int desty = ti.DestinationY - field.TileMap.OriginY + offsety;
+			        				int pixelidx = (sourcey*t.Width) + sourcex;
+			        				int pixel1 = t.Pixels[pixelidx] & 0xFF;
+			        				int pixel2 = t.Pixels[pixelidx] >> 8;
+			        				Color color1 = mim.Clut[PaletteId].Entries[pixel1].Color;
+			        				Color color2 = mim.Clut[PaletteId].Entries[pixel2].Color;
+			        				transparent = color1.Equals(transparentcolor) ^ mim.Clut[PaletteId].Entries[pixel1].STP;
+			        				if(!transparent)
+			        					tilemap.SetPixel(destx,desty,color1);
+			        				transparent = color2.Equals(transparentcolor) ^ mim.Clut[PaletteId].Entries[pixel2].STP;
+			        				if(!transparent)
+			        					tilemap.SetPixel(destx + 1,desty,color2);			        					
+			        			}
+			        		}        				
+	        			}
+	        		}
+	        	}        		
         	}
-			foreach(SpriteInfo si in field.TileMap.SpriteInfos)
-			{        				
-        		PaletteId = si.SpriteTI.ClutNumber;
-        		TileInfo ti = si.SpriteTI;
-        		TexturePageInfo tpi = si.SpriteTP_Blend;
-        		for(int offsety=0;offsety<16;offsety++)
-        		{
-        			for(int offsetx=0;offsetx<16;offsetx+=2)
-        			{
-        				Texture t = mim.Textures[tpi.PageY];
-        				int sourcey = ti.TexPageSourceY+offsety;
-        				int sourcex = (ti.TexPageSourceX+offsetx) / 2 + ((tpi.PageX*64)-t.X);
-						int destx = ti.DestinationX + centerx + offsetx;
-						int desty = ti.DestinationY + centery + offsety;
-        				int pixelidx = (sourcey*t.Width) + sourcex;
-        				int pixel1 = t.Pixels[pixelidx] & 0xFF;
-        				int pixel2 = t.Pixels[pixelidx] >> 8;
-        				Color color1 = mim.Clut[PaletteId].Entries[pixel1].Color;
-        				Color color2 = mim.Clut[PaletteId].Entries[pixel2].Color;
-        				if((si.Parameter & 0x80)==0x80)
-        				{
-        					Color oldcolor1 = tilemap.GetPixel(destx,desty);
-        					Color oldcolor2 = tilemap.GetPixel(destx +1,desty);
-        					Color newcolor1 = Color.Black, newcolor2 = Color.Black;
-        					if(tpi.BlendingMode==1 || tpi.BlendingMode == 3)
-        					{
-	        					newcolor1 = Color.FromArgb(255,
-        						                           Math.Min(255,oldcolor1.R + color1.R),
-	    					                               Math.Min(255,oldcolor1.G + color1.G),
-	    					                               Math.Min(255,oldcolor1.B + color1.B));
-	        					newcolor2 = Color.FromArgb(255,
-	        					                           Math.Min(255,oldcolor2.R + color2.R),
-	        					                           Math.Min(255,oldcolor2.G + color2.G),
-	        					                           Math.Min(255,oldcolor2.B + color2.B));
-        					}
-        					else if (tpi.BlendingMode==2)
-        					{
-	        					newcolor1 = Color.FromArgb(255,
-	        					                           Math.Max(0,oldcolor1.R - color1.R),
-	        					                           Math.Max(0,oldcolor1.G - color1.G),
-	        					                           Math.Max(0,oldcolor1.B - color1.B));
-	        					newcolor2 = Color.FromArgb(255,
-	        					                           Math.Max(0,oldcolor2.R - color2.R),
-	        					                           Math.Max(0,oldcolor2.G - color2.G),
-	        					                           Math.Max(0,oldcolor2.B - color2.B));        						
-        					}
-        					tilemap.SetPixel(destx,desty,newcolor1);
-        					tilemap.SetPixel(destx + 1,desty,newcolor2);        						
+        	if(chkSprites.Checked)
+        	{
+				foreach(SpriteTileInfo si in field.TileMap.SpriteTileInfos)
+				{        				
+	        		PaletteId = si.ClutNumber;
+	        		TexturePageInfo tpi = si.SpriteTP_Blend;
+	        		for(int offsety=0;offsety<16;offsety++)
+	        		{
+	        			for(int offsetx=0;offsetx<16;offsetx+=2)
+	        			{
+	        				Texture t = mim.Textures[tpi.PageY];
+	        				int sourcey = si.TexPageSourceY+offsety;
+	        				int sourcex = (si.TexPageSourceX+offsetx) / 2 + ((tpi.PageX*64)-t.X);
+							int destx = si.DestinationX - field.TileMap.OriginX  + offsetx;
+							int desty = si.DestinationY - field.TileMap.OriginY + offsety;
+	        				int pixelidx = (sourcey*t.Width) + sourcex;
+	        				int pixel1 = t.Pixels[pixelidx] & 0xFF;
+	        				int pixel2 = t.Pixels[pixelidx] >> 8;
+	        				Color color1 = mim.Clut[PaletteId].Entries[pixel1].Color;
+	        				Color color2 = mim.Clut[PaletteId].Entries[pixel2].Color;
+	        				if((si.Parameter & 0x80)==0x80)
+	        				{
+	        					Color oldcolor1 = tilemap.GetPixel(destx,desty);
+	        					Color oldcolor2 = tilemap.GetPixel(destx +1,desty);
+	        					Color newcolor1 = Color.Black, newcolor2 = Color.Black;
+	        					if(tpi.BlendingMode==1 || tpi.BlendingMode == 3)
+	        					{
+		        					newcolor1 = Color.FromArgb(255,
+	        						                           Math.Min(255,oldcolor1.R + color1.R),
+		    					                               Math.Min(255,oldcolor1.G + color1.G),
+		    					                               Math.Min(255,oldcolor1.B + color1.B));
+		        					newcolor2 = Color.FromArgb(255,
+		        					                           Math.Min(255,oldcolor2.R + color2.R),
+		        					                           Math.Min(255,oldcolor2.G + color2.G),
+		        					                           Math.Min(255,oldcolor2.B + color2.B));
+	        					}
+	        					else if (tpi.BlendingMode==2)
+	        					{
+		        					newcolor1 = Color.FromArgb(255,
+		        					                           Math.Max(0,oldcolor1.R - color1.R),
+		        					                           Math.Max(0,oldcolor1.G - color1.G),
+		        					                           Math.Max(0,oldcolor1.B - color1.B));
+		        					newcolor2 = Color.FromArgb(255,
+		        					                           Math.Max(0,oldcolor2.R - color2.R),
+		        					                           Math.Max(0,oldcolor2.G - color2.G),
+		        					                           Math.Max(0,oldcolor2.B - color2.B));        						
+	        					}
+	        					tilemap.SetPixel(destx,desty,newcolor1);
+	        					tilemap.SetPixel(destx + 1,desty,newcolor2);      						
+	        				}
+	        				else
+	        				{
+		        				transparent = color1.Equals(transparentcolor) ^ mim.Clut[PaletteId].Entries[pixel1].STP;
+		        				if(!transparent)
+		        					tilemap.SetPixel(destx,desty,color1);
+		        				transparent = color2.Equals(transparentcolor) ^ mim.Clut[PaletteId].Entries[pixel2].STP;
+		        				if(!transparent)
+		        					tilemap.SetPixel(destx + 1,desty,color2);
+	        				}
+	        			}
+	        		}        				
+				}        		
+        	}
 
-        				}
-        				else
-        				{
-        					if(!(color1.Equals(transparentcolor))&&!(mim.Clut[PaletteId].Entries[pixel2].STP))
-        						tilemap.SetPixel(destx,desty,color1);
-        					if(!(color2.Equals(transparentcolor))&&!(mim.Clut[PaletteId].Entries[pixel2].STP))
-        						tilemap.SetPixel(destx + 1,desty,color2);
-        				}
-        			}
-        		}        				
-			}
         	pbTileMap.Image = tilemap;
         	pbTileMap.Invalidate();
         }
@@ -400,6 +408,17 @@ namespace FF7Viewer
 				tilemap.Save(saveFileDialog1.FileName);
 			}
 		}
+		void SaveCLUTToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			saveFileDialog1.Filter = "XML Files|*.xml";
+			if(saveFileDialog1.ShowDialog()==DialogResult.OK)
+			{
+				XmlSerializer serial = new XmlSerializer(typeof(CLUT));
+				FileStream stream = new FileStream(saveFileDialog1.FileName,FileMode.Create);
+				serial.Serialize(stream,this.mim.Clut);
+				stream.Close();
+			}
+		}
         private void UnLZSToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			if(openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -463,6 +482,15 @@ namespace FF7Viewer
 			this.PaletteId +=1;
 			RefreshMIMTexture();
 		}
+		void ChkBackgroundCheckedChanged(object sender, EventArgs e)
+		{
+			RefreshTileMap();
+		}
+		void ChkSpritesCheckedChanged(object sender, EventArgs e)
+		{
+			RefreshTileMap();
+		}
+
 
 
 
