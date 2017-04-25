@@ -319,8 +319,8 @@ namespace FF7Viewer
         		SpriteInfo si = new SpriteInfo(ti,tpi,group,parameter,state);
         		map.SpriteInfos.Add(si);
         	}
-        	map.Width = (UInt16)((maxdestx - mindestx)+16);
-        	map.Height = (UInt16)((maxdesty - mindesty)+16);
+        	map.Width = (UInt16)((maxdestx - mindestx)+32);
+        	map.Height = (UInt16)((maxdesty - mindesty)+32);
 
         	return map;
         }

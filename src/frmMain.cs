@@ -256,15 +256,17 @@ namespace FF7Viewer
 		        				Texture t = mim.Textures[tpi.PageY];
 		        				int sourcey = ti.TexPageSourceY+offsety;
 		        				int sourcex = (ti.TexPageSourceX+offsetx) / 2 + ((tpi.PageX*64)-t.X);
+		        				int destx = ti.DestinationX + centerx + offsetx;
+		        				int desty = ti.DestinationY + centery + offsety;
 		        				int pixelidx = (sourcey*t.Width) + sourcex;
 		        				int pixel1 = t.Pixels[pixelidx] & 0xFF;
 		        				int pixel2 = t.Pixels[pixelidx] >> 8;
 		        				Color color1 = mim.Clut[PaletteId].Entries[pixel1].Color;
 		        				Color color2 = mim.Clut[PaletteId].Entries[pixel2].Color;
 		        				if(!(color1.Equals(transparentcolor))&&!(mim.Clut[PaletteId].Entries[pixel2].STP))
-		        					tilemap.SetPixel(ti.DestinationX + centerx + offsetx,ti.DestinationY + centery + offsety,color1);
+		        					tilemap.SetPixel(destx,desty,color1);
 		        				if(!(color2.Equals(transparentcolor))&&!(mim.Clut[PaletteId].Entries[pixel2].STP))
-		        					tilemap.SetPixel(ti.DestinationX + centerx + offsetx + 1,ti.DestinationY + centery+ offsety,color2);
+		        					tilemap.SetPixel(destx + 1,desty,color2);
 		        			}
 		        		}        				
         			}
@@ -282,6 +284,8 @@ namespace FF7Viewer
         				Texture t = mim.Textures[tpi.PageY];
         				int sourcey = ti.TexPageSourceY+offsety;
         				int sourcex = (ti.TexPageSourceX+offsetx) / 2 + ((tpi.PageX*64)-t.X);
+						int destx = ti.DestinationX + centerx + offsetx;
+						int desty = ti.DestinationY + centery + offsety;
         				int pixelidx = (sourcey*t.Width) + sourcex;
         				int pixel1 = t.Pixels[pixelidx] & 0xFF;
         				int pixel2 = t.Pixels[pixelidx] >> 8;
@@ -289,22 +293,41 @@ namespace FF7Viewer
         				Color color2 = mim.Clut[PaletteId].Entries[pixel2].Color;
         				if((si.Parameter & 0x80)==0x80)
         				{
-        					Color oldcolor1 = tilemap.GetPixel(ti.DestinationX + centerx + offsetx,ti.DestinationY + centery + offsety);
-        					Color newcolor1 = Color.FromArgb(255,(oldcolor1.R + color1.R)/2,(oldcolor1.G + color1.G)/2,(oldcolor1.B + color1.B)/2);
-        					Color oldcolor2 = tilemap.GetPixel(ti.DestinationX + centerx + offsetx +1,ti.DestinationY + centery + offsety);
-        					Color newcolor2 = Color.FromArgb(255,(oldcolor2.R + color2.R)/2,(oldcolor2.G + color1.G)/2,(oldcolor2.B + color2.B)/2);
-        					if(!(color1.Equals(transparentcolor)))
-        						tilemap.SetPixel(ti.DestinationX + centerx + offsetx,ti.DestinationY + centery + offsety,newcolor1);
-							if(!(color2.Equals(transparentcolor)))
-        						tilemap.SetPixel(ti.DestinationX + centerx + offsetx + 1,ti.DestinationY + centery + offsety,newcolor2);
+        					Color oldcolor1 = tilemap.GetPixel(destx,desty);
+        					Color oldcolor2 = tilemap.GetPixel(destx +1,desty);
+        					Color newcolor1 = Color.Black, newcolor2 = Color.Black;
+        					if(tpi.BlendingMode==1 || tpi.BlendingMode == 3)
+        					{
+	        					newcolor1 = Color.FromArgb(255,
+        						                           Math.Min(255,oldcolor1.R + color1.R),
+	    					                               Math.Min(255,oldcolor1.G + color1.G),
+	    					                               Math.Min(255,oldcolor1.B + color1.B));
+	        					newcolor2 = Color.FromArgb(255,
+	        					                           Math.Min(255,oldcolor2.R + color2.R),
+	        					                           Math.Min(255,oldcolor2.G + color2.G),
+	        					                           Math.Min(255,oldcolor2.B + color2.B));
+        					}
+        					else if (tpi.BlendingMode==2)
+        					{
+	        					newcolor1 = Color.FromArgb(255,
+	        					                           Math.Max(0,oldcolor1.R - color1.R),
+	        					                           Math.Max(0,oldcolor1.G - color1.G),
+	        					                           Math.Max(0,oldcolor1.B - color1.B));
+	        					newcolor2 = Color.FromArgb(255,
+	        					                           Math.Max(0,oldcolor2.R - color2.R),
+	        					                           Math.Max(0,oldcolor2.G - color2.G),
+	        					                           Math.Max(0,oldcolor2.B - color2.B));        						
+        					}
+        					tilemap.SetPixel(destx,desty,newcolor1);
+        					tilemap.SetPixel(destx + 1,desty,newcolor2);        						
 
         				}
         				else
         				{
-        					if(!(color1.Equals(transparentcolor)))
-        						tilemap.SetPixel(ti.DestinationX + centerx + offsetx,ti.DestinationY + centery + offsety,color1);
-        					if(!(color2.Equals(transparentcolor)))
-        						tilemap.SetPixel(ti.DestinationX + centerx + offsetx + 1,ti.DestinationY + centery + offsety,color2);
+        					if(!(color1.Equals(transparentcolor))&&!(mim.Clut[PaletteId].Entries[pixel2].STP))
+        						tilemap.SetPixel(destx,desty,color1);
+        					if(!(color2.Equals(transparentcolor))&&!(mim.Clut[PaletteId].Entries[pixel2].STP))
+        						tilemap.SetPixel(destx + 1,desty,color2);
         				}
         			}
         		}        				
