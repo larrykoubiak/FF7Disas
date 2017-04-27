@@ -18,18 +18,16 @@ namespace TKView
 	{
 		public Vector3 Position = Vector3.Zero;
 		public Vector3 Orientation = new Vector3((float)Math.PI,0f,0f);
+		public Vector3 LookAt = Vector3.Zero;
 		public float MoveSpeed = 1f;
 		public float MouseSensitivity = 0.01f;
 		
 		public Matrix4 GetViewMatrix()
-		{
-			Vector3 lookat = new Vector3();
-			
-			lookat.X = (float)(Math.Sin((float)Orientation.X) * Math.Cos((float)Orientation.Y));
-			lookat.Y = (float)Math.Sin((float)Orientation.Y);
-			lookat.Z = (float)(Math.Cos((float)Orientation.X) * Math.Cos((float)Orientation.Y));
-			
-			return Matrix4.LookAt(Position,Position + lookat, Vector3.UnitY);
+		{	
+			LookAt.X = (float)(Math.Sin((float)Orientation.X) * Math.Cos((float)Orientation.Y));
+			LookAt.Y = (float)Math.Sin((float)Orientation.Y);
+			LookAt.Z = (float)(Math.Cos((float)Orientation.X) * Math.Cos((float)Orientation.Y));
+			return Matrix4.LookAt(Position,Position + LookAt, Vector3.UnitY);
 		}
 		
 		public void Move(float x, float y, float z)

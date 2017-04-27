@@ -181,6 +181,7 @@ namespace FF7Viewer
         {
         	tv.objects.Clear();
         	tv.Camera.Position = Vector3.Zero;
+        	tv.Camera.Orientation = new Vector3((float)Math.PI,0f,0f);
         	for(int i=0; i <field.Walkmesh.NoS;i++)
         	{
         		Sector s = field.Walkmesh.Sectors[i];

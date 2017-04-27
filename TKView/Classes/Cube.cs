@@ -72,6 +72,10 @@ namespace TKView
                 new Vector3( 0f, 0f, 1f)
             };
         }
+        public override Vector2[] GetTextureCoords()
+        {
+        	return new Vector2[]{};
+        }
 		public override void CalculateModelMatrix()
         {
             ModelMatrix = Matrix4.CreateScale(Scale) 
@@ -103,5 +107,56 @@ namespace TKView
 				Color
 			};
 		}
+	}
+	
+	public class TexturedCube : Cube
+	{
+		public TexturedCube() : base()
+		{
+			VertCount = 24;
+			IndiceCount = 36;
+			TextureCoordCount = 24;
+		}
+		
+	    public override Vector2[] GetTextureCoords()
+	    {
+	        return new Vector2[] {
+	            // left
+	            new Vector2(0.0f, 0.0f),
+	            new Vector2(-1.0f, 1.0f),
+	            new Vector2(-1.0f, 0.0f),
+	            new Vector2(0.0f, 1.0f),
+	 
+	            // back
+	            new Vector2(0.0f, 0.0f),
+	            new Vector2(0.0f, 1.0f),
+	            new Vector2(-1.0f, 1.0f),
+	            new Vector2(-1.0f, 0.0f),
+	 
+	            // right
+	            new Vector2(-1.0f, 0.0f),
+	            new Vector2(0.0f, 0.0f),
+	            new Vector2(0.0f, 1.0f),
+	            new Vector2(-1.0f, 1.0f),
+	 
+	            // top
+	            new Vector2(0.0f, 0.0f),
+	            new Vector2(0.0f, 1.0f),
+	            new Vector2(-1.0f, 0.0f),
+	            new Vector2(-1.0f, 1.0f),
+	 
+	            // front
+	            new Vector2(0.0f, 0.0f),
+	            new Vector2(1.0f, 1.0f),
+	            new Vector2(0.0f, 1.0f),
+	            new Vector2(1.0f, 0.0f),
+	 
+	            // bottom
+	            new Vector2(0.0f, 0.0f),
+	            new Vector2(0.0f, 1.0f),
+	            new Vector2(-1.0f, 1.0f),
+	            new Vector2(-1.0f, 0.0f)
+	        };
+	    }
 	}
 }

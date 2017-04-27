@@ -95,7 +95,10 @@ namespace TKView
 		{
 			return new Vector3[] {new Vector3(1f,0f,0f), new Vector3(0f,1f,0f), new Vector3(0f,0f,1f), new Vector3(1f,1f,0f) };
 		}
-		
+        public override Vector2[] GetTextureCoords()
+        {
+        	return new Vector2[]{};
+        }		
 		public override void CalculateModelMatrix()
 		{
 			ModelMatrix = 
@@ -161,7 +164,10 @@ namespace TKView
 			
 			return inds;
 		}
-		
+		public override Vector2[] GetTextureCoords()
+        {
+        	return new Vector2[]{};
+        }
 		public override void CalculateModelMatrix()
 		{
 			ModelMatrix = 

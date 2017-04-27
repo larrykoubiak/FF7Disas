@@ -77,10 +77,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\AttributeInfo.cs" />
     <Compile Include="Classes\Camera.cs" />
     <Compile Include="Classes\Cube.cs" />
     <Compile Include="Classes\Sector.cs" />
+    <Compile Include="Classes\ShaderProgram.cs" />
     <Compile Include="Classes\Tetra.cs" />
+    <Compile Include="Classes\UniformInfo.cs" />
     <Compile Include="Classes\Volume.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TKView.cs" />

@@ -38,7 +38,11 @@ namespace TKView
         {
         	return new Vector3[]{Color};
         }
-		public override void CalculateModelMatrix()
+        public override Vector2[] GetTextureCoords()
+        {
+        	return new Vector2[]{};
+        }
+        public override void CalculateModelMatrix()
         {
             ModelMatrix = Matrix4.CreateScale(Scale) 
             			* Matrix4.CreateRotationX(Rotation.X) 

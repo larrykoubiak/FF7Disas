@@ -31,6 +31,13 @@ namespace TKView
 		private System.Windows.Forms.TextBox txtXOri;
 		private System.Windows.Forms.Label lblOrientationX;
 		private System.Windows.Forms.Label lblCameraOrientation;
+		private System.Windows.Forms.TextBox txtZLookAt;
+		private System.Windows.Forms.Label lblZLookAt;
+		private System.Windows.Forms.TextBox txtYLookAt;
+		private System.Windows.Forms.Label lblYLookAt;
+		private System.Windows.Forms.TextBox txtXLookAt;
+		private System.Windows.Forms.Label lblXLookAt;
+		private System.Windows.Forms.Label lblCameraLookAt;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -71,6 +78,13 @@ namespace TKView
 			this.lblPositionX = new System.Windows.Forms.Label();
 			this.lblCameraPosition = new System.Windows.Forms.Label();
 			this.glControl1 = new OpenTK.GLControl();
+			this.txtZLookAt = new System.Windows.Forms.TextBox();
+			this.lblZLookAt = new System.Windows.Forms.Label();
+			this.txtYLookAt = new System.Windows.Forms.TextBox();
+			this.lblYLookAt = new System.Windows.Forms.Label();
+			this.txtXLookAt = new System.Windows.Forms.TextBox();
+			this.lblXLookAt = new System.Windows.Forms.Label();
+			this.lblCameraLookAt = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -90,6 +104,13 @@ namespace TKView
 			// 
 			// splitContainer1.Panel1
 			// 
+			this.splitContainer1.Panel1.Controls.Add(this.txtZLookAt);
+			this.splitContainer1.Panel1.Controls.Add(this.lblZLookAt);
+			this.splitContainer1.Panel1.Controls.Add(this.txtYLookAt);
+			this.splitContainer1.Panel1.Controls.Add(this.lblYLookAt);
+			this.splitContainer1.Panel1.Controls.Add(this.txtXLookAt);
+			this.splitContainer1.Panel1.Controls.Add(this.lblXLookAt);
+			this.splitContainer1.Panel1.Controls.Add(this.lblCameraLookAt);
 			this.splitContainer1.Panel1.Controls.Add(this.txtZOri);
 			this.splitContainer1.Panel1.Controls.Add(this.lblOrientationZ);
 			this.splitContainer1.Panel1.Controls.Add(this.txtYOri);
@@ -115,14 +136,14 @@ namespace TKView
 			// txtZOri
 			// 
 			this.txtZOri.Enabled = false;
-			this.txtZOri.Location = new System.Drawing.Point(65, 172);
+			this.txtZOri.Location = new System.Drawing.Point(65, 259);
 			this.txtZOri.Name = "txtZOri";
 			this.txtZOri.Size = new System.Drawing.Size(62, 20);
 			this.txtZOri.TabIndex = 13;
 			// 
 			// lblOrientationZ
 			// 
-			this.lblOrientationZ.Location = new System.Drawing.Point(4, 175);
+			this.lblOrientationZ.Location = new System.Drawing.Point(4, 262);
 			this.lblOrientationZ.Name = "lblOrientationZ";
 			this.lblOrientationZ.Size = new System.Drawing.Size(55, 18);
 			this.lblOrientationZ.TabIndex = 12;
@@ -132,14 +153,14 @@ namespace TKView
 			// txtYOri
 			// 
 			this.txtYOri.Enabled = false;
-			this.txtYOri.Location = new System.Drawing.Point(65, 146);
+			this.txtYOri.Location = new System.Drawing.Point(65, 233);
 			this.txtYOri.Name = "txtYOri";
 			this.txtYOri.Size = new System.Drawing.Size(62, 20);
 			this.txtYOri.TabIndex = 11;
 			// 
 			// lblOrientationY
 			// 
-			this.lblOrientationY.Location = new System.Drawing.Point(4, 149);
+			this.lblOrientationY.Location = new System.Drawing.Point(4, 236);
 			this.lblOrientationY.Name = "lblOrientationY";
 			this.lblOrientationY.Size = new System.Drawing.Size(55, 18);
 			this.lblOrientationY.TabIndex = 10;
@@ -149,14 +170,14 @@ namespace TKView
 			// txtXOri
 			// 
 			this.txtXOri.Enabled = false;
-			this.txtXOri.Location = new System.Drawing.Point(65, 120);
+			this.txtXOri.Location = new System.Drawing.Point(65, 207);
 			this.txtXOri.Name = "txtXOri";
 			this.txtXOri.Size = new System.Drawing.Size(62, 20);
 			this.txtXOri.TabIndex = 9;
 			// 
 			// lblOrientationX
 			// 
-			this.lblOrientationX.Location = new System.Drawing.Point(4, 123);
+			this.lblOrientationX.Location = new System.Drawing.Point(4, 210);
 			this.lblOrientationX.Name = "lblOrientationX";
 			this.lblOrientationX.Size = new System.Drawing.Size(55, 18);
 			this.lblOrientationX.TabIndex = 8;
@@ -166,7 +187,7 @@ namespace TKView
 			// lblCameraOrientation
 			// 
 			this.lblCameraOrientation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblCameraOrientation.Location = new System.Drawing.Point(3, 101);
+			this.lblCameraOrientation.Location = new System.Drawing.Point(3, 188);
 			this.lblCameraOrientation.Name = "lblCameraOrientation";
 			this.lblCameraOrientation.Size = new System.Drawing.Size(124, 18);
 			this.lblCameraOrientation.TabIndex = 7;
@@ -241,6 +262,66 @@ namespace TKView
 			this.glControl1.Size = new System.Drawing.Size(358, 421);
 			this.glControl1.TabIndex = 1;
 			this.glControl1.VSync = false;
+			// 
+			// txtZLookAt
+			// 
+			this.txtZLookAt.Enabled = false;
+			this.txtZLookAt.Location = new System.Drawing.Point(62, 165);
+			this.txtZLookAt.Name = "txtZLookAt";
+			this.txtZLookAt.Size = new System.Drawing.Size(62, 20);
+			this.txtZLookAt.TabIndex = 20;
+			// 
+			// lblZLookAt
+			// 
+			this.lblZLookAt.Location = new System.Drawing.Point(1, 168);
+			this.lblZLookAt.Name = "lblZLookAt";
+			this.lblZLookAt.Size = new System.Drawing.Size(55, 18);
+			this.lblZLookAt.TabIndex = 19;
+			this.lblZLookAt.Text = "Z";
+			this.lblZLookAt.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			// 
+			// txtYLookAt
+			// 
+			this.txtYLookAt.Enabled = false;
+			this.txtYLookAt.Location = new System.Drawing.Point(62, 139);
+			this.txtYLookAt.Name = "txtYLookAt";
+			this.txtYLookAt.Size = new System.Drawing.Size(62, 20);
+			this.txtYLookAt.TabIndex = 18;
+			// 
+			// lblYLookAt
+			// 
+			this.lblYLookAt.Location = new System.Drawing.Point(1, 142);
+			this.lblYLookAt.Name = "lblYLookAt";
+			this.lblYLookAt.Size = new System.Drawing.Size(55, 18);
+			this.lblYLookAt.TabIndex = 17;
+			this.lblYLookAt.Text = "Y";
+			this.lblYLookAt.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			// 
+			// txtXLookAt
+			// 
+			this.txtXLookAt.Enabled = false;
+			this.txtXLookAt.Location = new System.Drawing.Point(62, 113);
+			this.txtXLookAt.Name = "txtXLookAt";
+			this.txtXLookAt.Size = new System.Drawing.Size(62, 20);
+			this.txtXLookAt.TabIndex = 16;
+			// 
+			// lblXLookAt
+			// 
+			this.lblXLookAt.Location = new System.Drawing.Point(1, 116);
+			this.lblXLookAt.Name = "lblXLookAt";
+			this.lblXLookAt.Size = new System.Drawing.Size(55, 18);
+			this.lblXLookAt.TabIndex = 15;
+			this.lblXLookAt.Text = "X";
+			this.lblXLookAt.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			// 
+			// lblCameraLookAt
+			// 
+			this.lblCameraLookAt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblCameraLookAt.Location = new System.Drawing.Point(0, 94);
+			this.lblCameraLookAt.Name = "lblCameraLookAt";
+			this.lblCameraLookAt.Size = new System.Drawing.Size(124, 18);
+			this.lblCameraLookAt.TabIndex = 14;
+			this.lblCameraLookAt.Text = "Camera Look At";
 			// 
 			// TKView
 			// 
