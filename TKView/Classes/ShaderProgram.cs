@@ -25,6 +25,7 @@ namespace TKView
 		public int FShaderId = -1;
 		public int AttributeCount = 0;
 		public int UniformCount = 0;
+		public uint ibo_elements;
 		public Dictionary<String,AttributeInfo> Attributes = new Dictionary<String, AttributeInfo>();
 		public Dictionary<String,UniformInfo> Uniforms = new Dictionary<String, UniformInfo>();
 		public Dictionary<String,uint> Buffers = new Dictionary<String,uint>();
@@ -53,7 +54,8 @@ namespace TKView
 			GL.ShaderSource(address,code);
 			GL.CompileShader(address);
 			GL.AttachShader(ProgramId, address);
-			Console.WriteLine(GL.GetShaderInfoLog(address));
+			string info = GL.GetShaderInfoLog(address);
+			Console.WriteLine(info);
 		}
 		public void LoadShaderFromString(String code, ShaderType type)
 		{
@@ -121,6 +123,8 @@ namespace TKView
 				GL.GenBuffers(1, out buffer);
 				Buffers.Add(info.Name,buffer);
 			}
+			GL.GenBuffers(1, out ibo_elements);
+			Buffers.Add("indices",ibo_elements);
 		}
 		public void EnableVertexAttribArrays()
 		{

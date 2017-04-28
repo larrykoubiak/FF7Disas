@@ -19,7 +19,7 @@ namespace TKView
 		public Vector3 Position = Vector3.Zero;
 		public Vector3 Orientation = new Vector3((float)Math.PI,0f,0f);
 		public Vector3 LookAt = Vector3.Zero;
-		public float MoveSpeed = 1f;
+		public float MoveSpeed = 0.05f;
 		public float MouseSensitivity = 0.01f;
 		
 		public Matrix4 GetViewMatrix()

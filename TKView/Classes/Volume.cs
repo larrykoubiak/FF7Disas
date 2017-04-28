@@ -13,9 +13,9 @@ namespace TKView
         public Matrix4 ViewProjectionMatrix = Matrix4.Identity;
         public Matrix4 ModelViewProjectionMatrix = Matrix4.Identity;
         
-        public int VertCount;
-        public int IndiceCount;
-        public int ColorDataCount;
+        public virtual int VertCount {get;set;}
+        public virtual int IndiceCount {get;set;}
+        public virtual int ColorDataCount {get;set;}
         public bool IsTextured = false;
         public int TextureId;
         public int TextureCoordCount;

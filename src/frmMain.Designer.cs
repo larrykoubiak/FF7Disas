@@ -68,7 +68,8 @@
         	this.tpWalkmesh = new System.Windows.Forms.TabPage();
         	this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
         	this.pnlTK = new System.Windows.Forms.Panel();
-        	this.label1 = new System.Windows.Forms.Label();
+        	this.tv = new TKView.TKView();
+        	this.lblWalkmesh = new System.Windows.Forms.Label();
         	this.tpMIMTexture = new System.Windows.Forms.TabPage();
         	this.tlpMIMTexture = new System.Windows.Forms.TableLayoutPanel();
         	this.pbMIMTexture = new System.Windows.Forms.PictureBox();
@@ -89,6 +90,7 @@
         	this.tpScript.SuspendLayout();
         	this.tpWalkmesh.SuspendLayout();
         	this.tableLayoutPanel1.SuspendLayout();
+        	this.pnlTK.SuspendLayout();
         	this.tpMIMTexture.SuspendLayout();
         	this.tlpMIMTexture.SuspendLayout();
         	((System.ComponentModel.ISupportInitialize)(this.pbMIMTexture)).BeginInit();
@@ -462,7 +464,7 @@
         	this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
         	this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
         	this.tableLayoutPanel1.Controls.Add(this.pnlTK, 0, 1);
-        	this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+        	this.tableLayoutPanel1.Controls.Add(this.lblWalkmesh, 0, 0);
         	this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
         	this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
         	this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -474,20 +476,29 @@
         	// 
         	// pnlTK
         	// 
+        	this.pnlTK.Controls.Add(this.tv);
         	this.pnlTK.Dock = System.Windows.Forms.DockStyle.Fill;
         	this.pnlTK.Location = new System.Drawing.Point(3, 33);
         	this.pnlTK.Name = "pnlTK";
         	this.pnlTK.Size = new System.Drawing.Size(940, 403);
         	this.pnlTK.TabIndex = 2;
         	// 
-        	// label1
+        	// tv
         	// 
-        	this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.label1.Location = new System.Drawing.Point(3, 0);
-        	this.label1.Name = "label1";
-        	this.label1.Size = new System.Drawing.Size(940, 30);
-        	this.label1.TabIndex = 3;
-        	this.label1.Text = "Press F12 to capture controls (W/S to move along the Z axis, A/D to move along th" +
+        	this.tv.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.tv.Location = new System.Drawing.Point(0, 0);
+        	this.tv.Name = "tv";
+        	this.tv.Size = new System.Drawing.Size(940, 403);
+        	this.tv.TabIndex = 0;
+        	// 
+        	// lblWalkmesh
+        	// 
+        	this.lblWalkmesh.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.lblWalkmesh.Location = new System.Drawing.Point(3, 0);
+        	this.lblWalkmesh.Name = "lblWalkmesh";
+        	this.lblWalkmesh.Size = new System.Drawing.Size(940, 30);
+        	this.lblWalkmesh.TabIndex = 3;
+        	this.lblWalkmesh.Text = "Press F12 to capture controls (W/S to move along the Z axis, A/D to move along th" +
 	"e X axis, and Q/E to move along the Y axis)";
         	// 
         	// tpMIMTexture
@@ -664,6 +675,7 @@
         	this.tpScript.PerformLayout();
         	this.tpWalkmesh.ResumeLayout(false);
         	this.tableLayoutPanel1.ResumeLayout(false);
+        	this.pnlTK.ResumeLayout(false);
         	this.tpMIMTexture.ResumeLayout(false);
         	this.tlpMIMTexture.ResumeLayout(false);
         	((System.ComponentModel.ISupportInitialize)(this.pbMIMTexture)).EndInit();
@@ -735,7 +747,8 @@
         private System.Windows.Forms.CheckBox chkSprites;
         private System.Windows.Forms.ToolStripMenuItem saveCLUTToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblWalkmesh;
+        private TKView.TKView tv;
     }
 }
 

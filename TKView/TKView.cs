@@ -22,38 +22,53 @@ namespace TKView
 	{
         //OpenTK variables
     	bool loaded;
-        int ibo_elements;
-        Dictionary<string,ShaderProgram> shaders = new Dictionary<string, ShaderProgram>();
-        Dictionary<string,int> textures = new Dictionary<string, int>();
-        string ActiveShader = "default";
+    	readonly bool isdesignmode;
+        //int ibo_elements;
         Vector3[] vertdata;
         Vector3[] coldata;
-		public Camera Camera = new Camera();
         int[] indicedata;
+        Vector2[] texcoorddata;
         float time = 0.0f;
-        Vector2 lastMousePos = new Vector2();
+        Vector2 lastMousePos;
         KeyboardState prevkstate;
         MouseState prevmstate;
         bool CaptureControls = false;
 		public List<Volume> objects = new List<Volume>();
+        public Dictionary<string,int> textures = new Dictionary<string, int>();
+        public Dictionary<string,ShaderProgram> shaders = new Dictionary<string, ShaderProgram>();
+        public string ActiveShader = "default";
+		public Camera Camera = new Camera();
+        
         public TKView()
 		{
 			//
 			// The InitializeComponent() call is required for Windows Forms designer support.
 			//
 			InitializeComponent();
+			if(LicenseManager.UsageMode==LicenseUsageMode.Designtime)
+			{
+				isdesignmode = true;
+			}
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
 		}
 	    private void InitProgram()
 	    {
-	    	if(LicenseManager.UsageMode == LicenseUsageMode.Runtime)
-	    	{
-
-				GL.GenBuffers(1, out ibo_elements);
-				shaders.Add("default",new ShaderProgram(@"Shaders\vs.glsl",@"Shaders\fs.glsl",true));
-	    	}
+	    	lastMousePos =  new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
+			shaders.Add("default",new ShaderProgram(@"Shaders\vs.glsl",@"Shaders\fs.glsl",true));
+			shaders.Add("textured",new ShaderProgram(@"Shaders\vs_tex.glsl",@"Shaders\fs_tex.glsl",true));
+			ActiveShader = "textured";
+			textures.Add("opentksquare.png",LoadImage(@"Textures\opentksquare.png"));
+			textures.Add("opentksquare2.png",LoadImage(@"Textures\opentksquare2.png"));
+			TexturedCube tc = new TexturedCube();
+			tc.TextureId = textures["opentksquare.png"];
+			objects.Add(tc);
+			TexturedCube tc2 = new TexturedCube();
+			tc2.Position += new Vector3(1f,1f,1f);
+			tc2.TextureId = textures["opentksquare2.png"];
+			objects.Add(tc2);
+			Camera.Position += new Vector3(0f,0f,3f);
 	    }
 	    private void UpdateFrame()
 	    {
@@ -64,17 +79,20 @@ namespace TKView
 	            List<Vector3> verts = new List<Vector3>();
 	            List<int> inds = new List<int>();
 	            List<Vector3> colors = new List<Vector3>();
+	            List<Vector2> texcoords = new List<Vector2>();
 	            int vertcount = 0;
 	            foreach (Volume v in objects)
 	            {
 	                verts.AddRange(v.GetVerts().ToList());
 	                inds.AddRange(v.GetIndices(vertcount).ToList());
 	                colors.AddRange(v.GetColorData().ToList());
+	                texcoords.AddRange(v.GetTextureCoords().ToList());
 	                vertcount += v.VertCount;
 	            }
 	            vertdata = verts.ToArray();
 	            indicedata = inds.ToArray();
 	            coldata = colors.ToArray();
+	            texcoorddata = texcoords.ToArray();
 	
 	            GL.BindBuffer(BufferTarget.ArrayBuffer, shaders[ActiveShader].GetBuffer("vPosition"));
 		    	GL.BufferData<Vector3>(BufferTarget.ArrayBuffer,(IntPtr)(vertdata.Length * Vector3.SizeInBytes),vertdata,BufferUsageHint.StaticDraw);
@@ -86,17 +104,22 @@ namespace TKView
 		    		GL.BufferData<Vector3>(BufferTarget.ArrayBuffer,(IntPtr)(coldata.Length * Vector3.SizeInBytes),coldata,BufferUsageHint.StaticDraw);
 		    		GL.VertexAttribPointer(shaders[ActiveShader].GetAttribute("vColor"),3,VertexAttribPointerType.Float,true,0,0);
 		    	}
-		    	
-		    	GL.BindBuffer(BufferTarget.ElementArrayBuffer, ibo_elements);
+		    	if(shaders[ActiveShader].GetAttribute("texcoord")!=-1)
+		    	{
+		    		GL.BindBuffer(BufferTarget.ArrayBuffer, shaders[ActiveShader].GetBuffer("texcoord"));
+		    		GL.BufferData<Vector2>(BufferTarget.ArrayBuffer,(IntPtr)(texcoorddata.Length * Vector2.SizeInBytes),texcoorddata,BufferUsageHint.StaticDraw);
+		    		GL.VertexAttribPointer(shaders[ActiveShader].GetAttribute("texcoord"),2,VertexAttribPointerType.Float,true,0,0);
+		    	}		    	
+		    	GL.BindBuffer(BufferTarget.ElementArrayBuffer, shaders[ActiveShader].GetBuffer("indices"));
 		    	GL.BufferData(BufferTarget.ElementArrayBuffer,(IntPtr)(indicedata.Length * sizeof(int)),indicedata,BufferUsageHint.StaticDraw);
 	
 		    	time += 0.2f;   	
 		    	foreach (Volume v in objects)
 	            {
 		    		v.CalculateModelMatrix();
-		    		v.ViewProjectionMatrix = Camera.GetViewMatrix() * Matrix4.CreatePerspectiveFieldOfView(1.3f, ClientSize.Width / (float)ClientSize.Height, 1.0f, 100.0f);
+		    		v.ViewProjectionMatrix = Camera.GetViewMatrix() * Matrix4.CreatePerspectiveFieldOfView(1.3f, ClientSize.Width / (float)ClientSize.Height, 0.1f, 40.0f);
 	                v.ModelViewProjectionMatrix = v.ModelMatrix * v.ViewProjectionMatrix;
-	            }
+		    	}
 		    	GL.UseProgram(shaders[ActiveShader].ProgramId);
 		    	GL.BindBuffer(BufferTarget.ArrayBuffer,0);
 		    	KeyboardState kstate = Keyboard.GetState();
@@ -122,7 +145,6 @@ namespace TKView
 		    		Camera.AddRotation(delta.X,delta.Y);
 		    		resetCursor();
 					//Keyboard
-	
 					if(kstate.IsKeyDown(Key.W))
 					{
 						Camera.Move(0f,0.1f, 0f);
@@ -150,6 +172,7 @@ namespace TKView
 		    	}
 		    	prevkstate = kstate;
 		    	prevmstate = mstate;
+		    	//Refresh UI
 		    	txtXPos.Text = Camera.Position.X.ToString("##.###");
 		    	txtYPos.Text = Camera.Position.Y.ToString("##.###");
 		    	txtZPos.Text = Camera.Position.Z.ToString("##.###");
@@ -166,7 +189,7 @@ namespace TKView
 	    {
 	    	OpenTK.Input.Mouse.SetPosition(glControl1.PointToScreen(Point.Empty).X + (glControl1.Bounds.Width / 2),
 	    	                               glControl1.PointToScreen(Point.Empty).Y + (glControl1.Bounds.Height / 2));
-	    	lastMousePos = new Vector2(OpenTK.Input.Mouse.GetState().X, OpenTK.Input.Mouse.GetState().Y);
+	    	lastMousePos = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
 	    }
 	    public int LoadImage(Bitmap image)
 	    {
@@ -187,12 +210,13 @@ namespace TKView
 	    	}
 	    	catch(FileNotFoundException e)
 	    	{
+	    		MessageBox.Show(e.Message);
 	    		return -1;
 	    	}
 	    }
 		private void GlControl1Load(object sender, EventArgs e)
 		{
-			if(LicenseManager.UsageMode == LicenseUsageMode.Runtime)
+			if(!isdesignmode)
 			{
 				InitProgram();
 				loaded = true;
@@ -200,7 +224,7 @@ namespace TKView
 				timer1.Start();
 				UpdateFrame();
 				GL.ClearColor(Color.CornflowerBlue);
-				GL.PointSize(5f);				
+				GL.PointSize(5f);								
 			}
 		}
 		private void GlControl1Resize(object sender, EventArgs e)
@@ -220,15 +244,20 @@ namespace TKView
 				GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 				GL.Enable(EnableCap.DepthTest);
 				shaders[ActiveShader].EnableVertexAttribArrays();
-				GL.PolygonMode(MaterialFace.FrontAndBack,PolygonMode.Line);
+				//GL.PolygonMode(MaterialFace.FrontAndBack,PolygonMode.Line);
 				int indiceat = 0;
 				foreach(Volume v in objects)
 				{
+					GL.BindTexture(TextureTarget.Texture2D, v.TextureId);
 					GL.UniformMatrix4(shaders[ActiveShader].GetUniform("modelview"),false,ref v.ModelViewProjectionMatrix);
+					if(shaders[ActiveShader].GetAttribute("maintexture") != -1)
+					{
+						GL.Uniform1(shaders[ActiveShader].GetAttribute("maintexture"), v.TextureId);
+					}
 					GL.DrawElements(PrimitiveType.Triangles, v.IndiceCount, DrawElementsType.UnsignedInt, indiceat * sizeof(uint));
 					indiceat += v.IndiceCount;
 				}
-				GL.DrawElements(PrimitiveType.Triangles,indicedata.Length,DrawElementsType.UnsignedInt,0);
+				//GL.DrawElements(PrimitiveType.Triangles,indicedata.Length,DrawElementsType.UnsignedInt,0);
 				shaders[ActiveShader].DisableVertexAttribArrays();
 				GL.Flush();
 				glControl1.SwapBuffers();				

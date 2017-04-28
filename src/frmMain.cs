@@ -27,7 +27,7 @@ namespace FF7Viewer
         int EntityId;
         int AkaoId;
         int PaletteId;
-        TKView.TKView tv;
+
         Random rand;
         //Constructor
         public frmMain()
@@ -38,9 +38,7 @@ namespace FF7Viewer
             AkaoId = 0;
             PaletteId = 0;
             rand = new Random();
-            tv = new TKView.TKView();
-            tv.Dock = DockStyle.Fill;
-            pnlTK.Controls.Add(tv);
+         
         }
     #endregion
     #region Methods
@@ -179,7 +177,9 @@ namespace FF7Viewer
         }
         private void RefreshWalkmesh()
         {
+        	tabControl1.SelectedTab = tabControl1.TabPages["tpWalkmesh"];
         	tv.objects.Clear();
+        	tv.ActiveShader = "default";
         	tv.Camera.Position = Vector3.Zero;
         	tv.Camera.Orientation = new Vector3((float)Math.PI,0f,0f);
         	for(int i=0; i <field.Walkmesh.NoS;i++)
@@ -188,7 +188,7 @@ namespace FF7Viewer
         		for(int j=0; j < 3;j++)
         		{
         			s.Vertices[j].Z *= -1;
-        			s.Vertices[j] *= 0.01f;
+        			s.Vertices[j] = Vector3.Divide(s.Vertices[j],4096f);
         		}
         		s.Position = Vector3.Zero;
         		tv.objects.Add(s);
